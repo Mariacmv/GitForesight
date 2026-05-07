@@ -32,16 +32,22 @@ extensoes = { #dicionário com extensões analisadas
     ".yaml":{"tipo":"config", "analisar":True}
 }
 
+s_extensao = []
+
 for arquivo in listaArquivos:
     print(f"Arquivo: {arquivo}")
     extensao = os.path.splitext(arquivo)[1].lower()
+    nome_arquivo = os.path.basename(arquivo).lower()
+    extensao_especial = os.path.basename(nome_arquivo)
     if extensao in extensoes:
         print(f'Extensão identificada: {extensao}')
-        print(f"Extensão do arquivo '{arquivo}' -> {extensao}")
-    elif not extensao:
-        extensao_especial = os.path.basename(arquivo)
+        print(f"Extensão do arquivo '{arquivo}' -> {extensao}\n")
+    elif nome_arquivo.startswith('.'):
         print(f'Extensão especial identificada: {extensao_especial}')
-        print(f"Extensão do arquivo '{arquivo}' -> {extensao_especial}")
+        print(f"Extensão do arquivo '{arquivo}' -> {extensao_especial}\n")
+    elif not extensao:
+        s_extensao.append(arquivo)
+        print(f'Arquivos sem extensão: {s_extensao}\n')
 
     
 #3- escanear os arquivos
