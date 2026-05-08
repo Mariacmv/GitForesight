@@ -7,3 +7,4 @@ data:
   # O scanner deve pegar essa linha pelo nome 'SECRET' e pela entropia do valor
   APP_SECRET: "b3Blbi1maW5hbmNlLWJhc2lsLTIwMjYtc2VjcmV0LWtleS12YWx1ZQ=="
   APP_SECRET: "senhaAqui@@20012"
+

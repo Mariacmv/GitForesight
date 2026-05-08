@@ -1,12 +1,8 @@
-import subprocess as s
 import os
 import re
 import math
-import sys
 
-# Constante de Extensoes
-EXT = [".txt", ".env", ".json", ".log", ".py", ".sql", ".yaml", ".xml"]
-
+print("SCANNER CERTO IMPORTADO", __file__)
 # PADRÕES DE BUSCA - REGEX
 # OS valores podem tanto estar entre aspas " " ou sem.
 PADROES = {
@@ -23,68 +19,51 @@ def entropia(content):
     entropia = - sum([ p * math.log(p,2) for p in prob])
     return entropia
 
-if __name__ == '__main__':
-    print("\nGit Pre-Commit Secret Finder v 1.0")
-
-    # 1- Identificar arquivos para Commit
-    # cuidado na execução pois ele utiliza o caminho root do repositório, é preciso executar o script de lá "cd ..".
-    try: 
-        # git diff --cached --name-only
-        arquivos = s.check_output(["git", "diff", "--cached", "--name-only"], text=True)
-        listaArquivos = arquivos.splitlines()
-    except s.CalledProcessError:
-        print("Erro ao acessar Git.")
-        sys.exit(1)
-
-    extensoes = EXT 
-
-    threats = False
-
+def analisa_arquivos(listaArquivos):
+    print(listaArquivos)
+    print(type(listaArquivos))
+    relatorios = {}
+    erros = {}
     for file in listaArquivos:
+        # print('DIRETÓRIO ATUAL')
+        # print(os.getcwd())
+        
         if not os.path.exists(file): continue
         # Pula caso o arquivo for deletado
-
+    
         relatorio = {}
 
-        with open(file, 'r', errors='ignore') as f:
-            for i, linha in enumerate(f, 1):
-                # Busca de regex
-                for tipo, padrao in PADROES.items():
-                    if re.search(padrao, linha):
-                        if i not in relatorio:
-                            relatorio[i] = []
-                        relatorio[i].append(f"{tipo} detectado")
-                        threats = True
+        try:
+            print(f'Arquivo sendo analisado: {file}')
+            with open(file, 'r', errors='ignore') as f:
+                for i, linha in enumerate(f, 1):
+                    # Busca de regex
+                    for tipo, padrao in PADROES.items():
+                        if re.search(padrao, linha):
+                            print(f'DETECTADO -> {file} | Linha {i}')
+                            if i not in relatorio:
+                                relatorio[i] = []
+                            relatorio[i].append(f"{tipo} detectado")
 
-                # Busca por entropia
-                palavras = linha.split()
-                for palavra in palavras:
-                    if len(palavra) > 16 and entropia(palavra) > 4.5: 
-                        # Entropia acima de 4.5 é considerado Chaves, Hashes ou Base64
-                        if i not in relatorio:
-                            relatorio[i] = []
-                            # Adiciona apenas se o Regex já não tiver classificado essa linha para evitar mensagens duplicadas na mesma linha
+                    # Busca por entropia
+                    palavras = linha.split()
+                    for palavra in palavras:
+                        if len(palavra) > 16 and entropia(palavra) > 4.5: 
+                            # Entropia acima de 4.5 é considerado Chaves, Hashes ou Base64
+                            if i not in relatorio:
+                                relatorio[i] = []
+                                # Adiciona apenas se o Regex já não tiver classificado essa linha para evitar mensagens duplicadas na mesma linha
 
-                        if "Possivel Segredo Ofuscado (Alta Entropia)" not in relatorio[i]:
-                            relatorio[i].append("Possivel Segredo Ofuscado (Alta Entropia)")
-                            threats = True
+                            if "Possivel Segredo Ofuscado (Alta Entropia)" not in relatorio[i]:
+                                print("Possível Segredo Ofuscado (Alta Entropia)")
+                                relatorio[i].append("Possivel Segredo Ofuscado (Alta Entropia)")
             
-        # Só imprime se o dicionário do arquivo não estiver vazio
-        if relatorio:
-            print(f"\n" + f"="*50)
-            print(f"Arquivo: {file}")
-            
-            # Ordena as linhas para o print ficar organizado
-            for num_linha in sorted(relatorio.keys()):
-                # Junta as mensagens (caso uma linha tenha pego em dois tipos de regex, por exemplo)
-                mensagens = " e ".join(relatorio[num_linha])
-                print(f"[!] {file} - Linha {num_linha} - {mensagens}")
-    
-    if threats:
-        print("\n\n\n[ATENCAO] Vulnerabilidades encontradas. Corrija-as antes de realizar o commit.")
-        print("Referência: https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html\n")
-        sys.exit(1)
-
-    else:
-        print("\n[SUCESSO] Nenhum segredo detectado.\n")
-        sys.exit(0)
+            # Só imprime se o dicionário do arquivo não estiver vazio
+            if relatorio:
+                relatorios[file] = relatorio
+                
+        except Exception as e:
+            print(f'ERRO: {e}')
+            erros[file] = str(e)
+    return relatorios
+                

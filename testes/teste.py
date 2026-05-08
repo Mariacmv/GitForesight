@@ -9,3 +9,4 @@ def conectar_banco():
 
 def somar(a, b):
     return a + b # Isso aqui é código limpo, o scanner deve ignorar
+
