@@ -1,0 +1,2 @@
+Identifica os arquivos corretamente, é preciso ajustar o regex.
+Conferir a saída da análise feita pelo scanner.py
