@@ -56,18 +56,18 @@ def identifica_extensao(arquivosECaminhos):
         extensao_especial = os.path.basename(nome_arquivo)
         if extensao in extensoes:
             # print(f'Extensão identificada: {extensao}')
-            # print(f"Extensão do arquivo '{arquivo}' -> {extensao}")
+            print(f"Extensão do arquivo '{arquivo}' -> {extensao}")
             c_extensao[arquivo] = extensao #adiciona nome do arquivo e extensão ao dicionário 
             # print(f'{arquivo} adicionado à c_extensao \n')
         elif nome_arquivo.startswith('.'):
             # print(f'Extensão especial identificada: {extensao_especial}')
-            # print(f"Extensão do arquivo '{arquivo}' -> {extensao_especial}")
+            print(f"Extensão do arquivo '{arquivo}' -> {extensao_especial}")
             ext_especial[arquivo] = extensao_especial
             # print(f'{arquivo} adicionado à ext_especial \n')
         elif not extensao:
             s_extensao[arquivo] = extensao
             # print(f'Arquivos sem extensão: {s_extensao}')
-            # print(f'{arquivo} adicionado à s_extensao \n')
+            print(f'{arquivo} adicionado à s_extensao \n')
         else: continue
 
     return s_extensao, c_extensao, ext_especial
@@ -104,8 +104,8 @@ if __name__ == "__main__":
     print('ARQUIVOS COM EXTENSÃO ESPECIAL\n')
     pprint(ext_especial, width=1)
     print('Importando analisa_arquivos')
-    relatorio = analisa_arquivos(listaArquivos)
-    print(relatorio)
+    # relatorio = analisa_arquivos(listaArquivos)
+    # print(relatorio)
 
 
 
