@@ -3,7 +3,9 @@ import os
 from pprint import pprint #para imprimir dicionários
 from scanner_prototype.scanner import analisa_arquivos
 import emoji
+from scanner_prototype.relatorios import print_relatorios
 from rich import print
+
 #PARA FUNCIONAR É NECESSÁRIO PASSAR ESSE ARQUIVO PARA O HOOK
 #para remover a adição do arquivo: git reset nome_arquivo
 #1- identificar os arquivos para commit
@@ -11,6 +13,16 @@ from rich import print
 #o comando diff mostra alterações realizadas em um arquivo ou pasta
 
 #sintaxe comando para visualizar arquivos adicionados: check_output(["programa", "arg1", "arg2", "arg3"]) em lista para separar comandos de argumentos
+
+EXTENSOES = { #dicionário com extensões analisadas
+    ".txt":{"tipo":"texto", "analisar":True, "peso": 5},
+    ".env":{"tipo":"sensível", "analisar":True, "peso":range(30,50)},
+    ".json":{"tipo":"json", "analisar":True, "peso":15},
+    ".log":{"tipo":"log", "analisar":True, "peso":10},
+    ".py":{"tipo":"código", "analisar":True, "peso":(10-20)},
+    ".sql":{"tipo":"banco de dados", "analisar":True, "peso":20}, 
+    ".yaml":{"tipo":"config", "analisar":True, "peso":30} 
+}
 
 def pegar_arquivos_para_commit():
     #pegar arquivos para commit
@@ -34,18 +46,8 @@ def pegar_arquivos_para_commit():
     # return listaArquivos
     return arquivosECaminhos
 
-def identifica_extensao(arquivosECaminhos):
+def identifica_extensao(arquivosECaminhos, EXTENSOES):
     #2- identificar a extensão do arquivo 
-    extensoes = { #dicionário com extensões analisadas
-        ".txt":{"tipo":"texto", "analisar":True},
-        ".env":{"tipo":"sensível", "analisar":True},
-        ".json":{"tipo":"json", "analisar":True},
-        ".log":{"tipo":"log", "analisar":True},
-        ".py":{"tipo":"código", "analisar":True},
-        ".sql":{"tipo":"banco de dados", "analisar":True},
-        ".yaml":{"tipo":"config", "analisar":True}
-    }
-
     s_extensao = {}
     c_extensao = {}
     ext_especial = {}
@@ -56,7 +58,7 @@ def identifica_extensao(arquivosECaminhos):
         extensao = os.path.splitext(arquivo)[1].lower()
         nome_arquivo = os.path.basename(arquivo).lower()
         extensao_especial = os.path.basename(nome_arquivo)
-        if extensao in extensoes:
+        if extensao in EXTENSOES:
             # print(f'Extensão identificada: {extensao}')
             #print(f"Extensão do arquivo '{arquivo}' -> {extensao}")
             c_extensao[arquivo] = extensao #adiciona nome do arquivo e extensão ao dicionário 
@@ -91,21 +93,18 @@ if __name__ == "__main__":
     emoj_lupa = emojis()
     print(f'[yellow]{emoj_lupa[3]} Scanneando arquivos...[/yellow]')
     listaArquivos = pegar_arquivos_para_commit()
-    s_extensao, c_extensao, ext_especial = identifica_extensao(listaArquivos)
+    s_extensao, c_extensao, ext_especial = identifica_extensao(listaArquivos, EXTENSOES)
     
-    # print('ARQUIVOS SEM EXTENSÃO\n')
-    # pprint(s_extensao, width=1)
-    # print()
-    # print('ARQUIVOS COM EXTENSÃO\n')
-    # pprint(c_extensao, width=1)
-    # print()
-    # print('ARQUIVOS COM EXTENSÃO ESPECIAL\n')
-    # pprint(ext_especial, width=1)
-    #print('Importando analisa_arquivos')
     
-    relatorio = analisa_arquivos(listaArquivos)
+    
+    eventos, erros = analisa_arquivos(listaArquivos)
     #print(relatorio)
+    
+    # for file, lista in problemas.items():
+    #     for estrutura_problema in lista:
+    #         print_relatorios(file, estrutura_problema)
 
+    print_relatorios(eventos)
 
 
     
