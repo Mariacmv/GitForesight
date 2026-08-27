@@ -1,4 +1,4 @@
-# 🔐 # GitForesight
+# 🔐 GitForesight
 
 > **Transformando o histórico do seu projeto em uma visão dos riscos que podem surgir amanhã.**
 
