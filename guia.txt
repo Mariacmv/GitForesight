@@ -1,0 +1,44 @@
+ETAPA 1
+✓ Backend produz CSV
+✓ Frontend lê CSV
+✓ Cards mostram dados reais
+
+       ↓
+
+ETAPA 2
+→ Melhorar visual dos cards
+→ Corrigir sidebar/logo
+
+       ↓
+
+ETAPA 3
+→ Gráfico de evolução do risco
+→ Matplotlib
+
+       ↓
+
+ETAPA 4
+→ Backend passa a analisar arquivos individualmente
+→ Heatmap real
+
+       ↓
+
+ETAPA 5
+→ Detecção de secrets
+→ Dependências/CVE/OSV
+→ Alertas reais
+
+       ↓
+
+ETAPA 6
+→ Histórico de risco mais robusto
+
+       ↓
+
+ETAPA 7
+→ Modelo preditivo
+
+       ↓
+
+ETAPA 8
+→ Dashboard final
