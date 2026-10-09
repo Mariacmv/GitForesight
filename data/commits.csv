@@ -1,0 +1,231 @@
+hash,author,date,message,files_count,security_files_changed,insertions,deletions,changes
+c8b16602612b03c418eb1b756dc60f90d4c19578,Mariacmv,2026-10-01 09:38:28-03:00,Testando o gitforesight,1,1,0,0,0
+6fee8b7eb51733bc17c4df4081286a5b17e5f45c,Maria Clara,2026-06-18 09:47:27-03:00,"Revise Linux security monitoring logs and summaries
+
+Updated security monitoring logs for Linux, including detailed entries for user actions and system events. Adjusted formatting for better readability and added new log summaries.",1,0,52,38,90
+84594fa583159081169d8108fa9eff045ba0c8ae,Maria Clara,2026-06-18 09:42:51-03:00,"Documenta investigação de segurança em sistema Linux
+
+Adiciona seção sobre investigação de acesso e elevação de privilégios após invasão.",1,0,29,0,29
+2bb2d0faab05b3a2f8521210a54250da7b82a4f5,Maria Clara,2026-06-18 08:11:59-03:00,"Atualiza análise de segurança e recomendações
+
+Revisão e adição de detalhes sobre o comprometimento da máquina virtual e técnicas de ataque utilizadas, incluindo a descrição de um ataque de cryptominer e recomendações de segurança.",1,0,15,2,17
+2f5173d2e9665df2d6e0516f01dd9f875dd21cdb,Maria Clara,2026-06-18 07:59:04-03:00,"Revise texto de análise de logs de segurança
+
+Corrige erros de digitação e formatação no texto sobre monitoramento de segurança.",1,0,5,1,6
+79d12be8f3524853f0e4f31011a2c43cec7d203b,Maria Clara,2026-06-18 07:53:49-03:00,"Improve structure of SSH access analysis section
+
+Reorganize text for clarity regarding SSH access investigation.",1,0,3,1,4
+ef06162301cca54de41db4543f341a0d4abbb741,Maria Clara,2026-06-18 07:52:13-03:00,"Enhance security monitoring documentation for Linux
+
+Expand the analysis of security monitoring in Linux, detailing attack vectors, detection methods, and persistence techniques used by attackers.",1,0,108,8,116
+9a6c215c77461854ec56527245c33e524b16d1d4,Maria Clara,2026-06-17 13:03:21-03:00,Update print statement from 'Hello' to 'Goodbye',1,0,490,0,490
+90369534afe6f837f3b3a664f575b6df0d151421,Maria Clara,2026-06-17 12:20:17-03:00,"Revise threat detection logs and user activity details
+
+Updated logs and details regarding security events and user modifications in the Windows threat detection documentation.",1,0,73,66,139
+14f30691df95c7fe39c7b03199b52d19c192c9b9,Maria Clara,2026-06-17 12:18:28-03:00,"Improve formatting of security log entries
+
+Formatted log output for better readability and consistency.",1,0,18,16,34
+407eccd272329e5db9536482d5778bd37505b82e,Maria Clara,2026-06-17 12:16:44-03:00,Update Detecção de ameaças no windows.md,1,0,3,1,4
+11bd38ab562084994af001be4b6d519b56e31a40,Maria Clara,2026-06-17 12:14:21-03:00,"Enhance RDP security investigation section
+
+Added investigation details for RDP security issues.",1,0,1,0,1
+6f0be07104bace9fcf0438b14fea88673f638f4f,Maria Clara,2026-06-17 12:14:10-03:00,"Improve clarity in RDP-Security event investigation
+
+Refined the investigation section for RDP-Security.evtx, removing redundancy and improving clarity.",1,0,2,1,3
+389af59f83e0dafd1d8bfa2929f0ab9290009158,Maria Clara,2026-06-17 12:11:46-03:00,"Enhance threat detection documentation for Windows
+
+Added detailed investigation steps for threat detection on Windows, including RDP security, malware behavior, and persistence mechanisms.",1,0,8,0,8
+66a90a5a285bbac6150eb8cc96fbefb07bdeb1a4,Maria Clara,2026-06-17 12:10:06-03:00,"Add comprehensive guide on Windows threat detection
+
+Document the methods and techniques used by attackers to gain access, maintain persistence, and exfiltrate data on Windows systems, including RDP vulnerabilities, phishing, and malware tactics.",1,0,374,0,374
+1d1728124d699149819f6833837bfd76623ac2ab,Maria Clara,2026-06-17 11:54:30-03:00,"Add Windows Logging documentation for security analysis
+
+Documentação sobre logs do Windows e análise de segurança, incluindo identificação de logins bem-sucedidos e falhos, e investigação de ataques de força bruta e malware.",1,0,48,0,48
+6d23b0bb200d4a54a7d90c22e8f32c54181bc131,Maria Clara,2026-06-17 11:49:35-03:00,"Enhance DDoS detection analysis in access logs
+
+Added analysis of access logs indicating potential DDoS attack patterns, including repeated requests to the login page and server errors.",1,0,10,0,10
+b5de1ee4c1e61177c1eb7cd82fd42adf9bbe83a7,Maria Clara,2026-06-17 11:48:45-03:00,"Enhance DDoS detection documentation with investigation details
+
+Added a section on investigating repeated login requests in access.log.",1,0,2,0,2
+dd882f32e3662d7bff10439262be14323dd9106f,Maria Clara,2026-06-17 11:48:21-03:00,"Enhance DDoS detection and mitigation documentation
+
+Updated the document to include detailed observations on DDoS attack patterns, IP addresses involved, and mitigation strategies. Added sections on application-level defenses and network infrastructure defenses.",1,0,327,0,327
+243c82a995de9961399e1928febd120cd672a645,Maria Clara,2026-06-17 11:36:37-03:00,"Enhance web shell detection documentation
+
+Added detailed analysis and commands for detecting web shells, including examples of suspicious logs and network analysis using curl and Wireshark.",1,0,27,0,27
+255de989aa46478b7fcd21823dc10a8526e30306,Maria Clara,2026-06-15 10:55:04-03:00,"Document web shell detection techniques
+
+Add information on detecting web shells in server directories and file naming conventions.",1,0,5,0,5
+f93b57c25af367a1dcffa9cfcdb76993f3729127,Maria Clara,2026-06-15 10:53:26-03:00,"Format and expand Snort documentation
+
+Corrige formatação e adiciona seções sobre modos de operação do Snort, incluindo sniffer, registro de pacotes e IDS/IPS. Explica regras do Snort e módulos de aquisição de dados (DAQs).",1,0,229,1,230
+ebe02c2d96ce9d00c150d026c853a0955c19817c,Maria Clara,2026-06-15 10:42:53-03:00,"Fix Snort documentation link formatting
+
+Updated the link format for Snort documentation.",1,0,1,1,2
+47a088b5f62adfe01e482e47db3c458e718d9744,Maria Clara,2026-06-15 10:42:27-03:00,"Add configuration file link to Snort.md
+
+Updated Snort documentation with a configuration file link.",1,0,2,1,3
+3318242f49109293bc62104b50feac8fa00a6e47,Maria Clara,2026-06-15 10:41:57-03:00,Adicionando o arquivo de configuração do snort,1,0,735,0,735
+87c35704d6487636aaeeb0905f2f73671d43641c,Maria Clara,2026-06-15 10:40:33-03:00,"Enhance Snort.md with packet analysis details
+
+Updated Snort documentation with detailed analysis of packet captures and network behavior.",1,0,17,11,28
+dce2c75ee34ad3640aba6cde59597afe2abf499e,Maria Clara,2026-06-15 10:36:35-03:00,Rename Snort to Snort.md,1,0,0,0,0
+eee271c9d5e5ff2ae92910ae6d2c093f51304d73,Maria Clara,2026-06-15 10:36:06-03:00,"Add Snort documentation and usage examples
+
+Adiciona documentação sobre o Snort, suas funcionalidades e modos de operação, incluindo exemplos de uso e análise de tráfego.",1,0,125,0,125
+560d6770e15faf721d1f106bedcd3b3f05ea2b4e,Maria Clara,2026-06-15 10:25:27-03:00,"Fix image link and enhance TLS traffic filtering details
+
+Updated image link for TLS packet visualization and added filtering instructions for TLS traffic.",1,0,1,1,2
+bf50eb994ca4bb0774c9fb01a52ab43d8b59042b,Maria Clara,2026-06-15 10:24:42-03:00,Adicionando a imagem TLS,1,0,0,0,0
+644f9828327ecd8fb8a8ea2f86a00fcc20be46c0,Maria Clara,2026-06-15 10:23:33-03:00,"Add SSL Stripping analysis to Man-In-The-Middle document
+
+Added section on SSL Stripping analysis, including indicators and Wireshark usage.",1,0,15,0,15
+95b6cd9a17a22962ff2cdb9b1d40d9097da0aa4c,Maria Clara,2026-06-15 10:21:48-03:00,"Fix image links in Man-In-The-Middle attack documentation
+
+Updated image links to use direct URLs from GitHub.",1,0,2,2,4
+d6f63908b06a5d3d46e01250538eddfb144f6e85,Maria Clara,2026-06-15 10:19:44-03:00,Update images in Man-In-The-Middle attack detection doc,1,0,2,2,4
+3bcb40fbc93232aa1c1b8e6b835effcaeef6e1e0,Maria Clara,2026-06-15 10:17:55-03:00,adicionando imagens man in the middle,2,0,0,0,0
+58c242e3979b94506a1c4495df697b5d0b9a9d4a,Maria Clara,2026-06-15 10:13:39-03:00,"Enhance DNS spoofing analysis section
+
+Added detailed analysis of DNS spoofing and investigation techniques using Wireshark.",1,0,11,0,11
+6110011a2025fc42e03de9bcd55044cb0de2e883,Maria Clara,2026-06-01 14:20:36-03:00,"Adiciona documentação sobre ataques MITM
+
+Documenta a detecção de ataques Man-In-The-Middle, incluindo análise de spoofing ARP e DNS.",1,0,55,0,55
+07d572d6c54b0d05c941498f62fabf1b68cbf1d2,Maria Clara,2026-06-01 14:16:14-03:00,Update Detecção de exfiltração de dados.md,1,0,1,1,2
+d0615e2073c0d0e4ea5b89e3308abe306e8d77d7,Maria Clara,2026-06-01 14:15:06-03:00,Modificando códigos,1,0,6,4,10
+f1765841ced267ebe25e79fc04dc7cf621540f36,Maria Clara,2026-06-01 14:12:04-03:00,Remove sensitive information from documentation,1,0,2,2,4
+a2535a4251374575c802e333809698e3a6b063ba,Maria Clara,2026-06-01 14:10:44-03:00,"Fix image link in data exfiltration detection document
+
+Updated image link to point to GitHub repository.",1,0,1,1,2
+084e47c6aaf578584c01fa1a592e6c113831879e,Maria Clara,2026-06-01 14:09:59-03:00,"Fix image path in data exfiltration detection document
+
+Updated image path in the document for clarity.",1,0,1,1,2
+3fbe8cfa1d1ac688e592aa7407237731a7d97dd0,Maria Clara,2026-06-01 14:09:15-03:00,Update Detecção de exfiltração de dados.md,1,0,1,1,2
+17f2752af7ed035873a64c89ef7b1d0e96806ada,Maria Clara,2026-06-01 14:07:50-03:00,Rename SOC/image.png to SOC/imagens/image.png,1,0,0,0,0
+984eb6ba4681f7f211d714fd4dff1a6efe567226,Maria Clara,2026-06-01 14:07:30-03:00,Adicionando a imagem do wireshark,1,0,0,0,0
+5987faefc0bc8d9503d1c3fff8c85ab58cbc311d,Maria Clara,2026-06-01 14:05:55-03:00,"Revise data exfiltration analysis and examples
+
+Updated sections on data exfiltration analysis, including DNS, FTP, HTTP, and ICMP methods. Added indicators and examples for each method.",1,0,117,2,119
+0c51b8e9fed5ac1aebbb73aeba0497ee944d7cd1,Maria Clara,2026-06-01 13:59:32-03:00,Rename Detecção de exfiltração de dados to Detecção de exfiltração de dados.md,1,0,0,0,0
+56f92d01253e23694a365ca20cfdf081786fe7d4,Maria Clara,2026-06-01 13:59:18-03:00,versão1,1,0,47,0,47
+4a5acd947822a5bcdf22b5d43e57955021746039,Maria Clara,2026-05-07 14:15:52-03:00,Update malware analysis document with assembly commands,1,0,13,13,26
+87030895ace43df17e263086dcbd2bbc0543fe05,Maria Clara,2026-05-07 14:11:48-03:00,Update analise_malware_cap_5.md,1,0,1,1,2
+21d7e293cd3667c11c37eaee9609e4cbd59feb46,Maria Clara,2026-05-07 14:11:32-03:00,"Fix formatting issues in analise_malware_cap_5.md
+
+Corrected formatting and syntax in the markdown file.",1,0,1,1,2
+fa3ac1cf5546950b5fb19b3ea9708da7264dba72,Maria Clara,2026-05-07 14:09:51-03:00,Add malware analysis chapter 5 content,1,0,164,0,164
+f4b4eebba988d5ae4007c23de6b16be9e4aa5df8,Maria Clara,2026-05-07 13:38:23-03:00,"Add README for Assembly studies and exercises
+
+This README provides an overview of practical studies on memory, pointers, integer behavior, and low-level concepts using C and Linux. It includes objectives, studied concepts, technologies used, and details on specific files related to dynamic memory allocation and integer overflow.",1,0,139,0,139
+ecce2a10f1573012f83e218cb4331b56c758d1d9,Maria Clara,2026-05-07 13:32:51-03:00,Delete Assistente IA para estudos directory,1,0,0,12,12
+44757f27a9407f8e041a994ca6ec752e36ef3c19,Maria Clara,2026-05-07 13:32:04-03:00,"Create README.md for network scanner project
+
+Add README.md for network scanner project detailing usage, objectives, and technologies.",1,0,138,0,138
+c34fec561b515b3653bfd6565bfef13ad31733e7,Maria Clara,2026-05-07 13:31:30-03:00,Rename network_scanner.py to network_scanner.py,1,0,1,1,2
+9df2bd6c487aef5e49c77712e6b8566816bc0fd9,Maria Clara,2026-05-07 13:30:09-03:00,"Add README for MAC Address Changer project
+
+Add README.md for MAC Address Changer project with details on objectives, concepts, technologies, and functionalities.",1,0,124,0,124
+6f793b398356fb8efdbedbd84b9a035891799553,Maria Clara,2026-05-07 13:29:55-03:00,Rename mac_changer.py to mac_changer.py,1,0,1,1,2
+668f1eb11f7cdeb211dcfed5b22d51b816eac925,Maria Clara,2026-05-07 13:27:55-03:00,"Add README.md for ARP Spoofer project
+
+Added a comprehensive README for the ARP Spoofer project, detailing objectives, concepts, tools, project structure, functionalities, and observations.",1,0,126,0,126
+5afcdaeb8ab757a4872cbeb47c981c12a6d49121,Maria Clara,2026-05-07 13:25:21-03:00,"Rename 'My hacking study diary' to 'Ethical-Hacking-Studies'
+
+Updated the title of the hacking study diary section.",1,0,1,1,2
+a4f7eebb17efa36f86dba3a93ff2dee0a7a3885e,Maria Clara,2026-05-07 13:24:57-03:00,"Revise README structure and fix typos
+
+Updated the README to improve formatting, added new sections for structure and technologies, and corrected typos.",1,0,35,10,45
+bb3c99f49b6f698257eb2eec266fb1705cf9d05a,Maria Clara,2026-05-07 13:18:32-03:00,"Revise README for Ethical Hacking Studies project
+
+Updated README to reflect the project's focus on ethical hacking studies, including new sections on content and structure.",1,0,38,7,45
+d8d1173b1b60297f4871a65bf121a001d27bab40,Maria Clara,2026-05-07 13:10:20-03:00,Rename dns_exfil.txt to dns_exfil.txt,1,0,0,0,0
+a3b79ed8a8b9db9beb9dd272f8c17d4e4cb0e30f,Maria Clara,2026-05-07 13:09:52-03:00,Rename dns_exfil.txt to malware_analysis/dns_exfil.txt,1,0,1,1,2
+a1a58e5eb61a3bcfb37b5106d5a1ad19d0e5839d,Maria Clara,2026-05-07 13:08:57-03:00,Delete teste.pl,1,0,0,170,170
+54ba06b0dfdb5401e2d0413651853e3ef640d58f,Maria Clara,2026-05-05 20:07:26-03:00,Delete teste.pl.txt,1,0,0,17,17
+803e8c56b5fde1897470982bc0676af3d3dda2ab,Maria Clara,2026-05-05 19:43:22-03:00,Rename imagem7.jpg to imagem7.png,1,0,0,0,0
+b2162aae6c03ce7b6ef6aa5dde856298d978f3b0,Maria Clara,2026-05-05 19:42:21-03:00,"Atualiza análise de malware com novos comportamentos observados
+
+Adiciona detalhes sobre o comportamento do malware, incluindo persistência, manipulação de registro e atividade de rede. Observações sobre a análise de ferramentas de monitoramento e evasão também foram incluídas.",1,0,6,0,6
+0257925de135fe5c45030672f70373585544748b,Maria Clara,2026-05-05 19:38:22-03:00,Rename Malware_analysis/imagem9.png to Malware_analysis/imagens/imagem9.png,1,0,0,0,0
+127716394790b805f30a55884b91183249a5555a,Maria Clara,2026-05-05 19:38:09-03:00,Rename Malware_analysis/imagem8.png to Malware_analysis/imagens/imagem8.png,1,0,0,0,0
+b866f8c52468e593fde33e74b18833a8fdb7bc2e,Maria Clara,2026-05-05 19:37:55-03:00,Rename Malware_analysis/imagem7.jpg to Malware_analysis/imagens/imagem7.jpg,1,0,0,0,0
+745bb540f33a85460db13e78164fe453eddca9d1,Maria Clara,2026-05-05 19:37:42-03:00,Rename Malware_analysis/imagem11.png to Malware_analysis/imagens/imagem11.png,1,0,0,0,0
+2722807d380d3c034114e77eed8fc95cd3328396,Maria Clara,2026-05-05 19:37:29-03:00,Rename Malware_analysis/imagem10.png to Malware_analysis/imagens/imagem10.png,1,0,0,0,0
+88de28a60a670535392f79ec2ea5e94121c4980f,Maria Clara,2026-05-05 19:36:58-03:00,Adicionando imagens do cap 4,5,0,0,0,0
+8bc714c8b45c1b910a2e2cf891fa56e3ff164e2a,Maria Clara,2026-05-05 19:35:49-03:00,Rename analise_malware_cap_4 to analise_malware_cap_4.md,1,0,0,0,0
+53ec50f6113339cab28f9777e0dfb50b1c1e7e77,Maria Clara,2026-05-05 19:35:35-03:00,"Add basic dynamic malware analysis documentation
+
+Documentação sobre análise dinâmica de malware, incluindo técnicas, ferramentas e observações de comportamento em diferentes laboratórios.",1,0,165,0,165
+6d40ab9d5897eace439f49f7c11c64ba8506649b,Maria Clara,2026-05-05 19:24:28-03:00,Rename analise_malware_cap_1 to analise_malware_cap_1.md,1,0,0,0,0
+c77d819d138060fca4d1a9eb96b2c8ccda30caa6,Maria Clara,2026-05-05 19:22:23-03:00,"Enhance malware analysis for Lab01 files
+
+Expanded analysis of malware files Lab01-01.exe, Lab01-02.exe, and Lab01-03.exe, detailing their characteristics, libraries used, and potential behaviors.",1,0,213,0,213
+ec103226177eebf77a1d0c3cdadaeca0d0bd95a4,Maria Clara,2026-05-05 19:21:32-03:00,Adicionando imagens do capítulo 2,5,0,0,0,0
+e6c6e83ee1e18e7df1039ecc9d476978f9780252,Maria Clara,2026-05-05 19:08:07-03:00,"Fix image path in analise_malware_cap_2.md
+
+Updated image path for clarity in the markdown file.",1,0,1,1,2
+5547fdec20724bc53c040743a4ba58394452cf42,Maria Clara,2026-05-05 19:06:57-03:00,"Fix image reference and format IP display
+
+Updated image reference and IP display format in the document.",1,0,2,2,4
+e82b11f0887b5b1517b160e3a9c8aee6e5532352,Maria Clara,2026-05-05 19:05:21-03:00,Update analise_malware_cap_2.md,1,0,1,1,2
+535db5bab5b39680877a122ef0bcb162e9b51c52,Maria Clara,2026-05-05 19:05:10-03:00,"Document server setup for malware analysis
+
+Added instructions for setting up a dedicated server for malware analysis in Kali Linux.",1,0,1,0,1
+4895a7147d20822966bd6cc18e567ed3b4eaefdd,Maria Clara,2026-05-05 19:04:03-03:00,Update analise_malware_cap_2.md,1,0,1,1,2
+d7c052889ed27dea53e96fb2b7c8c96df3ff60a4,Maria Clara,2026-05-05 19:02:36-03:00,Update analise_malware_cap_2.md,1,0,1,1,2
+5b37b395f2e1f2900cf1c0105fd0eecfd46a246c,Maria Clara,2026-05-05 19:00:40-03:00,"Fix image link for IP address in malware analysis
+
+Updated image link format for IP address reference.",1,0,1,1,2
+2fe65373ecda90d43e81c17687060a6d0db9a96f,Maria Clara,2026-05-05 18:59:40-03:00,Rename analise_malware_cap_2 to analise_malware_cap_2.md,1,0,0,0,0
+4c6b9aedcfc2a39773885d6664e5085fc321968e,Maria Clara,2026-05-05 18:58:31-03:00,Update image path for IP address in malware analysis,1,0,1,1,2
+11de6cef63cd51eb6d2dd4278938efdd7830b095,Maria Clara,2026-05-05 18:56:10-03:00,"Add setup instructions for malware analysis server
+
+Document setup process for malware analysis environment.",1,0,1,0,1
+fe53c53adfc5d09bb27dc0fd7d845b083fb52b23,Maria Clara,2026-05-05 18:54:27-03:00,adicionando a primeira imagem,1,0,0,0,0
+6889e1232af1cc517d46413e640ef59330aeb792,Maria Clara,2026-05-05 18:53:33-03:00,Create arquivos,1,0,1,0,1
+ea0bbf5d268e08e90469b3c22149336ea36ffd9b,Maria Clara,2026-05-05 18:52:24-03:00,Add new malware analysis file for chapter 2,1,0,0,0,0
+aa599b5afecf9ec745e84271edacac90769a2515,Maria Clara,2026-05-05 18:51:54-03:00,Create analise_malware_2,1,0,5,0,5
+034f518b46aeb32fe36f27e329b95fac83bf73c9,Maria Clara,2026-05-05 18:48:19-03:00,"Add malware analysis objectives and methodologies
+
+Document analysis objectives, approaches, and common malware types.",1,0,28,0,28
+714dd55f26759c99a807ae4a508de5d5b40f6266,Maria Clara,2026-05-05 18:47:44-03:00,Add environment setup for malware analysis,1,0,32,0,32
+1404065e2bb1176ffd8b67fb19fcbc6eebab5849,Mariacmv,2026-04-23 17:46:44-03:00,Restaurando arquivos apagados,19,0,2447,33,2480
+9c89f9b1e61fd6727b289d44f62aa625097e0c41,Mariacmv,2026-04-23 17:40:18-03:00,Merge branch 'main' of https://github.com/Mariacmv/Hacking,2,0,187,0,187
+3d380c49035aa6af2402b6dd76d0fb4f5d0a6f95,Mariacmv,2026-04-23 17:34:12-03:00,Modificando teste.pl,20,0,0,2516,2516
+8c8bcae2307257abebc1fd3222e631ce8269df02,Maria Clara,2026-04-05 12:48:56-03:00,Refactor logic conditions and improve readability,1,0,85,1,86
+d2167f328a66a0c85204d6510a33a279ab72a76b,Maria Clara,2026-04-03 12:01:57-03:00,Refactor modelo predicate and add constraints,1,0,40,23,63
+3b5a5fbdb34932d554189dd0ced8dadb11a27eed,Mariacmv,2026-03-28 22:15:34-03:00,Criando o arquivo prolog,2,0,86,0,86
+e8204d2c7a528d5e7c8878659dcbf2d6309848ff,Mariacmv,2026-03-26 00:22:30-03:00,Aprendendo sobre memória heap,12,0,2252,0,2252
+86ce98205b056446f5945f2246ac84dabf57f77f,Mariacmv,2025-10-21 15:33:30-03:00,Pegando o endereço MAC automaticamente através do endereço ip,1,0,14,3,17
+b3414020b4e49b8b159a50c6f08514ccca87126d,Mariacmv,2025-10-21 15:19:56-03:00,Enviando o pacote arp,1,0,2,1,3
+df8cb1165b0846e361625465308022a4ffe67496,Mariacmv,2025-10-21 15:05:54-03:00,Definindo um pacote ARP,1,0,6,0,6
+73ccca2218138c8986b5a71075e3bfc12c8035f8,Mariacmv,2025-10-21 13:55:09-03:00,"Atualizando o módulo optparse para argparse, pois o primeiro está obsoleto",1,0,10,2,12
+d45fa442984e10925893fc1ee87857123f3ba0d8,Mariacmv,2025-10-21 13:42:26-03:00,FInalizando o scanner,1,0,15,16,31
+1aa7f2ffc1684d89d40a7dbbff75fea3155833db,Mariacmv,2025-10-21 13:06:04-03:00,Ajustando a saída dos resultados em dicionários,1,0,17,7,24
+d0cac2107b052dd7cdb6f5362753bbd42137c6cd,Mariacmv,2025-10-20 09:57:10-03:00,Enviando o pacote e analisando a resposta,1,0,10,5,15
+4c4a1ba7d028550b319aa8d81b56a601bd59b7ee,Mariacmv,2025-10-20 09:20:25-03:00,Enviando o pacote e recebendo as respostas,1,0,8,12,20
+ab82e5179628069fc83a44c14da37909a8bf6407,Mariacmv,2025-10-20 08:59:52-03:00,"Merge branch 'main' of https://github.com/Mariacmv/Hacking
+Merging para resolver conflito",3,0,45,3,48
+bdbb3939d55c2d9c573bace140ab961f38cc05de,Mariacmv,2025-10-20 08:56:17-03:00,Criando um pacote para envio,1,0,16,1,17
+e5b5249ae678feef1a0e69d6d5373e40e0623b51,Maria Clara,2025-10-17 11:29:57-03:00,Update CODE_OF_CONDUCT.md,1,0,1,1,2
+be32919dbf8bd68655b5870fe09a6abf05fd53ac,Maria Clara,2025-10-17 11:29:17-03:00,Update README.md,1,0,3,2,5
+f1ab406bec5431339c26d6b6aaf9d9bf4a64356d,Maria Clara,2025-10-17 11:26:49-03:00,Update README.md,1,0,3,2,5
+37afe2c80bf134ac043e2d45cf745028f274959f,Maria Clara,2025-10-17 11:25:24-03:00,Update README.md,1,0,13,0,13
+8f1b40c91d0d83108bfa7c55f9e22a89fc3895d3,Maria Clara,2025-10-17 11:16:41-03:00,Create CODE_OF_CONDUCT.md,1,0,13,0,13
+1d90072d2ec66bb4be7d88ca81647d366e4d98f9,Maria Clara,2025-10-17 11:13:56-03:00,Update README.md,1,0,1,1,2
+22a0a2e95525bd46cc2e6f89bd968ffcb101df57,Maria Clara,2025-10-17 11:06:12-03:00,Update CONTRIBUTING.md,1,0,4,3,7
+e049a8c890dbc6da6c8628fb1c84be9bb6108863,Maria Clara,2025-10-17 11:05:45-03:00,Update README.md,1,0,4,4,8
+c1be9f0794cf3ac4ee289da934c9bba8d17cdd99,Maria Clara,2025-10-17 11:04:19-03:00,Create CONTRIBUTING.md,1,0,6,0,6
+d8cc882d72fc2166603dff675041e45808665257,Maria Clara,2025-10-17 10:56:43-03:00,Update README.md,1,0,2,2,4
+40689225c0cff017068f3b386cd4c2607dd59b34,Maria Clara,2025-10-17 10:56:26-03:00,Update README.md,1,0,4,3,7
+05c4b268d4ba7d968cdd2de91670b2c82d295207,Maria Clara,2025-10-17 10:55:24-03:00,Update README.md,1,0,10,3,13
+a98a08d3ccb18abf8e3d3dd8ff0204b267caef69,Mariacmv,2025-10-17 10:35:23-03:00,Começando a criar um scanner de rede,1,0,9,0,9
+b840e7e9ea26f59fbb4443fccd57f234bc370424,Mariacmv,2025-10-17 10:08:39-03:00,Organizando o repositório em pastas,1,0,0,0,0
+0e7c82034485923a1a0376df3d87b1b387913e7e,Mariacmv,2025-10-17 09:49:45-03:00,MAC changer finalizado,1,0,32,7,39
+6c9fe9081c3bef445a06a0cc9d136722305b62d0,Mariacmv,2025-10-16 08:59:54-04:00,Fazendo o tratamento de entradas,1,0,21,12,33
+848cb7745db22b6a5b4ad2d6647562a7d19c8eaa,Mariacmv,2025-10-16 08:13:16-04:00,Utilizando o módulo optparse,1,0,10,5,15
+a87f76b4ce5e217e70ddb3f7db9613c72d62fba0,Mariacmv,2025-10-15 18:45:31-04:00,Preparando o ambiente e aprendendo sobre o módulo subprocess,1,0,17,0,17
+dbb0d22b68ccbfa9c4d2e8dcb99d59182a496183,Maria Clara,2025-10-13 08:46:00-03:00,Update README.md,1,0,1,1,2
+92d1a3d838513ad0a4658d0532808191cab87e26,Maria Clara,2025-10-13 08:45:19-03:00,Update README.md,1,0,1,1,2
+1eab7a1aba7ff9764f3e06f9e7a6991a60613e60,Maria Clara,2025-10-13 08:43:36-03:00,Update README.md,1,0,4,2,6
+a4e3a6430081abfe5e58a8f79a53bf9acff13582,Maria Clara,2025-10-13 08:38:11-03:00,Initial commit,0,0,0,0,0
