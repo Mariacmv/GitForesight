@@ -7,7 +7,7 @@ ETAPA 1
 
 ETAPA 2
 → Melhorar visual dos cards
-→ Corrigir sidebar/logo
+✓ Corrigir sidebar/logo
 
        ↓
 

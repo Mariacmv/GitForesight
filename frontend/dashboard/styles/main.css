@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+section[data-testid="stSidebar"],
+section[data-testid="stSidebar"]>div,
+[data-testid="stSidebarContent"],
+[data-testid="stSidebarUserContent"] {
+    background-color: #0B1220 !important;
+}
+
+section[data-testid="stSidebar"] {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Sidebar sem rolagem */
+section[data-testid="stSidebar"]>div {
+    height: 100vh;
+    overflow: hidden !important;
+    padding-top: 0 !important;
+}
+
+[data-testid="stSidebarHeader"] {
+    display: none;
+}
+
+[data-testid="stSidebarUserContent"] {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0 !important;
+    height: 100vh;
+    overflow: hidden !important;
+}
+
+section[data-testid="stSidebar"] *::-webkit-scrollbar {
+    display: none;
+}
+
+section[data-testid="stSidebar"] * {
+    scrollbar-width: none;
+}
+
+/* Marca */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px 16px 8px;
+}
+
+.sidebar-logo {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    background: rgba(95, 92, 229, 0.15);
+    border: 1px solid rgba(95, 92, 229, 0.5);
+    border-radius: 8px;
+}
+
+.sidebar-title {
+    font-family: 'Inter', sans-serif;
+    color: #F1F5F9;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Configurações no rodapé, alinhado com os itens do menu */
+[data-testid="stSidebarUserContent"] [data-testid="stVerticalBlock"] {
+    gap: 2px !important;
+}
+
+/* Conteúdo */
+.main .block-container {
+    padding: 2rem !important;
+}
+
+/* Ajustes sidebar para combinar com o cabeçalho */
+section[data-testid="stSidebar"] {
+    width: 260px !important;
+    min-width: 260px !important;
+}
+
+/* Esconde o header padrão do Streamlit */
+[data-testid="stHeader"] {
+    display: none;
+}
+
+/* Alinha a marca da sidebar com a altura da barra (56px) */
+.sidebar-brand {
+    height: 56px;
+    padding: 0 8px;
+    margin-bottom: 28px;
+}
+
+[data-testid="stSidebarUserContent"] {
+    padding-top: 0 !important;
+}
+
+/* Abre espaço para a barra no conteúdo */
+.main .block-container,
+[data-testid="stMainBlockContainer"] {
+    padding-top: 5rem !important;
+}
+
+/*  TOPBAR  */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    height: 56px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    background-color: #0B1220;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: 'Inter', sans-serif;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.topbar-repo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #CBD5E1;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.topbar-repo svg {
+    color: #94A3B8;
+}
+
+.topbar-branch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    color: #CBD5E1;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+.topbar-branch svg {
+    color: #7C79F2;
+}
+
+.topbar-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.topbar-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22C55E;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.7);
+}
+
+.topbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #5F5CE5, #8B5CF6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.topbar-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Espaçamento entre itens */
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
+    gap: 2px !important;
+}
+
+/* Faz o container do botão ocupar a largura toda da sidebar */
+[data-testid="stSidebar"] [data-testid="stElementContainer"]:has(.stButton),
+[data-testid="stSidebar"] .stButton {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+
+/* TODOS os botões da sidebar: mesmo estilo */
+[data-testid="stSidebar"] [data-testid="stBaseButton-secondary"],
+[data-testid="stSidebar"] [data-testid="stBaseButton-primary"] {
+    width: 100% !important;
+    min-height: 0 !important;
+    padding: 8px 12px 8px 9px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #94A3B8 !important;
+    border: none !important;
+    border-left: 3px solid transparent !important;
+    /* reserva o espaço da barra */
+    border-radius: 6px !important;
+    box-shadow: none !important;
+    outline: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+[data-testid="stSidebar"] .stButton>button>div {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+[data-testid="stSidebar"] .stButton>button p {
+    margin: 0 !important;
+    text-align: left !important;
+    color: inherit !important;
+}
+
+[data-testid="stSidebar"] .stButton>button [data-testid="stIconMaterial"] {
+    color: #64748B !important;
+}
+
+/* ===== Hover (todos os botões) ===== */
+[data-testid="stSidebar"] .stButton>button:hover,
+[data-testid="stSidebar"] .stButton>button:focus:not(:active),
+[data-testid="stSidebar"] .stButton>button:active {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #FFFFFF !important;
+    border-left: 3px solid transparent !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] .stButton>button:hover [data-testid="stIconMaterial"] {
+    color: #94A3B8 !important;
+}
+
+/* ===== Selecionado (igual à foto) ===== */
+[data-testid="stSidebar"] .stButton>button[kind="primary"],
+[data-testid="stSidebar"] .stButton>button[kind="primary"]:hover,
+[data-testid="stSidebar"] .stButton>button[kind="primary"]:focus:not(:active),
+[data-testid="stSidebar"] .stButton>button[data-testid="stBaseButton-primary"],
+[data-testid="stSidebar"] .stButton>button[data-testid="stBaseButton-primary"]:hover {
+    background: rgba(95, 92, 229, 0.15) !important;
+    color: #FFFFFF !important;
+    font-weight: 500 !important;
+    border-left: 3px solid #5F5CE5 !important;
+}
+
+[data-testid="stSidebar"] .stButton>button[kind="primary"] [data-testid="stIconMaterial"],
+[data-testid="stSidebar"] .stButton>button[data-testid="stBaseButton-primary"] [data-testid="stIconMaterial"] {
+    color: #7C79F2 !important;
+}
+
+/* ===== Configurações no pé da sidebar ===== */
+.st-key-nav_config,
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"]>div:last-child .stButton {
+    position: fixed !important;
+    bottom: 15px !important;
+    left: 24px !important;
+    width: 212px !important;
+}
+
+[data-testid="stSidebar"] .stButton>button {
+    width: 100% !important;
+}
