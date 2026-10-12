@@ -10,15 +10,18 @@ st.set_page_config(
 from components.sidebar import render_sidebar
 from components.topbar import render_topbar
 from context import get_context
-from data_loader import load_data
+from data_loader import load_commits
 from theme import load_css
-from views import heatmap, overview, predictive, settings
+from views import heatmap, overview, predictive, settings, apresentacao, conta, login
 
 TELAS = {
     "Visão Geral": overview.render,
     "Heatmap de Risco": heatmap.render,
     "Análise Preditiva": predictive.render,
     "Configurações": settings.render,
+    "Apresentação da Aplicação": apresentacao.render,
+    "Conta de Usuário": conta.render,
+    "Login": login.render
 }
 
 if "tela_ativa" not in st.session_state:
@@ -29,7 +32,7 @@ def main():
     load_css()
 
     ctx = get_context()
-    analysis, risk = load_data()
+    analysis, risk = load_commits()
 
     tela = render_sidebar()
     render_topbar(ctx)

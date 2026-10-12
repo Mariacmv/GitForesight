@@ -5,9 +5,9 @@ import streamlit as st
 from paths import ASSETS_DIR
 
 ITENS_MENU = [
-    ("Visão Geral",       ":material/grid_view:"),
-    ("Heatmap de Risco",  ":material/water_drop:"),
-    ("Análise Preditiva", ":material/show_chart:"),
+    ("Visão Geral",               ":material/grid_view:"),
+    ("Heatmap de Risco",          ":material/water_drop:"),
+    ("Análise Preditiva",         ":material/show_chart:")
 ]
 
 

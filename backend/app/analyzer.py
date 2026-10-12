@@ -28,7 +28,7 @@ def analyze_commits(input_path="data/commits.csv",
         df.groupby("week")
         .agg(
             commits=("hash", "count"),
-            contributors=("author", "nunique"),
+            contributors=("email", "nunique"),
             files_changed=("files_count", "sum"),
             insertions=("insertions", "sum"),
             deletions=("deletions", "sum"),
