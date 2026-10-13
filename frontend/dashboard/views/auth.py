@@ -27,16 +27,51 @@ def _cadastro():
         'stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"/> '
         '</svg>'
         '</div>',
-
         unsafe_allow_html=True,
     )
+    
     st.markdown("#### Crie sua conta no Git Foresight")
-    st.caption("Comece a explorar os riscos do seu repositório.")
+    st.caption("Comece a explorar os riscos do seu repositório."
+    
+    st.markdown(
+        """
+        <style>
+        /* Alvo: O botão específico do GitHub (independente de estar ativo ou desativado) */
+        div[data-testid="stElementContainer"] button[id="auth_github"] {
+            /* Copia as bordas e cantos arredondados do padrão do Streamlit */
+            border: 1px solid var(--st-border-color, #d3d3d3) !important;
+            border-radius: 0.5rem !important;
+            
+            /* Herda a fonte e cores de texto do tema atual */
+            font-family: var(--st-font) !important;
+            color: var(--st-text-color, #31333F) !important;
+            background-color: var(--st-background-color, #FFFFFF) !important;
+            
+            /* Ajusta o espaçamento interno para parecer um input */
+            padding: 10px 16px !important;
+            font-weight: 500 !important;
+            
+            /* Dimensões ideais (se quiser ocupar a mesma largura do input do formulário) */
+            width: 100% !important; 
+            height: auto !important;
+            
+            /* Remove o efeito nativo de opacidade de "desativado" para manter o visual limpo */
+            opacity: 1 !important;
+            cursor: not-allowed !important;
+        }
 
-    st.button("Continuar com GitHub", key="auth_github", disabled=True)
-    st.caption("ou cadastre-se com e-mail")
+        /* Opcional: Adiciona um efeito discreto ao passar o mouse, mesmo desabilitado */
+        div[data-testid="stElementContainer"] button[id="auth_github"]:disabled {
+            background-color: var(--st-secondary-background-color, #f0f2f6) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     with st.form("form_cadastro", border=False):
+        st.button("Continuar com GitHub", key="auth_github", disabled=True) # HABILITAR PARA FUNCIONAR
+        st.caption("ou cadastre-se com e-mail")
         nome = st.text_input("Nome completo", placeholder="Seu nome completo")
         email = st.text_input("E-mail profissional", placeholder="voce@empresa.com")
         senha = st.text_input("Senha", type="password", placeholder="Crie uma senha")
