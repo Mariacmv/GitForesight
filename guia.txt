@@ -7,7 +7,7 @@ ETAPA 1
 
 ETAPA 2
 → Melhorar visual dos cards
-→ Corrigir sidebar/logo
+✓ Corrigir sidebar/logo
 
        ↓
 
@@ -42,3 +42,15 @@ ETAPA 7
 
 ETAPA 8
 → Dashboard final
+
+Visão Geral: já tem dados e define o padrão visual das outras.
+Heatmap de Risco e Análise Preditiva: reaproveitam os mesmos componentes.
+Configurações e Conta de usuário: telas de formulário, mais simples.
+Apresentação do produto e Login: são telas sem sidebar, então ficam por último.
+
+O que fica para depois
+
+Tela de seleção de repositório, login com GitHub e backend: não precisam estar prontos para terminar as telas de cima. O get_context() já está preparado para receber esses dados depois.
+Decisão entre você e sua colega: adie. Quando chegar nas Configurações, você faz a seleção de repositório lá, de forma simples. Se na hora fizer sentido virar uma tela própria, é só mover o componente.
+
+Resumindo: esqueletos agora, depois uma tela por vez, começando pela Visão Geral. Tudo que envolve GitHub e login vem depois.

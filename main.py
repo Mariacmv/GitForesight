@@ -8,7 +8,7 @@ def main():
 
     print("\n[1/3] Coletando commits...")
 
-    commits = collect_commits(repository_path)
+    commits, file_changes = collect_commits(repository_path)
 
     if not commits:
         print("Nenhum commit encontrado.")
@@ -18,7 +18,7 @@ def main():
 
     print("\n[2/3] Criando dataset...")
 
-    dataframe = create_dataset(commits)
+    dataframe = create_dataset(commits, file_changes)
 
     print(f"Dataset criado: {len(dataframe)} registros")
 

@@ -1,0 +1,187 @@
+hash,author,date,path,module,change_type,old_path,insertions,deletions,changes,is_security,email
+96708877ab82877e5337af7d0efe58549b2460ae,lucianaliebl,2025-06-22 20:15:15-03:00,README.md,(raiz),M,,9,5,14,False,142036250+lucianaliebl@users.noreply.github.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,cashclash/settings.py,cashclash,M,,2,3,5,True,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,cashclash/urls.py,cashclash,M,,1,1,2,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,core/__init__.py,core,D,,0,1,1,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,core/views.py,core,D,,0,100,100,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/__init__.py,game,D,,0,0,0,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/actions.py,game,M,,8,27,35,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/management/commands/add_questions.py,game,D,,0,136,136,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/telaInicial.html,game,R,views/telaInicial.html,0,0,0,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/tela_derrota.html,game,R,views/tela_derrota.html,0,0,0,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/tela_perguntas.html,game,R,views/telaPerguntas.html,2,2,4,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/tela_resposta_correta.html,game,R,views/tela_resposta_correta.html,2,2,4,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/tela_vida_perdida.html,game,R,views/tela_vida_perdida.html,4,4,8,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/templates/game/tela_vitoria.html,game,R,views/tela_vitoria.html,0,0,0,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/urls.py,game,R,core/urls.py,0,0,0,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,game/views.py,game,M,,97,3,100,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,jogo/urls.py,jogo,D,,0,7,7,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,static/css/styles.css,static,M,,2,2,4,False,lucianaliebl@gmail.com
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,2025-06-21 13:06:34-03:00,tabuleiro.py,(raiz),D,,0,11,11,False,lucianaliebl@gmail.com
+ff9ae4b17336fa614c9843db5b4af44a6a84ccff,Luciana Liebl,2025-06-18 11:27:46-03:00,game/tests.py,game,D,,0,3,3,False,lucianaliebl@gmail.com
+74ae0cb3bbe78a63ecbd4a4705ed0fe7dee2b217,Luciana Liebl,2025-06-18 11:05:25-03:00,views/telaInicial.html,views,M,,0,2,2,False,lucianaliebl@gmail.com
+dd3383f83faabab947deec10ab6fe3ba1ac6d90a,Larissa-Kailane,2025-06-18 10:55:29-03:00,cashclash/settings.py,cashclash,M,,1,1,2,True,larissakailanelv@gmail.com
+dd3383f83faabab947deec10ab6fe3ba1ac6d90a,Larissa-Kailane,2025-06-18 10:55:29-03:00,templates/tela_inicial.html,templates,D,,0,80,80,False,larissakailanelv@gmail.com
+d13153745f125d025fa42aa093a975d192b6e0ce,lucianaliebl,2025-06-17 23:39:52-03:00,README.md,(raiz),M,,41,1,42,False,142036250+lucianaliebl@users.noreply.github.com
+3a86d94c63e9004b17fb100f3bbba0dfdc33e80b,Luciana Liebl,2025-06-17 23:33:04-03:00,game/management/commands/add_questions.py,game,M,,44,44,88,False,lucianaliebl@gmail.com
+3a86d94c63e9004b17fb100f3bbba0dfdc33e80b,Luciana Liebl,2025-06-17 23:33:04-03:00,views/telaInicial.html,views,M,,10,1,11,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,cashclash/__init__.py,cashclash,M,,1,0,1,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,core/views.py,core,M,,46,15,61,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,game/fixtures/initial_questions.json,game,M,,41,31,72,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,game/management/__init__.py,game,D,,0,1,1,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,game/management/commands/add_questions.py,game,M,,88,127,215,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,views/telaPerguntas.html,views,M,,12,4,16,False,lucianaliebl@gmail.com
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,2025-06-17 22:29:03-03:00,views/tela_vida_perdida.html,views,M,,2,2,4,False,lucianaliebl@gmail.com
+1e3359f777541d6e7fa23c68ed0bc3d7f3149cb2,Rafaela Prates,2025-06-12 14:37:04-03:00,README.md,(raiz),M,,8,5,13,False,142021465+RafaPrattes@users.noreply.github.com
+84186b4e496d32f8e53dc3da6614cfb01b41b71d,Rafaela Prates,2025-06-12 14:35:10-03:00,README.md,(raiz),M,,1,1,2,False,142021465+RafaPrattes@users.noreply.github.com
+2a3133ef770bdd72afa6d5d61eaa732214bd3f75,Larissa-Kailane,2025-06-12 11:36:41-03:00,views/tela_vida_perdida.html,views,M,,6,9,15,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,cashclash/settings.py,cashclash,M,,4,1,5,True,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,static/css/styles.css,static,M,,43,0,43,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,static/images/Persona2.png,static,A,,0,0,0,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,static/images/persona1.png,static,A,,0,0,0,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,templates/tela_inicial.html,templates,M,,2,0,2,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/telaInicial.html,views,M,,39,1,40,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/telaPerguntas.html,views,M,,3,1,4,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/tela_derrota.html,views,M,,3,1,4,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/tela_resposta_correta.html,views,M,,3,1,4,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/tela_vida_perdida.html,views,M,,3,1,4,False,larissakailanelv@gmail.com
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,2025-06-12 10:19:00-03:00,views/tela_vitoria.html,views,M,,3,0,3,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,core/views.py,core,M,,15,15,30,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,static/css/styles.css,static,M,,389,35,424,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,tabuleiro.py,(raiz),M,,10,1,11,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,templates/tela_inicial.html,templates,A,,78,0,78,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/telaInicial.html,views,M,,20,17,37,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/telaPerguntas.html,views,M,,55,40,95,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/tela_derrota.html,views,M,,9,26,35,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/tela_resposta_correta.html,views,M,,28,22,50,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/tela_vida_perdida.html,views,M,,28,23,51,False,larissakailanelv@gmail.com
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,2025-06-12 09:38:52-03:00,views/tela_vitoria.html,views,M,,232,245,477,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,static/css/styles.css,static,M,,78,1,79,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/telaInicial.html,views,M,,75,33,108,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/telaPerguntas.html,views,M,,128,55,183,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/tela_derrota.html,views,M,,112,39,151,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/tela_resposta_correta.html,views,M,,119,39,158,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/tela_vida_perdida.html,views,M,,112,39,151,False,larissakailanelv@gmail.com
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,2025-06-12 08:17:58-03:00,views/tela_vitoria.html,views,M,,105,40,145,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,static/css/styles.css,static,M,,1,2,3,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/telaInicial.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/telaPerguntas.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/tela_derrota.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/tela_resposta_correta.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/tela_vida_perdida.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,2025-06-11 19:00:04-03:00,views/tela_vitoria.html,views,M,,2,2,4,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,static/css/styles.css,static,A,,18,0,18,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/telaInicial.html,views,M,,5,10,15,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/telaPerguntas.html,views,M,,5,10,15,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/tela_derrota.html,views,M,,5,10,15,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/tela_resposta_correta.html,views,M,,5,10,15,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/tela_vida_perdida.html,views,M,,5,10,15,False,larissakailanelv@gmail.com
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,2025-06-11 18:48:15-03:00,views/tela_vitoria.html,views,M,,4,10,14,False,larissakailanelv@gmail.com
+76aa6776887b755fedc098deb14818a5cbdb645c,Larissa-Kailane,2025-06-11 17:22:29-03:00,cashclash/settings.py,cashclash,M,,8,0,8,True,larissakailanelv@gmail.com
+76aa6776887b755fedc098deb14818a5cbdb645c,Larissa-Kailane,2025-06-11 17:22:29-03:00,static/images/emblema.png,static,A,,0,0,0,False,larissakailanelv@gmail.com
+76aa6776887b755fedc098deb14818a5cbdb645c,Larissa-Kailane,2025-06-11 17:22:29-03:00,views/tela_vitoria.html,views,M,,19,3,22,False,larissakailanelv@gmail.com
+a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,2025-06-11 14:35:23-03:00,core/urls.py,core,M,,1,0,1,False,larissakailanelv@gmail.com
+a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,2025-06-11 14:35:23-03:00,core/views.py,core,M,,13,1,14,False,larissakailanelv@gmail.com
+a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,2025-06-11 14:35:23-03:00,game/fixtures/initial_questions.json,game,M,,104,5,109,False,larissakailanelv@gmail.com
+a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,2025-06-11 14:35:23-03:00,views/tela_resposta_correta.html,views,A,,224,0,224,False,larissakailanelv@gmail.com
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,2025-06-11 13:36:38-03:00,views/telaInicial.html,views,M,,2,0,2,False,larissakailanelv@gmail.com
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,2025-06-11 13:36:38-03:00,views/telaPerguntas.html,views,M,,2,0,2,False,larissakailanelv@gmail.com
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,2025-06-11 13:36:38-03:00,views/tela_derrota.html,views,M,,2,0,2,False,larissakailanelv@gmail.com
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,2025-06-11 13:36:38-03:00,views/tela_vida_perdida.html,views,M,,2,0,2,False,larissakailanelv@gmail.com
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,2025-06-11 13:36:38-03:00,views/tela_vitoria.html,views,M,,2,0,2,False,larissakailanelv@gmail.com
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,2025-06-11 13:25:20-03:00,views/telaInicial.html,views,M,,54,10,64,False,larissakailanelv@gmail.com
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,2025-06-11 13:25:20-03:00,views/telaPerguntas.html,views,M,,54,10,64,False,larissakailanelv@gmail.com
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,2025-06-11 13:25:20-03:00,views/tela_derrota.html,views,M,,43,3,46,False,larissakailanelv@gmail.com
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,2025-06-11 13:25:20-03:00,views/tela_vida_perdida.html,views,M,,43,3,46,False,larissakailanelv@gmail.com
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,2025-06-11 13:25:20-03:00,views/tela_vitoria.html,views,M,,47,9,56,False,larissakailanelv@gmail.com
+7cc1fc8f6ecb0a74cdaf1dd5e319498754b65f9c,Larissa-Kailane,2025-06-11 13:15:04-03:00,views/tela_derrota.html,views,M,,109,14,123,False,larissakailanelv@gmail.com
+7cc1fc8f6ecb0a74cdaf1dd5e319498754b65f9c,Larissa-Kailane,2025-06-11 13:15:04-03:00,views/tela_vida_perdida.html,views,M,,1,1,2,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,core/urls.py,core,M,,1,1,2,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,core/views.py,core,M,,11,11,22,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,views/telaInicial.html,views,M,,2,1,3,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,views/telaPerguntas.html,views,M,,1,0,1,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,views/tela_derrota.html,views,M,,28,84,112,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,views/tela_vida_perdida.html,views,R,views/telaFeedback.html,40,43,83,False,larissakailanelv@gmail.com
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,2025-06-11 13:10:16-03:00,views/tela_vitoria.html,views,M,,2,1,3,False,larissakailanelv@gmail.com
+c9cc2697233ede156d6678c670ac619a25d04a53,Larissa-Kailane,2025-06-11 12:42:17-03:00,views/telaFeedback.html,views,M,,23,0,23,False,larissakailanelv@gmail.com
+c9cc2697233ede156d6678c670ac619a25d04a53,Larissa-Kailane,2025-06-11 12:42:17-03:00,views/telaPerguntas.html,views,M,,23,0,23,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,core/views.py,core,M,,5,5,10,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/actions.py,game,M,,60,38,98,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/fixtures/initial_questions.json,game,A,,44,0,44,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/management/commands/add_questions.py,game,M,,38,22,60,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/management/commands/clear_questions.py,game,A,,9,0,9,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/migrations/0001_initial.py,game,M,,10,11,21,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/migrations/0002_gamestate_answered_questions_gamestate_finished.py,game,R,game/migrations/0002_gamestate_answered_questions.py,6,1,7,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/migrations/0003_question_board_position.py,game,A,,18,0,18,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/migrations/0004_alter_question_options_and_more.py,game,A,,26,0,26,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,game/models.py,game,M,,13,8,21,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,views/telaFeedback.html,views,M,,2,1,3,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,views/telaInicial.html,views,M,,2,1,3,False,larissakailanelv@gmail.com
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,2025-06-11 12:36:46-03:00,views/telaPerguntas.html,views,M,,6,5,11,False,larissakailanelv@gmail.com
+fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,2025-06-11 08:22:48-03:00,game/actions.py,game,M,,29,6,35,False,larissakailanelv@gmail.com
+fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,2025-06-11 08:22:48-03:00,game/management/commands/add_questions.py,game,M,,90,0,90,False,larissakailanelv@gmail.com
+fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,2025-06-11 08:22:48-03:00,game/migrations/0002_gamestate_answered_questions.py,game,A,,18,0,18,False,larissakailanelv@gmail.com
+fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,2025-06-11 08:22:48-03:00,game/models.py,game,M,,1,0,1,False,larissakailanelv@gmail.com
+6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,2025-06-11 08:07:41-03:00,game/actions.py,game,M,,11,2,13,False,larissakailanelv@gmail.com
+6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,2025-06-11 08:07:41-03:00,views/telaFeedback.html,views,M,,37,20,57,False,larissakailanelv@gmail.com
+6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,2025-06-11 08:07:41-03:00,views/telaInicial.html,views,M,,11,11,22,False,larissakailanelv@gmail.com
+6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,2025-06-11 08:07:41-03:00,views/telaPerguntas.html,views,M,,44,15,59,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.cursor/rules/regra1.mdc,.cursor,D,,0,12,12,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.cursor/rules/regra2.mdc,.cursor,D,,0,16,16,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.cursor/rules/regra3.mdc,.cursor,D,,0,19,19,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.cursor/rules/regra4.mdc,.cursor,D,,0,16,16,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.cursor/rules/regra5.mdc,.cursor,D,,0,21,21,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,.vscode/launch.json,.vscode,D,,0,14,14,False,larissakailanelv@gmail.com
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,2025-06-10 15:24:46-03:00,db.sqlite3,(raiz),D,,0,0,0,False,larissakailanelv@gmail.com
+f754dfd44577ccc216f776216607d9445b890ba1,Larissa-Kailane,2025-06-10 15:22:26-03:00,.gitignore,(raiz),M,,1,0,1,False,larissakailanelv@gmail.com
+f41e7b13988d35f6c1f40e740b0090af2e91dea2,Larissa-Kailane,2025-06-10 15:21:35-03:00,.gitignore,(raiz),A,,169,0,169,False,larissakailanelv@gmail.com
+f41e7b13988d35f6c1f40e740b0090af2e91dea2,Larissa-Kailane,2025-06-10 15:21:35-03:00,db.sqlite3,(raiz),M,,0,0,0,False,larissakailanelv@gmail.com
+e425ed83592123dfd1382d7005247508c454d684,Larissa-Kailane,2025-06-10 15:18:29-03:00,README.md,(raiz),M,,59,2,61,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.cursor/rules/regra1.mdc,.cursor,A,,14,0,14,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.cursor/rules/regra2.mdc,.cursor,A,,18,0,18,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.cursor/rules/regra3.mdc,.cursor,A,,21,0,21,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.cursor/rules/regra4.mdc,.cursor,A,,18,0,18,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.cursor/rules/regra5.mdc,.cursor,A,,23,0,23,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,.vscode/launch.json,.vscode,A,,14,0,14,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,cashclash/__init__.py,cashclash,A,,0,0,0,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,cashclash/asgi.py,cashclash,A,,16,0,16,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,cashclash/settings.py,cashclash,A,,126,0,126,True,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,cashclash/urls.py,cashclash,A,,23,0,23,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,cashclash/wsgi.py,cashclash,A,,16,0,16,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,core/__init__.py,core,A,,1,0,1,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,core/urls.py,core,M,,3,1,4,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,core/views.py,core,M,,38,32,70,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,db.sqlite3,(raiz),A,,0,0,0,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/__init__.py,game,A,,0,0,0,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/actions.py,game,A,,56,0,56,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/admin.py,game,A,,6,0,6,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/apps.py,game,A,,6,0,6,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/management/__init__.py,game,A,,1,0,1,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/management/commands/__init__.py,game,A,,1,0,1,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/management/commands/add_questions.py,game,A,,69,0,69,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/migrations/0001_initial.py,game,A,,38,0,38,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/migrations/__init__.py,game,A,,0,0,0,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/models.py,game,A,,24,0,24,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/tests.py,game,A,,3,0,3,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,game/views.py,game,A,,6,0,6,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,manage.py,(raiz),A,,22,0,22,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,views/telaFeedback.html,views,M,,9,9,18,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,views/telaInicial.html,views,M,,11,11,22,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,views/telaPerguntas.html,views,M,,9,11,20,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,views/tela_derrota.html,views,A,,139,0,139,False,larissakailanelv@gmail.com
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,2025-06-10 15:13:16-03:00,views/tela_vitoria.html,views,A,,137,0,137,False,larissakailanelv@gmail.com
+12918defbb740c796d1af8d46f48363b82cb305d,Rafaela Prates,2025-06-09 16:39:47-03:00,README.md,(raiz),M,,59,2,61,False,142021465+RafaPrattes@users.noreply.github.com
+d72dadf8b9b3dff3c2bbc30bba41c31167d8107c,Larissa-Kailane,2025-06-09 12:55:33-03:00,core/urls.py,core,M,,2,2,4,False,larissakailanelv@gmail.com
+d72dadf8b9b3dff3c2bbc30bba41c31167d8107c,Larissa-Kailane,2025-06-09 12:55:33-03:00,views/telaInicial.html,views,M,,1,1,2,False,larissakailanelv@gmail.com
+f99e5ac40e577c111fb502c81e0eb25864ad6d2e,Larissa-Kailane,2025-06-09 12:30:25-03:00,views/telaFeedback.html,views,M,,14,8,22,False,larissakailanelv@gmail.com
+f99e5ac40e577c111fb502c81e0eb25864ad6d2e,Larissa-Kailane,2025-06-09 12:30:25-03:00,views/telaPerguntas.html,views,M,,12,7,19,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,core/urls.py,core,A,,9,0,9,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,core/views.py,core,A,,51,0,51,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,jogo/urls.py,jogo,A,,7,0,7,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,tabuleiro.py,(raiz),R,views/tabuleiro.py,0,0,0,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,views/telaFeedback.html,views,A,,134,0,134,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,views/telaInicial.html,views,R,tabuleiro.html,0,0,0,False,larissakailanelv@gmail.com
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,2025-06-09 12:08:01-03:00,views/telaPerguntas.html,views,A,,130,0,130,False,larissakailanelv@gmail.com
+cfe7e1a9fc60dcde0bb3783190fd8c3a73bdfe84,Larissa-Kailane,2025-06-09 11:44:16-03:00,tabuleiro.html,(raiz),M,,41,14,55,False,larissakailanelv@gmail.com
+4192fe5c7c9f00c0823bce4ec1fae31e806c7855,Larissa-Kailane,2025-06-09 09:30:31-03:00,tabuleiro.html,(raiz),A,,106,0,106,False,larissakailanelv@gmail.com
+4192fe5c7c9f00c0823bce4ec1fae31e806c7855,Larissa-Kailane,2025-06-09 09:30:31-03:00,views/tabuleiro.py,views,A,,2,0,2,False,larissakailanelv@gmail.com

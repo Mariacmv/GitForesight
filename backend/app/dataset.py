@@ -1,9 +1,13 @@
-import pandas as pd
 import os
+
+import pandas as pd
+
 
 def create_dataset(
     commits,
-    output_path="data/commits.csv"
+    file_changes=None,
+    output_path="data/commits.csv",
+    file_changes_path="data/file_changes.csv",
 ):
     rows = []
 
@@ -11,6 +15,7 @@ def create_dataset(
         rows.append({
             "hash": commit["hash"],
             "author": commit["author"],
+            "email": commit["email"],
             "date": commit["date"],
             "message": commit["message"],
             "files_count": commit["files_count"],
@@ -22,12 +27,13 @@ def create_dataset(
 
     dataframe = pd.DataFrame(rows)
 
-    os.makedirs("data", exist_ok=True)
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    dataframe.to_csv(output_path, index=False, encoding="utf-8")
 
-    dataframe.to_csv(
-        output_path,
-        index=False,
-        encoding="utf-8"
-    )
+    if file_changes is not None:
+        files_dataframe = pd.DataFrame(file_changes)
+
+        os.makedirs(os.path.dirname(file_changes_path) or ".", exist_ok=True)
+        files_dataframe.to_csv(file_changes_path, index=False, encoding="utf-8")
 
     return dataframe
