@@ -42,7 +42,7 @@ section[data-testid="stSidebar"] * {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 8px 16px 8px;
+    padding: 0 8px 2px 8px;
 }
 
 .sidebar-logo {
@@ -329,6 +329,7 @@ section[data-testid="stSidebar"] {
     justify-content: center;
     border: none;
 }
+
 .metric-icon svg {
     display: block;
 }
@@ -452,4 +453,157 @@ section[data-testid="stSidebar"] {
     color: #94A3B8;
     font-size: 11px;
     white-space: nowrap;
+}
+
+/* TOPBAR CADASTRO */
+.auth-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: #0B1220;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: 'Inter', sans-serif;
+}
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px !important;
+}
+
+.auth-brand-logo {
+    width: 32px !important;
+    height: 32px !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.auth-brand-logo-img {
+    width: 32px !important;
+    height: 32px !important;
+    object-fit: contain;
+    display: block;
+}
+
+.auth-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+}
+
+.auth-help {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94A3B8 !important;
+    font-size: 13px;
+    text-decoration: none !important;
+}
+
+.auth-help:hover {
+    color: #F8FAFC !important;
+}
+
+.st-key-auth_card {
+    max-width: 456px;
+    margin: 0 auto;
+    padding: 32px;
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 16px;
+}
+
+.st-key-auth_card button {
+    width: 100%;
+}
+
+.auth-footer {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: #0B1220;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94A3B8;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+.auth-footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.auth-footer a {
+    color: #94A3B8 !important;
+    text-decoration: none !important;
+}
+
+.auth-footer a:hover {
+    color: #F8FAFC !important;
+}
+
+.auth-brand-name {
+    color: #F8FAFC;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.auth-brand-sub {
+    color: #6366F1;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+.auth-card-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 8px;
+    color: #818CF8;
+    margin-bottom: 8px;
+}
+
+/* BOTÃO GITHUB */
+.st-key-auth_github button p {
+    text-align: center;
+}
+
+.st-key-auth_github button p::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 16px;
+    margin-right: 10px;
+    /* distância até o texto: ajuste aqui */
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' viewBox='110 12 15 16' fill='none'%3E%3Cpath d='M116 26.6672V24.0003C115.953 23.587 115.986 23.1669 116.1 22.7669C116.213 22.3669 116.406 21.9935 116.666 21.6668C114.666 21.6668 112.666 20.3334 112.666 17.9999C112.612 17.1683 112.848 16.3437 113.333 15.6663C113.133 14.8996 113.133 14.0996 113.333 13.3328C113.333 13.3328 114 13.3328 115.333 14.3329C117.093 13.9995 118.907 13.9995 120.667 14.3329C122 13.3328 122.667 13.3328 122.667 13.3328C122.854 14.0996 122.854 14.8996 122.667 15.6663C123.154 16.3464 123.387 17.1665 123.334 17.9999C123.334 20.3334 121.333 21.6668 119.333 21.6668C119.853 22.327 120.093 23.1651 120 24.0003V26.6672M116 24.0003C112.993 25.3338 112.666 22.6669 111.333 22.6669' stroke='white' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.st-key-auth_github button:hover:not(:disabled) {
+    background: #243247;
+    border-color: #475569;
 }

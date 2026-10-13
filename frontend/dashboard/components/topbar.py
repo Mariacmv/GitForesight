@@ -1,5 +1,5 @@
 import streamlit as st
-
+from components.sidebar import _logo_base64
 
 def render_topbar(ctx):
 
@@ -57,4 +57,48 @@ def render_topbar(ctx):
     # Remove a indentação: o Markdown trata linhas com 4+ espaços como bloco de código
     html = " ".join(line.strip() for line in html.splitlines())
 
+    st.markdown(html, unsafe_allow_html=True)
+    
+def render_auth_topbar():
+
+    html = f"""
+    <div class="auth-topbar">
+        <div class="auth-brand">
+            <div class="auth-brand-logo">
+                <img class="auth-brand-logo-img" src="data:image/png;base64,{_logo_base64()}">
+            </div>
+            <div class="auth-brand-text">
+                <div class="sidebar-title">Git Foresight</div>
+            </div>
+        </div>
+        <a class="auth-help" href="mailto:suporte@gitforesight.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                <path d="M12 17h.01"/>
+            </svg>
+            <span>Precisa de ajuda?</span>
+        </a>
+    </div>
+    """
+
+    html = " ".join(line.strip() for line in html.splitlines())
+    st.markdown(html, unsafe_allow_html=True)
+
+
+def render_auth_footer():
+
+    html = """
+    <div class="auth-footer">
+        <span>© 2026 Git Foresight</span>
+        <span class="auth-footer-links">
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+        </span>
+    </div>
+    """
+
+    html = " ".join(line.strip() for line in html.splitlines())
     st.markdown(html, unsafe_allow_html=True)
