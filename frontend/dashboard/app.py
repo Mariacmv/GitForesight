@@ -1,6 +1,8 @@
+from views import account, banner
 import streamlit as st
 
 from views import auth
+from backend.database.connection import init_db
 
 # set_page_config precisa ser a primeira chamada do Streamlit
 st.set_page_config(
@@ -14,15 +16,15 @@ from components.topbar import render_topbar
 from context import get_context
 from data_loader import load_commits
 from theme import load_css
-from views import heatmap, overview, predictive, settings, apresentacao, conta
+from views import heatmap, overview, predictive, settings, banner
 
 TELAS = {
     "Visão Geral": overview.render,
     "Heatmap de Risco": heatmap.render,
     "Análise Preditiva": predictive.render,
     "Configurações": settings.render,
-    "Apresentação da Aplicação": apresentacao.render,
-    "Conta de Usuário": conta.render,
+    "Apresentação da Aplicação": banner.render,
+    "Conta de Usuário": account.render,
     "Login": auth.render
 }
 
@@ -37,6 +39,7 @@ if "auth_view" not in st.session_state:
 
 def main():
     load_css()
+    init_db()
 
     if not st.session_state.autenticado:
         auth.render()

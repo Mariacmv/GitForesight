@@ -67,9 +67,11 @@ GITHUB = (
 def _ir_para(view):
     st.session_state.auth_view = view
 
-def _entrar(nome, email):
-    st.session_state.usuario = {"nome": nome, "email": email}
+def _entrar(user_id, name, email):
     st.session_state.autenticado = True
+    st.session_state.user_id = user_id
+    st.session_state.usuario = name
+    st.session_state.email = email
 
 def _cadastro():
     st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
@@ -114,8 +116,22 @@ def _cadastro():
             for erro in erros:
                 st.error(erro)
         else:
-            _entrar(nome.strip(), email.strip())
-            st.rerun()
+            try:
+                user_id = create_user(
+                    nome.strip(),
+                    email.strip(),
+                    senha
+                )
+
+            except ValueError as erro:
+                st.error(str(erro))
+
+            else:
+                _entrar(nome.strip(), email.strip())
+
+                direcionar_usuario(user_id)
+
+                st.rerun()
 
     # Colunas externas para centralizar no layout
     col_esq, col_centro, col_dir = st.columns([1, 2, 1])
@@ -139,7 +155,8 @@ def _cadastro():
                 "Entrar",
                 key="auth_to_login",
                 on_click=_ir_para,
-                args=("login",)
+                args=("login",),
+                type="tertiary"
             )
 
     st.divider()
@@ -179,15 +196,11 @@ def _login():
                 unsafe_allow_html=True,
             )
             senha = st.text_input("Senha", type="password", key="login_senha", label_visibility="collapsed", placeholder="Digite sua senha")
-            
-            enviar = st.form_submit_button(
-                "Entrar", icon=":material/arrow_forward:", type="primary"
-            )
 
     # Manter conectado
     lembrar = st.checkbox("Manter conectado neste dispositivo", key="login_lembrar")
 
-    if st.button("Entrar", key="login_entrar", type="primary", icon=":material/arrow_forward:"):
+    if st.button("Entrar", key="login_entrar", type="primary", icon=":material/arrow_forward:", width=400):
         user = verify_user(email.strip(), senha)
         if user is None:
             st.error("E-mail ou senha incorretos.")
@@ -195,7 +208,35 @@ def _login():
             if lembrar:
                 st.session_state.cookie_pendente = issue_remember_token(user["id"])
             _entrar(user["name"], user["email"])
+            direcionar_usuario(user["id"]) #chama a função que redireciona o usuário com base no id passado
             st.rerun()
+    
+    # AJUSTAR ESSE BOTÃO DE IR PARA O CADASTRO
+    col_esq, col_centro, col_dir = st.columns([1, 2, 1])
+    
+    with col_centro:
+    
+            # Colunas internas para texto + botão
+            col_texto, col_link = st.columns(
+                [2, 1],
+                vertical_alignment="center",
+                gap="small"
+            )
+    
+            with col_texto:
+                st.markdown(
+                    '<p style="margin:0; white-space:nowrap;">Não tem uma conta?</p>',
+                    unsafe_allow_html=True
+                )
+    
+            with col_link:
+                st.button(
+                    "Cadastrar",
+                    key="auth_to_cadastro",
+                    on_click=_ir_para,
+                    args=("cadastro",),
+                    type="secondary"
+                )
 
     st.divider()
 
@@ -268,6 +309,18 @@ def restaurar_sessao():
         _entrar(user["name"], user["email"])
         return True
     return False
+
+def direcionar_usuario(user_id):
+
+    repo = buscar_repositorio_usuario(user_id)
+
+    if repo is None:
+        st.session_state.pagina = "choose_repo"
+        st.session_state.repositorio_conectado = None
+
+    else:
+        st.session_state.pagina = "overview"
+        st.session_state.repositorio_conectado = repo
 
 def render():
     if restaurar_sessao():

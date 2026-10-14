@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 def get_context():
     """
     Ponto único de dados da barra superior.
