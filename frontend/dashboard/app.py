@@ -41,6 +41,8 @@ def main():
     if not st.session_state.autenticado:
         auth.render()
         return
+    if "cookie_pendente" in st.session_state:
+        auth.gravar_cookie(st.session_state.pop("cookie_pendente"))
 
     ctx = get_context()
     analysis, risk = load_commits()

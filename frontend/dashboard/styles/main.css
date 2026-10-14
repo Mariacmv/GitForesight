@@ -635,31 +635,16 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* botão de entrar no cadastro */
-..login-footer-text {
-    font-family: 'Geist', sans-serif !important;
-    font-weight: 400 !important;
-    font-size: 13px !important;
-    line-height: 20px !important;
-    color: #94A3B8 !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    text-align: right !important;
-
-    transform: translateY(4px);
+.login-footer-text {
+    white-space: nowrap;
+    margin: 0;
 }
 
 /* Alinhamento do botão */
-.st-key-auth_to_login {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    transform: translateY(4px);
+.st-key-auth_to_login,
+.st-key-auth_to_login>div {
+    position: relative;
+    top: 4px;
 }
 
 .st-key-auth_to_login button {
@@ -705,7 +690,7 @@ div[data-testid="stFormSubmitButton"] button {
     height: 18px !important;
     margin-right: 10px !important;
     vertical-align: middle;
-    background: var(--sso-icon-url) no-repeat center / contain !important; /* Lendo a variável do Python */
+    background: var(--sso-icon-url) no-repeat center / contain !important;
 }
 
 .st-key-auth_sso button:hover:not(:disabled) {
@@ -713,4 +698,42 @@ div[data-testid="stFormSubmitButton"] button {
     border-color: #475569;
 }
 
+/* autenticação */
+.st-key-auth_card .auth-label {
+    color: #94A3B8;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+}
 
+.st-key-auth_card .auth-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.st-key-auth_card .auth-link {
+    color: #818CF8 !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 28px;
+    text-decoration: none !important;
+}
+
+.st-key-auth_card .auth-link:hover {
+    color: #A5B4FC !important;
+}
+
+/* Campos colados no rótulo de cima */
+.st-key-auth_card .st-key-login_email {
+    margin-top: -4px;
+}
+
+.st-key-auth_card .st-key-login_senha {
+    margin-top: -10px;
+}
