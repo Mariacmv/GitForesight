@@ -729,11 +729,18 @@ div[data-testid="stFormSubmitButton"] button {
     color: #A5B4FC !important;
 }
 
-/* Campos colados no rótulo de cima */
-.st-key-auth_card .st-key-login_email {
-    margin-top: -4px;
+/* Link cadastrar-se tela de login */
+.st-key-ajuste_cadastro {
+    transform: translateY(8px);
+    color: #94A3b8 !important;
 }
 
-.st-key-auth_card .st-key-login_senha {
-    margin-top: -10px;
+/* Labels nativas somente dos campos do login */
+.st-key-cadastro_nome [data-testid="stWidgetLabel"] p,
+.st-key-cadastro_email [data-testid="stWidgetLabel"] p,
+.st-key-cadastro_senha [data-testid="stWidgetLabel"] p,
+.st-key-cadastro_confirma_senha [data-testid="stWidgetLabel"] p,
+.st-key-login_email [data-testid="stWidgetLabel"] p,
+.st-key-login_senha [data-testid="stWidgetLabel"] p {
+    color: #94A3B8 !important;
 }

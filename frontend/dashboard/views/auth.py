@@ -8,6 +8,7 @@ from backend.app.auth import (
 )
 import streamlit.components.v1 as components
 from urllib.parse import urlencode
+import secrets
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
@@ -89,6 +90,19 @@ def github_login_url():
         "https://github.com/login/oauth/authorize?"
         + urlencode(params)
     )
+    
+def botao_github():
+    if st.button(
+        "Continuar com GitHub",
+        key="auth_github",
+        use_container_width=True
+    ):
+        url = github_login_url()
+        st.link_button(
+            "Autorizar no GitHub",
+            url,
+            use_container_width=True
+        )
 
 def _cadastro():
     st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
@@ -98,7 +112,7 @@ def _cadastro():
     
     st.markdown(GITHUB,unsafe_allow_html=True)
 
-    st.button("Continuar com GitHub", key="auth_github", disabled=False, github_login_url()) # HABILITAR PARA FUNCIONAR
+    botao_github()
 
     st.markdown(
         '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
@@ -106,12 +120,12 @@ def _cadastro():
     )
 
     with st.form("form_cadastro", border=False):
-        nome = st.text_input("Nome completo", placeholder="Seu nome completo")
-        email = st.text_input("E-mail profissional", placeholder="voce@empresa.com")
-        senha = st.text_input("Senha", type="password", placeholder="Crie uma senha")
+        nome = st.text_input("Nome completo", key='cadastro_nome', placeholder="Seu nome completo")
+        email = st.text_input("E-mail profissional", key='cadastro_email', placeholder="voce@empresa.com")
+        senha = st.text_input("Senha", type="password", key='cadastro_senha', placeholder="Crie uma senha")
         st.caption("Prefira uma senha longa, com letras, números e símbolos.")
         confirma = st.text_input(
-            "Confirmar senha", type="password",
+            "Confirmar senha", type="password", key='cadastro_confirma_senha',
             placeholder="Digite a senha novamente",
         )
         enviar = st.form_submit_button(
@@ -144,7 +158,7 @@ def _cadastro():
                 st.error(str(erro))
 
             else:
-                _entrar(nome.strip(), email.strip())
+                _entrar(user_id, nome.strip(), email.strip())
 
                 direcionar_usuario(user_id)
 
@@ -191,85 +205,118 @@ def _cadastro():
     st.button("Entrar com SSO da Empresa", key="auth_sso", disabled=False)
     st.caption("Seu acesso é gerenciado pela organização. Para obter uma conta, fale com o administrador.")
 
+
 def _login():
     st.markdown("## Entre no Git Foresight")
     st.caption("Acesse o console de risco da sua equipe.")
 
-    st.button("Continuar com GitHub", key="auth_github", disabled=False)
+    # Login com GitHub
+    botao_github()
+
     st.markdown(
         '<div class="auth-divider"><span>ou entre com e-mail</span></div>',
         unsafe_allow_html=True,
     )
 
+    # Formulário de login
     with st.form("form_login", border=False):
-            _label("E-mail profissional")
-            email = st.text_input("E-mail profissional", key="login_email", label_visibility="collapsed", placeholder="voce@empresa.com")
-            # "Senha" e "Esqueceu a senha?" na mesma linha
-            st.markdown(
-                '<div class="auth-label-row">'
-                '<span class="auth-label">Senha</span>'
-                '<a class="auth-link" href="?view=recuperar" target="_self">Esqueceu a senha?</a>'
-                '</div>',
-                unsafe_allow_html=True,
-            )
-            senha = st.text_input("Senha", type="password", key="login_senha", label_visibility="collapsed", placeholder="Digite sua senha")
+        email = st.text_input(
+            "E-mail profissional",
+            key="login_email",
+            placeholder="voce@empresa.com"
+        )
 
-    # Manter conectado
-    lembrar = st.checkbox("Manter conectado neste dispositivo", key="login_lembrar")
+        senha = st.text_input(
+            "Senha",
+            type="password",
+            key="login_senha",
+            placeholder="Digite sua senha"
+        )
 
-    if st.button("Entrar", key="login_entrar", type="primary", icon=":material/arrow_forward:", width=400):
+        lembrar = st.checkbox(
+            "Manter conectado neste dispositivo",
+            key="login_lembrar"
+        )
+
+        enviar = st.form_submit_button(
+            "Entrar",
+            type="primary",
+            icon=":material/arrow_forward:",
+            use_container_width=True
+        )
+
+    # Processamento do login
+    if enviar:
         user = verify_user(email.strip(), senha)
+
         if user is None:
             st.error("E-mail ou senha incorretos.")
+
         else:
             if lembrar:
-                st.session_state.cookie_pendente = issue_remember_token(user["id"])
-            _entrar(user["name"], user["email"])
-            direcionar_usuario(user["id"]) #chama a função que redireciona o usuário com base no id passado
-            st.rerun()
-    
-    # AJUSTAR ESSE BOTÃO DE IR PARA O CADASTRO
-    col_esq, col_centro, col_dir = st.columns([1, 2, 1])
-    
-    with col_centro:
-    
-            # Colunas internas para texto + botão
-            col_texto, col_link = st.columns(
-                [2, 1],
-                vertical_alignment="center",
-                gap="small"
-            )
-    
-            with col_texto:
-                st.markdown(
-                    '<p style="margin:0; white-space:nowrap;">Não tem uma conta?</p>',
-                    unsafe_allow_html=True
+                st.session_state.cookie_pendente = issue_remember_token(
+                    user["id"]
                 )
-    
-            with col_link:
+
+            _entrar(
+                user["id"],
+                user["name"],
+                user["email"]
+            )
+
+            direcionar_usuario(user["id"])
+
+            st.rerun()
+
+    # Link para cadastro
+    col_esq, col_centro, col_dir = st.columns([1, 4, 1])
+
+    with col_centro:
+
+        col_texto, col_link = st.columns(
+            [3, 2],
+            vertical_alignment="center"
+        )
+
+        with col_texto:
+            st.markdown(
+                '<p style="margin:0; white-space:nowrap;">Não tem uma conta?</p>',
+                unsafe_allow_html=True
+            )
+
+        with col_link:
+            with st.container(key="ajuste_cadastro"):
                 st.button(
-                    "Cadastrar",
+                    "Cadastrar-se",
                     key="auth_to_cadastro",
                     on_click=_ir_para,
                     args=("cadastro",),
-                    type="secondary"
+                    type="tertiary"
                 )
 
     st.divider()
 
-    b64_icon = base64.b64encode(ICON_SSO.encode("utf-8")).decode("utf-8")
+    # SSO empresarial
+    b64_icon = base64.b64encode(
+        ICON_SSO.encode("utf-8")
+    ).decode("utf-8")
+
     st.html(
         f"""
-            <style>
-            :root {{
-                --sso-icon-url: url("data:image/svg+xml;base64,{b64_icon}");
-            }}
-            </style>
+        <style>
+        :root {{
+            --sso-icon-url: url("data:image/svg+xml;base64,{b64_icon}");
+        }}
+        </style>
         """
     )
+
     st.button("Entrar com SSO da Empresa", key="auth_sso", disabled=False)
-    st.caption("Seu acesso é gerenciado pela organização. "
-               "Para obter uma conta, fale com o administrador.")
+
+    st.caption(
+        "Seu acesso é gerenciado pela organização. "
+        "Para obter uma conta, fale com o administrador."
+    )
     
     #colocar o conexão segura
     
@@ -323,7 +370,7 @@ def restaurar_sessao():
     token = st.context.cookies.get("gf_remember")
     user = user_from_remember_token(token) if token else None
     if user:
-        _entrar(user["name"], user["email"])
+        _entrar(user["id"], user["name"], user["email"])
         return True
     return False
 
