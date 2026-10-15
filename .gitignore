@@ -6,3 +6,4 @@ gitforesight.db
 *.db-journal
 *.db-wal
 *.db-shm
+secrets.toml

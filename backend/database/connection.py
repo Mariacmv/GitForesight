@@ -43,4 +43,13 @@ def init_db():
                 FOREIGN KEY (user_id) REFERENCES users(id),
                 UNIQUE(user_id, url)
             );
+            
+            CREATE TABLE IF NOT EXISTS github_accounts (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                github_id INTEGER NOT NULL UNIQUE,
+                github_login TEXT NOT NULL,
+
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
         """)

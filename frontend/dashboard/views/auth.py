@@ -7,6 +7,7 @@ from backend.app.auth import (
     issue_remember_token, user_from_remember_token,
 )
 import streamlit.components.v1 as components
+from urllib.parse import urlencode
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
@@ -73,6 +74,22 @@ def _entrar(user_id, name, email):
     st.session_state.usuario = name
     st.session_state.email = email
 
+def github_login_url():
+    state = secrets.token_urlsafe(32)
+
+    st.session_state.github_oauth_state = state
+
+    params = {
+        "client_id": st.secrets["GITHUB_CLIENT_ID"],
+        "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"],
+        "state": state,
+    }
+
+    return (
+        "https://github.com/login/oauth/authorize?"
+        + urlencode(params)
+    )
+
 def _cadastro():
     st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
     
@@ -81,7 +98,7 @@ def _cadastro():
     
     st.markdown(GITHUB,unsafe_allow_html=True)
 
-    st.button("Continuar com GitHub", key="auth_github", disabled=False) # HABILITAR PARA FUNCIONAR
+    st.button("Continuar com GitHub", key="auth_github", disabled=False, github_login_url()) # HABILITAR PARA FUNCIONAR
 
     st.markdown(
         '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
