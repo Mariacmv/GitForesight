@@ -1,7 +1,8 @@
-from views import account, banner
+from views import account, banner, choose_repo
 import streamlit as st
 
 from views import auth
+from views.auth import direcionar_usuario
 from backend.database.connection import init_db
 
 # set_page_config precisa ser a primeira chamada do Streamlit
@@ -46,6 +47,15 @@ def main():
         return
     if "cookie_pendente" in st.session_state:
         auth.gravar_cookie(st.session_state.pop("cookie_pendente"))
+        
+    # Verifica qual tela deve aparecer
+    if "pagina" not in st.session_state:
+        direcionar_usuario(st.session_state.user_id)
+
+    # Tela de seleção de repositório
+    if st.session_state.pagina == "choose_repo":
+        choose_repo.render()
+        return
 
     ctx = get_context()
     analysis, risk = load_commits()
