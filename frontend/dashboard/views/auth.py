@@ -6,6 +6,7 @@ from backend.app.auth import (
     create_user, verify_user, request_password_reset, reset_password,
     issue_remember_token, user_from_remember_token,
 )
+from backend.database.repositories import buscar_repositorio_usuario
 import streamlit.components.v1 as components
 from urllib.parse import urlencode
 import secrets
@@ -375,16 +376,18 @@ def restaurar_sessao():
     return False
 
 def direcionar_usuario(user_id):
-
     repo = buscar_repositorio_usuario(user_id)
 
     if repo is None:
         st.session_state.pagina = "choose_repo"
         st.session_state.repositorio_conectado = None
-
     else:
         st.session_state.pagina = "overview"
         st.session_state.repositorio_conectado = repo
+        
+    # Dá um trigger para o Streamlit rodar o arquivo principal novamente 
+    # e aplicar a mudança de página
+    st.rerun() 
 
 def render():
     if restaurar_sessao():
