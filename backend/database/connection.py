@@ -52,4 +52,10 @@ def init_db():
 
                 FOREIGN KEY (user_id) REFERENCES users(id)
             );
+            
+            CREATE TABLE IF NOT EXISTS oauth_attempts (
+                state_hash TEXT PRIMARY KEY,
+                code_verifier TEXT NOT NULL,
+                expires_at INTEGER NOT NULL
+            )
         """)
