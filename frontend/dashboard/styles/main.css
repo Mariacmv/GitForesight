@@ -758,3 +758,75 @@ div[data-testid="stFormSubmitButton"] button {
 .st-key-login_senha [data-testid="stWidgetLabel"] p {
     color: #94A3B8 !important;
 }
+
+/* css progresso escolhe repo*/
+div[data-testid="stMarkdownContainer"] > div {
+    border-bottom: none !important;
+}
+
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border: none !important; 
+}
+
+.steps-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Estado Ativo / Concluído (Roxo) */
+.step-item.active .step-circle {
+    background-color: #5D5FEF;
+    color: white;
+}
+.step-item.active .step-text {
+    font-weight: 500;
+}
+
+/* Estado Inativo (Escuro/Cinza) */
+.step-item.inactive .step-circle {
+    background-color: #1E293B;
+    color: #94A3B8;
+}
+.step-item.inactive .step-text {
+    color: #94A3B8;
+}
+
+/* Linha conectora entre os passos */
+.step-line {
+    width: 40px;
+    height: 1px;
+    background-color: #94A3B8;
+}
+
+/* Contador do lado direito */
+.step-counter {
+    color: #8A8CD9;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
