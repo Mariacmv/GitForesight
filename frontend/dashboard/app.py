@@ -18,6 +18,7 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from views import heatmap, overview, predictive, settings, banner
+#from backend.services.github_callback import processar_callback
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -41,8 +42,12 @@ if "auth_view" not in st.session_state:
 def main():
     load_css()
     init_db()
+    
+    #verifica o retorno de autenticação do github
+    # if processar_callback():
+    #     return
 
-    if not st.session_state.autenticado:
+    if not st.session_state.get("autenticado", False):
         auth.render()
         return
     if "cookie_pendente" in st.session_state:

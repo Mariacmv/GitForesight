@@ -57,5 +57,5 @@ def init_db():
                 state_hash TEXT PRIMARY KEY,
                 code_verifier TEXT NOT NULL,
                 expires_at INTEGER NOT NULL
-            )
+            );
         """)
