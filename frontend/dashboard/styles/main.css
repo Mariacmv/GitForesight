@@ -529,22 +529,36 @@ section[data-testid="stSidebar"] {
 }
 
 .auth-footer {
-    position: fixed !important;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    z-index: 999;
+    position: relative !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin-left: calc(50% - 50vw) !important;
+    min-height: 80px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
     background-color: #0B1220;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: #94A3B8;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
 }
+
+[data-testid="stMainBlockContainer"] {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Empurra o container do footer para baixo */
+.st-key-auth_footer {
+    margin-top: auto !important;
+    width: 100%;
+}
+
 
 .auth-footer-links {
     display: flex;
