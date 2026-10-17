@@ -56,6 +56,9 @@ def verify_user(email, password):
         row = con.execute(
             "SELECT * FROM users WHERE email = ?", (email.lower(),)
         ).fetchone()
+        
+    if row is None or row["password_hash"] is None:
+        return None
     if row and _check_password(password, row["password_hash"]):
         return dict(row)
     return None

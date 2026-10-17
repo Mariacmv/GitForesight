@@ -33,10 +33,6 @@ def render_risk_chart(risk):
 
     ax.set_ylim(0, 100)
 
-    # ------------------------------------------------------------------------
-    # SOLUÇÃO DEFINITIVA: Desenhando linhas horizontais nativas uma por uma.
-    # Isso ignora totalmente o sistema de grid do Streamlit que estava ocultando-as.
-    # ------------------------------------------------------------------------
     valores_linhas = [20, 40, 60, 80]  # Define em quais alturas do gráfico as linhas devem aparecer
     for valor in valores_linhas:
         ax.axhline(
@@ -47,7 +43,6 @@ def render_risk_chart(risk):
             alpha=0.4,         # Opacidade ideal
             zorder=1           # Desenha no fundo, atrás do gráfico de linhas azul
         )
-    # ------------------------------------------------------------------------
 
     # Configura os marcadores de texto do eixo Y para bater com as linhas criadas
     ax.set_yticks([0, 20, 40, 60, 80, 100])

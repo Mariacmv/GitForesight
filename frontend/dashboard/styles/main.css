@@ -602,28 +602,40 @@ section[data-testid="stSidebar"] {
 }
 
 /* BOTÃO GITHUB */
-.st-key-auth_github button p {
-    text-align: center;
-}
-
-.st-key-auth_github button {
-    width: 390px !important;
+.auth-github a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
     height: 45px !important;
+    background: #1E293B !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
 }
 
-.st-key-auth_github button p::before {
+.auth-github a {
+    margin: 0 !important;
+    text-align: center;
+    color: #FFFFFF !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.auth-github a::before {
     content: "";
-    display: inline-block !important;
-    width: 18px !important;
-    height: 18px !important;
-    margin-right: 10px !important;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
     vertical-align: middle;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' viewBox='110 12 15 16' fill='none'%3E%3Cpath d='M116 26.6672V24.0003C115.953 23.587 115.986 23.1669 116.1 22.7669C116.213 22.3669 116.406 21.9935 116.666 21.6668C114.666 21.6668 112.666 20.3334 112.666 17.9999C112.612 17.1683 112.848 16.3437 113.333 15.6663C113.133 14.8996 113.133 14.0996 113.333 13.3328C113.333 13.3328 114 13.3328 115.333 14.3329C117.093 13.9995 118.907 13.9995 120.667 14.3329C122 13.3328 122.667 13.3328 122.667 13.3328C122.854 14.0996 122.854 14.8996 122.667 15.6663C123.154 16.3464 123.387 17.1665 123.334 17.9999C123.334 20.3334 121.333 21.6668 119.333 21.6668C119.853 22.327 120.093 23.1651 120 24.0003V26.6672M116 24.0003C112.993 25.3338 112.666 22.6669 111.333 22.6669' stroke='white' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-.st-key-auth_github button:hover:not(:disabled) {
-    background: #243247;
-    border-color: #475569;
+.auth-github a:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
 }
 
 .auth-divider {
@@ -757,4 +769,144 @@ div[data-testid="stFormSubmitButton"] button {
 .st-key-login_email [data-testid="stWidgetLabel"] p,
 .st-key-login_senha [data-testid="stWidgetLabel"] p {
     color: #94A3B8 !important;
+}
+
+/* css progresso escolhe repo*/
+/* ===== Onboarding ===== */
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.steps-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-item:not(:last-child)::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    margin-left: 6px;
+    background: #334155;
+}
+
+.step-circle {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    background: #1E293B;
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.step-text {
+    color: #94A3B8;
+    font-size: 13px;
+}
+
+.step-item.current .step-circle {
+    background: #6366F1;
+    border-color: #6366F1;
+    color: #FFFFFF;
+}
+
+.step-item.current .step-text {
+    color: #F8FAFC;
+    font-weight: 600;
+}
+
+.step-item.done .step-circle {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.5);
+    color: #818CF8;
+}
+
+.step-item.done .step-text {
+    color: #CBD5E1;
+}
+
+.step-counter {
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+}
+
+/* Cartão da etapa */
+.st-key-step_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.step-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.step-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.step-desc {
+    color: #94A3B8;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.step-badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+/* Botões principais em largura total (vence o 390px global do formulário) */
+.st-key-step_card div[data-testid="stFormSubmitButton"] button,
+.st-key-step_card button[kind^="primary"] {
+    width: 100% !important;
+    height: 48px;
+}
+
+/* Lista de verificação da etapa 3 */
+.check-list {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    color: #E2E8F0;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.check-list span {
+    color: #818CF8;
+    margin-right: 12px;
 }
