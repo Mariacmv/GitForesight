@@ -18,10 +18,10 @@ def init_db():
     with get_connection() as con:
         con.executescript("""
             CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY,
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
-                email TEXT UNIQUE NOT NULL,
-                password_hash TEXT NOT NULL
+                email TEXT UNIQUE,
+                password_hash TEXT
             );
 
             CREATE TABLE IF NOT EXISTS tokens (
@@ -45,12 +45,14 @@ def init_db():
             );
             
             CREATE TABLE IF NOT EXISTS github_accounts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                user_id INTEGER NOT NULL,
-                github_id INTEGER NOT NULL UNIQUE,
+                github_id INTEGER PRIMARY KEY,
+                user_id INTEGER NOT NULL UNIQUE,
                 github_login TEXT NOT NULL,
+                connected_at TEXT DEFAULT CURRENT_TIMESTAMP,
 
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                FOREIGN KEY (user_id)
+                    REFERENCES users(id)
+                    ON DELETE CASCADE
             );
             
             CREATE TABLE IF NOT EXISTS oauth_attempts (

@@ -1,4 +1,4 @@
-import re
+import re, html
 import streamlit as st
 from components.topbar import render_auth_topbar, render_auth_footer
 import base64
@@ -8,9 +8,7 @@ from backend.app.auth import (
 )
 from backend.database.repositories import buscar_repositorio_usuario
 import streamlit.components.v1 as components
-from urllib.parse import urlencode
-import secrets
-#from backend.services.github_callback import iniciar_oauth
+from backend.services.github_callback import iniciar_oauth
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 
@@ -76,37 +74,26 @@ def _entrar(user_id, name, email):
     st.session_state.user_id = user_id
     st.session_state.usuario = name
     st.session_state.email = email
-
-# def github_login_url():
-#     state = secrets.token_urlsafe(32)
-
-#     st.session_state.github_oauth_state = state
-
-#     params = {
-#         "client_id": st.secrets["GITHUB_CLIENT_ID"],
-#         "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"],
-#         "state": state,
-#     }
-
-#     return (
-#         "https://github.com/login/oauth/authorize?"
-#         + urlencode(params)
-#     )
     
-# def botao_github():
-#     url = iniciar_oauth()
-    
-#     if st.button(
-#         "Continuar com GitHub",
-#         key="auth_github",
-#         use_container_width=True
-#     ):
-#         url = github_login_url()
-#         st.link_button(
-#             "Autorizar no GitHub",
-#             url,
-#             use_container_width=True
-#         )
+def botao_github():
+    if "github_oauth_url" not in st.session_state:
+        st.session_state.github_oauth_url = iniciar_oauth()
+
+    url = html.escape(
+        st.session_state.github_oauth_url,
+        quote=True
+    )
+
+    st.markdown(
+        f"""
+        <div class="auth-github">
+            <a href="{url}" target="_self">
+                Continuar com GitHub
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 def _cadastro():
     st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
@@ -116,7 +103,7 @@ def _cadastro():
     
     st.markdown(GITHUB,unsafe_allow_html=True)
 
-    #botao_github()
+    botao_github()
 
     st.markdown(
         '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
@@ -214,8 +201,10 @@ def _login():
     st.markdown("## Entre no Git Foresight")
     st.caption("Acesse o console de risco da sua equipe.")
 
+    st.markdown(GITHUB,unsafe_allow_html=True)
+
     # Login com GitHub
-    #botao_github()
+    botao_github()
 
     st.markdown(
         '<div class="auth-divider"><span>ou entre com e-mail</span></div>',

@@ -1,5 +1,20 @@
-from views import account, banner, choose_repo
+import sys
+from pathlib import Path
 import streamlit as st
+
+# Caminho absoluto até GitForesight
+ROOT_DIR = Path(__file__).resolve().parents[2]
+
+# Adiciona a raiz do projeto aos caminhos do Python
+sys.path.insert(0, str(ROOT_DIR))
+
+# Teste de importação
+from backend.app.insights import knowledge_concentration
+
+print("IMPORTAÇÃO DO BACKEND FUNCIONOU!")
+
+# Imports do frontend
+from views import account, banner, choose_repo
 
 from views import auth
 from views.auth import direcionar_usuario
@@ -18,7 +33,7 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from views import heatmap, overview, predictive, settings, banner
-#from backend.services.github_callback import processar_callback
+from backend.services.github_callback import processar_callback
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -43,9 +58,28 @@ def main():
     load_css()
     init_db()
     
-    #verifica o retorno de autenticação do github
-    # if processar_callback():
-    #     return
+    # Processa o retorno da autorização do GitHub
+    callback_processado = processar_callback()
+
+    # Verifica se o callback entregou um usuário autenticado
+    usuario_github = st.session_state.pop(
+        "github_usuario_pendente",
+        None
+    )
+
+    if usuario_github is not None:
+        auth._entrar(
+            usuario_github["id"],
+            usuario_github["name"],
+            usuario_github["email"]
+        )
+
+        direcionar_usuario(usuario_github["id"])
+        st.rerun()
+
+    # Se houve erro ou cancelamento, interrompe esta execução
+    if callback_processado:
+        return
 
     if not st.session_state.get("autenticado", False):
         auth.render()
