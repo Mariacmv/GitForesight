@@ -1,120 +1,114 @@
-#para acessar os repositórios
+import os
 import re
-from urllib.parse import urlparse, unquote
-
+from concurrent.futures import ThreadPoolExecutor
 import requests
-
 
 API = "https://api.github.com"
 
+URL_RE = re.compile(
+    r"^(?:https?://)?(?:www\.)?github\.com/([\w.-]+)/([\w.-]+?)(?:\.git)?/?$"
+)
 
-def extrair_repositorio(url):
-    parsed = urlparse(url.strip())
 
-    if parsed.scheme != "https":
-        raise ValueError("Informe uma URL HTTPS do GitHub.")
-
-    if parsed.hostname not in ("github.com", "www.github.com"):
-        raise ValueError("O link precisa pertencer ao GitHub.")
-
-    partes = parsed.path.strip("/").split("/")
-
-    if len(partes) != 2:
+def parse_repo_url(url):
+    match = URL_RE.match(url.strip())
+    if not match:
         raise ValueError(
-            "Use o formato: https://github.com/usuario/repositorio"
+            "Informe uma URL válida do GitHub, "
+            "ex.: https://github.com/usuario/repositorio"
         )
-
-    owner, repo = map(unquote, partes)
-    repo = repo.removesuffix(".git")
-
-    padrao = r"[A-Za-z0-9_.-]+"
-
-    if not re.fullmatch(padrao, owner):
-        raise ValueError("Proprietário inválido.")
-
-    if not re.fullmatch(padrao, repo):
-        raise ValueError("Nome do repositório inválido.")
-
-    return owner, repo
+    return match.group(1), match.group(2)
 
 
-def fetch_repo_info(url, token=None):
-    owner, repo = extrair_repositorio(url)
-
-    headers = {
-        "Accept": "application/vnd.github+json",
-    }
-
+def _headers(token=None):
+    headers = {"Accept": "application/vnd.github+json"}
+    token = token or os.getenv("GITHUB_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
+    return headers
 
-    base = f"{API}/repos/{owner}/{repo}"
 
-    def consultar(endpoint, params=None):
-        resposta = requests.get(
-            endpoint,
-            headers=headers,
-            params=params,
-            timeout=20
+def _get(path, token=None, **params):
+    response = requests.get(
+        f"{API}{path}", params=params, headers=_headers(token), timeout=10
+    )
+
+    if response.status_code == 404:
+        raise ValueError(
+            "Não encontrado. Se for privado, é preciso conectar sua conta do GitHub."
         )
-
-        if resposta.status_code == 404:
-            raise ValueError(
-                "Repositório não encontrado ou sem permissão de acesso."
-            )
-
-        if resposta.status_code in (401, 403):
-            raise ValueError(
-                "Acesso negado pelo GitHub. Verifique a autorização "
-                "e as permissões da GitHub App."
-            )
-
-        resposta.raise_for_status()
-        return resposta
-
-    # Informações gerais
-    dados = consultar(base).json()
-
-    # Lista de branches, incluindo paginação
-    branches = []
-    pagina = 1
-
-    while True:
-        resposta = consultar(
-            f"{base}/branches",
-            {"per_page": 100, "page": pagina}
+    if response.status_code == 403 and response.headers.get("X-RateLimit-Remaining") == "0":
+        raise ValueError(
+            "Limite de consultas ao GitHub atingido. Tente de novo mais tarde "
+            "ou conecte sua conta."
         )
+    if response.status_code in (401, 403):
+        raise ValueError("Acesso negado pelo GitHub.")
 
-        lote = resposta.json()
-        branches.extend(item["name"] for item in lote)
+    response.raise_for_status()
+    return response
 
-        if len(lote) < 100:
-            break
 
-        pagina += 1
+def _count(path, token=None, **params):
+    response = _get(path, token=token, per_page=1, **params)
+    if response.status_code == 204 or not response.content:
+        return 0
+    last = response.links.get("last")
+    if last:
+        return int(re.search(r"[?&]page=(\d+)", last["url"]).group(1))
+    return len(response.json())
 
-    # Prévia de commits (não é a contagem total)
-    commits = consultar(
-        f"{base}/commits",
+
+def list_accounts(token):
+    """Conta do usuário + organizações das quais ele participa."""
+    me = _get("/user", token=token).json()
+    orgs = _get("/user/orgs", token=token, per_page=100).json()
+
+    accounts = [{"login": me["login"], "type": "Usuário"}]
+    accounts += [{"login": o["login"], "type": "Organização"} for o in orgs]
+    return accounts
+
+
+def list_repos(login, is_user, token=None, limit=100):
+    """Repositórios da conta, do mais recentemente atualizado ao mais antigo."""
+    if token and is_user:
+        path, extra = "/user/repos", {"affiliation": "owner"}
+    elif token:
+        path, extra = f"/orgs/{login}/repos", {"type": "all"}
+    else:
+        path, extra = f"/users/{login}/repos", {}   # sem token: só repositórios públicos
+
+    data = _get(path, token=token, sort="pushed", direction="desc",
+                per_page=limit, **extra).json()
+
+    return [
         {
-            "sha": dados["default_branch"],
-            "per_page": 100
+            "full_name": r["full_name"],
+            "private": r["private"],
+            "description": r.get("description"),
+            "language": r.get("language") or "—",
+            "pushed_at": r.get("pushed_at"),
         }
-    ).json()
+        for r in data
+    ]
 
-    # Prévia de contribuidores
-    contribuidores = consultar(
-        f"{base}/contributors",
-        {"per_page": 100, "anon": "true"}
-    ).json()
 
-    return {
-        "full_name": dados["full_name"],
-        "url": dados["html_url"],
-        "private": dados["private"],
-        "language": dados.get("language") or "Não identificada",
-        "default_branch": dados["default_branch"],
-        "branches": branches,
-        "commits": len(commits),
-        "contributors": len(contribuidores),
-    }
+def fetch_repo_stats(full_name, token=None):
+    owner, repo = full_name.split("/", 1)
+    try:
+        return {
+            "commits": _count(f"/repos/{owner}/{repo}/commits", token=token),
+            "contributors": _count(f"/repos/{owner}/{repo}/contributors", token=token),
+        }
+    except (ValueError, requests.RequestException):
+        return {"commits": None, "contributors": None}
+
+
+def fetch_many_stats(full_names, token=None, workers=8):
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = list(pool.map(lambda n: fetch_repo_stats(n, token), full_names))
+    return dict(zip(full_names, results))
+
+def fetch_repo_info(url, token=None):
+    owner, repo = parse_repo_url(url)
+    return fetch_repo_stats(f"{owner}/{repo}", token)

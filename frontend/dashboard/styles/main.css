@@ -601,6 +601,75 @@ section[data-testid="stSidebar"] {
     margin-bottom: 8px;
 }
 
+.auth-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.auth-vsep {
+    width: 1px;
+    height: 24px;
+    background: #334155;
+}
+
+
+.auth-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #5F5CE5, #8B5CF6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+}
+
+.auth-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botão invisível sobre o avatar (a topbar tem 80px; o avatar fica a 24px do topo) */
+.st-key-avatar_click {
+    position: fixed !important;
+    top: 24px;
+    right: 40px;
+    width: 32px !important;
+    height: 32px;
+    z-index: 1000;
+}
+
+.st-key-avatar_click button {
+    width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    border-radius: 50%;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    font-size: 0 !important;
+    /* esconde o texto "Meu perfil" */
+    color: transparent !important;
+}
+
+.st-key-avatar_click button p {
+    font-size: 0 !important;
+}
+
+.st-key-avatar_click button:hover {
+    background: rgba(139, 92, 246, 0.15) !important;
+    border: 1px solid #8B5CF6 !important;
+}
+
 /* BOTÃO GITHUB */
 .auth-github a {
     display: flex !important;
@@ -772,12 +841,11 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* css progresso escolhe repo*/
-/* ===== Onboarding ===== */
 .stepper-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 8px 0 24px;
+    margin: 0 0 24px;
     font-family: 'Inter', sans-serif;
 }
 
@@ -795,15 +863,16 @@ div[data-testid="stFormSubmitButton"] button {
 
 .step-item:not(:last-child)::after {
     content: "";
-    width: 40px;
-    height: 1px;
+    width: 48px;
+    height: 4px;
     margin-left: 6px;
     background: #334155;
 }
 
 .step-circle {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -811,13 +880,12 @@ div[data-testid="stFormSubmitButton"] button {
     border: 1px solid #334155;
     background: #1E293B;
     color: #94A3B8;
-    font-size: 12px;
     font-weight: 600;
 }
 
 .step-text {
     color: #94A3B8;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .step-item.current .step-circle {
@@ -844,69 +912,584 @@ div[data-testid="stFormSubmitButton"] button {
 .step-counter {
     color: #818CF8;
     font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
-    font-size: 11px;
+    font-size: 20px;
     letter-spacing: 0.08em;
 }
 
-/* Cartão da etapa */
-.st-key-step_card {
+.st-key-repo_picker {
     background: #1E293B;
     border: 1px solid #334155;
     border-radius: 12px;
     padding: 24px;
 }
 
-.step-head {
+.st-key-repo_picker button[kind^="primary"] {
+    width: auto !important;
+    height: 48px;
+    padding: 0 24px;
+}
+
+/* Rolagem da lista */
+.st-key-repo_list ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.st-key-repo_list ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+.repo-list-head {
     display: flex;
     justify-content: space-between;
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.repo-list-foot {
+    color: #94A3B8;
+    font-size: 12px;
+    text-align: right;
+    margin: 0;
+}
+
+/* Lista: sem espaço entre as linhas */
+.st-key-repo_list [data-testid="stVerticalBlock"] {
+    gap: 0 !important;
+}
+
+.repo-row {
+    display: flex;
     align-items: flex-start;
+    gap: 16px;
+    padding: 20px 16px;
+    border: 1px solid transparent;
+    border-bottom-color: #334155;
+    border-radius: 8px;
+}
+
+.repo-row.selected {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: #6366F1;
+}
+
+.repo-radio {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 2px solid #64748B;
+    border-radius: 50%;
+}
+
+.repo-row.selected .repo-radio {
+    border-color: #6366F1;
+    background: radial-gradient(circle, #6366F1 40%, transparent 45%);
+}
+
+.repo-row-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.repo-row-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-row-name {
+    color: #F8FAFC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.repo-tag {
+    padding: 2px 8px;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    background: #0B1220;
+    color: #94A3B8;
+    font-size: 10px;
+}
+
+.repo-row-desc {
+    color: #E2E8F0;
+    font-size: 13px;
+    margin: 8px 0;
+}
+
+.repo-row-meta {
+    display: flex;
+    gap: 16px;
+    color: #94A3B8;
+    font-size: 11px;
+}
+
+.lang-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #818CF8;
+}
+
+.repo-check {
+    color: #818CF8;
+    font-size: 16px;
+}
+
+/* Botão invisível cobrindo a linha inteira (clique = selecionar) */
+[class*="st-key-repo_row_"] {
+    position: relative;
+}
+
+[class*="st-key-repo_row_"] [data-testid="stElementContainer"]:has(.stButton) {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+[class*="st-key-repo_row_"] .stButton,
+[class*="st-key-repo_row_"] .stButton button {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+[class*="st-key-repo_row_"] .stButton button {
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* TELA DE PERFIL */
+/* O card */
+.st-key-profile_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+    width: 368px !important;
+    min-height: 310px;
+}
+
+.pc-title {
+    color: #F8FAFC;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Foto e nome lado a lado */
+.pc-header {
+    display: flex;
+    align-items: center;
     gap: 16px;
     margin-bottom: 16px;
 }
 
-.step-title {
+.pc-avatar {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5F5CE5, #8B5CF6);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.pc-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pc-name {
     color: #F8FAFC;
     font-size: 18px;
     font-weight: 600;
 }
 
-.step-desc {
+.pc-email {
     color: #94A3B8;
-    font-size: 13px;
-    margin-top: 4px;
+    font-size: 12px;
+    margin-top: 2px;
 }
 
-.step-badge {
-    padding: 6px 10px;
+/* Badges */
+.pc-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.pc-badge {
+    padding: 4px 10px;
     border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.pc-badge-primary {
     background: rgba(99, 102, 241, 0.15);
     color: #818CF8;
-    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
-    font-size: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.pc-badge-success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22C55E;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+/* Divisória e informações */
+.pc-divider {
+    border-top: 1px solid #334155;
+    margin: 16px 0;
+}
+
+.pc-label {
+    color: #94A3B8;
+    font-size: 12px;
     letter-spacing: 0.08em;
-    white-space: nowrap;
+    text-transform: uppercase;
 }
 
-/* Botões principais em largura total (vence o 390px global do formulário) */
-.st-key-step_card div[data-testid="stFormSubmitButton"] button,
-.st-key-step_card button[kind^="primary"] {
-    width: 100% !important;
-    height: 48px;
-}
-
-/* Lista de verificação da etapa 3 */
-.check-list {
-    background: #0B1220;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 12px;
+.pc-value {
     color: #E2E8F0;
     font-size: 13px;
-    line-height: 2;
+    margin: 6px 0;
 }
 
-.check-list span {
-    color: #818CF8;
-    margin-right: 12px;
+.pc-mono {
+    color: #CBD5E1;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.st-key-pc_alterar_foto {
+    width: 328px;
+    height: 40px;
+}
+
+/* Botão com cara de campo, largura total */
+.st-key-profile_card .stButton button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #F8FAFC;
+}
+
+.st-key-profile_card .stButton button:hover {
+    background: #243247;
+    border-color: #475569;
+}
+
+/* SESSÕES PÁGINA CONTA*/
+/* O card */
+.st-key-sessions_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+    width: 368px !important;
+    min-height: 310px;
+}
+
+.sess-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sess-sub {
+    color: #94A3B8;
+    font-size: 13px;
+    margin: 4px 0 16px;
+}
+
+/* Linha do dispositivo */
+.sess-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F8FAFC;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sess-name svg {
+    color: #94A3B8;
+    flex-shrink: 0;
+}
+
+.sess-meta {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.sess-badge {
+    width: fit-content;
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22C55E;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sess-divider {
+    border-top: 1px solid #334155;
+    margin: 14px 0;
+}
+
+.sess-foot {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+/* "Encerrar" com cara de link, à direita */
+[class*="st-key-sess_link_"] {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[class*="st-key-sess_link_"] button {
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[class*="st-key-sess_link_"] button p {
+    color: #A5B4FC !important;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+[class*="st-key-sess_link_"] button:hover p {
+    color: #C7D2FE !important;
+}
+
+/* "Encerrar Outras Sessões": largura total, com borda */
+.st-key-sess_all {
+    width: 328px !important;
+    max-width: 100% !important;
+}
+
+.st-key-sess_all button {
+    width: 328px !important;
+    max-width: 100% !important;
+    min-height: 40px !important;
+    height: 40px !important;
+
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-sess_all button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+.st-key-sess_all button:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/*  DADOS PESSOAIS*/
+.st-key-dados_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+    width: 744px !important;
+    height: 349px;
+}
+
+/* Rótulos pequenos */
+.st-key-dados_card [data-testid="stWidgetLabel"] p {
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Campos escuros */
+.st-key-dados_card [data-baseweb="input"],
+.st-key-dados_card [data-baseweb="select"]>div {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+.st-key-dados_card input {
+    color: #F8FAFC;
+    font-size: 13px;
+}
+
+/* Ícone de envelope dentro do campo de e-mail */
+.st-key-dados_email input {
+    padding-left: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-10 6L2 7'/%3E%3C/svg%3E") no-repeat 12px center;
+}
+
+.st-key-dados_card button[kind^="primary"] {
+    height: 44px;
+}
+
+/* Cards security - conta */
+/* Segurança */
+.sec-icon {
+    margin-top: 12px;
+    line-height: 0;
+}
+
+.sec-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0 8px;
+}
+
+.sec-title {
+    color: #F8FAFC;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sec-desc {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.5;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+
+.sec-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22C55E;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.sec-badge-off {
+    background: rgba(148, 163, 184, 0.15);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #94A3B8;
+}
+
+.sec-divider {
+    border-top: 1px solid #334155;
+    margin: 16px 0 12px;
+}
+
+.sec-foot {
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.st-key-seguranca_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 744px !important;
+    width: 100%;
+    height: 349px;
+}
+
+.st-key-seguranca_card button {
+    width: 100% !important;
+    height: 40px;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-seguranca_card button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+.st-key-seguranca_card button:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/* Rodapé da página */
+.conta-note {
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.st-key-conta_rodape [data-testid="stColumn"]:not(:first-child),
+.st-key-conta_rodape [data-testid="column"]:not(:first-child) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-conta_rodape [data-testid="stColumn"]:first-child,
+.st-key-conta_rodape [data-testid="column"]:first-child {
+    flex: 1 1 auto !important;
+}
+
+/* Cancelar: 93px */
+.st-key-conta_cancelar,
+.st-key-conta_cancelar .stButton,
+.st-key-conta_cancelar button {
+    width: 93px !important;
+    min-width: 93px !important;
+}
+
+.st-key-conta_cancelar button {
+    width: 93px !important;
+    height: 44px !important;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-conta_cancelar button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+/* Salvar: 151px */
+.st-key-conta_salvar,
+.st-key-conta_salvar .stButton,
+.st-key-conta_salvar button {
+    width: 151px !important;
+    min-width: 151px !important;
+}
+
+.st-key-conta_salvar button {
+    height: 44px !important;
+    min-height: 44px !important;
 }
