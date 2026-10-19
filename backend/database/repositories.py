@@ -15,3 +15,21 @@ def buscar_repositorio_usuario(user_id):
         ).fetchone()
 
     return dict(repo) if repo else None
+
+def buscar_conexao_github(user_id):
+    """
+        Verifica se a conta conectada está vinculada a uma conta do github
+    """
+    
+    with get_connection() as con:
+        conta = con.execute(
+            """
+            SELECT github_id, github_login
+            FROM github_accounts
+            WHERE user_id = ?
+            LIMIT 1
+            """,
+            (user_id,)
+        ).fetchone()
+
+    return dict(conta) if conta else None

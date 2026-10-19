@@ -21,8 +21,13 @@ def parse_repo_url(url):
 
 
 def _headers(token=None):
-    headers = {"Accept": "application/vnd.github+json"}
-    token = token or os.getenv("GITHUB_TOKEN")
+    """
+        Impede que uma consulta sem token utilize silenciosamente as credenciais configuradas no servidor
+    """
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
     if token:
         headers["Authorization"] = f"Bearer {token}"
     return headers

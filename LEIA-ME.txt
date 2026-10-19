@@ -24,3 +24,25 @@ LOGIN:
 () COLOCAR O AVISO DE CONEXÃO SEGURA EMBAIXO
 () COLOCAR LIMITE DE TENTATIVAS
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Estrutura que vamos implementar
+Sugiro separar as responsabilidades desta forma:
+Arquivo	Responsabilidade
+github.py	Requisições HTTP e informações dos repositórios
+github_installation.py	Instalação da GitHub App e tokens de instalação
+repositories.py	Persistência e associação com o usuário local
+choose_repo.py	Interface de seleção e onboarding
+Para listar os repositórios, utilizaremos o endpoint:
+GET /installation/repositories
+
+
+Ele utiliza um installation access token, não o token OAuth de login, e retorna os repositórios acessíveis à instalação correspondente.
+
+Depois, na hora de iniciar a análise, o backend deverá validar novamente se o repositório selecionado pertence à instalação autorizada.
+
+Arquivo	Responsabilidade	Situação
+github_oauth.py	Autenticação OAuth com PKCE	Implementado
+github_callback.py	Validação do retorno do GitHub	Implementado
+github_accounts.py	Vinculação da identidade GitHub ao usuário local	Implementado
+github.py	Consulta de informações pela API	Precisa de adaptação
+github_installation.py	Gerenciamento das instalações autorizadas	Ainda não apresentado

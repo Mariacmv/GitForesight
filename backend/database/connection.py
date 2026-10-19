@@ -60,4 +60,17 @@ def init_db():
                 code_verifier TEXT NOT NULL,
                 expires_at INTEGER NOT NULL
             );
+            
+            CREATE TABLE IF NOT EXISTS github_installations (
+                installation_id INTEGER PRIMARY KEY,
+                user_id INTEGER NOT NULL,
+                account_id INTEGER NOT NULL,
+                account_login TEXT NOT NULL,
+                account_type TEXT NOT NULL,
+                connected_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (user_id)
+                    REFERENCES users(id)
+                    ON DELETE CASCADE
+            );
         """)
