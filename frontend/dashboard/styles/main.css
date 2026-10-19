@@ -1490,6 +1490,6 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .st-key-conta_salvar button {
+    width: 151px !important;
     height: 44px !important;
-    min-height: 44px !important;
 }

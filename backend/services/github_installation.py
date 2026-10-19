@@ -5,7 +5,6 @@ import jwt
 import requests
 import streamlit as st
 
-
 API = "https://api.github.com"
 
 
