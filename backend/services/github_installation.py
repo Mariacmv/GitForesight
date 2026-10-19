@@ -117,3 +117,50 @@ def consultar_instalacao(installation_id):
         "repository_selection": dados["repository_selection"],
         "suspended_at": dados.get("suspended_at"),
     }
+    
+def listar_instalacoes_app():
+    """
+        Lista instalações de toda a aplicação
+    """
+    app_jwt = gerar_app_jwt()
+
+    resposta = requests.get(
+        f"{API}/app/installations",
+        headers=_headers(app_jwt),
+        params={"per_page": 100},
+        timeout=15,
+    )
+
+    resposta.raise_for_status()
+
+    return [
+        {
+            "installation_id": item["id"],
+            "account_login": item["account"]["login"],
+            "account_id": item["account"]["id"],
+        }
+        for item in resposta.json()
+    ]
+
+def listar_instalacoes_usuario(user_token):
+    """
+        Lista instalações do usuário autenticado
+    """
+    resposta = requests.get(
+        f"{API}/user/installations",
+        headers=_headers(user_token),
+        params={"per_page": 100},
+        timeout=15,
+    )
+
+    resposta.raise_for_status()
+
+    return [
+        {
+            "installation_id": item["id"],
+            "account_id": item["account"]["id"],
+            "account_login": item["account"]["login"],
+            "account_type": item["account"]["type"],
+        }
+        for item in resposta.json().get("installations", [])
+    ]

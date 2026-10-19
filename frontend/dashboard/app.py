@@ -1,4 +1,4 @@
-import sys
+import sys, requests
 from pathlib import Path
 import streamlit as st 
 
@@ -28,6 +28,9 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from backend.services.github_callback import processar_callback
+from backend.services.github_installation import (
+    listar_instalacoes_usuario
+)
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -82,6 +85,25 @@ def main():
 
         auth.render()
         return
+
+    if st.session_state.get("github_user_token"):
+        if st.button("Testar instalações GitHub"):
+            try:
+                instalacoes = listar_instalacoes_usuario(
+                    st.session_state.github_user_token
+                )
+
+                for instalacao in instalacoes:
+                    st.write({
+                        "Conta": instalacao["account_login"],
+                        "Instalação": instalacao["installation_id"],
+                    })
+
+            except requests.HTTPError:
+                st.error(
+                    "Não foi possível consultar as instalações. "
+                    "Verifique a autorização do GitHub."
+                )
 
     if "cookie_pendente" in st.session_state:
         auth.gravar_cookie(st.session_state.pop("cookie_pendente"))

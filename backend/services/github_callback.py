@@ -119,12 +119,14 @@ def processar_callback():
         )
 
         usuario = buscar_usuario_github(token)
+        st.session_state.github_user_token = token #token para consultar as instalações disponíveis
 
     except Exception:
         st.error(
             "Não foi possível concluir a autenticação pelo GitHub. "
-            "Tente novamente."
         )
+        
+        st.exception(e)
         return True
 
     try:
