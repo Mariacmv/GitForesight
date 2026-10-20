@@ -101,8 +101,6 @@ def render_sessoes(sessoes, ao_encerrar, ao_encerrar_outras):
         )
 
 
-# ---------- ações da página ----------
-
 def _cancelar():
     # Apagar as chaves faz os campos voltarem aos valores cadastrados
     for chave in CAMPOS_DADOS:
@@ -118,8 +116,6 @@ def _gravar(dados):
 def _aviso(texto):
     return lambda: st.toast(texto)
 
-
-# ---------- página ----------
 
 def render():
     render_auth_topbar(mostrar_usuario=True)

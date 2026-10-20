@@ -1073,7 +1073,8 @@ div[data-testid="stFormSubmitButton"] button {
     font-family: 'Inter', sans-serif;
     max-width: 100%;
     width: 368px !important;
-    min-height: 310px;
+    min-height: 280px;
+    /* alterar as dimensões */
 }
 
 .pc-title {
@@ -1324,8 +1325,9 @@ div[data-testid="stFormSubmitButton"] button {
     padding: 24px;
     font-family: 'Inter', sans-serif;
     max-width: 100%;
-    width: 744px !important;
+    width: 800px !important;
     height: 349px;
+    /* alterar as dimensões pra ficar mais bonito */
 }
 
 /* Rótulos pequenos */
