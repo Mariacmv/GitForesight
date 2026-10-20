@@ -7,6 +7,7 @@ from components.dados_card import render_dados_pessoais, salvar_dados_pessoais
 from components.security_card import render_seguranca
 from components.sidebar import render_sidebar
 from components.topbar import render_auth_topbar
+from components.settings_card import render_plano_card
 
 CAMPOS_DADOS = ["dados_nome", "dados_cargo", "dados_email", "dados_idioma", "dados_fuso"]
 
@@ -150,6 +151,9 @@ def render():
             papel="Administrador",
             organizacao="Empresa • Engenharia",
             repositorio="empresa/backend",
+        )
+        render_plano_card(
+            ao_gerenciar=_aviso("Gerenciar plano: em construção")
         )
         render_sessoes(
             sessoes,

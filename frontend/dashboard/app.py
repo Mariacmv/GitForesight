@@ -28,9 +28,6 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from backend.services.github_callback import processar_callback
-from backend.services.github_installation import (
-    listar_instalacoes_usuario
-)
 from frontend.dashboard.views.choose_repo import processar_retorno_instalacao
 
 TELAS = {
@@ -45,7 +42,8 @@ TELAS = {
 
 if "tela_ativa" not in st.session_state:
     st.session_state.tela_ativa = "Visão Geral"
-
+if "mostrar_banner" not in st.session_state:
+    st.session_state.mostrar_banner = True
 if "autenticado" not in st.session_state:
     st.session_state.autenticado = False
 if "auth_view" not in st.session_state:
@@ -84,6 +82,15 @@ def main():
     if not st.session_state.get("autenticado", False):
         if auth.restaurar_sessao():
             direcionar_usuario(st.session_state.user_id)
+            return
+
+        # O botão "Entrar" do banner chega aqui como ?entrar=1
+        if st.query_params.get("entrar") == "1":
+            st.session_state.mostrar_banner = False
+            del st.query_params["entrar"]
+
+        if st.session_state.mostrar_banner:
+            banner.render(None, None, publico=True)  # ainda não há analysis/risk
             return
 
         auth.render()
