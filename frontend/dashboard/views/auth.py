@@ -379,6 +379,23 @@ def direcionar_usuario(user_id):
         st.session_state.pagina = "overview"
 
     st.rerun()
+    
+def logout():
+    # Limpa os dados da integração GitHub
+    st.session_state.pop("gh_repos", None)
+    st.session_state.pop("gh_detalhes", None)
+    st.session_state.pop("conta_instalacao_sel", None)
+    st.session_state.pop("instalacao_verificada", None)
+    st.session_state.pop("aguardando_instalacao", None)
+    st.session_state.pop("github_user_token", None)
+
+    # Limpa a autenticação local
+    st.session_state["autenticado"] = False
+    st.session_state.pop("user_id", None)
+    st.session_state.pop("metodo_login", None)
+
+    st.session_state["pagina"] = "auth"
+    st.rerun()
 
 def render():
     if restaurar_sessao():

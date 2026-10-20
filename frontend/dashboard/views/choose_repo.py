@@ -12,15 +12,10 @@ from backend.database.repositories import (
 from backend.services.github_installation import (
     listar_instalacoes_usuario,
     listar_repositorios_instalacao,
+    obter_detalhes_repositorio,
 )
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
-
-from backend.services.github_installation import (
-    listar_instalacoes_usuario,
-    listar_repositorios_instalacao,
-    obter_detalhes_repositorio,
-)
 
 ETAPAS = [
     "Escolher repositório",
@@ -60,28 +55,29 @@ def _concluir():
     st.session_state.onboarding_concluido = True
     
 
+
 def _contas():
-    """Atualiza as instalações confirmadas pelo GitHub."""
+    """Consulta as instalações do usuário autenticado."""
+
     user_id = st.session_state.get("user_id")
     user_token = st.session_state.get("github_user_token")
 
     if not user_id or not user_token:
-        return []
+        return None
 
     try:
         instalacoes = listar_instalacoes_usuario(user_token)
+
         salvar_instalacoes_github(user_id, instalacoes)
 
-        # A resposta da API é a fonte atual da autorização.
         return instalacoes
 
     except requests.RequestException:
         st.error(
-            "Não foi possível consultar suas instalações do GitHub. "
+            "Não foi possível verificar suas instalações no GitHub. "
             "Tente novamente."
         )
-        return []
-
+        return None
 
 def _repos(conta):
     """Lista os repositórios autorizados para uma instalação."""
@@ -183,32 +179,42 @@ def _linha_repo(r, selecionado, stats):
     """)
 
 
+
+
 def _seletor_conta():
+    user_token = st.session_state.get("github_user_token")
+
+    if not user_token:
+        st.warning(
+            "Entre com sua conta GitHub para acessar seus repositórios."
+        )
+        return None
+
     instalacoes = _contas()
 
-    if not st.session_state.get("github_user_token"):
-        st.warning(
-            "Para selecionar repositórios privados ou autorizados "
-            "pela GitHub App, entre com sua conta GitHub."
-        )
+    # Falha ao consultar o GitHub.
+    if instalacoes is None:
         return None
 
+    # Usuário ainda não instalou a GitHub App.
     if not instalacoes:
         st.info(
-            "Para analisar seus repositórios, primeiro autorize "
-            "o GitForesight na sua conta GitHub."
+            "Para continuar, autorize o GitForesight "
+            "a acessar seus repositórios no GitHub."
         )
-        #BOTÃO DE CONECTAR REPOSITÓRIOS
-        # st.link_button(
-        #     "Conectar meus repositórios",
-        #     st.secrets["GITHUB_INSTALL_URL"],
-        # )
+
+        st.link_button(
+            "Escolher repositórios no GitHub",
+            st.secrets["GITHUB_INSTALL_URL"],
+            type="primary",
+        )
 
         return None
 
+    # Usuário já possui uma instalação autorizada.
     indice = st.selectbox(
         "Conta ou organização",
-        range(len(instalacoes)),
+        options=range(len(instalacoes)),
         format_func=lambda i: (
             f"{instalacoes[i]['account_login']} · "
             f"{instalacoes[i]['account_type']}"
@@ -216,7 +222,16 @@ def _seletor_conta():
         key="conta_instalacao_sel",
     )
 
-    return instalacoes[indice]
+    conta = instalacoes[indice]
+
+    installation_id = conta["installation_id"]
+
+    st.link_button(
+        "Gerenciar repositórios autorizados",
+        f"https://github.com/settings/installations/{installation_id}",
+    )
+
+    return conta
 
 
 def processar_retorno_instalacao():
@@ -328,6 +343,8 @@ def _lista(conta):
 def _etapa_1():
     with st.container(key="repo_picker"):
         conta = _seletor_conta()
+        if conta is None:
+            return
         _lista(conta)
 
 

@@ -33,7 +33,6 @@ def _cards(items) -> str:
         for i, t, d in items
     )
 
-
 def _nav(publico: bool = False) -> str: 
     entrar = '<a class="gf-btn pri" href="?entrar=1" target="_self">Entrar</a>' if publico else ""
     return f"""
