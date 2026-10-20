@@ -1,5 +1,7 @@
 import streamlit as st
 from components.sidebar import _logo_base64
+from html import escape
+from textwrap import dedent
 
 def render_topbar(ctx):
 
@@ -57,35 +59,60 @@ def render_topbar(ctx):
     # Remove a indentação: o Markdown trata linhas com 4+ espaços como bloco de código
     html = " ".join(line.strip() for line in html.splitlines())
 
-    st.markdown(html, unsafe_allow_html=True)
+    st.markdown(
+        html,
+        unsafe_allow_html=True
+    )
     
-def render_auth_topbar():
+
+def render_auth_topbar(mostrar_usuario=False):
+    avatar_html = ""
+
+    if mostrar_usuario:
+        nome = str(st.session_state.get("usuario") or "Usuário")
+        avatar_url = st.session_state.get("avatar_url")
+        iniciais = "".join(p[0] for p in nome.split()[:2]).upper() or "U"
+
+        conteudo = (
+            f'<img src="{escape(avatar_url)}" alt="{escape(nome)}">'
+            if avatar_url else iniciais
+        )
+
+        avatar_html = (
+            f'<span class="auth-vsep"></span>'
+            f'<div class="auth-avatar">{conteudo}</div>'
+        )
 
     html = f"""
     <div class="auth-topbar">
         <div class="auth-brand">
             <div class="auth-brand-logo">
-                <img class="auth-brand-logo-img" src="data:image/png;base64,{_logo_base64()}">
+                <img class="auth-brand-logo-img"
+                     src="data:image/png;base64,{_logo_base64()}">
             </div>
             <div class="auth-brand-text">
-                <div class="sidebar-title">Git Foresight</div>
+                <div class="auth-brand-name">Git Foresight</div>
             </div>
         </div>
-        <a class="auth-help" href="mailto:suporte@gitforesight.com">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                 stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <path d="M12 17h.01"/>
-            </svg>
-            <span>Precisa de ajuda?</span>
-        </a>
+
+        <div class="auth-right">
+            <a class="auth-help" href="mailto:suporte@gitforesight.com">
+                Precisa de ajuda?
+            </a>
+            {avatar_html}
+        </div>
     </div>
     """
 
+    # Remove a indentação: sem isso o Markdown mostra o HTML como código
     html = " ".join(line.strip() for line in html.splitlines())
     st.markdown(html, unsafe_allow_html=True)
+
+    if mostrar_usuario:
+        if st.button("Meu perfil", key="avatar_click"):
+            st.session_state.pagina = "account"
+            st.session_state.tela_ativa = "Conta de Usuário"
+            st.rerun()
 
 
 def render_auth_footer():

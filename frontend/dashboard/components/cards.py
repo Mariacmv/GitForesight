@@ -157,7 +157,7 @@ LEVELS = {
 }
 
 
-def _html(text):
+def html_inline(text):
     """Tira a indentação para o Markdown não tratar o HTML como código."""
     return " ".join(line.strip() for line in text.splitlines() if line.strip())
 
@@ -210,7 +210,7 @@ def render_heatmap_card(risk, top=8):
             f'</div>'
         )
 
-    st.markdown(_html(f"""
+    st.markdown(html_inline(f"""
         <div class="panel-card">
             <div class="panel-title">Heatmap de Risco por Semana</div>
             <div class="panel-sub">Semanas ordenadas pelo score de risco.</div>
@@ -245,7 +245,7 @@ def render_trend_card(risk, n_hist=12, n_future=4):
 
     direcao = "subindo" if slope > 0.5 else "caindo" if slope < -0.5 else "estável"
 
-    st.markdown(_html(f"""
+    st.markdown(html_inline(f"""
         <div class="panel-card">
             <div class="panel-title"><span style="color:#818CF8;">✦</span> Tendência do Score de Risco</div>
             <div class="panel-sub">Histórico recente e projeção linear das próximas {n_future} semanas. Tendência: {direcao}.</div>
@@ -291,7 +291,7 @@ def render_alerts_card(commits, limit=4):
     if not rows:
         rows = '<div class="alert-desc">Nenhum alerta no histórico.</div>'
 
-    st.markdown(_html(f"""
+    st.markdown(html_inline(f"""
         <div class="panel-card">
             <div class="panel-title">Alertas Recentes</div>
             <div class="alerts">{rows}</div>

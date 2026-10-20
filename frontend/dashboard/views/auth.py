@@ -69,11 +69,12 @@ GITHUB = (
 def _ir_para(view):
     st.session_state.auth_view = view
 
-def _entrar(user_id, name, email):
+def _entrar(user_id, name, email, metodo_login="email"):
     st.session_state.autenticado = True
     st.session_state.user_id = user_id
     st.session_state.usuario = name
     st.session_state.email = email
+    st.session_state.metodo_login = metodo_login
     
 def botao_github():
     if "github_oauth_url" not in st.session_state:
@@ -368,18 +369,16 @@ def restaurar_sessao():
     return False
 
 def direcionar_usuario(user_id):
-    repo = buscar_repositorio_usuario(user_id)
+    metodo = st.session_state.get("metodo_login", "email")
 
-    if repo is None:
+    if metodo == "github":
         st.session_state.pagina = "choose_repo"
         st.session_state.repositorio_conectado = None
+
     else:
         st.session_state.pagina = "overview"
-        st.session_state.repositorio_conectado = repo
-        
-    # Dá um trigger para o Streamlit rodar o arquivo principal novamente 
-    # e aplicar a mudança de página
-    st.rerun() 
+
+    st.rerun()
 
 def render():
     if restaurar_sessao():

@@ -24,3 +24,96 @@ LOGIN:
 () COLOCAR O AVISO DE CONEXÃO SEGURA EMBAIXO
 () COLOCAR LIMITE DE TENTATIVAS
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Depois, na hora de iniciar a análise, o backend deverá validar novamente se o repositório selecionado pertence à instalação autorizada.
+
+Arquivo	Responsabilidade	Situação
+github_oauth.py	Autenticação OAuth com PKCE	Implementado
+github_callback.py	Validação do retorno do GitHub	Implementado
+github_accounts.py	Vinculação da identidade GitHub ao usuário local	Implementado
+github.py	Consulta de informações pela API	Precisa de adaptação
+github_installation.py	Gerenciamento das instalações autorizadas	Ainda não apresentado
+
+Sim! E acho que agora chegamos ao fluxo ideal para o GitForesight.
+
+Você pode permitir que o usuário tenha um e-mail no GitForesight e utilize uma conta GitHub com outro e-mail. Não há problema nisso, porque são duas identidades com finalidades diferentes.
+
+Eu estruturaria assim:
+Fluxo 1 — Entrar com GitHub
+O usuário clica em Continuar com GitHub.
+
+Se já tiver autorizado a instalação da GitHub App, o GitForesight identifica os repositórios disponíveis e o direciona automaticamente para a choose_repo.py.
+
+Se ainda não tiver autorizado nenhum repositório, o GitForesight apresenta a etapa de instalação da App no GitHub.
+
+Não precisamos apresentar outro botão de conexão desnecessariamente.
+Fluxo 2 — Entrar com e-mail e senha
+Imagine este exemplo:
+- Conta GitForesight: maria@gmail.com
+- Conta GitHub: mariacmv@outlook.com
+O usuário entra no GitForesight utilizando o Gmail.
+
+Como ainda não conectou uma conta GitHub, encontra a opção Conectar repositórios do GitHub.
+
+Ao clicar, autentica-se no GitHub e autoriza os repositórios desejados.
+
+O GitForesight registra essa associação:
+Usuário GitForesight
+        │
+        ├── ID: 15
+        ├── E-mail: maria@gmail.com
+        │
+        └── Conta GitHub vinculada
+                ├── GitHub ID: 123456
+                ├── Login: Mariacmv
+                └── Instalação autorizada
+
+
+O e-mail do GitHub não precisa coincidir com o e-mail cadastrado no GitForesight. Utilizaremos o identificador estável (github_id) para reconhecer a conta GitHub.
+O comportamento da choose_repo.py
+Independentemente de como o usuário entrou, o resultado será o mesmo:
+Repositórios conectados
+
+Conta GitHub: Mariacmv
+
+Conectado
+
+
+Ethical-Hacking-Studies
+
+
+Gerenciar permissões no GitHub
+
+A única diferença estará na primeira conexão.
+
+Minha recomendação: manter uma única choose_repo.py e fazer a verificação de conexão antes de renderizar a lista. Se o usuário já tiver uma instalação validada, mostramos os repositórios diretamente. Caso contrário, mostramos a opção de conexão.
+
+Assim você mantém a experiência que queria para quem entra com GitHub, sem prejudicar quem prefere cadastrar uma conta com e-mail e senha.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Kkkkk sim! Inclusive, acho importante deixar isso explícito na própria tela de autenticação do GitForesight, para que o usuário saiba qual experiência está escolhendo.
+
+Só faria uma distinção: não é o login com GitHub que garante a segurança, mas a verificação das permissões do usuário e da GitHub App antes de permitir uma análise.
+
+Para o MVP, podemos estabelecer que somente o fluxo com GitHub oferece acesso direto ao analisador.
+
+Minha sugestão visual seria:
+Como deseja acessar o GitForesight?
+Continuar com GitHub
+
+Análise
+
+Conecte seus repositórios autorizados para identificar riscos técnicos e organizacionais.
+Continuar com e-mail
+
+Consulta
+
+Acesse seu ambiente para visualizar relatórios, indicadores e análises compartilhadas com você.
+O acesso aos repositórios depende das permissões concedidas no GitHub.
+Um detalhe que eu acrescentaria
+O usuário cadastrado com e-mail não precisa ficar permanentemente limitado à consulta. Futuramente, ele poderá vincular uma conta GitHub e habilitar o analisador.
+
+Isso evita que a escolha inicial se torne uma restrição definitiva.
+
+Também precisamos garantir que essa separação seja aplicada no backend, não apenas escondendo o botão de análise na interface.
+
+Eu incluiria essa explicação antes do cadastro/login, aproveitando a tela de autenticação que você já desenvolveu. É uma mudança pequena, mas esclarece a proposta do GitForesight desde o primeiro acesso.
