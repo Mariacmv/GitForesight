@@ -31,6 +31,7 @@ from backend.services.github_callback import processar_callback
 from backend.services.github_installation import (
     listar_instalacoes_usuario
 )
+from views.choose_repo import processar_retorno_instalacao
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -55,7 +56,7 @@ if "auth_view" not in st.session_state:
 def main():
     load_css()
     init_db()
-    
+    processar_retorno_instalacao()
     # Processa o retorno da autorização do GitHub
     callback_processado = processar_callback()
 
@@ -70,9 +71,12 @@ def main():
             usuario_github["id"],
             usuario_github["name"],
             usuario_github["email"]
+            
         )
 
-        direcionar_usuario(usuario_github["id"])
+        st.session_state["pagina"] = "choose_repo"
+        st.session_state["passo"] = 1
+        st.rerun()
         st.rerun()
 
     # Se houve erro ou cancelamento, interrompe esta execução

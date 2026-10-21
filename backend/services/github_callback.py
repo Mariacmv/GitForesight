@@ -47,40 +47,32 @@ def iniciar_oauth():
                 agora + 600
             )
         )
+    print("OAuth iniciado:", hash_state(state)[:12])
 
     return github_login_url(state, challenge)
 
 
 def consumir_tentativa(state):
     agora = int(time.time())
+    state_hash = hash_state(state)
 
     with get_connection() as con:
-        # Impede que duas requisições consumam a mesma tentativa
-        con.execute("BEGIN IMMEDIATE")
-
         registro = con.execute(
             """
-            SELECT code_verifier, expires_at
-            FROM oauth_attempts
+            DELETE FROM oauth_attempts
             WHERE state_hash = ?
+            RETURNING code_verifier, expires_at
             """,
-            (hash_state(state),)
+            (state_hash,)
         ).fetchone()
 
         if registro is None:
             return None
 
-        # Remove a tentativa mesmo que esteja expirada
-        con.execute(
-            "DELETE FROM oauth_attempts WHERE state_hash = ?",
-            (hash_state(state),)
-        )
-
         if registro["expires_at"] <= agora:
             return None
 
         return registro["code_verifier"]
-
 
 def processar_callback():
     params = st.query_params
@@ -103,6 +95,8 @@ def processar_callback():
     if not code or not state:
         st.error("Retorno de autenticação incompleto.")
         return True
+
+    print("OAuth recebido:", hash_state(state)[:12])
 
     verifier = consumir_tentativa(state)
 
@@ -132,11 +126,11 @@ def processar_callback():
     try:
         usuario_local = autenticar_usuario_github(usuario)
 
-    except Exception:
+    except Exception as e:
         st.error(
-            "O GitHub autorizou o acesso, mas não foi possível "
-            "criar ou recuperar sua conta no GitForesight."
+            "Não foi possível concluir a autenticação pelo GitHub."
         )
+        st.exception(e)
         return True
 
     # Entrega o usuário autenticado ao app.py

@@ -33,3 +33,34 @@ def buscar_conexao_github(user_id):
         ).fetchone()
 
     return dict(conta) if conta else None
+
+def salvar_instalacoes_github(user_id, instalacoes):
+    with get_connection() as con:
+        for instalacao in instalacoes:
+            con.execute(
+                """
+                INSERT INTO github_installations (
+                    installation_id,
+                    user_id,
+                    account_id,
+                    account_login,
+                    account_type
+                )
+                VALUES (?, ?, ?, ?, ?)
+
+                ON CONFLICT(installation_id)
+                DO UPDATE SET
+                    account_id = excluded.account_id,
+                    account_login = excluded.account_login,
+                    account_type = excluded.account_type
+
+                WHERE github_installations.user_id = excluded.user_id
+                """,
+                (
+                    instalacao["installation_id"],
+                    user_id,
+                    instalacao["account_id"],
+                    instalacao["account_login"],
+                    instalacao["account_type"],
+                ),
+            )

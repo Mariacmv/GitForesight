@@ -1,14 +1,18 @@
-import os
+import os, json
 from datetime import datetime, timezone
+from urllib.parse import urlparse
 from html import escape
 from views.auth import restaurar_sessao
 
 import requests
 import streamlit as st
+import streamlit.components.v1 as components
 
 from backend.app.github import fetch_repo_stats, list_accounts, list_repos, fetch_many_stats
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
+from backend.database.repositories import salvar_instalacoes_github
+from backend.services.github_installation import listar_instalacoes_usuario
 
 ETAPAS = [
     "Escolher repositório",
@@ -48,12 +52,49 @@ def _selecionar(full_name):
 def _concluir():
     st.session_state.onboarding_concluido = True
 
+
 def _contas():
-    if not _token():
+    user_id = st.session_state.get("user_id")
+    user_token = st.session_state.get("github_user_token")
+
+    if not user_id:
+        st.error("DEBUG: user_id não encontrado.")
         return None
-    if "gh_contas" not in st.session_state:
-        st.session_state.gh_contas = list_accounts(_token())
-    return st.session_state.gh_contas
+
+    if not user_token:
+        st.error("DEBUG: github_user_token não encontrado.")
+        return None
+
+    try:
+        instalacoes = listar_instalacoes_usuario(user_token)
+
+        st.write(
+            "DEBUG — Instalações encontradas:",
+            len(instalacoes)
+        )
+
+        salvar_instalacoes_github(user_id, instalacoes)
+
+        return instalacoes
+
+    except requests.HTTPError as e:
+        st.error(
+            f"GitHub API: HTTP {e.response.status_code}"
+        )
+
+        st.write(
+            "Resposta:",
+            e.response.text[:500]
+        )
+        return None
+
+    except Exception as e:
+        st.error(
+            f"Erro ao consultar instalações: "
+            f"{type(e).__name__}: {e}"
+        )
+        return None
+
 
 def _repos(conta):
     cache = st.session_state.setdefault("gh_repos", {})
@@ -143,25 +184,65 @@ def _linha_repo(r, selecionado, stats):
         </div>
     """)
 
-def _seletor_conta():
-    contas = _contas()
+def _redirecionar_instalacao():
+    url = st.secrets["GITHUB_INSTALL_URL"].strip()
+    parsed = urlparse(url)
 
-    if contas is None:
-        # Sem GitHub conectado: só repositórios públicos de uma conta digitada
-        login = st.text_input(
-            "Conta ou organização",
-            placeholder="Digite o usuário ou a organização (repositórios públicos)",
-            key="conta_texto",
-        ).strip()
-        return {"login": login, "type": "Usuário"} if login else None
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "github.com"
+        or not parsed.path.startswith("/apps/")
+    ):
+        st.error("URL de instalação da GitHub App inválida.")
+        return
 
-    i = st.selectbox(
-        "Conta ou organização",
-        range(len(contas)),
-        format_func=lambda i: f"{contas[i]['login']}  ·  {contas[i]['type']}",
-        key="conta_sel",
+    st.info(
+        "Redirecionando ao GitHub... "
+        "Na próxima tela, escolha todos os repositórios "
+        "ou apenas aqueles que deseja analisar."
     )
-    return contas[i]
+
+    st.markdown(
+        f"""
+        <meta http-equiv="refresh" content="0;url={url}">
+        """,
+        unsafe_allow_html=True,
+    )
+
+def _seletor_conta():
+    st.write("DEBUG — Página:", st.session_state.get("pagina"))
+    st.write("DEBUG — Autenticado:", st.session_state.get("autenticado"))
+    st.write(
+        "DEBUG — Token GitHub disponível:",
+        bool(st.session_state.get("github_user_token"))
+    )
+    user_token = st.session_state.get("github_user_token")
+
+    if not user_token:
+        st.error("Token GitHub não encontrado na sessão.")
+        return None
+
+    instalacoes = _contas()
+
+    if instalacoes is None:
+        st.error("Não foi possível verificar as instalações.")
+        return None
+
+    if not instalacoes:
+        _redirecionar_instalacao()
+        return None
+
+    indice = st.selectbox(
+        "Conta ou organização",
+        options=range(len(instalacoes)),
+        format_func=lambda i: (
+            f"{instalacoes[i]['account_login']} · "
+            f"{instalacoes[i]['account_type']}"
+        ),
+        key="conta_instalacao_sel",
+    )
+
+    return instalacoes[indice]
 
 def _lista(conta):
     busca = st.text_input(
@@ -307,6 +388,60 @@ def _etapa_3():
 
     st.button("Analisar outro repositório", key="reiniciar",
               on_click=_ir_passo, args=(1,))
+
+def processar_retorno_instalacao():
+    params = st.query_params
+
+    installation_id = params.get("installation_id")
+    setup_action = params.get("setup_action")
+
+    # Não é um retorno de instalação.
+    if not installation_id or setup_action not in ("install", "update"):
+        return False
+
+    # Verifica se o ID recebido possui formato válido.
+    try:
+        installation_id = int(installation_id)
+    except (ValueError, TypeError):
+        st.error("Identificador de instalação inválido.")
+        st.query_params.clear()
+        return True
+
+    # Limpa informações antigas dos repositórios.
+    for chave in (
+        "gh_repos",
+        "gh_detalhes",
+        "conta_instalacao_sel",
+        "instalacao_verificada",
+        "aguardando_instalacao",
+    ):
+        st.session_state.pop(chave, None)
+
+    # Registra que estamos retornando de uma instalação.
+    st.session_state["retorno_instalacao_pendente"] = True
+
+    # Guarda apenas para referência temporária.
+    # Ainda não consideramos essa instalação autorizada.
+    st.session_state["installation_id_pendente"] = installation_id
+
+    # Remove os parâmetros para evitar processar o retorno novamente.
+    st.query_params.clear()
+
+    # Se a sessão autenticada ainda existir, volta ao choose_repo.
+    if (
+        st.session_state.get("autenticado", False)
+        and st.session_state.get("user_id") is not None
+        and st.session_state.get("github_user_token")
+    ):
+        st.session_state.pop("retorno_instalacao_pendente", None)
+        st.session_state["pagina"] = "choose_repo"
+        st.session_state["passo"] = 1
+
+        st.rerun()
+
+    # A sessão foi perdida durante o redirecionamento externo.
+    # O app.py ficará responsável por recuperar a autenticação.
+    return True
 
 def render():
     if restaurar_sessao():
