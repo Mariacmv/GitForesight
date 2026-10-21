@@ -121,7 +121,7 @@ def processar_callback():
         usuario = buscar_usuario_github(token)
         st.session_state.github_user_token = token #token para consultar as instalações disponíveis
 
-    except Exception as e:
+    except Exception:
         st.error(
             "Não foi possível concluir a autenticação pelo GitHub. "
         )
@@ -137,7 +137,6 @@ def processar_callback():
             "O GitHub autorizou o acesso, mas não foi possível "
             "criar ou recuperar sua conta no GitForesight."
         )
-        st.exception(e)
         return True
 
     # Entrega o usuário autenticado ao app.py

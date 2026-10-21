@@ -69,12 +69,11 @@ GITHUB = (
 def _ir_para(view):
     st.session_state.auth_view = view
 
-def _entrar(user_id, name, email, metodo_login="email"):
+def _entrar(user_id, name, email):
     st.session_state.autenticado = True
     st.session_state.user_id = user_id
     st.session_state.usuario = name
     st.session_state.email = email
-    st.session_state.metodo_login = metodo_login
     
 def botao_github():
     if "github_oauth_url" not in st.session_state:
@@ -369,33 +368,18 @@ def restaurar_sessao():
     return False
 
 def direcionar_usuario(user_id):
-    metodo = st.session_state.get("metodo_login", "email")
+    repo = buscar_repositorio_usuario(user_id)
 
-    if metodo == "github":
+    if repo is None:
         st.session_state.pagina = "choose_repo"
         st.session_state.repositorio_conectado = None
-
     else:
         st.session_state.pagina = "overview"
-
-    st.rerun()
-    
-def logout():
-    # Limpa os dados da integração GitHub
-    st.session_state.pop("gh_repos", None)
-    st.session_state.pop("gh_detalhes", None)
-    st.session_state.pop("conta_instalacao_sel", None)
-    st.session_state.pop("instalacao_verificada", None)
-    st.session_state.pop("aguardando_instalacao", None)
-    st.session_state.pop("github_user_token", None)
-
-    # Limpa a autenticação local
-    st.session_state["autenticado"] = False
-    st.session_state.pop("user_id", None)
-    st.session_state.pop("metodo_login", None)
-
-    st.session_state["pagina"] = "auth"
-    st.rerun()
+        st.session_state.repositorio_conectado = repo
+        
+    # Dá um trigger para o Streamlit rodar o arquivo principal novamente 
+    # e aplicar a mudança de página
+    st.rerun() 
 
 def render():
     if restaurar_sessao():

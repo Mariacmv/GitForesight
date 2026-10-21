@@ -28,7 +28,9 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from backend.services.github_callback import processar_callback
-from frontend.dashboard.views.choose_repo import processar_retorno_instalacao
+from backend.services.github_installation import (
+    listar_instalacoes_usuario
+)
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -49,11 +51,10 @@ if "autenticado" not in st.session_state:
 if "auth_view" not in st.session_state:
     st.session_state.auth_view = "cadastro"
 
+
 def main():
     load_css()
     init_db()
-    
-    processar_retorno_instalacao()
     
     # Processa o retorno da autorização do GitHub
     callback_processado = processar_callback()
@@ -68,11 +69,10 @@ def main():
         auth._entrar(
             usuario_github["id"],
             usuario_github["name"],
-            usuario_github["email"],
-            metodo_login="github",
+            usuario_github["email"]
         )
 
-        st.session_state.pagina = "choose_repo"
+        direcionar_usuario(usuario_github["id"])
         st.rerun()
 
     # Se houve erro ou cancelamento, interrompe esta execução
@@ -95,25 +95,25 @@ def main():
 
         auth.render()
         return
-    #BOTÃO DE TESTAR INSTALAÇÕES
-    # if st.session_state.get("github_user_token"):
-    #     if st.button("Testar instalações GitHub"):
-    #         try:
-    #             instalacoes = listar_instalacoes_usuario(
-    #                 st.session_state.github_user_token
-    #             )
 
-    #             for instalacao in instalacoes:
-    #                 st.write({
-    #                     "Conta": instalacao["account_login"],
-    #                     "Instalação": instalacao["installation_id"],
-    #                 })
+    if st.session_state.get("github_user_token"):
+        if st.button("Testar instalações GitHub"):
+            try:
+                instalacoes = listar_instalacoes_usuario(
+                    st.session_state.github_user_token
+                )
 
-    #         except requests.HTTPError:
-    #             st.error(
-    #                 "Não foi possível consultar as instalações. "
-    #                 "Verifique a autorização do GitHub."
-    #             )
+                for instalacao in instalacoes:
+                    st.write({
+                        "Conta": instalacao["account_login"],
+                        "Instalação": instalacao["installation_id"],
+                    })
+
+            except requests.HTTPError:
+                st.error(
+                    "Não foi possível consultar as instalações. "
+                    "Verifique a autorização do GitHub."
+                )
 
     if "cookie_pendente" in st.session_state:
         auth.gravar_cookie(st.session_state.pop("cookie_pendente"))

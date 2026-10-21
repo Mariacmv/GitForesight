@@ -18,10 +18,11 @@ def gerar_pkce():
 
     return verifier, challenge
 
+
 def github_login_url(state, code_challenge):
     parametros = {
-        "client_id": st.secrets["GITHUB_CLIENT_ID"].strip(),
-        "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"].strip(),
+        "client_id": st.secrets["GITHUB_CLIENT_ID"],
+        "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"],
         "state": state,
         "code_challenge": code_challenge,
         "code_challenge_method": "S256",

@@ -5,15 +5,8 @@ from views.auth import restaurar_sessao
 
 import requests
 import streamlit as st
-from backend.database.repositories import (
-    salvar_instalacoes_github,
-    listar_instalacoes_github_usuario,
-)
-from backend.services.github_installation import (
-    listar_instalacoes_usuario,
-    listar_repositorios_instalacao,
-    obter_detalhes_repositorio,
-)
+
+from backend.app.github import fetch_repo_stats, list_accounts, list_repos, fetch_many_stats
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
 
@@ -26,10 +19,11 @@ ETAPAS = [
 STATS_LIMIT = 30
 LISTA_ALTURA = 440 #rolagem de repositórios
 
-def _num(n):
-    if n is None:
-        return "—"
+def _token():
+    return st.session_state.get("github_token") or os.getenv("GITHUB_TOKEN")
 
+
+def _num(n):
     return f"{n:,}".replace(",", ".")
 
 
@@ -53,63 +47,34 @@ def _selecionar(full_name):
 
 def _concluir():
     st.session_state.onboarding_concluido = True
-    
-
 
 def _contas():
-    """Consulta as instalações do usuário autenticado."""
-
-    user_id = st.session_state.get("user_id")
-    user_token = st.session_state.get("github_user_token")
-
-    if not user_id or not user_token:
+    if not _token():
         return None
-
-    try:
-        instalacoes = listar_instalacoes_usuario(user_token)
-
-        salvar_instalacoes_github(user_id, instalacoes)
-
-        return instalacoes
-
-    except requests.RequestException:
-        st.error(
-            "Não foi possível verificar suas instalações no GitHub. "
-            "Tente novamente."
-        )
-        return None
+    if "gh_contas" not in st.session_state:
+        st.session_state.gh_contas = list_accounts(_token())
+    return st.session_state.gh_contas
 
 def _repos(conta):
-    """Lista os repositórios autorizados para uma instalação."""
-    installation_id = conta["installation_id"]
-
     cache = st.session_state.setdefault("gh_repos", {})
-
-    if installation_id not in cache:
-        cache[installation_id] = listar_repositorios_instalacao(
-            installation_id
+    if conta["login"] not in cache:
+        cache[conta["login"]] = list_repos(
+            conta["login"], conta["type"] == "Usuário", _token()
         )
+    return cache[conta["login"]]
 
-    return cache[installation_id]
-
+def _detalhes(full_name):
+    cache = st.session_state.setdefault("gh_detalhes", {})
+    if full_name not in cache:
+        cache[full_name] = fetch_repo_stats(full_name, _token())
+    return cache[full_name]
 
 def _stats(repos):
-    """A listagem do App ainda não inclui métricas de commits."""
-    return {}
-
-
-def _detalhes(full_name, conta):
-    cache = st.session_state.setdefault("gh_detalhes", {})
-    installation_id = conta["installation_id"]
-    chave = f"{installation_id}:{full_name}"
-
-    if chave not in cache:
-        cache[chave] = obter_detalhes_repositorio(
-            installation_id,
-            full_name,
-        )
-
-    return cache[chave]
+    cache = st.session_state.setdefault("gh_stats", {})
+    faltam = [r["full_name"] for r in repos[:STATS_LIMIT] if r["full_name"] not in cache]
+    if faltam:
+        cache.update(fetch_many_stats(faltam, _token()))
+    return cache
 
 def _stepper(passo):
     itens = ""
@@ -178,84 +143,25 @@ def _linha_repo(r, selecionado, stats):
         </div>
     """)
 
-
-
-
 def _seletor_conta():
-    user_token = st.session_state.get("github_user_token")
+    contas = _contas()
 
-    if not user_token:
-        st.warning(
-            "Entre com sua conta GitHub para acessar seus repositórios."
-        )
-        return None
+    if contas is None:
+        # Sem GitHub conectado: só repositórios públicos de uma conta digitada
+        login = st.text_input(
+            "Conta ou organização",
+            placeholder="Digite o usuário ou a organização (repositórios públicos)",
+            key="conta_texto",
+        ).strip()
+        return {"login": login, "type": "Usuário"} if login else None
 
-    instalacoes = _contas()
-
-    # Falha ao consultar o GitHub.
-    if instalacoes is None:
-        return None
-
-    # Usuário ainda não instalou a GitHub App.
-    if not instalacoes:
-        st.info(
-            "Para continuar, autorize o GitForesight "
-            "a acessar seus repositórios no GitHub."
-        )
-
-        st.link_button(
-            "Escolher repositórios no GitHub",
-            st.secrets["GITHUB_INSTALL_URL"],
-            type="primary",
-        )
-
-        return None
-
-    # Usuário já possui uma instalação autorizada.
-    indice = st.selectbox(
+    i = st.selectbox(
         "Conta ou organização",
-        options=range(len(instalacoes)),
-        format_func=lambda i: (
-            f"{instalacoes[i]['account_login']} · "
-            f"{instalacoes[i]['account_type']}"
-        ),
-        key="conta_instalacao_sel",
+        range(len(contas)),
+        format_func=lambda i: f"{contas[i]['login']}  ·  {contas[i]['type']}",
+        key="conta_sel",
     )
-
-    conta = instalacoes[indice]
-
-    installation_id = conta["installation_id"]
-
-    st.link_button(
-        "Gerenciar repositórios autorizados",
-        f"https://github.com/settings/installations/{installation_id}",
-    )
-
-    return conta
-
-
-def processar_retorno_instalacao():
-    params = st.query_params
-
-    installation_id = params.get("installation_id")
-    setup_action = params.get("setup_action")
-
-    if not installation_id or setup_action not in ("install", "update"):
-        return False
-
-    # Remove os parâmetros para evitar processamento repetido.
-    st.query_params.clear()
-
-    # Invalida o cache anterior de repositórios.
-    st.session_state.pop("gh_repos", None)
-
-    # Retorna à seleção de repositórios.
-    if st.session_state.get("autenticado"):
-        st.session_state["pagina"] = "choose_repo"
-        st.session_state["passo"] = 1
-
-    st.rerun()
-
+    return contas[i]
 
 def _lista(conta):
     busca = st.text_input(
@@ -326,7 +232,7 @@ def _lista(conta):
     if continuar:
         try:
             with st.spinner("Consultando o repositório..."):
-                info = _detalhes(nome, conta)
+                info = _detalhes(nome)
         except ValueError as e:
             st.error(str(e))
             return
