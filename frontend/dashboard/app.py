@@ -67,13 +67,13 @@ def main():
 
     # 2. Processa o callback OAuth.
     callback_processado = processar_callback()
-    print("DEBUG — Callback processado:", callback_processado)
+    #print("DEBUG — Callback processado:", callback_processado)
 
     usuario_github = st.session_state.pop(
         "github_usuario_pendente",
         None
     )
-    print("DEBUG — Usuário recebido do callback:", bool(usuario_github))
+    #rint("DEBUG — Usuário recebido do callback:", bool(usuario_github))
 
     # 3. OAuth concluído: define a sessão e a página.
     if usuario_github is not None:
@@ -84,8 +84,8 @@ def main():
             usuario_github["name"],
             usuario_github["email"],
         )
-        print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-        print("DEBUG — User ID:", st.session_state.get("user_id"))
+        # print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
+        # print("DEBUG — User ID:", st.session_state.get("user_id"))
 
         # Mantém a sessão após o retorno externo do GitHub.
         st.session_state["cookie_pendente"] = (
@@ -94,19 +94,19 @@ def main():
 
         st.session_state["pagina"] = "choose_repo"
         st.session_state["passo"] = 1
-        print("DEBUG — Página definida:", st.session_state["pagina"])
+        #print("DEBUG — Página definida:", st.session_state["pagina"])
 
         st.session_state.pop("retorno_instalacao_pendente", None)
         st.session_state.pop("installation_id_pendente", None)
 
-    if callback_processado:
+    if callback_processado and usuario_github is None:
         return
 
     # 4. Restaura a sessão local, se necessário.
     if not st.session_state.get("autenticado", False):
-        print("DEBUG — Sessão não autenticada")
+        #print("DEBUG — Sessão não autenticada")
         sessao_restaurada = auth.restaurar_sessao()
-        print("DEBUG — Sessão restaurada:", sessao_restaurada)
+        #print("DEBUG — Sessão restaurada:", sessao_restaurada)
         print(
             "DEBUG — Cookie disponível:",
             bool(st.context.cookies.get("gf_remember"))
@@ -115,7 +115,7 @@ def main():
             "DEBUG — Retorno pendente:",
             st.session_state.get("retorno_instalacao_pendente")
         )
-        if not auth.restaurar_sessao():
+        if not sessao_restaurada:
             if st.session_state.get("retorno_instalacao_pendente"):
                 st.session_state["mostrar_banner"] = False
                 st.session_state["auth_view"] = "login"
@@ -167,9 +167,9 @@ def main():
         if st.session_state.get("github_user_token"):
             st.session_state["pagina"] = "choose_repo"
             st.session_state["passo"] = 1
-            print("DEBUG — Antes do roteamento")
-            print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-            print("DEBUG — Página:", st.session_state.get("pagina"))
+            # print("DEBUG — Antes do roteamento")
+            # print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
+            #print("DEBUG — Página:", st.session_state.get("pagina"))
             st.session_state.pop("retorno_instalacao_pendente", None)
             st.session_state.pop("installation_id_pendente", None)
         else:
@@ -180,24 +180,22 @@ def main():
             auth.render()
             return
 
-    # 7. Grava o cookie pendente.
-    # if "cookie_pendente" in st.session_state:
-    #     auth.gravar_cookie(
-    #         st.session_state.pop("cookie_pendente")
-    #     )
+    if "cookie_pendente" in st.session_state:
+        token_cookie = st.session_state.pop("cookie_pendente")
+        auth.gravar_cookie(token_cookie)
 
     # 8. Define a página inicial.
     if "pagina" not in st.session_state:
         direcionar_usuario(user_id)
 
     pagina = st.session_state.get("pagina")
-    print("DEBUG — Entrou no roteamento:", pagina)
+    #print("DEBUG — Entrou no roteamento:", pagina)
 
     if pagina == "choose_repo":
-        print("DEBUG — Chamando choose_repo.render()")
+        #print("DEBUG — Chamando choose_repo.render()")
         st.session_state.setdefault("passo", 1)
         choose_repo.render()
-        print("DEBUG — Retornou de choose_repo.render()")
+        #print("DEBUG — Retornou de choose_repo.render()")
         return
 
     if pagina == "account":

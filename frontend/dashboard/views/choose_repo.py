@@ -404,6 +404,7 @@ def processar_retorno_instalacao():
     try:
         installation_id = int(installation_id)
     except (ValueError, TypeError):
+        st.query_params.clear()
         st.error("Identificador de instalação inválido.")
         return True
 
@@ -418,15 +419,8 @@ def processar_retorno_instalacao():
 
     st.session_state["retorno_instalacao_pendente"] = True
     st.session_state["installation_id_pendente"] = installation_id
-
-    if (
-        st.session_state.get("autenticado")
-        and st.session_state.get("github_user_token")
-    ):
-        st.session_state["pagina"] = "choose_repo"
-        st.session_state["passo"] = 1
-        st.session_state.pop("retorno_instalacao_pendente", None)
-        st.rerun()
+    st.session_state["pagina"] = "choose_repo"
+    st.session_state["passo"] = 1
 
     return True
 
