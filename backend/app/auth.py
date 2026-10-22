@@ -120,3 +120,4 @@ def user_from_remember_token(raw):
     with get_connection() as con:
         row = con.execute("SELECT * FROM users WHERE id = ?", (user_id,)).fetchone()
     return dict(row) if row else None
+
