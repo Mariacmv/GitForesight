@@ -33,12 +33,13 @@ def github_login_url(state, code_challenge):
     )
 
 
+
 def trocar_codigo_por_token(code, code_verifier=None):
     dados = {
-        "client_id": st.secrets["GITHUB_CLIENT_ID"],
-        "client_secret": st.secrets["GITHUB_CLIENT_SECRET"],
+        "client_id": st.secrets["GITHUB_CLIENT_ID"].strip(),
+        "client_secret": st.secrets["GITHUB_CLIENT_SECRET"].strip(),
         "code": code,
-        "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"],
+        "redirect_uri": st.secrets["GITHUB_REDIRECT_URI"].strip(),
     }
 
     if code_verifier:
@@ -54,10 +55,21 @@ def trocar_codigo_por_token(code, code_verifier=None):
     resposta.raise_for_status()
     resultado = resposta.json()
 
-    if "access_token" not in resultado:
-        raise ValueError("Não foi possível obter o token do GitHub.")
+    if "error" in resultado:
+        raise ValueError(
+            f"GitHub OAuth: {resultado['error']} — "
+            f"{resultado.get('error_description', 'Sem descrição')}"
+        )
 
-    return resultado["access_token"]
+    token = resultado.get("access_token")
+
+    if not token:
+        raise ValueError(
+            "O GitHub não retornou um token de acesso."
+        )
+
+    return token
+
 
 
 def buscar_usuario_github(token):

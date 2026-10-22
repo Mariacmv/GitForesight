@@ -73,4 +73,14 @@ def init_db():
                     REFERENCES users(id)
                     ON DELETE CASCADE
             );
+            
+            CREATE TABLE IF NOT EXISTS github_oauth_tokens (
+                user_id INTEGER PRIMARY KEY,
+                encrypted_token TEXT NOT NULL,
+                updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (user_id)
+                    REFERENCES users(id)
+                    ON DELETE CASCADE
+            );
         """)

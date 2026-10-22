@@ -12,7 +12,7 @@ from backend.app.github import fetch_repo_stats, list_accounts, list_repos, fetc
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
 from backend.database.repositories import salvar_instalacoes_github
-from backend.services.github_installation import listar_instalacoes_usuario
+from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao
 
 ETAPAS = [
     "Escolher repositório",
@@ -95,14 +95,19 @@ def _contas():
         )
         return None
 
-
 def _repos(conta):
     cache = st.session_state.setdefault("gh_repos", {})
-    if conta["login"] not in cache:
-        cache[conta["login"]] = list_repos(
-            conta["login"], conta["type"] == "Usuário", _token()
+
+    installation_id = conta["installation_id"]
+
+    print("DEBUG — Installation ID:", installation_id)
+
+    if installation_id not in cache:
+        cache[installation_id] = listar_repositorios_instalacao(
+            installation_id
         )
-    return cache[conta["login"]]
+
+    return cache[installation_id]    
 
 def _detalhes(full_name):
     cache = st.session_state.setdefault("gh_detalhes", {})
@@ -390,62 +395,44 @@ def _etapa_3():
               on_click=_ir_passo, args=(1,))
 
 def processar_retorno_instalacao():
-    params = st.query_params
+    installation_id = st.query_params.get("installation_id")
+    setup_action = st.query_params.get("setup_action")
 
-    installation_id = params.get("installation_id")
-    setup_action = params.get("setup_action")
-
-    # Não é um retorno de instalação.
     if not installation_id or setup_action not in ("install", "update"):
         return False
 
-    # Verifica se o ID recebido possui formato válido.
     try:
         installation_id = int(installation_id)
     except (ValueError, TypeError):
         st.error("Identificador de instalação inválido.")
-        st.query_params.clear()
         return True
 
-    # Limpa informações antigas dos repositórios.
+    st.query_params.clear()
+
     for chave in (
         "gh_repos",
         "gh_detalhes",
         "conta_instalacao_sel",
-        "instalacao_verificada",
-        "aguardando_instalacao",
     ):
         st.session_state.pop(chave, None)
 
-    # Registra que estamos retornando de uma instalação.
     st.session_state["retorno_instalacao_pendente"] = True
-
-    # Guarda apenas para referência temporária.
-    # Ainda não consideramos essa instalação autorizada.
     st.session_state["installation_id_pendente"] = installation_id
 
-    # Remove os parâmetros para evitar processar o retorno novamente.
-    st.query_params.clear()
-
-    # Se a sessão autenticada ainda existir, volta ao choose_repo.
     if (
-        st.session_state.get("autenticado", False)
-        and st.session_state.get("user_id") is not None
+        st.session_state.get("autenticado")
         and st.session_state.get("github_user_token")
     ):
-        st.session_state.pop("retorno_instalacao_pendente", None)
         st.session_state["pagina"] = "choose_repo"
         st.session_state["passo"] = 1
-
+        st.session_state.pop("retorno_instalacao_pendente", None)
         st.rerun()
 
-    # A sessão foi perdida durante o redirecionamento externo.
-    # O app.py ficará responsável por recuperar a autenticação.
     return True
 
 def render():
-    if restaurar_sessao():
-        st.rerun()
+    # if restaurar_sessao():
+    #     st.rerun()
     render_auth_topbar(mostrar_usuario=True)
 
     st.markdown(

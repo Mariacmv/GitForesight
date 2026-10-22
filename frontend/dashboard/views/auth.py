@@ -69,11 +69,16 @@ GITHUB = (
 def _ir_para(view):
     st.session_state.auth_view = view
 
-def _entrar(user_id, name, email):
+
+def _entrar(user_id, name, email, metodo_login=None):
     st.session_state.autenticado = True
     st.session_state.user_id = user_id
     st.session_state.usuario = name
     st.session_state.email = email
+
+    if metodo_login:
+        st.session_state.metodo_login = metodo_login
+
     
 def botao_github():
     if "github_oauth_url" not in st.session_state:
@@ -104,11 +109,13 @@ def _cadastro():
     st.markdown(GITHUB,unsafe_allow_html=True)
 
     botao_github()
+    st.caption("Conecte seus repositórios para analisar riscos técnicos e organizacionais. O acesso depende das permissões concedidas no GitHub.")
 
     st.markdown(
         '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
         unsafe_allow_html=True,
     )
+    st.caption("Acesse relatórios e análises compartilhados com você.")
 
     with st.form("form_cadastro", border=False):
         nome = st.text_input("Nome completo", key='cadastro_nome', placeholder="Seu nome completo")

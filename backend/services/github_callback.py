@@ -6,6 +6,9 @@ import streamlit as st
 
 from backend.database.connection import get_connection
 from backend.database.github_accounts import autenticar_usuario_github
+from backend.services.github_token_storage import (
+    salvar_token_github,
+)
 
 from backend.services.github_oauth import (
     gerar_pkce,
@@ -115,7 +118,7 @@ def processar_callback():
         usuario = buscar_usuario_github(token)
         st.session_state.github_user_token = token #token para consultar as instalações disponíveis
 
-    except Exception:
+    except Exception as e:
         st.error(
             "Não foi possível concluir a autenticação pelo GitHub. "
         )
@@ -125,6 +128,11 @@ def processar_callback():
 
     try:
         usuario_local = autenticar_usuario_github(usuario)
+
+        salvar_token_github(
+            usuario_local["id"],
+            token,
+        )
 
     except Exception as e:
         st.error(
