@@ -52,3 +52,5 @@ def obter_token_github(user_id):
     except Exception:
         # Não utiliza credenciais que não podem ser descriptografadas.
         return None
+    
+

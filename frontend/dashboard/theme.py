@@ -1,6 +1,6 @@
 import streamlit as st
 
-from paths import STYLES_DIR
+from frontend.dashboard.paths import STYLES_DIR
 
 
 def load_css():

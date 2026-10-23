@@ -6,7 +6,7 @@ from backend.app.auth import (
     create_user, verify_user, request_password_reset, reset_password,
     issue_remember_token, user_from_remember_token,
 )
-from backend.database.repositories import buscar_repositorio_usuario
+from backend.database.repositories import buscar_repositorio_usuario, buscar_repositorio_analisado
 import streamlit.components.v1 as components
 from backend.services.github_callback import iniciar_oauth
 
@@ -375,18 +375,20 @@ def restaurar_sessao():
     return False
 
 def direcionar_usuario(user_id):
-    repo = buscar_repositorio_usuario(user_id)
+    analisado = buscar_repositorio_analisado(user_id)
 
-    if repo is None:
-        st.session_state.pagina = "choose_repo"
-        st.session_state.repositorio_conectado = None
-    else:
+    if analisado:
         st.session_state.pagina = "overview"
-        st.session_state.repositorio_conectado = repo
-        
-    # Dá um trigger para o Streamlit rodar o arquivo principal novamente 
-    # e aplicar a mudança de página
-    st.rerun() 
+        st.session_state.repositorio_conectado = analisado
+    else:
+        # Pode ter repositórios conectados, mas nenhuma análise concluída ainda
+        conectado = buscar_repositorio_usuario(user_id)
+        st.session_state.pagina = "choose_repo"
+        st.session_state.repositorio_conectado = conectado
+        if conectado:
+            st.session_state.repo_sel = conectado["name"]    # já vem selecionado na lista
+
+    st.rerun()
 
 def render():
     if restaurar_sessao():

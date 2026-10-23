@@ -841,81 +841,6 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* css progresso escolhe repo*/
-.stepper-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 24px;
-    font-family: 'Inter', sans-serif;
-}
-
-.steps-container {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.step-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.step-item:not(:last-child)::after {
-    content: "";
-    width: 48px;
-    height: 4px;
-    margin-left: 6px;
-    background: #334155;
-}
-
-.step-circle {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid #334155;
-    background: #1E293B;
-    color: #94A3B8;
-    font-weight: 600;
-}
-
-.step-text {
-    color: #94A3B8;
-    font-size: 15px;
-}
-
-.step-item.current .step-circle {
-    background: #6366F1;
-    border-color: #6366F1;
-    color: #FFFFFF;
-}
-
-.step-item.current .step-text {
-    color: #F8FAFC;
-    font-weight: 600;
-}
-
-.step-item.done .step-circle {
-    background: rgba(99, 102, 241, 0.2);
-    border-color: rgba(99, 102, 241, 0.5);
-    color: #818CF8;
-}
-
-.step-item.done .step-text {
-    color: #CBD5E1;
-}
-
-.step-counter {
-    color: #818CF8;
-    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
-    font-size: 20px;
-    letter-spacing: 0.08em;
-}
-
 .st-key-repo_picker {
     background: #1E293B;
     border: 1px solid #334155;
@@ -1558,7 +1483,8 @@ div[data-testid="stFormSubmitButton"] button {
 .st-key-plano_gerenciar_btn button {
     width: 265px;
     height: 40px;
-    background-color: #5F5CE5 !important; /* Tom exato azul/violeta da imagem */
+    background-color: #5F5CE5 !important;
+    /* Tom exato azul/violeta da imagem */
     border: none !important;
     color: #FFFFFF !important;
     font-size: 14px !important;
@@ -1571,3 +1497,551 @@ div[data-testid="stFormSubmitButton"] button {
     background-color: #4F4CD1 !important;
 }
 
+/* Primeira análise */
+/* Card da esquerda */
+.st-key-first_card {
+    background: #1E293B;
+    border: 1px solid #6366F1;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    width: 100% !important;
+}
+
+.an-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.an-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Branch */
+.an-label {
+    color: #F8FAFC;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.st-key-first_card [data-baseweb="select"]>div {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    min-height: 44px;
+}
+
+.st-key-first_card [data-baseweb="select"] * {
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 14px;
+    color: #F8FAFC;
+}
+
+.an-divider {
+    border-top: 1px solid #334155;
+    margin: 20px 0;
+}
+
+/* Botões */
+.st-key-iniciar_primeira button {
+    width: 100% !important;
+    height: 48px;
+    background: #6366F1 !important;
+    border: none !important;
+    border-radius: 8px !important;
+}
+
+.st-key-iniciar_primeira button p {
+    color: #FFFFFF !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.st-key-iniciar_primeira button:hover {
+    background: #4F52D9 !important;
+}
+
+/* "Trocar repositório" com cara de link (não aparece no design) */
+.st-key-voltar_passo1 button {
+    width: 100% !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.st-key-voltar_passo1 button p {
+    color: #94A3B8 !important;
+    font-size: 13px;
+}
+
+/* Card da direita */
+.st-key-analysis_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    width: 100% !important;
+}
+
+.an-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.an-head-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Painéis internos */
+.an-panel {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 20px;
+}
+
+.an-panel-top,
+.an-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.an-panel-title,
+.an-sub-title {
+    color: #F8FAFC;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.an-pct {
+    background: rgba(99, 102, 241, 0.15);
+    color: #A5B4FC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.an-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: #334155;
+    margin: 14px 0 8px;
+    overflow: hidden;
+}
+
+.an-bar-fill {
+    height: 100%;
+    background: #6366F1;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.an-mono {
+    color: #94A3B8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10.5px;
+}
+
+.an-sub {
+    margin: 16px 0 10px;
+}
+
+.an-tag {
+    color: #A5B4FC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+/* Lista de etapas */
+.an-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #F8FAFC;
+    font-size: 13.5px;
+    padding: 7px 0;
+}
+
+.an-mark {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    color: #94A3B8;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.an-step.current .an-mark {
+    border-color: #6366F1;
+    color: #A5B4FC;
+}
+
+.an-step.done .an-mark {
+    background: #22C55E;
+    border-color: #22C55E;
+    color: #06210F;
+    font-weight: 700;
+}
+
+/* Achados */
+.an-list>div {
+    display: flex;
+    gap: 12px;
+    color: #F8FAFC;
+    font-size: 13.5px;
+    line-height: 1.4;
+    padding: 8px 0;
+}
+
+.an-list>div>span {
+    color: #22C55E;
+}
+
+.an-empty {
+    color: #94A3B8;
+    font-size: 13px;
+    padding: 8px 0;
+}
+
+/* Primeira análise */
+/* ----- Títulos da página ----- */
+.pg-title {
+    margin: 0 0 8px;
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.pg-sub {
+    margin: 0 0 28px;
+    color: #94A3B8;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+/* ----- Stepper ----- */
+.stepper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 24px;
+    font-family: 'Inter', sans-serif;
+}
+
+.steps-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-item:not(:last-child)::after {
+    content: "";
+    width: 48px;
+    height: 1px;
+    margin-left: 6px;
+    background: #334155;
+}
+
+.step-circle {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    background: #1E293B;
+    color: #94A3B8;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.step-text {
+    color: #94A3B8;
+    font-size: 15px;
+}
+
+.step-item.current .step-circle,
+.step-item.done .step-circle {
+    background: #6366F1;
+    border-color: #6366F1;
+    color: #FFFFFF;
+}
+
+.step-item.current .step-text,
+.step-item.done .step-text {
+    color: #F8FAFC;
+    font-weight: 600;
+}
+
+.step-counter {
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+}
+
+/* ----- Selo (AGUARDANDO / PROCESSANDO / CONCLUÍDO) ----- */
+.step-badge {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+/* ----- Cartão do repositório ----- */
+.repo-card {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.repo-card-label {
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+
+.repo-card-name {
+    color: #F8FAFC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.repo-card-meta {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* ----- Cartão da esquerda ----- */
+.st-key-first_card {
+    background: #1E293B;
+    border: 1px solid #6366F1;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.an-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.an-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.an-label {
+    margin-top: 4px;
+    color: #E2E8F0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.an-divider {
+    border-top: 1px solid #334155;
+    margin: 12px 0;
+}
+
+.st-key-first_card [data-baseweb="select"]>div {
+    min-height: 44px;
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+.st-key-first_card button[kind^="primary"] {
+    width: 100% !important;
+    height: 48px;
+}
+
+/* ----- Cartão da direita ----- */
+.st-key-analysis_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.an-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.an-head-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.an-panel {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.an-panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.an-panel-title {
+    color: #F8FAFC;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.an-pct {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(99, 102, 241, 0.15);
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 11px;
+}
+
+.an-bar {
+    height: 8px;
+    margin: 12px 0 8px;
+    border-radius: 4px;
+    background: #334155;
+    overflow: hidden;
+}
+
+.an-bar-fill {
+    height: 100%;
+    background: #6366F1;
+}
+
+.an-mono {
+    color: #94A3B8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+}
+
+.an-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.an-sub-title {
+    color: #F8FAFC;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.an-tag {
+    color: #818CF8;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+
+.an-steps {
+    margin-top: 8px;
+}
+
+.an-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+    color: #94A3B8;
+    font-size: 13px;
+}
+
+.an-mark {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #334155;
+    font-size: 10px;
+}
+
+.an-step.done {
+    color: #E2E8F0;
+}
+
+.an-step.done .an-mark {
+    background: #22C55E;
+    border-color: #22C55E;
+    color: #FFFFFF;
+}
+
+.an-step.current {
+    color: #F8FAFC;
+}
+
+.an-step.current .an-mark {
+    border-color: #6366F1;
+    color: #818CF8;
+}
+
+.an-list {
+    margin-top: 12px;
+    color: #E2E8F0;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.an-list span {
+    color: #22C55E;
+    margin-right: 12px;
+}
+
+.an-empty {
+    color: #94A3B8;
+    font-size: 12px;
+}

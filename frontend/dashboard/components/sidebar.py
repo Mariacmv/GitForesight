@@ -2,7 +2,7 @@ import base64
 
 import streamlit as st
 
-from paths import ASSETS_DIR
+from frontend.dashboard.paths import ASSETS_DIR
 
 ITENS_MENU = [
     ("Visão Geral",               ":material/grid_view:"),
