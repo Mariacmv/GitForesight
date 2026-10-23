@@ -2,16 +2,16 @@ import os, json
 from datetime import datetime, timezone
 from urllib.parse import urlparse
 from html import escape
-from views.auth import restaurar_sessao
+from frontend.dashboard.views.first_analysis import render_primeira_analise
 
 import requests
 import streamlit as st
 import streamlit.components.v1 as components
 
-from backend.app.github import fetch_repo_stats, list_accounts, list_repos, fetch_many_stats
+from backend.app.github import fetch_repo_stats, fetch_many_stats
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
-from backend.database.repositories import salvar_instalacoes_github
+from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario
 from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao
 
 ETAPAS = [
@@ -25,7 +25,6 @@ LISTA_ALTURA = 440 #rolagem de repositórios
 
 def _token():
     return st.session_state.get("github_token") or os.getenv("GITHUB_TOKEN")
-
 
 def _num(n):
     return f"{n:,}".replace(",", ".")
@@ -68,10 +67,10 @@ def _contas():
     try:
         instalacoes = listar_instalacoes_usuario(user_token)
 
-        st.write(
-            "DEBUG — Instalações encontradas:",
-            len(instalacoes)
-        )
+        # st.write(
+        #     "DEBUG — Instalações encontradas:",
+        #     len(instalacoes)
+        # )
 
         salvar_instalacoes_github(user_id, instalacoes)
 
@@ -215,12 +214,12 @@ def _redirecionar_instalacao():
     )
 
 def _seletor_conta():
-    st.write("DEBUG — Página:", st.session_state.get("pagina"))
-    st.write("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-    st.write(
-        "DEBUG — Token GitHub disponível:",
-        bool(st.session_state.get("github_user_token"))
-    )
+    #st.write("DEBUG — Página:", st.session_state.get("pagina"))
+    #st.write("DEBUG — Autenticado:", st.session_state.get("autenticado"))
+    # st.write(
+    #     "DEBUG — Token GitHub disponível:",
+    #     bool(st.session_state.get("github_user_token"))
+    # )
     user_token = st.session_state.get("github_user_token")
 
     if not user_token:
@@ -315,22 +314,69 @@ def _lista(conta):
             unsafe_allow_html=True,
         )
 
-    if continuar:
+    
+    if continuar: #salvando o(s) repositório(s) escolhido(s) pelo usuário
+        user_id = st.session_state.get("user_id")
+
+        if not user_id:
+            st.error("Sua sessão expirou. Entre novamente.")
+            return
+
         try:
             with st.spinner("Consultando o repositório..."):
                 info = _detalhes(nome)
+
+                url = f"https://github.com/{nome}"
+
+                salvar_repositorio_usuario(
+                    user_id=user_id,
+                    nome=nome,
+                    url=url,
+                )
+
         except ValueError as e:
             st.error(str(e))
             return
         except requests.RequestException:
-            st.error("Não foi possível consultar o GitHub. Verifique sua conexão.")
+            st.error(
+                "Não foi possível consultar o GitHub. "
+                "Verifique sua conexão e tente novamente."
+            )
+            return
+        except Exception:
+            st.error("Não foi possível salvar o repositório selecionado.")
             return
 
+        repo_selecionado = next(
+            (repo for repo in repos if repo["full_name"] == nome),
+            None,
+        )
+
+        if repo_selecionado is None:
+            st.error("Não foi possível localizar o repositório selecionado.")
+            return
+
+        # Completa com o que a lista de repositórios já sabe
+        for chave in ("full_name", "private", "language", "default_branch"):
+            if info.get(chave) is None and repo_selecionado.get(chave) is not None:
+                info[chave] = repo_selecionado[chave]
+
+        info.setdefault("language", "—")
+        info.setdefault("commits", 0)
+        info.setdefault("contributors", 0)
+        info.setdefault("branches", [info.get("default_branch") or "main"])
+        info.setdefault("default_branch", info["branches"][0])
+        info["url"] = url
+
         st.session_state.repo_info = info
-        st.write(info)
-        st.session_state.branch = info["default_branch"]
+        st.session_state.repo_sel = nome
+        st.session_state.repo_url = url
+        st.session_state.branch = repo_selecionado["default_branch"]
         st.session_state.passo = 2
+        st.session_state.analise = "pronta"
+
         st.rerun()
+
 
 def _etapa_1():
     with st.container(key="repo_picker"):
@@ -456,12 +502,16 @@ def render():
     passo = st.session_state.passo
 
     _stepper(passo)
-    st.title("Boas-vindas ao GitForesight.")
 
     if passo == 1:
+        st.title("Boas-vindas ao GitForesight.")
+        st.caption("Qual repositório vamos analisar primeiro? "
+                   "Escolha a conta, o projeto e a branch para começar.")
         _etapa_1()
+    elif passo == 2:
+        render_primeira_analise()
     else:
         with st.container(key="step_card"):
-            {2: _etapa_2, 3: _etapa_3}[passo]()
+            _etapa_3()
 
     render_auth_footer()

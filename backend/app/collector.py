@@ -54,13 +54,14 @@ def _is_sensitive(file_path):
     )
 
 
-def collect_commits(repository_path):
+def collect_commits(repository_path, on_progress=None):
     repository = Repo(repository_path)
+    total = int(repository.git.rev_list("--count", "HEAD"))
 
     commits = []
     file_changes = []
 
-    for commit in repository.iter_commits(): #confere cada commit realizado
+    for indice, commit in enumerate(repository.iter_commits(), start=1): #confere cada commit realizado
         files_changed = []
         security_files_changed = 0
 
@@ -138,5 +139,8 @@ def collect_commits(repository_path):
             "changes": insertions + deletions,
             "email": commit.author.email,
         })
+        
+        if on_progress and (indice % 20 == 0 or indice == total):
+            on_progress(indice, total)
 
     return commits, file_changes

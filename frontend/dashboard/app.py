@@ -8,9 +8,6 @@ ROOT_DIR = Path(__file__).resolve().parents[2]
 # Adiciona a raiz do projeto aos caminhos do Python
 sys.path.insert(0, str(ROOT_DIR))
 
-# Teste de importação
-
-
 # set_page_config precisa ser a primeira chamada do Streamlit
 st.set_page_config(
     page_title="Git Foresight",
@@ -35,6 +32,7 @@ from views.choose_repo import processar_retorno_instalacao
 from backend.services.github_token_storage import (
     obter_token_github,
 )
+from backend.database.repositories import migrar_repositorios
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -56,7 +54,7 @@ if "auth_view" not in st.session_state:
     st.session_state.auth_view = "cadastro"
 
 
-
+migrar_repositorios()
 
 def main():
     load_css()
