@@ -83,7 +83,6 @@ class Snapshot:
 def snapshot_pronta():
     return Snapshot()
 
-
 class AnalysisTracker:
     """Acompanha a análise e gera Snapshots. Usado pelo pipeline e pela prévia."""
 

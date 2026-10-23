@@ -71,5 +71,6 @@ def executar_analise(url, branch, data_dir, token,
         raise AnalysisError(str(e)) from e
     except Exception as e:
         raise AnalysisError(
-            f"Não foi possível concluir a análise ({type(e).__name__})."
+            f"Não foi possível concluir a análise: "
+            f"{type(e).__name__}: {e}"
         ) from e

@@ -208,7 +208,6 @@ def render():
     estado = st.session_state.preview_estado
 
     _stepper(2)
-    st.write(sorted(st.session_state.repo_info))
     phs = desenhar_tela(info, _snapshot(estado, info, contrib, dados["achados"]),
                         branch, ao_iniciar=_iniciar)
 

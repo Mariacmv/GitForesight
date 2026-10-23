@@ -32,9 +32,6 @@ def _titulos(info, branch):
                       "Primeira análise concluída", "CONCLUÍDO"),
     }
 
-
-# ======================= camada visual =======================
-
 def desenhar_tela(info, snap, branch, ao_iniciar=None, ao_voltar=None):
     """Desenha a tela inteira e devolve os espaços (progresso, achados) que podem ser
     redesenhados ao vivo com atualizar().
@@ -116,7 +113,7 @@ def executar(info, branch, phs):
     try:
         user_id = st.session_state.get("user_id")
         resultado = run_pipeline(
-            info["url"], branch, DATA_DIR, token=obter_token_github(),
+            info["url"], branch, DATA_DIR, token=obter_token_github(user_id),
             total_commits=info["commits"],
             on_update=lambda snap: atualizar(phs, snap),
         )
@@ -128,7 +125,7 @@ def executar(info, branch, phs):
         st.session_state.analise = "pronta"
         st.rerun()
     except Exception as e:
-        st.session_state.erro_analise = f"Não foi possível concluir a análise ({type(e).__name__})."
+        st.session_state.erro_analise = f"Não foi possível concluir a análise :"f"{type(e).__name__}: {e}"
         st.session_state.analise = "pronta"
         st.rerun()
 
@@ -140,6 +137,7 @@ def executar(info, branch, phs):
 
 
 def render_primeira_analise():
+    st.caption("DEBUG — Renderizando etapa 2")
     info = st.session_state.repo_info
     rodando = st.session_state.get("analise") == "rodando"
     branch = st.session_state.get("branch") or info["default_branch"]
@@ -149,7 +147,6 @@ def render_primeira_analise():
         st.error(erro)
 
     snap = Snapshot(modo="andamento", mono=TEXTO_PREPARANDO) if rodando else snapshot_pronta()
-    st.write(sorted(st.session_state.repo_info))
     phs = desenhar_tela(info, snap, branch, ao_iniciar=_iniciar, ao_voltar=_voltar)
 
     # A análise roda depois de a tela estar desenhada, atualizando os painéis ao vivo

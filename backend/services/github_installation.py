@@ -163,3 +163,28 @@ def listar_instalacoes_usuario(user_token):
         }
         for item in resposta.json().get("installations", [])
     ]
+
+def listar_branches_instalacao(installation_id, full_name):
+    token = gerar_installation_token(installation_id)
+
+    branches = []
+    pagina = 1
+
+    while True:
+        resposta = requests.get(
+            f"{API}/repos/{full_name}/branches",
+            headers=_headers(token),
+            params={"per_page": 100, "page": pagina},
+            timeout=15,
+        )
+        resposta.raise_for_status()
+
+        lote = resposta.json()
+        branches.extend(item["name"] for item in lote)
+
+        if len(lote) < 100:
+            break
+
+        pagina += 1
+
+    return branches

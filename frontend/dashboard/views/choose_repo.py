@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from urllib.parse import urlparse
 from html import escape
 from frontend.dashboard.views.first_analysis import render_primeira_analise
+from frontend.dashboard.views.results_preview import render_resultados
 
 import requests
 import streamlit as st
@@ -12,7 +13,7 @@ from backend.app.github import fetch_repo_stats, fetch_many_stats
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
 from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario
-from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao
+from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao, listar_branches_instalacao
 
 ETAPAS = [
     "Escolher repositório",
@@ -42,15 +43,8 @@ def _tempo_relativo(iso):
     dias = minutos // 1440
     return f"há {dias} dia" if dias == 1 else f"há {dias} dias"
 
-def _ir_passo(n):
-    st.session_state.passo = n
-
 def _selecionar(full_name):
     st.session_state.repo_sel = full_name
-
-def _concluir():
-    st.session_state.onboarding_concluido = True
-
 
 def _contas():
     user_id = st.session_state.get("user_id")
@@ -99,7 +93,7 @@ def _repos(conta):
 
     installation_id = conta["installation_id"]
 
-    print("DEBUG — Installation ID:", installation_id)
+    #print("DEBUG — Installation ID:", installation_id)
 
     if installation_id not in cache:
         cache[installation_id] = listar_repositorios_instalacao(
@@ -137,28 +131,6 @@ def _stepper(passo):
         <div class="stepper-wrapper">
             <div class="steps-container">{itens}</div>
             <div class="step-counter">ETAPA {passo} DE {len(ETAPAS)}</div>
-        </div>
-    """), unsafe_allow_html=True)
-
-def _cabecalho(passo, descricao, selo):
-    st.markdown(html_inline(f"""
-        <div class="step-head">
-            <div>
-                <div class="step-title">Etapa {passo} · {ETAPAS[passo - 1]}</div>
-                <div class="step-desc">{descricao}</div>
-            </div>
-            <span class="step-badge">{selo}</span>
-        </div>
-    """), unsafe_allow_html=True)
-
-def _card_repo(info, rotulo):
-    visibilidade = "Privado" if info["private"] else "Público"
-    st.markdown(html_inline(f"""
-        <div class="repo-card">
-            <div class="repo-card-label">{rotulo}</div>
-            <div class="repo-card-name">{escape(info['full_name'])}</div>
-            <div class="repo-card-meta">{escape(info['language'])} · {visibilidade}</div>
-            <div class="repo-card-meta">{_num(info['commits'])} commits · {_num(info['contributors'])} contribuidores</div>
         </div>
     """), unsafe_allow_html=True)
 
@@ -303,7 +275,7 @@ def _lista(conta):
 
     with col_botao:
         continuar = st.button(
-            "Continuar para a primeira análise", key="continuar_analise",
+            "Continuar para a análise", key="continuar_analise",
             type="primary", icon=":material/arrow_forward:", disabled=not nome,
         )
 
@@ -364,8 +336,10 @@ def _lista(conta):
         info.setdefault("language", "—")
         info.setdefault("commits", 0)
         info.setdefault("contributors", 0)
-        info.setdefault("branches", [info.get("default_branch") or "main"])
-        info.setdefault("default_branch", info["branches"][0])
+        info["branches"] = listar_branches_instalacao(
+            conta["installation_id"],
+            nome,
+        )
         info["url"] = url
 
         st.session_state.repo_info = info
@@ -384,61 +358,6 @@ def _etapa_1():
         if conta is None:
             return
         _lista(conta)
-
-
-def _etapa_2():
-    info = st.session_state.repo_info
-
-    _cabecalho(2, "Escolha a branch e inicie a análise do histórico.", "PRIMEIRA ANÁLISE")
-    _card_repo(info, "REPOSITÓRIO SELECIONADO")
-
-    branch = st.selectbox(
-        "Branch para análise",
-        info["branches"],
-        index=info["branches"].index(st.session_state.get("branch", info["default_branch"])),
-        format_func=lambda b: f"{b}  (padrão)" if b == info["default_branch"] else b,
-        key=f"branch_{info['full_name']}",
-    )
-    st.caption("O histórico desta branch será a base da análise proposta.")
-
-    # TODO: clonar o repositório e rodar coleta -> dataset -> analyzer -> risk
-    # (com st.status mostrando o progresso) antes de avançar.
-    if st.button("Iniciar análise", key="iniciar_analise", type="primary",
-                 icon=":material/arrow_forward:"):
-        st.session_state.branch = branch
-        st.session_state.passo = 3
-        st.rerun()
-
-    st.button("Trocar repositório", key="voltar_passo1",
-              on_click=_ir_passo, args=(1,))
-
-def _etapa_3():
-    info = st.session_state.repo_info
-
-    _cabecalho(3, "Veja uma prévia do que a análise entrega e siga para o painel.",
-               "PRÉVIA ILUSTRATIVA")
-    _card_repo(info, "REPOSITÓRIO ANALISADO")
-
-    st.markdown(html_inline("""
-        <div class="check-list">
-            <div><span>✓</span>Histórico de commits e churn disponíveis para o plano Explorar</div>
-            <div><span>✓</span>Hotspots e concentração de conhecimento visíveis no dashboard</div>
-            <div><span>✓</span>Leitura dos achados no dashboard para entender o contexto do projeto</div>
-        </div>
-    """), unsafe_allow_html=True)
-
-    st.caption("Prévia ilustrativa · Os achados detalhados serão exibidos no painel.")
-
-    col_a, col_b = st.columns(2)
-    with col_a:
-        if st.button("Conhecer planos e preços", key="ver_planos", type="primary",
-                     icon=":material/arrow_forward:"):
-            st.toast("A página de planos ainda está em construção.")
-    with col_b:
-        st.button("Ir para visão geral do plano", key="ir_painel", on_click=_concluir)
-
-    st.button("Analisar outro repositório", key="reiniciar",
-              on_click=_ir_passo, args=(1,))
 
 def processar_retorno_instalacao():
     installation_id = st.query_params.get("installation_id")
@@ -499,19 +418,27 @@ def render():
     if st.session_state.passo > 1 and "repo_info" not in st.session_state:
         st.session_state.passo = 1
 
+
     passo = st.session_state.passo
 
     _stepper(passo)
 
-    if passo == 1:
-        st.title("Boas-vindas ao GitForesight.")
-        st.caption("Qual repositório vamos analisar primeiro? "
-                   "Escolha a conta, o projeto e a branch para começar.")
-        _etapa_1()
-    elif passo == 2:
-        render_primeira_analise()
-    else:
-        with st.container(key="step_card"):
-            _etapa_3()
+    espaco_etapa = st.empty()
+
+    with espaco_etapa.container():
+
+        if passo == 1:
+            st.title("Boas-vindas ao GitForesight.")
+            st.caption(
+                "Qual repositório vamos analisar primeiro? "
+                "Escolha a conta, o projeto e a branch para começar."
+            )
+            _etapa_1()
+
+        elif passo == 2:
+            render_primeira_analise()
+
+        elif passo == 3:
+            render_resultados()
 
     render_auth_footer()

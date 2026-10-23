@@ -2,9 +2,13 @@
 Pipeline da primeira análise: clona o repositório e roda
 coleta -> dataset -> análise semanal -> risco -> hotspots.
 
-A cada mudança de estado chama `on_update(snapshot)`. Quem desenha a tela
-(ou qualquer outro consumidor) só precisa receber o Snapshot.
-Sem Streamlit aqui.
+Executa as etapas e informa o progresso
+
+Fluxo de análise:
+Usuário escolhe main, por exemplo.
+A view envia "main" ao pipeline.
+O pipeline clona o repositório selecionando essa branch.
+O collector percorre o histórico da HEAD desse clone.
 """
 import os
 import shutil
@@ -77,7 +81,7 @@ def run_pipeline(url, branch, data_dir, token=None, total_commits=0, on_update=N
     try:
         with _etapa(tracker, 0, push):                                    # clonar
             try:
-                Repo.clone_from(_auth_url(url, token), str(tmp / "repo"), branch=branch)
+                Repo.clone_from(_auth_url(url, token), str(tmp / "repo"), branch=branch) #recebe a branch
             except GitCommandError:
                 # Não repassa a mensagem original: ela pode conter o token na URL
                 raise ValueError(

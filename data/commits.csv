@@ -1,41 +1,10 @@
 hash,author,email,date,message,files_count,security_files_changed,insertions,deletions,changes
-96708877ab82877e5337af7d0efe58549b2460ae,lucianaliebl,142036250+lucianaliebl@users.noreply.github.com,2025-06-22 20:15:15-03:00,Update README.md,1,0,9,5,14
-fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,lucianaliebl@gmail.com,2025-06-21 13:06:34-03:00,organizaçao do projeto para atentender o padrao MVT,18,1,118,299,417
-ff9ae4b17336fa614c9843db5b4af44a6a84ccff,Luciana Liebl,lucianaliebl@gmail.com,2025-06-18 11:27:46-03:00,deletei o arquivo teste que n estava sendo usado,1,0,0,3,3
-74ae0cb3bbe78a63ecbd4a4705ed0fe7dee2b217,Luciana Liebl,lucianaliebl@gmail.com,2025-06-18 11:05:25-03:00,arrumei a imagem da tela inicial que estava atrapalhando,1,0,0,2,2
-dd3383f83faabab947deec10ab6fe3ba1ac6d90a,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-18 10:55:29-03:00,organizando os arquivos para a arquitetura MVC.,2,1,1,81,82
-d13153745f125d025fa42aa093a975d192b6e0ce,lucianaliebl,142036250+lucianaliebl@users.noreply.github.com,2025-06-17 23:39:52-03:00,Update README.md com instrucoes de como rodar o projeto localmente,1,0,41,1,42
-3a86d94c63e9004b17fb100f3bbba0dfdc33e80b,Luciana Liebl,lucianaliebl@gmail.com,2025-06-17 23:33:04-03:00,adicionei a frase no começo do jogo para a pessoa saber que terá 3 vidas a cada partida,2,0,54,45,99
-bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,lucianaliebl@gmail.com,2025-06-17 22:29:03-03:00,arrumei as perguntas do banco de dados que n estavam aparecendo na tela do jogo,7,0,190,180,370
-1e3359f777541d6e7fa23c68ed0bc3d7f3149cb2,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-12 14:37:04-03:00,Update README.md,1,0,8,5,13
-84186b4e496d32f8e53dc3da6614cfb01b41b71d,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-12 14:35:10-03:00,Update README.md,1,0,1,1,2
-2a3133ef770bdd72afa6d5d61eaa732214bd3f75,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 11:36:41-03:00,Corrigindo o contador de vidas,1,0,6,9,15
-0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 10:19:00-03:00,Adicionando as imagens na tela.,11,1,103,6,109
-789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 09:38:52-03:00,Mais alterações no layout.,10,0,864,424,1288
-09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 08:17:58-03:00,Tirando o scrooll da tela.,7,0,729,246,975
-eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 19:00:04-03:00,Mais uma alteração na fonte - adicionando uma borda.,7,0,13,14,27
-887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 18:48:15-03:00,ajuste de fonte e padding,7,0,47,60,107
-76aa6776887b755fedc098deb14818a5cbdb645c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 17:22:29-03:00,Adicionando o emblema ao projeto.,3,1,27,3,30
-a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 14:35:23-03:00,Adicionando e corrigindo a tela de feedback de resposta correta.,4,0,342,6,348
-6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:36:38-03:00,Sombra dos modais,5,0,10,0,10
-8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:25:20-03:00,ajustes de sombra,5,0,241,35,276
-7cc1fc8f6ecb0a74cdaf1dd5e319498754b65f9c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:15:04-03:00,Ajuste de modais,2,0,110,15,125
-2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:10:16-03:00,modais de feedback,7,0,85,141,226
-c9cc2697233ede156d6678c670ac619a25d04a53,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 12:42:17-03:00,Vidas funcionando,2,0,46,0,46
-605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 12:36:46-03:00,Jogo funcionando,13,0,239,92,331
-fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 08:22:48-03:00,Adicionando mais perguntas e corrigindo os feedbacks (Garantindo que a mesma pergunta não se repita ao ongo do tabuleiro).,4,0,138,6,144
-6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 08:07:41-03:00,Subindo a correção das respostas das perguntas + Começando a tentar deixar as casas em evidência.,4,0,103,48,151
-ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:24:46-03:00,Removendo arquivos que devem ser ignorados pelo Git,7,0,0,98,98
-f754dfd44577ccc216f776216607d9445b890ba1,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:22:26-03:00,Ajuste gitignore,1,0,1,0,1
-f41e7b13988d35f6c1f40e740b0090af2e91dea2,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:21:35-03:00,gitignore,2,0,169,0,169
-e425ed83592123dfd1382d7005247508c454d684,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:18:29-03:00,Merge branch 'main' of https://github.com/Larissa-Kailane/Projeto-CashClash,1,0,59,2,61
-26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:13:16-03:00,Subindo teste das alternativas para as perguntas e atualizações de arquivos (Muita coisa foi adicionada e mudada).,33,1,868,64,932
-12918defbb740c796d1af8d46f48363b82cb305d,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-09 16:39:47-03:00,"Update README.md
-
-docs(readme): atualizar seção da equipe e arquitetura",1,0,59,2,61
-d72dadf8b9b3dff3c2bbc30bba41c31167d8107c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:55:33-03:00,Subindo outras telas (falta adicionar perguntas/testando a navegação),2,0,3,3,6
-f99e5ac40e577c111fb502c81e0eb25864ad6d2e,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:30:25-03:00,Corrigindo os tabuleiros nas telas.,2,0,26,15,41
-7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:08:01-03:00,"Subindo as tentativas de outras telas, para começar a fazer os ajustes.",7,0,331,0,331
-cfe7e1a9fc60dcde0bb3783190fd8c3a73bdfe84,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 11:44:16-03:00,Subindo a versão corrigida e centralizada da tela inicial.,1,0,41,14,55
-4192fe5c7c9f00c0823bce4ec1fae31e806c7855,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 09:30:31-03:00,Subindo a primeira versão da tela de início.,2,0,108,0,108
-2fded37f6e7565ba6bf0dbf41063b5a6b49a66e8,Larissa Kailane,143636716+Larissa-Kailane@users.noreply.github.com,2025-06-09 09:09:55-03:00,Initial commit,0,0,0,0,0
+735094d0960545c1bdbd6fec1bf9a9fd4ae72d6f,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-07 18:02:04-03:00,Delete modificador-arquivos.py,1,0,0,32,32
+e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,mariaclaragmviana@gmail.com,2026-05-07 15:46:20-03:00,Corrige identificação de arquivos especiais e sem extensão,14,1,113,11,124
+59538c16f1ff85de59cb6428df12d2f77c0f8a13,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 15:40:25-03:00,Add: modificador de arquivos para teste,1,0,32,0,32
+ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 15:32:22-03:00,Protótipo de teste,8,1,160,1,161
+29b4ab2c9cf75f11e04276ee1f442d1b0bfc9f90,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 14:10:20-03:00,Adicionado Documento de visão,1,0,0,0,0
+c7dae573a8346d229b9294c1010034560d2e43c7,Mariacmv,mariaclaragmviana@gmail.com,2026-03-25 15:41:18-03:00,Estruturando o código e começar a lógica de análises de conteúdo,8,0,48,7,55
+cb7cc8864b345a2c39bfcd44cab18e15c0e3cf09,Mariacmv,mariaclaragmviana@gmail.com,2026-03-25 13:20:46-03:00,Tentando dar commit,1,0,1,0,1
+a5daa95c90d70cc122de8aefa045bb935d2b12ef,Mariacmv,mariaclaragmviana@gmail.com,2026-03-20 12:48:40-03:00,Estudando o hook do git,1,0,38,0,38
+8ea8962bb5944b095c9d2b00d391e95ee4dd5471,Mariacmv,mariaclaragmviana@gmail.com,2026-03-20 10:41:36-03:00,Primeiro commit,0,0,0,0,0
