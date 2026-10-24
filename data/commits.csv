@@ -1,9 +1,103 @@
 hash,author,email,date,message,files_count,security_files_changed,insertions,deletions,changes
-735094d0960545c1bdbd6fec1bf9a9fd4ae72d6f,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-07 18:02:04-03:00,Delete modificador-arquivos.py,1,0,0,32,32
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,mariaclaragmviana@gmail.com,2026-05-07 15:46:20-03:00,Corrige identificação de arquivos especiais e sem extensão,14,1,113,11,124
-59538c16f1ff85de59cb6428df12d2f77c0f8a13,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 15:40:25-03:00,Add: modificador de arquivos para teste,1,0,32,0,32
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 15:32:22-03:00,Protótipo de teste,8,1,160,1,161
-29b4ab2c9cf75f11e04276ee1f442d1b0bfc9f90,luizgaf,luiz.guilhermeaf21@gmail.com,2026-04-09 14:10:20-03:00,Adicionado Documento de visão,1,0,0,0,0
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-23 08:28:14-03:00,"Merge pull request #8 from Mariacmv/novo
+
+Ajustes tela passo 2 e persistência de repositórios",17,1,2193,146,2339
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,mariaclaragmviana@gmail.com,2026-10-23 08:26:53-03:00,[18] Adicionando a persistência dos respositórios escolhidos e ajustando a view do passo 2,17,1,2172,117,2289
+44e0080778bb7f33b6456461095bde7b6acfe965,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:52:50-03:00,updating doc,1,0,0,0,0
+a5e35a100f655f55e57c8d9ff9ced2ebb5e949a2,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:52:09-03:00,Delete docs/Documento de Arquitetura de Software.PDF,1,0,0,0,0
+e7438758744fc581cfc00aec1e0596281d3d87c7,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:44:29-03:00,update casos de uso,1,0,0,0,0
+e518ed1a052168c8733d9415a0ecd003e688e008,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:43:58-03:00,Delete docs/casosdeuso.pdf,1,0,0,0,0
+3aec8784e835556a224c6efb6ba88862dc37da6a,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:29:32-03:00,Update Figma link in link-figma.txt,1,0,1,1,2
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:28:45-03:00,Delete docs/prototipo/telas directory,8,0,0,0,0
+122723a321ea994687f7a2eb6107a7d740151a34,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:26:13-03:00,documento de analise de privacidade e legalidade,1,0,0,0,0
+b924cc30effedb7841aa91d51b9232cdffc48f2b,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-22 16:24:16-03:00,"Create privacy policy and legal guidelines document
+
+Added privacy policy and legal guidelines for GitForesight, detailing data protection commitments and compliance with LGPD and GDPR.",1,0,77,0,77
+8d5dffc963d010c7146c9883c61f7b6a973ae075,Mariacmv,mariaclaragmviana@gmail.com,2026-10-22 09:24:43-03:00,[17] Ajustando o reload,2,0,21,29,50
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-22 09:12:33-03:00,"Merge pull request #7 from Mariacmv/novo
+
+Ajustando escolha de repositórios",28,3,3425,248,3673
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,mariaclaragmviana@gmail.com,2026-10-22 09:09:38-03:00,[16] Login e escolha de repositórios com o github funcional,7,1,234,86,320
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,mariaclaragmviana@gmail.com,2026-10-21 07:39:15-03:00,[15] Redirecionamento para instalação do app e seleção dos repositórios ok,5,0,209,46,255
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,mariaclaragmviana@gmail.com,2026-10-20 22:06:11-03:00,Voltando para o estado de início da escolha dos repositórios,10,1,94,312,406
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,mariaclaragmviana@gmail.com,2026-10-20 17:36:20-03:00,[14] Aplicando a lógica inicial da conexão e escolha de repositórios,5,2,836,153,989
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,mariaclaragmviana@gmail.com,2026-10-20 14:01:27-03:00,[13] Modificando a tela de conta do usuário e adicionando a tela de configurações da aplicação,7,1,696,21,717
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,mariaclaragmviana@gmail.com,2026-10-20 11:30:54-03:00,Merge branch 'novo' of https://github.com/Mariacmv/GitForesight into novo,22,1,1940,214,2154
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,mariaclaragmviana@gmail.com,2026-10-19 23:37:41-03:00,[12] Configurações incertas sobre a escolha dos repositórios,9,1,281,90,371
+f23da4252d0262e29feba7f9b97b953bcf314e4b,Mariacmv,mariaclaragmviana@gmail.com,2026-10-19 18:03:40-03:00,WIP: alterações locais,2,0,1,2,3
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,mariaclaragmviana@gmail.com,2026-10-19 10:51:25-03:00,[11] Preparando ambiente de escolha de repositórios,7,0,229,17,246
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,mariaclaragmviana@gmail.com,2026-10-18 21:47:15-03:00,"[10] Configurando o uso do GitHub App para utilização de repositórios
+- Login com GitHub: funcionando.
+- GitHub App: criada e instalada.
+- Repositório autorizado: selecionado.
+- Chave privada e App ID: configurados.
+- github_installation.py: criado.
+- Tabela github_installations: criada.",7,0,233,3,236
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,mariaclaragmviana@gmail.com,2026-10-18 18:58:18-03:00,[10] Página de conta do usuário criada visualmente,10,0,1290,196,1486
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-17 13:25:06-03:00,"Merge pull request #6 from Mariacmv/novo
+
+Acesso GitHub",15,2,843,84,927
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,mariaclaragmviana@gmail.com,2026-10-17 13:23:40-03:00,[09] Permitindo acesso com github,11,2,689,258,947
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,mariaclaragmviana@gmail.com,2026-10-16 18:06:45-03:00,Resolvendo problemas de merge,7,1,297,189,486
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,mariaclaragmviana@gmail.com,2026-10-16 16:41:55-03:00,[08] Alterando a lógica do github - testar e construindo a tela choose_repo,7,1,381,50,431
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,mariaclaragmviana@gmail.com,2026-10-16 14:46:02-03:00,[08] Início da configuração do github,8,1,231,11,242
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-16 07:11:24-03:00,"Merge pull request #5 from Mariacmv/novo
+
+Mudanças 7",5,1,82,17,99
+25d3993f272e8c0150b20c6c88db44593d0f25b4,Mariacmv,mariaclaragmviana@gmail.com,2026-10-15 22:04:08-03:00,[07] Ajustes CSS,1,0,22,8,30
+983c0bcc74651c721c5b66c99a2935441e866adf,Mariacmv,mariaclaragmviana@gmail.com,2026-10-15 10:48:54-03:00,[07] Ajustando tela escolha de repositório e corrigindo a lógica de login,4,1,60,9,69
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-15 10:19:13-03:00,"Merge pull request #4 from Mariacmv/novo
+
+Ajustes CSS nas telas de cadastro e login",17,2,755,83,838
+ba63e70e8d04e623847426dd60cb1dd3f94a80d9,Mariacmv,mariaclaragmviana@gmail.com,2026-10-15 10:17:27-03:00,[06] Ajustes CSS nas telas de cadastro e login,3,1,162,60,222
+ed76909624df70540e76935d79439dd7d8d585b1,Mariacmv,mariaclaragmviana@gmail.com,2026-10-15 00:09:19-03:00,[06] Ajustes login com github,3,1,29,2,31
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,mariaclaragmviana@gmail.com,2026-10-14 16:09:13-03:00,[06] Conectando o banco de dados,13,2,177,49,226
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,mariaclaragmviana@gmail.com,2026-10-13 22:58:46-03:00,"[05] Tela de login criada, ajustá-la",7,2,356,86,442
+aab56f9618f30590f1951c110be686d4df1c2053,Mariacmv,mariaclaragmviana@gmail.com,2026-10-13 16:58:27-03:00,[05] Ajustando a tela de cadastro,3,1,160,15,175
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-13 13:42:17-03:00,"Merge pull request #3 from Mariacmv/novo
+
+Página Visão Geral e Cadastro",39,2,2133,822,2955
+7770da310cbed93f0e2b59c5cfc32d86d232d122,Mariacmv,mariaclaragmviana@gmail.com,2026-10-13 13:26:45-03:00,[04] Ajustes tela de cadastro,2,1,57,9,66
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,mariaclaragmviana@gmail.com,2026-10-12 23:12:39-03:00,[03] Página de cadastro,6,1,325,10,335
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,mariaclaragmviana@gmail.com,2026-10-12 20:35:12-03:00,[03] Terminando a tela Visão Geral,33,1,1285,437,1722
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,mariaclaragmviana@gmail.com,2026-10-09 16:40:47-03:00,[02] Reorganizando o projeto para deixá-lo modular,13,1,498,398,896
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-10-09 15:10:06-03:00,"Merge pull request #2 from Mariacmv/novo
+
+[01] Reformulando o projeto",21,0,1312,145,1457
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,mariaclaragmviana@gmail.com,2026-10-09 15:04:59-03:00,[01] Reformulando o projeto,21,0,1312,145,1457
+5265491b2e2833f254531553c02a0d9fde053570,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-01 20:54:19-03:00,"Update README with project overview and features
+
+Added detailed project description and features for GitForesight.",1,0,262,0,262
+cb083627504bd5126fd572dee469d5aa2e36ac60,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-01 20:52:21-03:00,"Remove project overview and features from README
+
+Removed detailed project description and features of GitForesight from README.",1,0,0,224,224
+55654ccf54b11e5ac7fa27492b10bf9c806f8ef0,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-01 20:50:58-03:00,"Initialize README with project details and features
+
+Added detailed project description, features, and roadmap for GitForesight.",1,0,225,0,225
+145032fb42a68c1f09c50fce4a600dd0439c54a6,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-01 20:47:26-03:00,"Merge pull request #1 from Mariacmv/lopesmafe9-patch-1
+
+Add files via upload",3,0,146,269,415
+0def869a3e727c44c4a9cd2490f7fd777955cf1c,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-10-01 20:45:34-03:00,Add files via upload,3,0,146,269,415
+f3a70844df964a34978f1397aa4fd9f9254ca4f1,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-08-30 12:47:21-03:00,Delete docs/diagramas directory,3,0,0,0,0
+dc22547a94e93cfb77a4888614396b3c207c89f6,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-08-27 17:52:26-03:00,Fix formatting in README header,1,0,1,1,2
+d0f36953d034632268d6dec9957da544e4b904da,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-08-27 17:51:24-03:00,"Rename project to GitForesight and update README
+
+Renamed project from AnalisadorGit to GitForesight and updated the README to reflect new features and objectives.",1,0,257,22,279
+c70a5b8e01c2e7864883c474140590c13496894e,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 17:35:04-03:00,"Initialize README with project details and features
+
+Add README.md with project overview and features.",1,0,37,0,37
+517afce608a9709d3f7f2e4fd3f6a881f57c5651,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 17:32:21-03:00,adicionando documento de interface aprimorado,1,0,0,0,0
+0a870b28f5954ad21773c356522514b7c248a42f,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 17:31:41-03:00,Delete docs/Documento de Interface e Prototipação.pdf,1,0,0,0,0
+94c511663a0b9809d52e482403340bc770ab69c9,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 17:30:09-03:00,adicionando pasta com todos os diagrams,3,0,0,0,0
+86cdac021407fe689b57a8e88d0ffd592c757879,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 17:29:19-03:00,Delete docs/Diagrama AnalisadorGit.pdf,1,0,0,0,0
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-05-07 16:55:56-03:00,adicionando o prototipo,9,0,1,0,1
+877d9e23d98603fd8d8c11dbb1a02a26e7694369,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-01 21:20:42-03:00,Adicionando o documento de prototipação em docs,1,0,0,0,0
+3cdfed0e20f70118b8e27084f1bfda1ac084856c,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-01 21:19:58-03:00,Delete docs/Documento de Interface e Prototipação.pdf,1,0,0,1,1
+ea2981db35557ded77fe2fabac24ab18156c63f9,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-01 21:19:23-03:00,Rename Documento de Interface e Prototipação.pdf to docs/Documento de Interface e Prototipação.pdf,2,0,1,0,1
+95bb5a623ccece05719a53b6323614bcf4c8e408,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2026-05-01 21:18:56-03:00,Adicionando o documento de prototipação,1,0,0,0,0
+4affbb7cef5c8db3c4968569dfa3d12626dbf790,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-04-20 20:24:22-03:00,adding architecture doc,1,0,0,0,0
+e3b96fd8924755665570334178eda759445b0aa8,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-04-20 17:04:17-03:00,Add files via upload,1,0,0,0,0
+c651aaf253efc9720b2c594e42f9ffb0891a5b59,mafê,134291043+lopesmafe9@users.noreply.github.com,2026-04-20 17:00:37-03:00,Add files via upload,2,0,0,0,0
 c7dae573a8346d229b9294c1010034560d2e43c7,Mariacmv,mariaclaragmviana@gmail.com,2026-03-25 15:41:18-03:00,Estruturando o código e começar a lógica de análises de conteúdo,8,0,48,7,55
 cb7cc8864b345a2c39bfcd44cab18e15c0e3cf09,Mariacmv,mariaclaragmviana@gmail.com,2026-03-25 13:20:46-03:00,Tentando dar commit,1,0,1,0,1
 a5daa95c90d70cc122de8aefa045bb935d2b12ef,Mariacmv,mariaclaragmviana@gmail.com,2026-03-20 12:48:40-03:00,Estudando o hook do git,1,0,38,0,38

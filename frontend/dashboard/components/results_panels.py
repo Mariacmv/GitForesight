@@ -1,9 +1,3 @@
-"""
-Componentes visuais da etapa 3 (prévia dos resultados).
-
-Cada função recebe dados prontos e devolve HTML. Não importam o Streamlit nem
-calculam nada: o resumo vem de backend/app/analysis_summary.py.
-"""
 from html import escape
 
 from backend.app.analysis_state import plural
@@ -21,6 +15,10 @@ ICONE_INFO = (
     '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
 )
 
+ICONE_CHEVRON = (
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>'
+)
 
 def _inline(texto):
     """Tira a indentação: o Markdown trataria linhas com 4+ espaços como código."""
@@ -34,8 +32,8 @@ def linhas_resumo(r):
     # 1) risco e arquivos sensíveis
     if r["score"] is not None:
         risco = (
-            f"Risco da última semana analisada: "
-            f"{r['score']:.0f}/100 ({r['nivel']})"
+            f"Score de risco: "
+            f"{r['score']:.0f}/100 " #({r['nivel']})
         )
     else:
         risco = "Score de risco indisponível"
@@ -87,7 +85,7 @@ def resumo_html(r):
 def proximos_html():
     return _inline("""
         <div class="next-list">
-            <div class="next-label">O QUE VEM A SEGUIR</div>
+            <div class="repo-label">O QUE VEM A SEGUIR</div>
             <div><span>✓</span>Examinar histórico, churn e hotspots</div>
             <div><span>✓</span>Explorar a distribuição de conhecimento</div>
         </div>
@@ -130,5 +128,55 @@ def nota_html():
         <div class="res-note">{ICONE_INFO}
             <span>Prévia baseada no histórico real do repositório. Os valores são estimativas
             e as simulações não são previsões determinísticas.</span>
+        </div>
+    """)
+    
+def branch_html(branch, padrao=False):
+    """Campo da branch (somente leitura), com ícone, selo 'Padrão' e seta."""
+    selo = '<span class="branch-tag">Padrão</span>' if padrao else ""
+    return _inline(f"""
+        <div class="branch-field">
+            {ICONE_BRANCH}
+            <span class="branch-name">{escape(branch)}</span>
+            {selo}{ICONE_CHEVRON}
+        </div>
+    """)
+    
+def preview_desfocado_html():
+    """Silhueta desfocada da Visão Geral: títulos das seções e formas, sem números inventados."""
+    # (cor, colunas de 6): 2 blocos + 3 blocos + 2 blocos, como no design
+    blocos = [
+        ("#EF4444", 3), ("#F97316", 3),
+        ("#EAB308", 2), ("#22C55E", 2), ("#22C55E", 2),
+        ("#F97316", 3), ("#22C55E", 3),
+    ]
+    tiles = "".join(
+        f'<div class="blur-tile" style="border-color:{c};grid-column:span {s};">'
+        f'<div class="blur-row"><b></b><u style="background:{c};"></u></div><i></i></div>'
+        for c, s in blocos
+    )
+
+    return _inline(f"""
+        <div class="res-blur">
+            <div class="res-blur-inner">
+                <div class="blur-col">
+                    <div class="blur-title">Heatmap de Risco por Módulo</div>
+                    <div class="blur-sub"></div>
+                    <div class="blur-grid">{tiles}</div>
+                </div>
+                <div class="blur-col">
+                    <div class="blur-title"><s></s>Análise Preditiva de Tendência (30d)</div>
+                    <div class="blur-sub"></div>
+                    <svg viewBox="0 0 300 110" preserveAspectRatio="none" class="blur-chart">
+                        <line x1="0" y1="12" x2="300" y2="12" stroke="#EF4444"
+                              stroke-width="1" stroke-dasharray="4 4"/>
+                        <polyline points="0,95 40,70 80,85 120,45 160,60 200,30 240,40 300,10"
+                                  fill="none" stroke="#6366F1" stroke-width="3"/>
+                    </svg>
+                    <div class="blur-title blur-title-alert">Alertas em Tempo Real</div>
+                    <div class="blur-alert"><s></s><b></b><u></u><i></i></div>
+                </div>
+            </div>
+            <div class="res-overlay">Veja os resultados completos na Visão geral</div>
         </div>
     """)

@@ -137,7 +137,7 @@ def executar(info, branch, phs):
 
 
 def render_primeira_analise():
-    st.caption("DEBUG — Renderizando etapa 2")
+    #st.caption("DEBUG — Renderizando etapa 2")
     info = st.session_state.repo_info
     rodando = st.session_state.get("analise") == "rodando"
     branch = st.session_state.get("branch") or info["default_branch"]

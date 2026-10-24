@@ -1,29 +1,452 @@
 hash,author,date,path,module,change_type,old_path,insertions,deletions,changes,is_security,email
-735094d0960545c1bdbd6fec1bf9a9fd4ae72d6f,Maria Clara,2026-05-07 18:02:04-03:00,modificador-arquivos.py,(raiz),D,,0,32,32,False,135616880+Mariacmv@users.noreply.github.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,.gitignore,(raiz),A,,3,0,3,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,modificador-arquivos.py,(raiz),R,testes/modificador-arquivos.py,0,0,0,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,requirements.txt,(raiz),A,,0,0,0,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,scanner-prototype/analisador.py,scanner-prototype,A,,59,0,59,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,scanner-prototype/modificador-arquivos.py,scanner-prototype,A,,32,0,32,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/.env,testes,M,,3,1,4,True,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/README,testes,M,,1,0,1,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/analisador.py,testes,M,,9,4,13,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.json,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.log,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.py,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.sql,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.txt,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-e684472061ef0cdb3b691c95007be97909c407b0,Mariacmv,2026-05-07 15:46:20-03:00,testes/teste.yaml,testes,M,,1,1,2,False,mariaclaragmviana@gmail.com
-59538c16f1ff85de59cb6428df12d2f77c0f8a13,luizgaf,2026-04-09 15:40:25-03:00,testes/modificador-arquivos.py,testes,A,,32,0,32,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,scanner-prototype/scanner.py,scanner-prototype,A,,90,0,90,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/.env,testes,M,,14,1,15,True,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.json,testes,M,,19,0,19,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.log,testes,M,,4,0,4,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.py,testes,M,,11,0,11,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.sql,testes,M,,11,0,11,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.txt,testes,M,,2,0,2,False,luiz.guilhermeaf21@gmail.com
-ba57ee7c9322bb552ea937a12daae493f286d3f7,luizgaf,2026-04-09 15:32:22-03:00,testes/teste.yaml,testes,M,,9,0,9,False,luiz.guilhermeaf21@gmail.com
-29b4ab2c9cf75f11e04276ee1f442d1b0bfc9f90,luizgaf,2026-04-09 14:10:20-03:00,docs/documento de visao 1.0.pdf,docs,A,,0,0,0,False,luiz.guilhermeaf21@gmail.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/app/analysis_state.py,backend,A,,131,0,131,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/app/collector.py,backend,M,,6,2,8,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/app/insights.py,backend,M,,88,1,89,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/app/pipeline.py,backend,A,,117,0,117,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/database/repositories.py,backend,M,,87,1,88,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/services/first_analysis.py,backend,A,,75,0,75,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,backend/services/github_token_storage.py,backend,M,,2,0,2,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/app.py,frontend,M,,20,24,44,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/components/analysis_panels.py,frontend,A,,93,0,93,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/components/sidebar.py,frontend,M,,1,1,2,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/styles/main.css,frontend,M,,550,76,626,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/theme.py,frontend,M,,1,1,2,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/views/auth.py,frontend,M,,13,11,24,True,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,73,29,102,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,frontend/dashboard/views/first_analysis.py,frontend,A,,157,0,157,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,preview_etapa2.py,(raiz),A,,237,0,237,False,135616880+Mariacmv@users.noreply.github.com
+3e479ebbacfea755a0d0c94ac6b036db770a2a6f,Maria Clara,2026-10-23 08:28:14-03:00,test_view.py,(raiz),A,,542,0,542,False,135616880+Mariacmv@users.noreply.github.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/app/analysis_state.py,backend,A,,131,0,131,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/app/collector.py,backend,M,,6,2,8,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/app/insights.py,backend,M,,88,1,89,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/app/pipeline.py,backend,A,,117,0,117,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/database/repositories.py,backend,M,,87,1,88,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/services/first_analysis.py,backend,A,,75,0,75,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,backend/services/github_token_storage.py,backend,M,,2,0,2,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/app.py,frontend,M,,2,4,6,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/components/analysis_panels.py,frontend,A,,93,0,93,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/components/sidebar.py,frontend,M,,1,1,2,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/styles/main.css,frontend,M,,550,76,626,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/theme.py,frontend,M,,1,1,2,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/views/auth.py,frontend,M,,13,11,24,True,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,70,20,90,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,frontend/dashboard/views/first_analysis.py,frontend,A,,157,0,157,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,preview_etapa2.py,(raiz),A,,237,0,237,False,mariaclaragmviana@gmail.com
+ea71981c80441d27e1f2b08e512ec9ba63f0453b,Mariacmv,2026-10-23 08:26:53-03:00,test_view.py,(raiz),A,,542,0,542,False,mariaclaragmviana@gmail.com
+44e0080778bb7f33b6456461095bde7b6acfe965,mafê,2026-10-22 16:52:50-03:00,docs/Documento de Arquitetura de Software.PDF,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+a5e35a100f655f55e57c8d9ff9ced2ebb5e949a2,mafê,2026-10-22 16:52:09-03:00,docs/Documento de Arquitetura de Software.PDF,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+e7438758744fc581cfc00aec1e0596281d3d87c7,mafê,2026-10-22 16:44:29-03:00,docs/casosdeuso.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+e518ed1a052168c8733d9415a0ecd003e688e008,mafê,2026-10-22 16:43:58-03:00,docs/casosdeuso.pdf,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+3aec8784e835556a224c6efb6ba88862dc37da6a,mafê,2026-10-22 16:29:32-03:00,docs/prototipo/link-figma.txt,docs,M,,1,1,2,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd commit com mensagem de commit problemática-1.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd commit com mensagem de commit problemática.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd commit com sucesso - sem riscos.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd commit com sucesso com informações identificadas - médio risco.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd commit defeituoso - alto risco.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd instala a ferramenta AnalisadorGit.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/Tela cmd modelo.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+50af58689397c0e4bd1ffed8dfdb3af5ce18d5f1,mafê,2026-10-22 16:28:45-03:00,docs/prototipo/telas/image 3.png,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+122723a321ea994687f7a2eb6107a7d740151a34,mafê,2026-10-22 16:26:13-03:00,docs/privacy-legal.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+b924cc30effedb7841aa91d51b9232cdffc48f2b,mafê,2026-10-22 16:24:16-03:00,PRIVACY-LEGAL.md,(raiz),A,,77,0,77,False,134291043+lopesmafe9@users.noreply.github.com
+8d5dffc963d010c7146c9883c61f7b6a973ae075,Mariacmv,2026-10-22 09:24:43-03:00,frontend/dashboard/app.py,frontend,M,,18,20,38,False,mariaclaragmviana@gmail.com
+8d5dffc963d010c7146c9883c61f7b6a973ae075,Mariacmv,2026-10-22 09:24:43-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,3,9,12,False,mariaclaragmviana@gmail.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,.gitignore,(raiz),M,,1,0,1,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,.streamlit/config.toml,.streamlit,R,frontend/dashboard/.streamlit/config.toml,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,LEIA-ME.txt,(raiz),M,,93,0,93,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/app/auth.py,backend,M,,1,0,1,True,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/app/github.py,backend,M,,88,89,177,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/database/connection.py,backend,M,,23,0,23,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/database/github_installations.py,backend,A,,54,0,54,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/database/repositories.py,backend,M,,50,1,51,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/services/github_callback.py,backend,M,,22,18,40,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/services/github_installation.py,backend,A,,165,0,165,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/services/github_oauth.py,backend,M,,23,12,35,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,backend/services/github_token_storage.py,backend,A,,54,0,54,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/app.py,frontend,M,,138,29,167,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/cards.py,frontend,M,,4,4,8,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/dados_card.py,frontend,A,,67,0,67,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/security_card.py,frontend,A,,70,0,70,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/settings_card.py,frontend,A,,33,0,33,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/components/topbar.py,frontend,M,,41,14,55,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/styles/banner.css,frontend,A,,803,0,803,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/styles/main.css,frontend,M,,696,35,731,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/views/account.py,frontend,M,,203,3,206,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/views/auth.py,frontend,M,,8,1,9,True,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/views/banner.py,frontend,M,,256,3,259,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,314,36,350,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,frontend/dashboard/views/settings.py,frontend,M,,150,3,153,True,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,requirements.txt,(raiz),M,,52,0,52,False,135616880+Mariacmv@users.noreply.github.com
+167d8b95cad3bb29dcd7c587ae21f3c36498363a,Maria Clara,2026-10-22 09:12:33-03:00,teste_instalacao.py,(raiz),A,,16,0,16,False,135616880+Mariacmv@users.noreply.github.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,backend/database/connection.py,backend,M,,10,0,10,False,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,backend/services/github_callback.py,backend,M,,9,1,10,False,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,backend/services/github_oauth.py,backend,M,,18,6,24,False,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,backend/services/github_token_storage.py,backend,A,,54,0,54,False,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,frontend/dashboard/app.py,frontend,M,,116,46,162,False,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,frontend/dashboard/views/auth.py,frontend,M,,8,1,9,True,mariaclaragmviana@gmail.com
+46bfdcec1e63f6abac7e7cc209938840e55a4fe1,Mariacmv,2026-10-22 09:09:38-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,19,32,51,False,mariaclaragmviana@gmail.com
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,2026-10-21 07:39:15-03:00,backend/database/repositories.py,backend,M,,32,1,33,False,mariaclaragmviana@gmail.com
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,2026-10-21 07:39:15-03:00,backend/services/github_callback.py,backend,M,,10,16,26,False,mariaclaragmviana@gmail.com
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,2026-10-21 07:39:15-03:00,backend/services/github_oauth.py,backend,M,,5,6,11,False,mariaclaragmviana@gmail.com
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,2026-10-21 07:39:15-03:00,frontend/dashboard/app.py,frontend,M,,6,2,8,False,mariaclaragmviana@gmail.com
+554a353ae6b8434e21b38486114b86021f600b64,Mariacmv,2026-10-21 07:39:15-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,156,21,177,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,backend/database/repositories.py,backend,M,,7,70,77,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,backend/services/github_callback.py,backend,M,,1,2,3,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,backend/services/github_installation.py,backend,M,,1,50,51,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,backend/services/github_oauth.py,backend,M,,3,2,5,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/app.py,frontend,M,,25,25,50,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/styles/main.css,frontend,M,,4,4,8,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/views/account.py,frontend,M,,4,0,4,False,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/views/auth.py,frontend,M,,8,24,32,True,mariaclaragmviana@gmail.com
+bb61c8a176ab7aca1336608f9689353f64eb7b2f,Mariacmv,2026-10-20 22:06:11-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,41,135,176,False,mariaclaragmviana@gmail.com
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,2026-10-20 17:36:20-03:00,backend/app/auth.py,backend,M,,1,0,1,True,mariaclaragmviana@gmail.com
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,2026-10-20 17:36:20-03:00,frontend/dashboard/styles/banner.css,frontend,M,,776,127,903,False,mariaclaragmviana@gmail.com
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,2026-10-20 17:36:20-03:00,frontend/dashboard/views/auth.py,frontend,M,,17,0,17,True,mariaclaragmviana@gmail.com
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,2026-10-20 17:36:20-03:00,frontend/dashboard/views/banner.py,frontend,M,,0,1,1,False,mariaclaragmviana@gmail.com
+cb6d17c9427f0d8cfff7cef7df7eeea12bc1817a,Mariacmv,2026-10-20 17:36:20-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,42,25,67,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/app.py,frontend,M,,11,4,15,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/components/settings_card.py,frontend,A,,33,0,33,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/styles/banner.css,frontend,A,,154,0,154,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/styles/main.css,frontend,M,,87,11,98,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/views/account.py,frontend,M,,4,0,4,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/views/banner.py,frontend,M,,257,3,260,False,mariaclaragmviana@gmail.com
+3bca55d088a7378dbc4657dddd7d6e90c8bc8023,Mariacmv,2026-10-20 14:01:27-03:00,frontend/dashboard/views/settings.py,frontend,M,,150,3,153,True,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,.gitignore,(raiz),M,,1,0,1,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,.streamlit/config.toml,.streamlit,R,frontend/dashboard/.streamlit/config.toml,0,0,0,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,LEIA-ME.txt,(raiz),M,,93,0,93,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/app/github.py,backend,M,,88,89,177,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/database/connection.py,backend,M,,13,0,13,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/database/github_installations.py,backend,A,,54,0,54,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/database/repositories.py,backend,M,,83,2,85,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/services/github_callback.py,backend,M,,5,2,7,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/services/github_installation.py,backend,A,,214,0,214,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,backend/services/github_oauth.py,backend,M,,2,3,5,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/app.py,frontend,M,,43,15,58,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/components/cards.py,frontend,M,,4,4,8,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/components/dados_card.py,frontend,A,,67,0,67,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/components/security_card.py,frontend,A,,70,0,70,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/components/topbar.py,frontend,M,,41,14,55,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/styles/main.css,frontend,M,,621,36,657,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/views/account.py,frontend,M,,195,3,198,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/views/auth.py,frontend,M,,7,8,15,True,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,271,38,309,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,requirements.txt,(raiz),M,,52,0,52,False,mariaclaragmviana@gmail.com
+260442b31b7ff18f030af147c069d765a28914c3,Mariacmv,2026-10-20 11:30:54-03:00,teste_instalacao.py,(raiz),A,,16,0,16,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,backend/database/repositories.py,backend,M,,70,7,77,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,backend/services/github_callback.py,backend,M,,2,1,3,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,backend/services/github_installation.py,backend,M,,50,1,51,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,backend/services/github_oauth.py,backend,M,,2,3,5,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,frontend/dashboard/app.py,frontend,M,,25,22,47,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,frontend/dashboard/styles/main.css,frontend,M,,4,2,6,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,frontend/dashboard/views/account.py,frontend,M,,0,4,4,False,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,frontend/dashboard/views/auth.py,frontend,M,,7,8,15,True,mariaclaragmviana@gmail.com
+f30eeac874b1c3a44d3d296dc2fc74272fa9f25c,Mariacmv,2026-10-19 23:37:41-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,121,42,163,False,mariaclaragmviana@gmail.com
+f23da4252d0262e29feba7f9b97b953bcf314e4b,Mariacmv,2026-10-19 18:03:40-03:00,backend/services/github_installation.py,backend,M,,0,1,1,False,mariaclaragmviana@gmail.com
+f23da4252d0262e29feba7f9b97b953bcf314e4b,Mariacmv,2026-10-19 18:03:40-03:00,frontend/dashboard/styles/main.css,frontend,M,,1,1,2,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,.streamlit/config.toml,.streamlit,R,frontend/dashboard/.streamlit/config.toml,0,0,0,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,LEIA-ME.txt,(raiz),M,,85,14,99,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,backend/database/github_installations.py,backend,A,,54,0,54,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,backend/services/github_callback.py,backend,M,,3,1,4,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,backend/services/github_installation.py,backend,M,,48,1,49,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,frontend/dashboard/app.py,frontend,M,,23,1,24,False,mariaclaragmviana@gmail.com
+08b63ff6d60645b14adfd07a0809ce802dba205f,Mariacmv,2026-10-19 10:51:25-03:00,teste_instalacao.py,(raiz),A,,16,0,16,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,.gitignore,(raiz),M,,1,0,1,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,LEIA-ME.txt,(raiz),M,,22,0,22,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,backend/app/github.py,backend,M,,7,2,9,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,backend/database/connection.py,backend,M,,13,0,13,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,backend/database/repositories.py,backend,M,,19,1,20,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,backend/services/github_installation.py,backend,A,,119,0,119,False,mariaclaragmviana@gmail.com
+1bdb8d1fa9c24ae1dd5fc9f7e45cab67025a93f4,Mariacmv,2026-10-18 21:47:15-03:00,requirements.txt,(raiz),M,,52,0,52,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,backend/app/github.py,backend,M,,85,91,176,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/app.py,frontend,M,,14,11,25,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/components/cards.py,frontend,M,,4,4,8,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/components/dados_card.py,frontend,A,,67,0,67,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/components/security_card.py,frontend,A,,70,0,70,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/components/topbar.py,frontend,M,,41,14,55,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/styles/main.css,frontend,M,,619,36,655,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/views/account.py,frontend,M,,199,3,202,False,mariaclaragmviana@gmail.com
+90dbad330359475507b6c8bba44f9aa1140dced2,Mariacmv,2026-10-18 18:58:18-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,191,37,228,False,mariaclaragmviana@gmail.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,.gitignore,(raiz),M,,1,1,2,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,LEIA-ME.txt,(raiz),M,,3,5,8,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/app/auth.py,backend,M,,4,1,5,True,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/app/github.py,backend,A,,120,0,120,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/database/connection.py,backend,M,,15,7,22,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/database/github_accounts.py,backend,A,,71,0,71,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/services/github_callback.py,backend,A,,143,0,143,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,backend/services/github_oauth.py,backend,A,,76,0,76,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/app.py,frontend,M,,41,2,43,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/components/charts.py,frontend,M,,0,5,5,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/styles/main.css,frontend,M,,165,13,178,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/views/auth.py,frontend,M,,21,29,50,True,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,180,17,197,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/views/heatmap.py,frontend,M,,2,2,4,False,135616880+Mariacmv@users.noreply.github.com
+60ea27bfd2f4e48e5e2a78f6798d0b9fe3d22170,Maria Clara,2026-10-17 13:25:06-03:00,frontend/dashboard/views/predictive.py,frontend,M,,1,2,3,False,135616880+Mariacmv@users.noreply.github.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/app/auth.py,backend,M,,3,0,3,True,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/app/github.py,backend,A,,120,0,120,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/database/connection.py,backend,M,,9,7,16,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/database/github_accounts.py,backend,A,,71,0,71,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/services/github_callback.py,backend,M,,50,42,92,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,backend/services/github_oauth.py,backend,M,,58,18,76,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,frontend/dashboard/app.py,frontend,M,,39,5,44,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,frontend/dashboard/components/charts.py,frontend,M,,0,5,5,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,frontend/dashboard/styles/main.css,frontend,M,,130,50,180,False,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,frontend/dashboard/views/auth.py,frontend,M,,24,35,59,True,mariaclaragmviana@gmail.com
+70e6571615a809ab56daef85b0fcdaabf0dc4a24,Mariacmv,2026-10-17 13:23:40-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,185,96,281,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,backend/database/connection.py,backend,M,,1,1,2,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,backend/services/github_callback.py,backend,M,,82,73,155,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,backend/services/github_oauth.py,backend,M,,10,65,75,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,frontend/dashboard/app.py,frontend,M,,6,1,7,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,frontend/dashboard/styles/main.css,frontend,M,,72,0,72,False,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,frontend/dashboard/views/auth.py,frontend,M,,29,26,55,True,mariaclaragmviana@gmail.com
+d15d0ec0e844d11e20b088f44f75d06f58720985,Mariacmv,2026-10-16 18:06:45-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,97,23,120,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,backend/database/connection.py,backend,M,,6,0,6,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,backend/services/github_callback.py,backend,A,,135,0,135,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,backend/services/github_oauth.py,backend,A,,36,0,36,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,frontend/dashboard/app.py,frontend,M,,6,1,7,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,frontend/dashboard/styles/main.css,frontend,M,,72,0,72,False,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,frontend/dashboard/views/auth.py,frontend,M,,29,26,55,True,mariaclaragmviana@gmail.com
+12a57e5c31fbe969f81581bfad2b1ab778251ac6,Mariacmv,2026-10-16 16:41:55-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,97,23,120,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,.gitignore,(raiz),M,,1,1,2,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,LEIA-ME.txt,(raiz),M,,3,5,8,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,backend/app/auth.py,backend,M,,1,1,2,True,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,backend/database/connection.py,backend,M,,6,0,6,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,backend/services/github_callback.py,backend,A,,126,0,126,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,backend/services/github_oauth.py,backend,A,,91,0,91,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,frontend/dashboard/views/heatmap.py,frontend,M,,2,2,4,False,mariaclaragmviana@gmail.com
+0d1d6bbcf5f4f76d4613963c21b20f36f99ea797,Mariacmv,2026-10-16 14:46:02-03:00,frontend/dashboard/views/predictive.py,frontend,M,,1,2,3,False,mariaclaragmviana@gmail.com
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,2026-10-16 07:11:24-03:00,backend/database/repositories.py,backend,M,,17,0,17,False,135616880+Mariacmv@users.noreply.github.com
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,2026-10-16 07:11:24-03:00,frontend/dashboard/app.py,frontend,M,,11,1,12,False,135616880+Mariacmv@users.noreply.github.com
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,2026-10-16 07:11:24-03:00,frontend/dashboard/styles/main.css,frontend,M,,22,8,30,False,135616880+Mariacmv@users.noreply.github.com
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,2026-10-16 07:11:24-03:00,frontend/dashboard/views/auth.py,frontend,M,,5,2,7,True,135616880+Mariacmv@users.noreply.github.com
+211a9cacb775b15e55c0405b3ad218fa5b0215e5,Maria Clara,2026-10-16 07:11:24-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,27,6,33,False,135616880+Mariacmv@users.noreply.github.com
+25d3993f272e8c0150b20c6c88db44593d0f25b4,Mariacmv,2026-10-15 22:04:08-03:00,frontend/dashboard/styles/main.css,frontend,M,,22,8,30,False,mariaclaragmviana@gmail.com
+983c0bcc74651c721c5b66c99a2935441e866adf,Mariacmv,2026-10-15 10:48:54-03:00,backend/database/repositories.py,backend,M,,17,0,17,False,mariaclaragmviana@gmail.com
+983c0bcc74651c721c5b66c99a2935441e866adf,Mariacmv,2026-10-15 10:48:54-03:00,frontend/dashboard/app.py,frontend,M,,11,1,12,False,mariaclaragmviana@gmail.com
+983c0bcc74651c721c5b66c99a2935441e866adf,Mariacmv,2026-10-15 10:48:54-03:00,frontend/dashboard/views/auth.py,frontend,M,,5,2,7,True,mariaclaragmviana@gmail.com
+983c0bcc74651c721c5b66c99a2935441e866adf,Mariacmv,2026-10-15 10:48:54-03:00,frontend/dashboard/views/choose_repo.py,frontend,M,,27,6,33,False,mariaclaragmviana@gmail.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,.gitignore,(raiz),M,,8,1,9,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,LEIA-ME.txt,(raiz),M,,16,0,16,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,backend/app/auth.py,backend,A,,119,0,119,True,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,backend/database/connection.py,backend,A,,55,0,55,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,backend/database/repositories.py,backend,R,backend/testes/test_collector.py,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,backend/database/users.py,backend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/assets/Símbolo.png,frontend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/app.py,frontend,M,,8,3,11,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/context.py,frontend,M,,0,1,1,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/styles/main.css,frontend,M,,134,10,144,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/views/account.py,frontend,R,frontend/dashboard/views/conta.py,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/views/auth.py,frontend,M,,339,68,407,True,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/views/banner.py,frontend,R,frontend/dashboard/views/apresentacao.py,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,frontend/dashboard/views/choose_repo.py,frontend,A,,11,0,11,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,requirements.txt,(raiz),M,,48,0,48,False,135616880+Mariacmv@users.noreply.github.com
+b654abc232f76c56a59d1f09347347ff87f2591c,Maria Clara,2026-10-15 10:19:13-03:00,test_db.py,(raiz),A,,17,0,17,False,135616880+Mariacmv@users.noreply.github.com
+ba63e70e8d04e623847426dd60cb1dd3f94a80d9,Mariacmv,2026-10-15 10:17:27-03:00,frontend/dashboard/styles/main.css,frontend,M,,14,7,21,False,mariaclaragmviana@gmail.com
+ba63e70e8d04e623847426dd60cb1dd3f94a80d9,Mariacmv,2026-10-15 10:17:27-03:00,frontend/dashboard/views/auth.py,frontend,M,,100,53,153,True,mariaclaragmviana@gmail.com
+ba63e70e8d04e623847426dd60cb1dd3f94a80d9,Mariacmv,2026-10-15 10:17:27-03:00,requirements.txt,(raiz),M,,48,0,48,False,mariaclaragmviana@gmail.com
+ed76909624df70540e76935d79439dd7d8d585b1,Mariacmv,2026-10-15 00:09:19-03:00,.gitignore,(raiz),M,,2,1,3,False,mariaclaragmviana@gmail.com
+ed76909624df70540e76935d79439dd7d8d585b1,Mariacmv,2026-10-15 00:09:19-03:00,backend/database/connection.py,backend,M,,9,0,9,False,mariaclaragmviana@gmail.com
+ed76909624df70540e76935d79439dd7d8d585b1,Mariacmv,2026-10-15 00:09:19-03:00,frontend/dashboard/views/auth.py,frontend,M,,18,1,19,True,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,.gitignore,(raiz),M,,6,1,7,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,LEIA-ME.txt,(raiz),M,,7,1,8,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,backend/app/auth.py,backend,M,,21,33,54,True,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,backend/database/connection.py,backend,A,,46,0,46,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,backend/database/repositories.py,backend,R,backend/testes/test_collector.py,0,0,0,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,backend/database/users.py,backend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/app.py,frontend,M,,6,3,9,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/context.py,frontend,M,,0,1,1,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/views/account.py,frontend,R,frontend/dashboard/views/conta.py,0,0,0,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/views/auth.py,frontend,M,,63,10,73,True,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/views/banner.py,frontend,R,frontend/dashboard/views/apresentacao.py,0,0,0,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,frontend/dashboard/views/choose_repo.py,frontend,A,,11,0,11,False,mariaclaragmviana@gmail.com
+9950785b2a9cfc0e4457cc8f15a2292b079d0c96,Mariacmv,2026-10-14 16:09:13-03:00,test_db.py,(raiz),A,,17,0,17,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,.gitignore,(raiz),M,,2,1,3,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,LEIA-ME.txt,(raiz),M,,10,0,10,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,backend/app/auth.py,backend,A,,131,0,131,True,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,frontend/dashboard/app.py,frontend,M,,2,0,2,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,frontend/dashboard/styles/main.css,frontend,M,,46,23,69,False,mariaclaragmviana@gmail.com
+15cbd7f278ac042e54269b699670a8020bb81507,Mariacmv,2026-10-13 22:58:46-03:00,frontend/dashboard/views/auth.py,frontend,M,,165,62,227,True,mariaclaragmviana@gmail.com
+aab56f9618f30590f1951c110be686d4df1c2053,Mariacmv,2026-10-13 16:58:27-03:00,frontend/assets/Símbolo.png,frontend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+aab56f9618f30590f1951c110be686d4df1c2053,Mariacmv,2026-10-13 16:58:27-03:00,frontend/dashboard/styles/main.css,frontend,M,,104,10,114,False,mariaclaragmviana@gmail.com
+aab56f9618f30590f1951c110be686d4df1c2053,Mariacmv,2026-10-13 16:58:27-03:00,frontend/dashboard/views/auth.py,frontend,M,,56,5,61,True,mariaclaragmviana@gmail.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,LEIA-ME.txt,(raiz),A,,12,0,12,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/analyzer.py,backend,M,,1,1,2,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/collector.py,backend,M,,58,29,87,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/dataset.py,backend,M,,14,8,22,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/hotspot.py,backend,A,,81,0,81,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/insights.py,backend,A,,22,0,22,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/main.py,backend,A,,27,0,27,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/models.py,backend,D,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/risk.py,backend,M,,19,25,44,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,backend/app/simulation.py,backend,A,,131,0,131,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,data/analysis.csv,data,M,,2,9,11,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,data/commits.csv,data,M,,41,231,272,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,data/file_changes.csv,data,A,,187,0,187,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,data/risk.csv,data,M,,3,10,13,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/assets/Nova conta.png,frontend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/app.py,frontend,M,,29,397,426,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/components/cards.py,frontend,M,,261,89,350,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/components/charts.py,frontend,M,,24,6,30,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/components/sidebar.py,frontend,A,,60,0,60,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/components/topbar.py,frontend,A,,104,0,104,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/context.py,frontend,A,,21,0,21,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/data_loader.py,frontend,M,,16,13,29,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/paths.py,frontend,A,,11,0,11,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/styles/main.css,frontend,A,,622,0,622,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/theme.py,frontend,A,,10,0,10,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/apresentacao.py,frontend,A,,6,0,6,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/auth.py,frontend,A,,147,0,147,True,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/conta.py,frontend,A,,6,0,6,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/heatmap.py,frontend,A,,8,0,8,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/overview.py,frontend,A,,26,0,26,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/predictive.py,frontend,A,,9,0,9,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,frontend/dashboard/views/settings.py,frontend,A,,6,0,6,True,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,guia.txt,(raiz),M,,14,2,16,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,main.py,(raiz),M,,2,2,4,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,requirements.txt,(raiz),M,,48,0,48,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,simulacao-teste.py,(raiz),A,,20,0,20,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,test_hotspot.py,(raiz),A,,45,0,45,False,135616880+Mariacmv@users.noreply.github.com
+ab361b9e3f041f26b2fbacc21030c59093a380f2,Maria Clara,2026-10-13 13:42:17-03:00,test_risk.py,(raiz),A,,40,0,40,False,135616880+Mariacmv@users.noreply.github.com
+7770da310cbed93f0e2b59c5cfc32d86d232d122,Mariacmv,2026-10-13 13:26:45-03:00,frontend/dashboard/styles/main.css,frontend,M,,18,5,23,False,mariaclaragmviana@gmail.com
+7770da310cbed93f0e2b59c5cfc32d86d232d122,Mariacmv,2026-10-13 13:26:45-03:00,frontend/dashboard/views/auth.py,frontend,M,,39,4,43,True,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/assets/Nova conta.png,frontend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/dashboard/app.py,frontend,M,,13,2,15,False,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/dashboard/components/topbar.py,frontend,M,,45,1,46,False,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/dashboard/styles/main.css,frontend,M,,155,1,156,False,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/dashboard/views/auth.py,frontend,A,,112,0,112,True,mariaclaragmviana@gmail.com
+d9a782994a8565d12e36f27651aa6c7113defcb5,Mariacmv,2026-10-12 23:12:39-03:00,frontend/dashboard/views/login.py,frontend,D,,0,6,6,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,LEIA-ME.txt,(raiz),A,,12,0,12,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/analyzer.py,backend,M,,1,1,2,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/collector.py,backend,M,,58,29,87,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/dataset.py,backend,M,,14,8,22,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/hotspot.py,backend,A,,81,0,81,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/insights.py,backend,A,,22,0,22,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/main.py,backend,A,,27,0,27,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/models.py,backend,D,,0,0,0,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/risk.py,backend,M,,19,25,44,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,backend/app/simulation.py,backend,A,,131,0,131,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,data/analysis.csv,data,M,,2,9,11,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,data/commits.csv,data,M,,41,231,272,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,data/file_changes.csv,data,A,,187,0,187,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,data/risk.csv,data,M,,3,10,13,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/app.py,frontend,M,,6,3,9,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/components/cards.py,frontend,M,,261,89,350,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/components/charts.py,frontend,M,,24,6,30,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/components/sidebar.py,frontend,M,,3,3,6,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/data_loader.py,frontend,M,,16,13,29,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/paths.py,frontend,M,,3,1,4,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/styles/main.css,frontend,M,,164,0,164,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/views/apresentacao.py,frontend,A,,6,0,6,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/views/conta.py,frontend,A,,6,0,6,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/views/login.py,frontend,A,,6,0,6,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/views/overview.py,frontend,M,,23,2,25,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,frontend/dashboard/views/settings.py,frontend,M,,1,4,5,True,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,guia.txt,(raiz),M,,13,1,14,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,main.py,(raiz),M,,2,2,4,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,requirements.txt,(raiz),M,,48,0,48,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,simulacao-teste.py,(raiz),A,,20,0,20,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,test_hotspot.py,(raiz),A,,45,0,45,False,mariaclaragmviana@gmail.com
+3dbbc80be387d3a7785d517723711bdc79f9c99a,Mariacmv,2026-10-12 20:35:12-03:00,test_risk.py,(raiz),A,,40,0,40,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/app.py,frontend,M,,15,397,412,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,M,,0,0,0,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/components/sidebar.py,frontend,A,,60,0,60,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/components/topbar.py,frontend,A,,60,0,60,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/context.py,frontend,A,,21,0,21,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/paths.py,frontend,A,,9,0,9,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/styles/main.css,frontend,A,,291,0,291,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/theme.py,frontend,A,,10,0,10,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/views/heatmap.py,frontend,A,,8,0,8,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/views/overview.py,frontend,A,,5,0,5,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/views/predictive.py,frontend,A,,9,0,9,False,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,frontend/dashboard/views/settings.py,frontend,A,,9,0,9,True,mariaclaragmviana@gmail.com
+a0be331fe67d34e180793757bf12cc28e0b89079,Mariacmv,2026-10-09 16:40:47-03:00,guia.txt,(raiz),M,,1,1,2,False,mariaclaragmviana@gmail.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,.gitignore,(raiz),A,,2,0,2,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/app/analyzer.py,backend,A,,63,0,63,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/app/collector.py,backend,A,,113,0,113,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/app/dataset.py,backend,A,,33,0,33,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/app/models.py,backend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/app/risk.py,backend,A,,44,0,44,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,backend/testes/test_collector.py,backend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,data/analysis.csv,data,A,,10,0,10,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,data/commits.csv,data,A,,231,0,231,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,data/risk.csv,data,A,,10,0,10,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/assets/Logo.png,frontend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/assets/Perigo.png,frontend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/.streamlit/config.toml,frontend,A,,6,0,6,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/app.py,frontend,A,,423,0,423,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/components/cards.py,frontend,A,,127,0,127,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/components/charts.py,frontend,A,,39,0,39,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,frontend/dashboard/data_loader.py,frontend,A,,21,0,21,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,guia.txt,(raiz),A,,44,0,44,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,main.py,(raiz),M,,54,54,108,False,135616880+Mariacmv@users.noreply.github.com
+230bb9d32890be190691d8e8fcff377addbb011e,Maria Clara,2026-10-09 15:10:06-03:00,requirements.txt,(raiz),M,,92,91,183,False,135616880+Mariacmv@users.noreply.github.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,.gitignore,(raiz),A,,2,0,2,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/app/analyzer.py,backend,A,,63,0,63,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/app/collector.py,backend,A,,113,0,113,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/app/dataset.py,backend,A,,33,0,33,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/app/models.py,backend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/app/risk.py,backend,A,,44,0,44,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,backend/testes/test_collector.py,backend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,data/analysis.csv,data,A,,10,0,10,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,data/commits.csv,data,A,,231,0,231,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,data/risk.csv,data,A,,10,0,10,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/assets/Logo.png,frontend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/assets/Perigo.png,frontend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/.streamlit/config.toml,frontend,A,,6,0,6,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/app.py,frontend,A,,423,0,423,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/components/__pycache__/cards.cpython-314.pyc,frontend,A,,0,0,0,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/components/cards.py,frontend,A,,127,0,127,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/components/charts.py,frontend,A,,39,0,39,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,frontend/dashboard/data_loader.py,frontend,A,,21,0,21,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,guia.txt,(raiz),A,,44,0,44,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,main.py,(raiz),M,,54,54,108,False,mariaclaragmviana@gmail.com
+9853fb34a3afe9f776c9b3b128f9ca313dc45a48,Mariacmv,2026-10-09 15:04:59-03:00,requirements.txt,(raiz),M,,92,91,183,False,mariaclaragmviana@gmail.com
+5265491b2e2833f254531553c02a0d9fde053570,mafê,2026-10-01 20:54:19-03:00,README.md,(raiz),M,,262,0,262,False,134291043+lopesmafe9@users.noreply.github.com
+cb083627504bd5126fd572dee469d5aa2e36ac60,mafê,2026-10-01 20:52:21-03:00,README.md,(raiz),M,,0,224,224,False,134291043+lopesmafe9@users.noreply.github.com
+55654ccf54b11e5ac7fa27492b10bf9c806f8ef0,mafê,2026-10-01 20:50:58-03:00,README.md,(raiz),M,,225,0,225,False,134291043+lopesmafe9@users.noreply.github.com
+145032fb42a68c1f09c50fce4a600dd0439c54a6,mafê,2026-10-01 20:47:26-03:00,README.md,(raiz),M,,0,269,269,False,134291043+lopesmafe9@users.noreply.github.com
+145032fb42a68c1f09c50fce4a600dd0439c54a6,mafê,2026-10-01 20:47:26-03:00,main.py,(raiz),A,,55,0,55,False,134291043+lopesmafe9@users.noreply.github.com
+145032fb42a68c1f09c50fce4a600dd0439c54a6,mafê,2026-10-01 20:47:26-03:00,requirements.txt,(raiz),A,,91,0,91,False,134291043+lopesmafe9@users.noreply.github.com
+0def869a3e727c44c4a9cd2490f7fd777955cf1c,mafê,2026-10-01 20:45:34-03:00,README.md,(raiz),M,,0,269,269,False,134291043+lopesmafe9@users.noreply.github.com
+0def869a3e727c44c4a9cd2490f7fd777955cf1c,mafê,2026-10-01 20:45:34-03:00,main.py,(raiz),A,,55,0,55,False,134291043+lopesmafe9@users.noreply.github.com
+0def869a3e727c44c4a9cd2490f7fd777955cf1c,mafê,2026-10-01 20:45:34-03:00,requirements.txt,(raiz),A,,91,0,91,False,134291043+lopesmafe9@users.noreply.github.com
+f3a70844df964a34978f1397aa4fd9f9254ca4f1,mafê,2026-08-30 12:47:21-03:00,docs/diagramas/Diagrama AnalisadorGit (1).pdf,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+f3a70844df964a34978f1397aa4fd9f9254ca4f1,mafê,2026-08-30 12:47:21-03:00,docs/diagramas/Fluxograma.pdf,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+f3a70844df964a34978f1397aa4fd9f9254ca4f1,mafê,2026-08-30 12:47:21-03:00,docs/diagramas/fluxo do usuario.jpg,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+dc22547a94e93cfb77a4888614396b3c207c89f6,Maria Clara,2026-08-27 17:52:26-03:00,README.md,(raiz),M,,1,1,2,False,135616880+Mariacmv@users.noreply.github.com
+d0f36953d034632268d6dec9957da544e4b904da,Maria Clara,2026-08-27 17:51:24-03:00,README.md,(raiz),M,,257,22,279,False,135616880+Mariacmv@users.noreply.github.com
+c70a5b8e01c2e7864883c474140590c13496894e,mafê,2026-05-07 17:35:04-03:00,README.md,(raiz),A,,37,0,37,False,134291043+lopesmafe9@users.noreply.github.com
+517afce608a9709d3f7f2e4fd3f6a881f57c5651,mafê,2026-05-07 17:32:21-03:00,docs/Documento de Interface e Prototipação.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+0a870b28f5954ad21773c356522514b7c248a42f,mafê,2026-05-07 17:31:41-03:00,docs/Documento de Interface e Prototipação.pdf,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+94c511663a0b9809d52e482403340bc770ab69c9,mafê,2026-05-07 17:30:09-03:00,docs/diagramas/Diagrama AnalisadorGit (1).pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+94c511663a0b9809d52e482403340bc770ab69c9,mafê,2026-05-07 17:30:09-03:00,docs/diagramas/Fluxograma.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+94c511663a0b9809d52e482403340bc770ab69c9,mafê,2026-05-07 17:30:09-03:00,docs/diagramas/fluxo do usuario.jpg,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+86cdac021407fe689b57a8e88d0ffd592c757879,mafê,2026-05-07 17:29:19-03:00,docs/Diagrama AnalisadorGit.pdf,docs,D,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/link-figma.txt,docs,A,,1,0,1,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd commit com mensagem de commit problemática-1.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd commit com mensagem de commit problemática.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd commit com sucesso - sem riscos.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd commit com sucesso com informações identificadas - médio risco.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd commit defeituoso - alto risco.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd instala a ferramenta AnalisadorGit.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/Tela cmd modelo.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+aeb52d5d9ef35785584564bbe5a5b1b72e690901,mafê,2026-05-07 16:55:56-03:00,docs/prototipo/telas/image 3.png,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+877d9e23d98603fd8d8c11dbb1a02a26e7694369,Maria Clara,2026-05-01 21:20:42-03:00,docs/Documento de Interface e Prototipação.pdf,docs,A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+3cdfed0e20f70118b8e27084f1bfda1ac084856c,Maria Clara,2026-05-01 21:19:58-03:00,docs/Documento de Interface e Prototipação.pdf,docs,D,,0,1,1,False,135616880+Mariacmv@users.noreply.github.com
+ea2981db35557ded77fe2fabac24ab18156c63f9,Maria Clara,2026-05-01 21:19:23-03:00,Documento de Interface e Prototipação.pdf,(raiz),D,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+ea2981db35557ded77fe2fabac24ab18156c63f9,Maria Clara,2026-05-01 21:19:23-03:00,docs/Documento de Interface e Prototipação.pdf,docs,A,,1,0,1,False,135616880+Mariacmv@users.noreply.github.com
+95bb5a623ccece05719a53b6323614bcf4c8e408,Maria Clara,2026-05-01 21:18:56-03:00,Documento de Interface e Prototipação.pdf,(raiz),A,,0,0,0,False,135616880+Mariacmv@users.noreply.github.com
+4affbb7cef5c8db3c4968569dfa3d12626dbf790,mafê,2026-04-20 20:24:22-03:00,docs/Documento de Arquitetura de Software.PDF,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+e3b96fd8924755665570334178eda759445b0aa8,mafê,2026-04-20 17:04:17-03:00,docs/Diagrama AnalisadorGit.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+c651aaf253efc9720b2c594e42f9ffb0891a5b59,mafê,2026-04-20 17:00:37-03:00,docs/casosdeuso.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
+c651aaf253efc9720b2c594e42f9ffb0891a5b59,mafê,2026-04-20 17:00:37-03:00,docs/docvisao2.pdf,docs,A,,0,0,0,False,134291043+lopesmafe9@users.noreply.github.com
 c7dae573a8346d229b9294c1010034560d2e43c7,Mariacmv,2026-03-25 15:41:18-03:00,testes/README,testes,A,,0,0,0,False,mariaclaragmviana@gmail.com
 c7dae573a8346d229b9294c1010034560d2e43c7,Mariacmv,2026-03-25 15:41:18-03:00,testes/analisador.py,testes,M,,48,0,48,False,mariaclaragmviana@gmail.com
 c7dae573a8346d229b9294c1010034560d2e43c7,Mariacmv,2026-03-25 15:41:18-03:00,testes/teste.json,testes,M,,0,3,3,False,mariaclaragmviana@gmail.com

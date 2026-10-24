@@ -7,6 +7,7 @@ from backend.app.analysis_summary import build_summary
 from components.analysis_panels import repo_html
 from components.results_panels import (
     ICONE_BRANCH,
+    branch_html,
     nota_html,
     preview_desfocado_html,
     proximos_html,
@@ -52,7 +53,7 @@ def render_resultados():
     branch = st.session_state.get("branch") or info["default_branch"]
     resumo = build_summary(DATA_DIR)
 
-    st.markdown('<div class="pg-title">Primeira análise do repositório selecionado.</div>',
+    st.markdown('<div class="pg-title">Primeira análise do repositório selecionado</div>',
                 unsafe_allow_html=True)
     st.markdown(
         f'<div class="pg-sub">Com o contexto de {escape(info["full_name"])} · {escape(branch)}, '
@@ -73,21 +74,18 @@ def render_resultados():
             st.markdown(repo_html(info, "REPOSITÓRIO SELECIONADO"), unsafe_allow_html=True)
 
             st.markdown('<div class="an-label">Branch analisada</div>', unsafe_allow_html=True)
-            st.selectbox(
-                "Branch", [branch],
-                format_func=lambda b: f"{b}  (padrão)" if b == info.get("default_branch") else b,
-                key=f"branch3_{info['full_name']}",
-                label_visibility="collapsed", disabled=True,
+            st.markdown(
+                branch_html(branch, padrao=(branch == info.get("default_branch"))),
+                unsafe_allow_html=True,
             )
             st.caption("O histórico desta branch foi a base da análise.")
 
             st.markdown(proximos_html(), unsafe_allow_html=True)
 
             st.button("Conhecer planos e preços", key="res_planos", type="primary",
-                      icon=":material/arrow_forward:", on_click=_planos)
-            st.button("Ir para visão geral do plano", key="res_visao", on_click=_ir_visao_geral)
-            st.button("Analisar outro repositório", key="res_outro", type="tertiary",
-                      on_click=_analisar_outro)
+                      icon=":material/arrow_forward:", icon_position="right",
+                      on_click=_planos)
+            st.button("Ir para visão geral", key="res_visao", on_click=_ir_visao_geral)
 
             st.markdown(
                 f'<div class="side-foot">{escape(info["full_name"])} · {escape(branch)}</div>',
