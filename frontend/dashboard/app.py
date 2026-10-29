@@ -25,14 +25,13 @@ from context import get_context
 from data_loader import load_commits
 from theme import load_css
 from backend.services.github_callback import processar_callback
-from backend.services.github_installation import (
-    listar_instalacoes_usuario
-)
 from views.choose_repo import processar_retorno_instalacao
 from backend.services.github_token_storage import (
     obter_token_github,
 )
 from backend.database.repositories import migrar_repositorios
+from frontend.dashboard.components.heatmap_page import render_heatmap
+
 
 TELAS = {
     "Visão Geral": overview.render,
@@ -52,7 +51,6 @@ if "autenticado" not in st.session_state:
     st.session_state.autenticado = False
 if "auth_view" not in st.session_state:
     st.session_state.auth_view = "cadastro"
-
 
 migrar_repositorios()
 
@@ -199,6 +197,8 @@ def main():
     if pagina == "account":
         account.render()
         return
+    if pagina == "heatmap":
+        render_heatmap()
 
     # 9. Dashboard.
     ctx = get_context()

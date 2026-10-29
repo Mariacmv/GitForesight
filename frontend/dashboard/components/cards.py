@@ -192,31 +192,69 @@ def _relative(ts):
     return f"Há {minutes // 1440} d"
 
 
+
 def render_heatmap_card(risk, top=8):
-    df = risk.assign(week=pd.to_datetime(risk["week"]))
-    df = df.sort_values("risk_score", ascending=False).head(top)
+
+    df = risk.copy()
+
+    df["week"] = pd.to_datetime(df["week"])
+
+    df = df.sort_values(
+        "risk_score",
+        ascending=False
+    ).head(top)
 
     tiles = ""
+
     for _, r in df.iterrows():
+
         level = risk_level(r["risk_score"])
         color = LEVELS[level]
+
         linhas = f'{int(r["total_changes"]):,}'.replace(",", ".")
+
         tiles += (
             f'<div class="heat-tile" style="border-color:{color};">'
-            f'<div class="heat-top"><span class="mono">Semana {r["week"]:%d/%m/%y}</span>'
-            f'{_badge(level)}</div>'
-            f'<div class="heat-loc">{linhas} linhas · {int(r["commits"])} commits · '
-            f'score {r["risk_score"]:.0f}</div>'
+            f'<div class="heat-top">'
+            f'<span class="mono">Semana {r["week"]:%d/%m/%y}</span>'
+            f'{_badge(level)}'
+            f'</div>'
+            f'<div class="heat-loc">'
+            f'{linhas} linhas · '
+            f'{int(r["commits"])} commits · '
+            f'score {r["risk_score"]:.0f}'
+            f'</div>'
             f'</div>'
         )
 
-    st.markdown(html_inline(f"""
-        <div class="panel-card">
-            <div class="panel-title">Heatmap de Risco por Semana</div>
-            <div class="panel-sub">Semanas ordenadas pelo score de risco.</div>
-            <div class="heat-grid">{tiles}</div>
-        </div>
-    """), unsafe_allow_html=True)
+    if not tiles:
+        tiles = (
+            '<div class="an-empty">'
+            'Nenhuma análise de risco disponível.'
+            '</div>'
+        )
+
+    st.markdown(
+        html_inline(f"""
+            <div class="panel-card">
+
+                <div class="panel-title">
+                    Heatmap de Risco por Semana
+                </div>
+
+                <div class="panel-sub">
+                    Semanas ordenadas pelo score de risco.
+                </div>
+
+                <div class="heat-grid">
+                    {tiles}
+                </div>
+
+            </div>
+        """),
+        unsafe_allow_html=True
+    )
+
 
 
 def render_trend_card(risk, n_hist=12, n_future=4):

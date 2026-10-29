@@ -37,7 +37,10 @@ TEXTO_PREPARANDO = "Preparando o clone do repositório..."
 # ---------- formatação ----------
 
 def fmt_num(n):
-    return f"{int(n):,}".replace(",", ".")
+    try:
+        return f"{int(n):,}".replace(",", ".")
+    except (TypeError, ValueError):
+        return "—"
 
 
 def plural(n, singular, plural_):

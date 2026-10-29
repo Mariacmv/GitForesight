@@ -97,10 +97,11 @@ section[data-testid="stSidebar"] {
 }
 
 /* Abre espaço para a barra no conteúdo */
-/* .main .block-container,
-[data-testid="stMainBlockContainer"] {
-    padding-top: 5rem !important;
-} */
+.stMainBlockContainer {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
 
 /*  TOPBAR  */
 .topbar {
@@ -2280,4 +2281,918 @@ div[data-testid="stFormSubmitButton"] button {
     width: 34px;
     background: #475569;
     border-radius: 4px
+}
+
+/* heatmap */
+/* cards (copie o estilo do seu analysis_card se já existir) */
+.st-key-heat_card,
+.st-key-file_card {
+    padding: 24px;
+    border: 1px solid #2A3550;
+    border-radius: 14px;
+    background: #1A2336;
+}
+
+.st-key-file_card {
+    border-color: #6366F1;
+}
+
+/* heatmap */
+.hm-map {
+    position: relative;
+    height: 550px;
+    margin-top: 18px;
+}
+
+.hm-cell {
+    position: absolute;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.hm-tile {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 12px;
+    border: 1.5px solid var(--c);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--c) 14%, #0F1626);
+}
+
+.hm-tile.sel {
+    box-shadow: 0 0 0 2px var(--c), 0 0 14px color-mix(in srgb, var(--c) 45%, transparent);
+}
+
+.hm-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.hm-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #F8FAFC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 11px;
+}
+
+.hm-name.big {
+    font-size: 16px;
+}
+
+.hm-badge {
+    flex: none;
+    padding: 1px 8px;
+    color: var(--c);
+    font-size: 10px;
+    font-weight: 700;
+    border: 1px solid var(--c);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+}
+
+.hm-meta {
+    margin-top: 4px;
+    color: #94A3B8;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.hm-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    margin-top: 16px;
+    padding: 12px 16px;
+    color: #CBD5E1;
+    font-size: 12px;
+    border: 1px solid #2A3550;
+    border-radius: 8px;
+    background: #0F1626;
+}
+
+.hm-legend b {
+    margin-right: auto;
+    color: #94A3B8;
+    font-weight: 600;
+}
+
+.hm-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hm-legend i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* detalhes */
+.fd-file {
+    margin-top: 12px;
+    color: #F8FAFC;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.fd-tags {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.fd-sev {
+    padding: 1px 8px;
+    color: var(--c);
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid var(--c);
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+}
+
+.fd-mod {
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.fd-block {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fd-sec {
+    margin-bottom: 14px;
+}
+
+.fd-label {
+    margin-bottom: 6px;
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.fd-val {
+    color: #F8FAFC;
+    font-size: 14.5px;
+}
+
+.fd-val.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fd-val.danger {
+    color: #EF4444;
+}
+
+.fd-list {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fd-list li {
+    position: relative;
+    padding: 0 0 10px 14px;
+    color: #E2E8F0;
+    font-size: 13px;
+}
+
+.fd-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--c);
+}
+
+.fd-ai {
+    margin: 8px 0 16px;
+    padding: 14px;
+    color: #CBD5E1;
+    font-size: 12px;
+    line-height: 1.5;
+    border: 1px solid #2A3550;
+    border-radius: 8px;
+    background: #151E31;
+}
+
+.fd-ai-title {
+    margin-bottom: 8px;
+    color: #818CF8;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.st-key-heat_hist button {
+    width: 100%;
+    height: 44px;
+    border: none;
+    border-radius: 8px;
+    background: #6366F1;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Análise preditiva  */
+/* Estilos da view Análise Preditiva (predictive.py) */
+
+:root {
+    --gf-bg-card: #141b2d;
+    --gf-bg-inset: #0f1524;
+    --gf-bg-accent: #1d2147;
+    --gf-border: #26304a;
+    --gf-text: #f1f5f9;
+    --gf-muted: #8b97b1;
+    --gf-indigo: #6366f1;
+    --gf-indigo-soft: #a5b4fc;
+    --gf-orange: #f97316;
+    --gf-yellow: #eeff00;
+    --gf-green: #22c55e;
+    --gf-red: #ef4444;
+    --gf-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.block-container {
+    padding-top: 2.2rem;
+    max-width: 1100px;
+}
+
+/* Cards (st.container com border=True) */
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--gf-bg-card);
+    border: 1px solid var(--gf-border);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+}
+
+.st-key-card_reco [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_reco {
+    border-color: var(--gf-indigo);
+}
+
+/* Cabeçalho */
+.gf-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gf-text);
+    margin: 0;
+}
+
+.gf-subtitle {
+    color: var(--gf-muted);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0 0;
+}
+
+/* KPIs */
+.gf-kpi {
+    background: var(--gf-bg-card);
+    border: 1px solid var(--gf-border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    height: 100%;
+}
+
+.gf-kpi-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--gf-muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.gf-badge {
+    background: var(--gf-bg-inset);
+    color: var(--gf-muted);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.gf-badge.forecast {
+    background: var(--gf-bg-accent);
+    color: var(--gf-indigo-soft);
+}
+
+.gf-kpi-value {
+    font-family: var(--gf-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.6rem 0 0.4rem 0;
+}
+
+.gf-kpi-foot {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+}
+
+/* Títulos de card */
+.gf-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gf-text);
+    margin: 0;
+}
+
+.gf-card-sub {
+    color: var(--gf-muted);
+    font-size: 0.82rem;
+    margin: 0.25rem 0 0.8rem 0;
+}
+
+/* Legenda do gráfico */
+.gf-legend {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.78rem;
+    color: var(--gf-muted);
+    margin-top: 0.4rem;
+}
+
+.gf-legend i {
+    display: inline-block;
+    width: 18px;
+    border-top: 2px dashed;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.gf-legend b {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--gf-bg-accent);
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Tendências */
+.gf-trend-head {
+    color: var(--gf-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--gf-border);
+    margin-bottom: 0.8rem;
+}
+
+.gf-trend-head span {
+    color: var(--gf-orange);
+    margin-right: 6px;
+}
+
+.gf-trend-item {
+    color: var(--gf-text);
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem;
+}
+
+.gf-scenario {
+    background: var(--gf-bg-inset);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-top: 0.8rem;
+}
+
+.gf-scenario strong {
+    color: var(--gf-indigo-soft);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.gf-scenario p {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    margin: 0.3rem 0 0 0;
+}
+
+/* Fatores de risco */
+.gf-factor {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.gf-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.gf-file {
+    font-family: var(--gf-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gf-text);
+}
+
+.gf-factor-title {
+    color: var(--gf-text);
+    font-size: 0.88rem;
+    margin: 0.15rem 0;
+}
+
+.gf-factor-meta {
+    color: var(--gf-muted);
+    font-size: 0.75rem;
+}
+
+/* Recomendações */
+.gf-reco {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.gf-num {
+    background: var(--gf-bg-accent);
+    color: var(--gf-indigo-soft);
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--gf-mono);
+    font-size: 0.75rem;
+}
+
+.gf-reco-title {
+    color: var(--gf-text);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.gf-reco-desc {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    margin-top: 0.15rem;
+}
+
+.gf-disclaimer {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* BALÃOZINHO DE INFORMAÇÕES */
+.gf-tip {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 8px;
+    outline: none;
+}
+
+.gf-tip-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gf-yellow);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+}
+
+.gf-tip-bubble {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 12px);
+    width: 495px;
+    transform: translate(-4px, -50%);
+    background: #1c2033;
+    border: 1px solid var(--gf-border);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    color: var(--gf-text);
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 1000;
+}
+
+/* Setinha apontando para o ícone */
+.gf-tip-bubble::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    background: #1c2033;
+    border-left: 1px solid var(--gf-border);
+    border-bottom: 1px solid var(--gf-border);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Variante: balão abre para a esquerda (cards na borda direita) */
+.gf-tip--left .gf-tip-bubble {
+    left: auto;
+    right: calc(100% + 12px);
+    transform: translate(4px, -50%);
+}
+
+.gf-tip--left .gf-tip-bubble::before {
+    left: auto;
+    right: -6px;
+    border: none;
+    border-top: 1px solid var(--gf-border);
+    border-right: 1px solid var(--gf-border);
+}
+
+/* Estado aberto */
+.gf-tip:hover .gf-tip-bubble,
+.gf-tip:focus .gf-tip-bubble,
+.gf-tip:focus-within .gf-tip-bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+}
+
+/* Linha do cabeçalho: texto à esquerda, ícone no canto direito */
+.gf-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.gf-card-head .gf-tip {
+    margin-left: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Balão abrindo para baixo, alinhado à direita do ícone */
+.gf-tip--down .gf-tip-bubble {
+    top: calc(100% + 10px);
+    left: auto;
+    right: -4px;
+    transform: translateY(-4px);
+}
+
+.gf-tip--down .gf-tip-bubble::before {
+    top: -6px;
+    left: auto;
+    right: 10px;
+    border: none;
+    border-top: 1px solid var(--gf-border);
+    border-left: 1px solid var(--gf-border);
+    transform: rotate(45deg);
+}
+
+.gf-tip--down:hover .gf-tip-bubble,
+.gf-tip--down:focus .gf-tip-bubble,
+.gf-tip--down:focus-within .gf-tip-bubble {
+    transform: translateY(0);
+}
+
+/* CONFIGURAÇÕES */
+:root {
+    --cfg-card: #141c2f;
+    --cfg-field: #0d1424;
+    --cfg-border: #252f47;
+    --cfg-text: #e8ecf4;
+    --cfg-muted: #8a94a8;
+    --cfg-accent: #6366f1;
+    --cfg-green: #22c55e;
+}
+
+/* ---------- Títulos ---------- */
+.cfg-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--cfg-text);
+}
+
+.cfg-h {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--cfg-text);
+    margin-bottom: 2px;
+}
+
+.cfg-sub {
+    font-size: .8rem;
+    color: var(--cfg-muted);
+    margin-bottom: 10px;
+}
+
+/* ---------- Cards ---------- */
+[class*="st-key-cfg_card_"] {
+    background: var(--cfg-card);
+    border: 1px solid var(--cfg-border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem 1rem;
+    gap: .55rem;
+}
+
+/* Cards da mesma linha com a mesma altura */
+[data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
+    align-items: stretch;
+}
+
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]),
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"],
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"]>*:has([class*="st-key-cfg_card_"]) {
+    height: 100%;
+}
+
+/* ---------- Textos de linha ---------- */
+.cfg-t {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--cfg-text);
+    line-height: 1.3;
+}
+
+.cfg-d {
+    font-size: .75rem;
+    color: var(--cfg-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+/* ---------- Repositório ---------- */
+.cfg-repo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 0 6px;
+}
+
+.cfg-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--cfg-text);
+}
+
+/* ---------- Badges ---------- */
+.cfg-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: .68rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+    color: #cbd5e1;
+}
+
+.cfg-badge.ok {
+    background: rgba(34, 197, 94, .12);
+    border-color: rgba(34, 197, 94, .30);
+    color: var(--cfg-green);
+}
+
+/* ---------- Integrações ---------- */
+.cfg-int {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.cfg-ico {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--cfg-text);
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+}
+
+.cfg-note {
+    margin-top: 6px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+    font-size: .75rem;
+    color: var(--cfg-muted);
+    line-height: 1.5;
+}
+
+.cfg-note a {
+    color: #818cf8;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cfg-note a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Divisórias ---------- */
+.cfg-hr {
+    height: 1px;
+    background: var(--cfg-border);
+    margin: 2px 0;
+}
+
+.cfg-mail {
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--cfg-border);
+    font-size: .75rem;
+    color: var(--cfg-muted);
+}
+
+/* ---------- Labels dos campos ---------- */
+[class*="st-key-cfg_card_"] [data-testid="stWidgetLabel"] p {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--cfg-text);
+}
+
+/* ---------- Selectbox e text input ---------- */
+[class*="st-key-cfg_card_"] [data-baseweb="select"]>div,
+[class*="st-key-cfg_card_"] [data-baseweb="input"],
+[class*="st-key-cfg_card_"] [data-baseweb="input"]>div {
+    background: var(--cfg-field);
+    border-color: var(--cfg-border);
+    border-radius: 8px;
+}
+
+[class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
+    min-height: 42px;
+}
+
+[class*="st-key-cfg_card_"] input {
+    font-size: .85rem;
+    color: var(--cfg-text);
+}
+
+/* ---------- Botões ---------- */
+[class*="st-key-cfg_"] button,
+.stButton button {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .85rem;
+    min-height: 40px;
+}
+
+.stButton button[kind="secondary"] {
+    background: var(--cfg-card);
+    border: 1px solid var(--cfg-border);
+    color: var(--cfg-text);
+}
+
+.stButton button[kind="secondary"]:hover {
+    border-color: var(--cfg-accent);
+    color: #fff;
+}
+
+.stButton button[kind="primary"] {
+    background: var(--cfg-accent);
+    border: none;
+    color: #fff;
+}
+
+.stButton button[kind="primary"]:hover {
+    background: #7c7ff5;
+}
+
+/* ---------- Espaçamento ---------- */
+[class*="st-key-cfg_card_"] [data-testid="stHorizontalBlock"] {
+    gap: .75rem;
+}
+
+:root {
+    --cfg-pad-y: 1.6rem;
+    --cfg-pad-x: 1.7rem;
+    --cfg-gap: .95rem;
+}
+
+[class*="st-key-cfg_card_"] {
+    padding: var(--cfg-pad-y) var(--cfg-pad-x);
+    gap: var(--cfg-gap);
+    border-radius: 14px;
+}
+
+/* Altura mínima por linha de cards */
+.st-key-cfg_card_repo,
+.st-key-cfg_card_integ {
+    min-height: 400px;
+}
+
+.st-key-cfg_card_scan,
+.st-key-cfg_card_notif {
+    min-height: 380px;
+}
+
+/* Mais espaço entre as duas linhas de cards */
+[data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
+    margin-bottom: 1rem;
+    gap: 1.5rem;
+}
+
+/* Textos um pouco maiores */
+.cfg-h {
+    font-size: 1.1rem;
+}
+
+.cfg-sub {
+    font-size: .88rem;
+    margin-bottom: 14px;
+}
+
+.cfg-t {
+    font-size: .95rem;
+}
+
+.cfg-d {
+    font-size: .82rem;
+}
+
+.cfg-mono {
+    font-size: .95rem;
+}
+
+.cfg-badge {
+    font-size: .74rem;
+    padding: 4px 11px;
+}
+
+.cfg-ico {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+}
+
+.cfg-int {
+    padding: 8px 0;
+}
+
+.cfg-note {
+    padding: 14px 16px;
+    font-size: .82rem;
+}
+
+.cfg-mail {
+    font-size: .82rem;
+    padding-top: 14px;
+}
+
+/* Campos e botões mais altos */
+[class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
+    min-height: 46px;
+}
+
+[class*="st-key-cfg_card_"] [data-testid="stWidgetLabel"] p {
+    font-size: .8rem;
+}
+
+[class*="st-key-cfg_card_"] input {
+    font-size: .92rem;
+}
+
+.stButton button {
+    min-height: 44px;
+    font-size: .9rem;
 }

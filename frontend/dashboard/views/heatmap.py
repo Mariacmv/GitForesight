@@ -1,8 +1,5 @@
-import streamlit as st
+from components.heatmap_page import render_heatmap
 
 
 def render(analysis, risk):
-    st.title("Heatmap de risco")
-    st.info(
-        "Em construção."
-    )
+    render_heatmap()

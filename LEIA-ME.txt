@@ -26,3 +26,11 @@ ANÁLISE:
         A view envia "main" ao pipeline.
         O pipeline clona o repositório selecionando essa branch.
         O collector percorre o histórico da HEAD desse clone.
+
+Etapa	Implementação
+1	Definir os dados de entrada e saída de predictive.py
+2	Implementar e testar o cálculo da previsão
+3	Construir os cards e o gráfico temporal
+4	Adicionar a interpretação dos resultados
+5	Implementar a simulação interativa
+6	Integrar tudo ao repositório selecionado

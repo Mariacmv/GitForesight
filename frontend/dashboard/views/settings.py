@@ -107,6 +107,7 @@ def _card_varredura():
     with st.container(key="cfg_card_scan"):
         _cabecalho("Preferências de Varredura", "Controle a frequência e as verificações automáticas.")
         _toggle("Analisar a cada novo commit", "Iniciar uma varredura ao receber alterações em main.", "cfg_commit")
+        _md('<div class="cfg-hr"></div>')
         c1, c2 = st.columns(2)
         c1.selectbox("Varredura completa", FREQUENCIAS, key="cfg_freq")
         c2.selectbox("Horário (Brasília)", HORARIOS, key="cfg_horario")
@@ -123,7 +124,7 @@ def _card_notificacoes(email: str, canal: str):
         _toggle("Varredura concluída sem alertas", "Enviar uma confirmação a cada análise.", "cfg_n_sem_alertas")
         _md(f'<div class="cfg-mail">✉ {email} • {canal}</div>')
 
-def render(analysis=None, risk=None):
+def render():
     # A sidebar e a topbar já são desenhadas pelo main() do app.py.
     _iniciar_estado()
 

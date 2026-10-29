@@ -18,21 +18,53 @@ WEIGHTS = {
 def scale(series, cap):
     return (series / cap).clip(0, 1)
 
+def score_risk(df):
+    """
+    Calcula o score de risco a partir dos indicadores agregados.
+    Não modifica o DataFrame original.
+    """
 
-def calculate_risk(input_path="data/analysis.csv",
-                   output_path="data/risk.csv"):
+    result = df.copy()
 
+    result["changes_score"] = scale(
+        result["total_changes"],
+        CAPS["total_changes"],
+    )
+
+    result["files_score"] = scale(
+        result["avg_files_per_commit"],
+        CAPS["avg_files_per_commit"],
+    )
+
+    result["security_score"] = scale(
+        result["security_files_changed"],
+        CAPS["security_files_changed"],
+    )
+
+    result["risk_score"] = (
+        sum(
+            result[col] * weight
+            for col, weight in WEIGHTS.items()
+        ) * 100
+    ).round(2)
+
+    return result
+
+def calculate_risk(
+    input_path="data/analysis.csv",
+    output_path="data/risk.csv",
+):
     df = pd.read_csv(input_path)
 
     if df.empty:
         raise ValueError("A análise está vazia.")
 
-    df["changes_score"] = scale(df["total_changes"], CAPS["total_changes"])
-    df["files_score"] = scale(df["avg_files_per_commit"], CAPS["avg_files_per_commit"])
-    df["security_score"] = scale(df["security_files_changed"], CAPS["security_files_changed"])
+    df = score_risk(df)
 
-    df["risk_score"] = sum(df[col] * w for col, w in WEIGHTS.items()) * 100
-    df["risk_score"] = df["risk_score"].round(2)
+    df.to_csv(
+        output_path,
+        index=False,
+        encoding="utf-8",
+    )
 
-    df.to_csv(output_path, index=False, encoding="utf-8")
     return df
