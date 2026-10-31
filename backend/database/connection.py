@@ -84,3 +84,8 @@ def init_db():
                     ON DELETE CASCADE
             );
         """)
+
+if __name__ == "__main__":
+    print("Criando o banco de dados e as tabelas...")
+    init_db()
+    print("Banco de dados inicializado com sucesso em:", DB_PATH)
