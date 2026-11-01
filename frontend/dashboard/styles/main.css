@@ -2564,25 +2564,44 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* KPIs */
+.gf-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
 .gf-kpi {
+    display: flex;
+    flex-direction: column;
     background: var(--gf-bg-card);
     border: 1px solid var(--gf-border);
     border-radius: 10px;
-    padding: 1rem 1.1rem;
-    height: 100%;
+    padding: 16px;
+    min-height: 150px;
+    box-sizing: border-box;
 }
 
 .gf-kpi-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.78rem;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 0.72rem;
     color: var(--gf-muted);
     font-weight: 600;
     letter-spacing: 0.02em;
+    white-space: nowrap;      /* label não quebra em 2 linhas */
+}
+
+.gf-kpi-head span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;  /* se não couber, corta com "…" */
 }
 
 .gf-badge {
+    flex-shrink: 0;
     background: var(--gf-bg-inset);
     color: var(--gf-muted);
     border-radius: 4px;
@@ -2600,10 +2619,11 @@ div[data-testid="stFormSubmitButton"] button {
     font-family: var(--gf-mono);
     font-size: 2rem;
     font-weight: 700;
-    margin: 0.6rem 0 0.4rem 0;
+    margin: 0 0 8px 0;
 }
 
 .gf-kpi-foot {
+    margin-top: auto;
     color: var(--gf-muted);
     font-size: 0.78rem;
 }

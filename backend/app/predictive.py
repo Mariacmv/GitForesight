@@ -22,7 +22,42 @@ def calculate_scenario_score(
 
     return float(result.iloc[0]["risk_score"])
 
+def calculate_risk_factors(current):
+    """
+    Identifica os principais fatores que contribuem
+    para o score de risco atual do repositório.
+    """
 
+    factors = [
+        {
+            "name": "Volume de alterações",
+            "value": float(current["total_changes"]),
+            "contribution": min(float(current["total_changes"]) / 2000, 1) * 0.35 * 100,
+            "description": "Quantidade total de linhas adicionadas e removidas.",
+        },
+        {
+            "name": "Arquivos por commit",
+            "value": float(current["avg_files_per_commit"]),
+            "contribution": min(float(current["avg_files_per_commit"]) / 8, 1) * 0.25 * 100,
+            "description": "Média de arquivos modificados por commit.",
+        },
+        {
+            "name": "Arquivos sensíveis",
+            "value": float(current["security_files_changed"]),
+            "contribution": min(float(current["security_files_changed"]) / 5, 1) * 0.40 * 100,
+            "description": "Quantidade de arquivos sensíveis alterados.",
+        },
+    ]
+
+    factors.sort(
+        key=lambda factor: factor["contribution"],
+        reverse=True,
+    )
+
+    for factor in factors:
+        factor["contribution"] = round(factor["contribution"], 2)
+
+    return factors
 
 
 def simulate_projection(history, horizon_commits=50, step=10):
@@ -185,6 +220,7 @@ def build_predictive(analysis, risk):
     ]
 
     projection = simulate_projection(history)
+    factors = calculate_risk_factors(current)
 
     return {
         "status": "ok",
@@ -199,7 +235,8 @@ def build_predictive(analysis, risk):
         "history": history,
         "projection": projection,
         "trends": trends,
-        "factors": [],
+        "factors": factors,
+        "recommendations": [],
         "recommendations": [],
         "methodology": {
             "horizon_commits": 50,

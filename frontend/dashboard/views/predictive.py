@@ -16,94 +16,6 @@ INDIGO_SOFT = "#a5b4fc"
 ORANGE = "#f97316"
 GREEN = "#22c55e"
 RED = "#ef4444"
- 
-# Dados fictícios (placeholders)
-# KPIS = [ #Resumo calculado pelo backend
-#     {
-#         "label": "Score de risco",
-#         "badge": "Atual",
-#         "value": "72/100",
-#         "color": ORANGE,
-#         "foot": "12 vulnerabilidades críticas abertas",
-#         "forecast": False,
-#     },
-#     {
-#         "label": "Em +50 commits",
-#         "badge": "Previsão",
-#         "value": "84/100",
-#         "color": INDIGO_SOFT,
-#         "foot": "+12 pontos no cenário de continuidade",
-#         "forecast": True,
-#     },
-#     {
-#         "label": "Com ações de IA",
-#         "badge": "Previsão",
-#         "value": "58/100",
-#         "color": GREEN,
-#         "foot": "Correções aplicadas • simulação",
-#         "forecast": True,
-#     },
-#     {
-#         "label": "Base analisada",
-#         "badge": "Atual",
-#         "value": "1.847",
-#         "color": TEXT,
-#         "foot": "Commits • cobertura atual de testes: 89%",
-#         "forecast": False,
-#     },
-# ]
- 
-# PROJECTION = pd.DataFrame( #Projeção dos próximos 50 commits
-#     {
-#         "commits": [0, 10, 20, 30, 40, 50],
-#         "continuidade": [72, 75, 77, 77, 80, 84],
-#         "com_acoes": [72, 70, 66, 62, 59, 58],
-#         "faixa_min": [72, 74, 75, 74, 77, 79],
-#         "faixa_max": [72, 76, 79, 81, 85, 89],
-#     }
-# )
- 
-# TRENDS = [ #Interpretação do histórico
-#     "Autenticação: 47 commits em 90 dias e 3 falhas reincidentes.",
-#     "Pagamentos: 34 commits no período.",
-#     "Cobertura de testes atual: 89%.",
-# ]
- 
-# FACTORS = [ #Indicadores efetivamente identificados
-#     {
-#         "severity": RED,
-#         "file": "auth_service.py",
-#         "title": "Dependência desatualizada e entrada sem sanitização",
-#         "meta": "jsonwebtoken@8.5.1 • handler de login, linha 142",
-#     },
-#     {
-#         "severity": RED,
-#         "file": "payment_gateway.py",
-#         "title": "Credenciais expostas no módulo de transações",
-#         "meta": "Chaves de API no código • exige rotação dos segredos",
-#     },
-#     {
-#         "severity": ORANGE,
-#         "file": "auth_service.py",
-#         "title": "Complexidade elevada e código duplicado",
-#         "meta": "Complexidade ciclomática: 34 • 3 ocorrências",
-#     },
-# ]
- 
-# RECOMMENDATIONS = [ #Recomendações derivadas das evidências
-#     {
-#         "title": "Atualizar dependências de autenticação",
-#         "desc": "Atualizar jsonwebtoken para v9.0.0 ou superior e validar regressões.",
-#     },
-#     {
-#         "title": "Validar entradas e proteger segredos",
-#         "desc": "Adicionar Joi ou Zod ao login e rotacionar as chaves de pagamento.",
-#     },
-#     {
-#         "title": "Reforçar testes nos módulos prioritários",
-#         "desc": "Cobrir cenários de falha de autenticação e de transações.",
-#     },
-# ]
 
 def card_header(title: str, subtitle: str = "", tip: str | None = None) -> str:
     sub = f'<p class="gf-card-sub">{subtitle}</p>' if subtitle else ""
@@ -136,6 +48,13 @@ def _header() -> None:
  
 def _kpis(data) -> None:
     current = data["current"]
+    projection = data["projection"]
+
+    last_projection = (
+        projection.iloc[-1]
+        if projection is not None and not projection.empty
+        else None
+    )
 
     variation = current["variation"]
 
@@ -158,17 +77,25 @@ def _kpis(data) -> None:
         {
             "label": "Em +50 commits",
             "badge": "Previsão",
-            "value": "—",
+            "value": (
+                f'{last_projection["continuidade"]:.2f}/100'
+                if last_projection is not None
+                else "—"
+            ),
             "color": INDIGO_SOFT,
-            "foot": "Modelo preditivo em desenvolvimento",
+            "foot": "Cenário de manutenção do risco atual",
             "forecast": True,
         },
         {
             "label": "Com ações corretivas",
             "badge": "Simulação",
-            "value": "—",
+            "value": (
+                f'{last_projection["com_acoes"]:.2f}/100'
+                if last_projection is not None
+                else "—"
+            ),
             "color": GREEN,
-            "foot": "Cenário ainda não calculado",
+            "foot": "Redução hipotética de 20% nos indicadores",
             "forecast": True,
         },
         {
@@ -181,27 +108,27 @@ def _kpis(data) -> None:
         },
     ]
 
-    for col, kpi in zip(st.columns(4), kpis):
-        badge_cls = (
-            "gf-badge forecast"
-            if kpi["forecast"]
-            else "gf-badge"
-        )
+    cards_html = "".join(
+        f'<div class="gf-kpi">'
+        f'<div class="gf-kpi-head">'
+        f'<span>{kpi["label"].upper()}</span>'
+        f'<span class="{"gf-badge forecast" if kpi["forecast"] else "gf-badge"}">'
+        f'{kpi["badge"].upper()}</span>'
+        f'</div>'
+        f'<div class="gf-kpi-value" style="color:{kpi["color"]}">{kpi["value"]}</div>'
+        f'<div class="gf-kpi-foot">{kpi["foot"]}</div>'
+        f'</div>'
+        for kpi in kpis
+    )
 
-        col.markdown(
-            f'<div class="gf-kpi">'
-            f'<div class="gf-kpi-head">'
-            f'<span>{kpi["label"].upper()}</span>'
-            f'<span class="{badge_cls}">{kpi["badge"].upper()}</span>'
-            f'</div>'
-            f'<div class="gf-kpi-value" style="color:{kpi["color"]}">'
-            f'{kpi["value"]}</div>'
-            f'<div class="gf-kpi-foot">{kpi["foot"]}</div>'
-            f'</div>',
-            unsafe_allow_html=True,
-        )
- 
-def _projection_chart() -> alt.LayerChart:
+    st.markdown(
+        f'<div class="gf-kpi-grid">{cards_html}</div>',
+        unsafe_allow_html=True,
+    )
+    
+
+def _projection_chart(projection: pd.DataFrame):
+
     x = alt.X(
         "commits:Q",
         title=None,
@@ -215,8 +142,9 @@ def _projection_chart() -> alt.LayerChart:
             ticks=False,
         ),
     )
+
     y_axis = alt.Axis(
-        values=[20, 40, 60, 80, 100],
+        values=[0, 20, 40, 60, 80, 100],
         labelColor=MUTED,
         gridColor=BORDER,
         gridDash=[3, 3],
@@ -224,121 +152,185 @@ def _projection_chart() -> alt.LayerChart:
         ticks=False,
         title=None,
     )
-    y_scale = alt.Scale(domain=[20, 100])
- 
+
+    y_scale = alt.Scale(domain=[0, 100])
+
     band = (
-        alt.Chart(PROJECTION)
+        alt.Chart(projection)
         .mark_area(color=INDIGO, opacity=0.18)
-        .encode(x=x, y=alt.Y("faixa_min:Q", scale=y_scale, axis=y_axis), y2="faixa_max:Q")
+        .encode(
+            x=x,
+            y=alt.Y("faixa_min:Q", scale=y_scale, axis=y_axis),
+            y2="faixa_max:Q",
+        )
     )
+
     continuity = (
-        alt.Chart(PROJECTION)
+        alt.Chart(projection)
         .mark_line(color=INDIGO, strokeDash=[6, 4], strokeWidth=2)
-        .encode(x=x, y=alt.Y("continuidade:Q", scale=y_scale))
+        .encode(
+            x=x,
+            y=alt.Y("continuidade:Q", scale=y_scale),
+        )
     )
+
     with_actions = (
-        alt.Chart(PROJECTION)
-        .mark_line(color=GREEN, strokeDash=[6, 4], strokeWidth=2)
-        .encode(x=x, y=alt.Y("com_acoes:Q", scale=y_scale))
+        alt.Chart(projection)
+        .mark_line(color=GREEN, strokeWidth=2)
+        .encode(
+            x=x,
+            y=alt.Y("com_acoes:Q", scale=y_scale),
+        )
     )
-    last = PROJECTION.tail(1)
-    labels = alt.Chart(last).mark_text(
-        dy=-10, fontWeight="bold", fontSize=11, color=INDIGO_SOFT
-    ).encode(x=x, y="continuidade:Q", text=alt.value("84")) + alt.Chart(last).mark_text(
-        dy=14, fontWeight="bold", fontSize=11, color=GREEN
-    ).encode(x=x, y="com_acoes:Q", text=alt.value("58"))
- 
+
+    last = projection.tail(1)
+
+    labels = (
+        alt.Chart(last)
+        .mark_text(
+            dy=-12,
+            fontWeight="bold",
+            fontSize=11,
+            color=INDIGO_SOFT,
+        )
+        .encode(
+            x=x,
+            y="continuidade:Q",
+            text=alt.Text("continuidade:Q", format=".2f"),
+        )
+        +
+        alt.Chart(last)
+        .mark_text(
+            dy=14,
+            fontWeight="bold",
+            fontSize=11,
+            color=GREEN,
+        )
+        .encode(
+            x=x,
+            y="com_acoes:Q",
+            text=alt.Text("com_acoes:Q", format=".2f"),
+        )
+    )
+
     return (
         (band + continuity + with_actions + labels)
         .properties(height=240)
         .configure(background="rgba(0,0,0,0)")
         .configure_view(stroke=None)
     )
+
  
- 
+
 def _projection_card(data) -> None:
+
     with st.container(border=True):
-        card_header(
-            "Projeção do Score de Risco",
-            "Próximos 50 commits • estimativa, não resultado de varredura.",
-        )
-        st.altair_chart(_projection_chart(), use_container_width=True, theme=None)
+
         st.markdown(
             card_header(
                 "Projeção do Score de Risco",
-                "Próximos 50 commits",
+                "Próximos 50 commits • simulação heurística.",
+                "Mostra a continuidade e os cenários simulados",
             ),
             unsafe_allow_html=True,
         )
-    if data["projection"] is None:
-        with st.container(border=True):
-            st.markdown(
-                card_header(
-                    "Projeção do Score de Risco",
-                    "Próximos 50 commits",
-                ),
-                unsafe_allow_html=True,
+
+        projection = data["projection"]
+
+        if projection is None or projection.empty:
+            st.info("A projeção ainda não foi calculada.")
+            return
+
+        st.altair_chart(
+            _projection_chart(projection),
+            use_container_width=True,
+            theme=None,
+        )
+
+        st.caption(
+            "Continuidade: risco atual mantido. "
+            "Ações preventivas: redução hipotética de 20% nos indicadores. "
+            "A faixa representa uma análise de sensibilidade, "
+            "não um intervalo de confiança estatístico."
+        )
+
+ 
+
+def _trends_card(data) -> None:
+
+    with st.container(border=True):
+
+        st.markdown(
+            card_header(
+                "Tendências e Contexto",
+                "Indicadores extraídos do histórico analisado.",
+                "Resume o histórico e as variações observadas",
+            ),
+            unsafe_allow_html=True,
+        )
+
+        trends = data["trends"]
+
+        if not trends:
+            st.info("Nenhuma tendência disponível.")
+            return
+
+        html = "".join(
+            f'<div class="gf-trend-item">• {trend}</div>'
+            for trend in trends
+        )
+
+        st.markdown(html, unsafe_allow_html=True)
+
+        st.caption(data["current"]["trend"])
+
+ 
+ 
+def _factors_card(data) -> None:
+    with st.container(border=True):
+        st.markdown(
+            card_header(
+                "Principais Fatores de Risco",
+                "Apresenta os indicadores que mais contribuem para o risco",
+            ),
+            unsafe_allow_html=True,
+        )
+
+        factors = data.get("factors", [])
+
+        if not factors:
+            st.info("Nenhum fator de risco disponível.")
+            return
+
+        for factor in factors:
+            col_info, col_score = st.columns([3, 1])
+
+            with col_info:
+                st.markdown(f"**{factor['name']}**")
+                st.caption(factor["description"])
+
+            with col_score:
+                st.metric(
+                    label="Contribuição",
+                    value=f"{factor['contribution']:.2f} pts",
+                )
+
+            st.progress(
+                min(factor["contribution"] / 100, 1.0)
             )
 
-            st.info("A projeção ainda não foi calculada.")
 
-        return
- 
-def _trends_card() -> None:
-    with st.container(border=True):
-        card_header("Tendências e Contexto", "Sinais atuais que orientam a previsão.")
-        #items = "".join(f'<div class="gf-trend-item">• {t}</div>' for t in TRENDS)
-        st.markdown(
-            card_header(
-                "Projeção do Score de Risco",
-                "Próximos 50 commits",
-            ),
-            unsafe_allow_html=True,
-        )
- 
- 
-def _factors_card() -> None:
-    with st.container(border=True):
-        card_header(
-            "Principais Fatores de Risco",
-            "Evidências atuais consideradas pelo modelo.",
-        )
-        # html = "".join(
-        #     f'<div class="gf-factor"><span class="gf-dot" style="background:{f["severity"]}"></span>'
-        #     f'<div><div class="gf-file">{f["file"]}</div>'
-        #     f'<div class="gf-factor-title">{f["title"]}</div>'
-        #     f'<div class="gf-factor-meta">{f["meta"]}</div></div></div>'
-        #     for f in FACTORS
-        # )
-        st.markdown(
-            card_header(
-                "Projeção do Score de Risco",
-                "Próximos 50 commits",
-            ),
-            unsafe_allow_html=True,
-        )
- 
- 
-def _recommendations_card() -> None:
+def _recommendations_card(data) -> None:
     with st.container(border=True, key="card_reco"):
-        card_header(
-            "Recomendações de IA",
-            "Ações sugeridas • revise com sua equipe antes de aplicar.",
-        )
-        # html = "".join(
-        #     f'<div class="gf-reco"><span class="gf-num">{i:02d}</span>'
-        #     f'<div><div class="gf-reco-title">{r["title"]}</div>'
-        #     f'<div class="gf-reco-desc">{r["desc"]}</div></div></div>'
-        #     for i, r in enumerate(RECOMMENDATIONS, start=1)
-        # )
         st.markdown(
             card_header(
-                "Projeção do Score de Risco",
-                "Próximos 50 commits",
+                "Recomendações de IA",
+                "Ações sugeridas • revise com sua equipe antes de aplicar.",
             ),
             unsafe_allow_html=True,
         )
- 
+        # TODO: renderizar a lista de recomendações aqui
+
         note, action = st.columns([2, 1], vertical_alignment="center")
         note.markdown(
             '<span class="gf-disclaimer">Redução de risco simulada, não garantida.</span>',
