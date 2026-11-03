@@ -3304,38 +3304,547 @@ div[data-testid="stFormSubmitButton"] button {
 /* TELA DE PLANOS */
 /* --- base (só se a landing não carregar isso globalmente) --- */
 :root {
-    --gf-line:   var(--pr-border);
+    --gf-line: var(--pr-border);
     --gf-accent: var(--pr-accent);
-    --gf-text:   var(--pr-text);
-    --gf-muted:  var(--pr-body);
+    --gf-text: var(--pr-text);
+    --gf-muted: var(--pr-body);
 }
-.gf-wrap { max-width: 1248px; margin: 0 auto; padding: 0 2rem; width: 100%; box-sizing: border-box; }
-.gf-brand { display: flex; align-items: center; gap: 12px; color: var(--gf-text); text-decoration: none; }
-.auth-brand-logo-img { height: 32px; width: auto; }
-.auth-brand-name { font: 700 1.15rem var(--pr-sans); color: var(--gf-text); }
+
+.gf-wrap {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gf-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--gf-text);
+    text-decoration: none;
+}
+
+.auth-brand-logo-img {
+    height: 32px;
+    width: auto;
+}
+
+.auth-brand-name {
+    font: 700 1.15rem var(--pr-sans);
+    color: var(--gf-text);
+}
+
 .gf-btn {
-    padding: 9px 16px; border-radius: 8px; font-weight: 600;
-    border: 1px solid var(--gf-line); color: var(--gf-text) !important;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid var(--gf-line);
+    color: var(--gf-text) !important;
 }
-.gf-btn.sec { background: var(--pr-card); }
-.gf-btn.pri { background: var(--gf-accent); border-color: var(--gf-accent); }
+
+.gf-btn.sec {
+    background: var(--pr-card);
+}
+
+.gf-btn.pri {
+    background: var(--gf-accent);
+    border-color: var(--gf-accent);
+}
 
 /* --- nav --- */
 .gf-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 999991;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999991;
     height: 64px;
     background: rgba(11, 18, 32, .82);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--gf-line);
     font-family: var(--pr-sans);
 }
-.gf-nav .gf-wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-.gf-nav nav { display: flex; align-items: center; gap: 28px; font-size: .8rem; color: var(--gf-muted); }
-.gf-nav nav a { color: inherit; text-decoration: none; }
-.gf-nav nav a:hover { color: var(--gf-text); }
-.gf-nav nav a.on { color: var(--gf-text); font-weight: 700; }
-.gf-nav nav a.gf-btn { color: var(--gf-text); }
+
+.gf-nav .gf-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.gf-nav nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: .8rem;
+    color: var(--gf-muted);
+}
+
+.gf-nav nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gf-nav nav a:hover {
+    color: var(--gf-text);
+}
+
+.gf-nav nav a.on {
+    color: var(--gf-text);
+    font-weight: 700;
+}
+
+.gf-nav nav a.gf-btn {
+    color: var(--gf-text);
+}
 
 @media (max-width: 900px) {
-    .gf-nav nav a:not(.gf-btn) { display: none; }
+    .gf-nav nav a:not(.gf-btn) {
+        display: none;
+    }
+}
+
+/* GERENCIAR PLANO */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+    --gp-bg: #0b1120;
+    --gp-card: #1a2236;
+    --gp-card-hi: #1e2745;
+    --gp-field: #151d31;
+    --gp-border: #2a3550;
+    --gp-text: #f1f5f9;
+    --gp-body: #aab4c8;
+    --gp-value: #d5dbe8;
+    --gp-muted: #7b869e;
+    --gp-accent: #6366f1;
+    --gp-soft: #a5b4fc;
+    --gp-danger: #ef4444;
+    --gp-danger-soft: #f87171;
+    --gp-sans: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    --gp-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ---------- Página ---------- */
+.st-key-gp_page {
+    font-family: var(--gp-sans);
+    gap: 0 !important;
+}
+
+.gp-h1 {
+    margin: 0 0 12px;
+    color: var(--gp-text);
+    font: 700 1.7rem/1.2 var(--gp-sans);
+    letter-spacing: -.01em;
+}
+
+.gp-lead {
+    margin: 0 0 26px;
+    color: var(--gp-body);
+    font: 400 .86rem/1.5 var(--gp-sans);
+}
+
+.gp-notice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 9px 12px;
+    border: 1px solid var(--gp-border);
+    border-radius: 8px;
+    background: var(--gp-card);
+    color: var(--gp-body);
+    font: 400 .72rem var(--gp-sans);
+}
+
+.gp-notice svg {
+    color: var(--gp-soft);
+    flex-shrink: 0;
+}
+
+/* ---------- Grade 3 x 2 ---------- */
+.st-key-gp_grid {
+    gap: 20px !important;
+}
+
+.st-key-gp_grid [data-testid="stHorizontalBlock"] {
+    gap: 20px !important;
+}
+
+.st-key-gp_grid [data-testid="stColumn"] {
+    min-width: 0;
+}
+
+/* ---------- Card base ---------- */
+[class*="st-key-gp_card_"] {
+    background: var(--gp-card);
+    border: 1px solid var(--gp-border);
+    border-radius: 12px;
+    padding: 16px;
+    gap: 0 !important;
+    overflow: hidden;
+}
+
+.st-key-gp_card_plano,
+.st-key-gp_card_alterar,
+.st-key-gp_card_cobranca {
+    height: 460px;
+}
+
+.st-key-gp_card_situacao,
+.st-key-gp_card_historico,
+.st-key-gp_card_cancelar {
+    height: 395px;
+}
+
+.st-key-gp_card_plano {
+    background: var(--gp-card-hi);
+    border: 2px solid var(--gp-accent);
+    padding: 15px;
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, .2), 0 14px 40px rgba(99, 102, 241, .10);
+}
+
+/* o botão fica sempre colado no rodapé do card */
+[class*="st-key-gp_card_"] [class*="st-key-gp_btn_"] {
+    margin-top: auto;
+}
+
+/* ---------- Textos do card ---------- */
+.gp-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background: rgba(99, 102, 241, .18);
+    color: var(--gp-soft);
+    font: 500 .62rem var(--gp-mono);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.gp-tag.red {
+    background: rgba(239, 68, 68, .16);
+    color: var(--gp-danger-soft);
+}
+
+.gp-title {
+    margin: 14px 0 8px;
+    color: var(--gp-text);
+    font: 700 1.15rem/1.25 var(--gp-sans);
+}
+
+.gp-title.lg {
+    font-size: 1.3rem;
+}
+
+.gp-desc {
+    margin: 0;
+    color: var(--gp-body);
+    font: 400 .8rem/1.5 var(--gp-sans);
+}
+
+.gp-price {
+    margin-top: 18px;
+    color: var(--gp-text);
+    font: 700 2rem/1.1 var(--gp-sans);
+    letter-spacing: -.02em;
+}
+
+.gp-unit {
+    margin-top: 8px;
+    color: var(--gp-muted);
+    font: 400 .8rem var(--gp-sans);
+}
+
+.gp-sep {
+    height: 1px;
+    margin: 16px 0 14px;
+    background: var(--gp-border);
+}
+
+.gp-lbl {
+    margin-bottom: 12px;
+    color: var(--gp-body);
+    font: 600 .78rem var(--gp-sans);
+}
+
+.gp-lbl-mono {
+    margin-bottom: 12px;
+    color: var(--gp-soft);
+    font: 500 .6rem var(--gp-mono);
+    letter-spacing: .08em;
+}
+
+.gp-dots,
+.gp-checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.gp-dots li,
+.gp-checks li {
+    position: relative;
+    margin-bottom: 11px;
+    color: var(--gp-value);
+    font: 400 .82rem/1.4 var(--gp-sans);
+}
+
+.gp-dots li {
+    padding-left: 14px;
+}
+
+.gp-dots li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gp-accent);
+}
+
+.gp-checks li {
+    padding-left: 26px;
+    margin-bottom: 10px;
+}
+
+.gp-checks li svg {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--gp-soft);
+}
+
+/* ---------- Opções de plano (card "Alterar plano") ---------- */
+.gp-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 14px 0 16px;
+}
+
+.gp-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--gp-border);
+    border-radius: 10px;
+    background: #1c253b;
+}
+
+.gp-opt-ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gp-border);
+    border-radius: 8px;
+    background: #141c30;
+    color: var(--gp-body);
+}
+
+.gp-opt-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.gp-opt-body b,
+.gp-opt-price b {
+    display: block;
+    color: var(--gp-text);
+    font: 600 .82rem/1.3 var(--gp-sans);
+}
+
+.gp-opt-body span,
+.gp-opt-price span {
+    display: block;
+    margin-top: 3px;
+    color: var(--gp-muted);
+    font: 400 .7rem/1.3 var(--gp-sans);
+}
+
+.gp-opt-body span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gp-opt-price {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ---------- Linhas chave / valor ---------- */
+.gp-rows {
+    margin-top: 10px;
+}
+
+.gp-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    font-family: var(--gp-sans);
+    font-size: .8rem;
+    line-height: 1.3;
+}
+
+.gp-row:first-child {
+    padding-top: 6px;
+}
+
+.gp-row+.gp-row {
+    border-top: 1px solid var(--gp-border);
+}
+
+.gp-row span {
+    max-width: 100px;
+    color: var(--gp-body);
+    font-weight: 600;
+}
+
+.gp-row b {
+    max-width: 62%;
+    text-align: right;
+    color: var(--gp-value);
+    font-weight: 400;
+}
+
+/* ---------- Transações ---------- */
+.gp-tx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin: 14px 0;
+}
+
+.gp-tx {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border: 1px solid var(--gp-border);
+    border-radius: 8px;
+    background: #1c253b;
+}
+
+.gp-tx-date {
+    flex-shrink: 0;
+    color: var(--gp-body);
+    font: 400 .72rem var(--gp-mono);
+}
+
+.gp-tx-mid {
+    flex: 1;
+    min-width: 0;
+}
+
+.gp-tx-mid b,
+.gp-tx-end b {
+    display: block;
+    color: var(--gp-text);
+    font: 600 .8rem/1.3 var(--gp-sans);
+}
+
+.gp-tx-mid span,
+.gp-tx-end span {
+    display: block;
+    margin-top: 2px;
+    color: var(--gp-muted);
+    font: 400 .72rem/1.3 var(--gp-sans);
+}
+
+.gp-tx-end {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ---------- Alerta de cancelamento ---------- */
+.gp-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 192px;
+    margin: 14px 0 12px;
+    padding: 0 14px;
+    border: 1px solid var(--gp-border);
+    border-radius: 8px;
+    background: var(--gp-field);
+    color: var(--gp-value);
+    font: 400 .74rem/1.5 var(--gp-sans);
+}
+
+.gp-alert svg {
+    color: var(--gp-danger-soft);
+    flex-shrink: 0;
+}
+
+/* ---------- Botões ---------- */
+.st-key-gp_page button {
+    min-height: 40px;
+    border-radius: 8px;
+    font-family: var(--gp-sans);
+    font-weight: 600;
+    font-size: .85rem;
+    background: var(--gp-field);
+    border: 1px solid var(--gp-border);
+    color: var(--gp-text);
+}
+
+.st-key-gp_page button:hover {
+    border-color: var(--gp-accent);
+    color: #fff;
+}
+
+.st-key-gp_page button[kind="primary"],
+.st-key-gp_page button[data-testid="stBaseButton-primary"] {
+    background: var(--gp-accent);
+    border-color: var(--gp-accent);
+    color: #fff;
+}
+
+.st-key-gp_page button[kind="primary"]:hover,
+.st-key-gp_page button[data-testid="stBaseButton-primary"]:hover {
+    background: #7c7ff5;
+    border-color: #7c7ff5;
+}
+
+.st-key-gp_btn_cancelar_assinatura button {
+    background: var(--gp-danger) !important;
+    border-color: var(--gp-danger) !important;
+    color: #fff !important;
+}
+
+.st-key-gp_btn_cancelar_assinatura button:hover {
+    background: #f25a5a !important;
+    border-color: #f25a5a !important;
+}
+
+/* ---------- Rodapé da tela ---------- */
+.st-key-gp_footer {
+    margin-top: 52px;
+}
+
+.st-key-gp_footer [data-testid="stHorizontalBlock"] {
+    gap: 12px !important;
+}
+
+.gp-foot-note {
+    color: var(--gp-body);
+    font: 600 .72rem var(--gp-sans);
+}
+
+.st-key-gp_footer button {
+    min-height: 40px;
+}
+
+.st-key-gp_btn_cancelar button {
+    background: var(--gp-bg);
 }
