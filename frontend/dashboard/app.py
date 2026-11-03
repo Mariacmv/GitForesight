@@ -16,10 +16,11 @@ st.set_page_config(
 )
 
 #from backend.app.insights import knowledge_concentration
-from views import account, banner, choose_repo, auth, heatmap, overview, predictive, settings
+from views import account, banner, choose_repo, auth, heatmap, overview, predictive, settings, pricing
 from views.auth import direcionar_usuario
 from backend.database.connection import init_db
 from components.sidebar import render_sidebar
+from components.user_menu import render_menu_usuario, iniciais_do_usuario
 from components.topbar import render_topbar
 from context import get_context
 from data_loader import load_commits
@@ -40,7 +41,8 @@ TELAS = {
     "Configurações": settings.render,
     "Apresentação da Aplicação": banner.render,
     "Conta de Usuário": account.render,
-    "Login": auth.render
+    "Login": auth.render,
+    "Preços": pricing.render
 }
 
 if "tela_ativa" not in st.session_state:
@@ -96,6 +98,16 @@ def main():
         st.session_state.pop("installation_id_pendente", None)
 
     if callback_processado and usuario_github is None:
+        return
+    
+    pagina = st.session_state.get("pagina")
+    
+    if st.query_params.get("precos") == "1":
+        st.session_state["pagina_publica"] = "pricing"
+        del st.query_params["precos"]
+
+    if st.session_state.get("pagina_publica") == "pricing":
+        pricing.render()
         return
 
     # 4. Restaura a sessão local, se necessário.
@@ -163,9 +175,6 @@ def main():
         if st.session_state.get("github_user_token"):
             st.session_state["pagina"] = "choose_repo"
             st.session_state["passo"] = 1
-            # print("DEBUG — Antes do roteamento")
-            # print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-            #print("DEBUG — Página:", st.session_state.get("pagina"))
             st.session_state.pop("retorno_instalacao_pendente", None)
             st.session_state.pop("installation_id_pendente", None)
         else:
@@ -184,14 +193,9 @@ def main():
     if "pagina" not in st.session_state:
         direcionar_usuario(user_id)
 
-    pagina = st.session_state.get("pagina")
-    #print("DEBUG — Entrou no roteamento:", pagina)
-
     if pagina == "choose_repo":
-        #print("DEBUG — Chamando choose_repo.render()")
         st.session_state.setdefault("passo", 1)
         choose_repo.render()
-        #print("DEBUG — Retornou de choose_repo.render()")
         return
 
     if pagina == "account":
@@ -199,13 +203,18 @@ def main():
         return
     if pagina == "heatmap":
         render_heatmap()
-
+        return
+    if st.session_state.get("pagina") == "pricing":
+        pricing.render()
+        return
+    
     # 9. Dashboard.
     ctx = get_context()
     analysis, risk = load_commits()
 
     tela = render_sidebar()
     render_topbar(ctx)
+    render_menu_usuario(iniciais_do_usuario())
 
     TELAS[tela](analysis, risk)
 

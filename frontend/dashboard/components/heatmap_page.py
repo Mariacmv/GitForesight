@@ -20,7 +20,7 @@ def render_heatmap():
         st.session_state["heat_sel"] = paths[0]       # abre no arquivo de maior risco
     selecionado = st.session_state.get("heat_sel")
 
-    col_esq, col_dir = st.columns([16, 14], gap="small")
+    col_esq, col_dir = st.columns([20, 10], gap="small")
 
     with col_esq:
         with st.container(key="heat_card"):

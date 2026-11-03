@@ -224,8 +224,7 @@ def _projection_chart(projection: pd.DataFrame):
 
 def _projection_card(data) -> None:
 
-    with st.container(border=True):
-
+    with st.container(border=True, key="card_projection"):
         st.markdown(
             card_header(
                 "Projeção do Score de Risco",
@@ -258,7 +257,7 @@ def _projection_card(data) -> None:
 
 def _trends_card(data) -> None:
 
-    with st.container(border=True):
+    with st.container(border=True, key="card_trends"):
 
         st.markdown(
             card_header(
@@ -287,7 +286,7 @@ def _trends_card(data) -> None:
  
  
 def _factors_card(data) -> None:
-    with st.container(border=True):
+    with st.container(border=True, key="card_factors"):
         st.markdown(
             card_header(
                 "Principais Fatores de Risco",
@@ -346,7 +345,6 @@ def _recommendations_card(data) -> None:
 # Entrada da view
 def render(analysis, risk):
     load_css()
-
     data = build_predictive(analysis, risk)
 
     _header()
@@ -355,9 +353,7 @@ def render(analysis, risk):
         st.warning(data["message"])
         return
 
-    st.write("")
     _kpis(data)
-    st.write("")
 
     col_chart, col_trends = st.columns([2.1, 1])
 

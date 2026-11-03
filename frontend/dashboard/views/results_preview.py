@@ -40,7 +40,7 @@ def _ir_visao_geral():
 
 
 def _planos():
-    st.toast("A página de planos ainda está em construção.")
+    st.session_state["pagina_publica"] = "pricing"
 
 
 def _analisar_outro():

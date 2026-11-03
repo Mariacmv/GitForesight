@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
+/* Deploy, menu ⋮ e barra colorida do Streamlit */
+[data-testid="stToolbar"],
+[data-testid="stDeployButton"],
+.stAppDeployButton,
+[data-testid="stMainMenu"],
+#MainMenu,
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
 section[data-testid="stSidebar"],
 section[data-testid="stSidebar"]>div,
 [data-testid="stSidebarContent"],
@@ -66,12 +77,12 @@ section[data-testid="stSidebar"] * {
 
 /* Configurações no rodapé, alinhado com os itens do menu */
 [data-testid="stSidebarUserContent"] [data-testid="stVerticalBlock"] {
-    gap: 2px !important;
+    gap: 0.6rem !important;
 }
 
 /* Conteúdo */
 .main .block-container {
-    padding: 2rem !important;
+    padding: 2.2rem !important;
 }
 
 /* Ajustes sidebar para combinar com o cabeçalho */
@@ -80,9 +91,11 @@ section[data-testid="stSidebar"] {
     min-width: 260px !important;
 }
 
-/* Esconde o header padrão do Streamlit */
 [data-testid="stHeader"] {
-    display: none;
+    background: transparent !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    z-index: 0 !important;
 }
 
 /* Alinha a marca da sidebar com a altura da barra (56px) */
@@ -94,13 +107,6 @@ section[data-testid="stSidebar"] {
 
 [data-testid="stSidebarUserContent"] {
     padding-top: 0 !important;
-}
-
-/* Abre espaço para a barra no conteúdo */
-.stMainBlockContainer {
-    max-width: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
 }
 
 /*  TOPBAR  */
@@ -198,7 +204,7 @@ section[data-testid="stSidebar"] {
 
 /* Espaçamento entre itens */
 [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
-    gap: 2px !important;
+    gap: 0.6rem !important;
 }
 
 /* Faz o container do botão ocupar a largura toda da sidebar */
@@ -354,6 +360,7 @@ section[data-testid="stSidebar"] {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 16px;
+    margin-top: 16px;
     font-family: 'Inter', sans-serif;
 }
 
@@ -471,6 +478,13 @@ section[data-testid="stSidebar"] {
     background-color: #0B1220;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     font-family: 'Inter', sans-serif;
+}
+
+.st-key-topbar_user {
+    position: fixed;
+    top: 7px;
+    right: 24px;
+    z-index: 100001;
 }
 
 .auth-brand {
@@ -1221,14 +1235,13 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* "Encerrar Outras Sessões": largura total, com borda */
-.st-key-sess_all {
-    width: 328px !important;
+.st-key-sess_all,
+.st-key-sess_all button {
+    width: 100% !important;
     max-width: 100% !important;
 }
 
 .st-key-sess_all button {
-    width: 328px !important;
-    max-width: 100% !important;
     min-height: 40px !important;
     height: 40px !important;
 
@@ -1669,6 +1682,7 @@ div[data-testid="stFormSubmitButton"] button {
 /* Painéis internos */
 .an-panel {
     background: #0B1220;
+    /*#6366F1*/
     border: 1px solid #334155;
     border-radius: 8px;
     padding: 16px;
@@ -2514,7 +2528,6 @@ div[data-testid="stFormSubmitButton"] button {
 
 /* Análise preditiva  */
 /* Estilos da view Análise Preditiva (predictive.py) */
-
 :root {
     --gf-bg-card: #141b2d;
     --gf-bg-inset: #0f1524;
@@ -2531,9 +2544,27 @@ div[data-testid="stFormSubmitButton"] button {
     --gf-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.block-container {
-    padding-top: 2.2rem;
-    max-width: 1100px;
+.main .block-container,
+.stMainBlockContainer {
+    padding-top: calc(46px + 0.25rem) !important;
+    padding-bottom: 1rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 100%;
+}
+
+/* remove o gap do container principal só no primeiro nível */
+.stMainBlockContainer>[data-testid="stVerticalBlock"] {
+    gap: 0.6rem;
+}
+
+.stElementContainer:has(.topbar),
+.stElementContainer.st-key-topbar_user {
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
 }
 
 /* Cards (st.container com border=True) */
@@ -2554,13 +2585,25 @@ div[data-testid="stFormSubmitButton"] button {
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--gf-text);
-    margin: 0;
+    margin: 0 !important;
+    line-height: 1;
+}
+
+.stMarkdown:has(.gf-title) p {
+    margin-bottom: 0 !important;
+}
+
+.st-key-predictive_export button {
+    min-height: 36px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .gf-subtitle {
     color: var(--gf-muted);
     font-size: 0.9rem;
-    margin: 0.25rem 0 0 0;
+    margin: 0 !important;
+    margin-top: 0.2rem !important;
 }
 
 /* KPIs */
@@ -2569,6 +2612,7 @@ div[data-testid="stFormSubmitButton"] button {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     width: 100%;
+    margin: 0.75rem 0 1rem 0;
 }
 
 .gf-kpi {
@@ -2578,7 +2622,7 @@ div[data-testid="stFormSubmitButton"] button {
     border: 1px solid var(--gf-border);
     border-radius: 10px;
     padding: 16px;
-    min-height: 150px;
+    min-height: 110px;
     box-sizing: border-box;
 }
 
@@ -2587,17 +2631,19 @@ div[data-testid="stFormSubmitButton"] button {
     justify-content: space-between;
     align-items: center;
     gap: 8px;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     font-size: 0.72rem;
     color: var(--gf-muted);
     font-weight: 600;
     letter-spacing: 0.02em;
-    white-space: nowrap;      /* label não quebra em 2 linhas */
+    white-space: nowrap;
+    /* label não quebra em 2 linhas */
 }
 
 .gf-kpi-head span:first-child {
     overflow: hidden;
-    text-overflow: ellipsis;  /* se não couber, corta com "…" */
+    text-overflow: ellipsis;
+    /* se não couber, corta com "…" */
 }
 
 .gf-badge {
@@ -2617,9 +2663,9 @@ div[data-testid="stFormSubmitButton"] button {
 
 .gf-kpi-value {
     font-family: var(--gf-mono);
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin: 0 0 8px 0;
+    margin-bottom: 4px;
 }
 
 .gf-kpi-foot {
@@ -2713,6 +2759,7 @@ div[data-testid="stFormSubmitButton"] button {
     display: flex;
     gap: 0.7rem;
     margin-bottom: 1rem;
+    color: var(--gf-muted);
 }
 
 .gf-dot {
@@ -2903,6 +2950,43 @@ div[data-testid="stFormSubmitButton"] button {
     transform: translateY(0);
 }
 
+/* Cards de Tendências, Fatores de Risco e Recomendações */
+.st-key-card_trends,
+.st-key-card_factors,
+.st-key-card_reco,
+.st-key-card_projection,
+.st-key-card_trends [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_factors [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_reco [data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--gf-bg-card) !important;
+    border-radius: 10px;
+}
+
+.st-key-card_trends,
+.st-key-card_factors {
+    border: 1px solid var(--gf-border) !important;
+    padding: 0.6rem 0.9rem;
+}
+
+/* mantém o destaque índigo da Recomendações */
+.st-key-card_reco {
+    border: 1px solid var(--gf-indigo) !important;
+    padding: 0.6rem 0.9rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* CONFIGURAÇÕES */
 :root {
     --cfg-card: #141c2f;
@@ -3079,9 +3163,9 @@ div[data-testid="stFormSubmitButton"] button {
     border-radius: 8px;
 }
 
-[class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
+/* [class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
     min-height: 42px;
-}
+} */
 
 [class*="st-key-cfg_card_"] input {
     font-size: .85rem;
@@ -3094,7 +3178,7 @@ div[data-testid="stFormSubmitButton"] button {
     border-radius: 8px;
     font-weight: 600;
     font-size: .85rem;
-    min-height: 40px;
+    /*min-height: 40px;*/
 }
 
 .stButton button[kind="secondary"] {
@@ -3136,15 +3220,15 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 /* Altura mínima por linha de cards */
-.st-key-cfg_card_repo,
+/* .st-key-cfg_card_repo,
 .st-key-cfg_card_integ {
     min-height: 400px;
-}
+} */
 
-.st-key-cfg_card_scan,
+/* .st-key-cfg_card_scan,
 .st-key-cfg_card_notif {
     min-height: 380px;
-}
+} */
 
 /* Mais espaço entre as duas linhas de cards */
 [data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
@@ -3215,4 +3299,43 @@ div[data-testid="stFormSubmitButton"] button {
 .stButton button {
     min-height: 44px;
     font-size: .9rem;
+}
+
+/* TELA DE PLANOS */
+/* --- base (só se a landing não carregar isso globalmente) --- */
+:root {
+    --gf-line:   var(--pr-border);
+    --gf-accent: var(--pr-accent);
+    --gf-text:   var(--pr-text);
+    --gf-muted:  var(--pr-body);
+}
+.gf-wrap { max-width: 1248px; margin: 0 auto; padding: 0 2rem; width: 100%; box-sizing: border-box; }
+.gf-brand { display: flex; align-items: center; gap: 12px; color: var(--gf-text); text-decoration: none; }
+.auth-brand-logo-img { height: 32px; width: auto; }
+.auth-brand-name { font: 700 1.15rem var(--pr-sans); color: var(--gf-text); }
+.gf-btn {
+    padding: 9px 16px; border-radius: 8px; font-weight: 600;
+    border: 1px solid var(--gf-line); color: var(--gf-text) !important;
+}
+.gf-btn.sec { background: var(--pr-card); }
+.gf-btn.pri { background: var(--gf-accent); border-color: var(--gf-accent); }
+
+/* --- nav --- */
+.gf-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999991;
+    height: 64px;
+    background: rgba(11, 18, 32, .82);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gf-line);
+    font-family: var(--pr-sans);
+}
+.gf-nav .gf-wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.gf-nav nav { display: flex; align-items: center; gap: 28px; font-size: .8rem; color: var(--gf-muted); }
+.gf-nav nav a { color: inherit; text-decoration: none; }
+.gf-nav nav a:hover { color: var(--gf-text); }
+.gf-nav nav a.on { color: var(--gf-text); font-weight: 700; }
+.gf-nav nav a.gf-btn { color: var(--gf-text); }
+
+@media (max-width: 900px) {
+    .gf-nav nav a:not(.gf-btn) { display: none; }
 }

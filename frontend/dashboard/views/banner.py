@@ -33,17 +33,20 @@ def _cards(items) -> str:
         for i, t, d in items
     )
 
-def _nav(publico: bool = False) -> str: 
+def _nav(publico: bool = False) -> str:
     entrar = '<a class="gf-btn pri" href="?entrar=1" target="_self">Entrar</a>' if publico else ""
     return f"""
     <header class="gf-nav"><div class="gf-wrap">
-      <img class="auth-brand-logo-img" src="data:image/png;base64,{_logo_base64()}">
-      <div class="auth-brand-text">
-        <div class="auth-brand-name">Git Foresight</div>
+      <div class="gf-brand">
+        <img class="auth-brand-logo-img" src="data:image/png;base64,{_logo_base64()}">
+        <div class="auth-brand-text">
+          <div class="auth-brand-name">Git Foresight</div>
+        </div>
       </div>
       <nav>
-        <a href="#produto">O produto</a><a href="#como-funciona">Como funciona</a>
+        <a href="#produto">O produto</a><a href="#como-funciona">Como funciona</a> 
         <a href="#uso">Uso e limites</a><a href="#faq">Perguntas frequentes</a>
+        <a href="?precos=1" target="_self">Preços</a>
         <a class="gf-btn sec" href="{REPO_URL}" target="_blank">Ler o README ↗</a>
         {entrar}
       </nav>

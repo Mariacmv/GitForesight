@@ -759,6 +759,17 @@
   animation: gf-scan 5s linear infinite
 }
 
+.gf-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gf-brand .auth-brand-text {
+  margin: 0;
+  padding: 0;
+}
+
 @media (prefers-reduced-motion:reduce) {
 
   .gf-in,

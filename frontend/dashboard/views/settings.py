@@ -76,7 +76,7 @@ def _integracao(icone: str, nome: str, desc: str, conectado: bool, acao=None):
     if conectado:
         dir_.markdown('<div style="text-align:right"><span class="cfg-badge ok">Conectado</span></div>', unsafe_allow_html=True)
     else:
-        dir_.button("Conectar", key=f"cfg_btn_{nome}", on_click=acao, use_container_width=True)
+        dir_.button("Conectar", key=f"cfg_btn_{nome}", on_click=acao, user_container_width=True)
 
 
 def _card_repositorio(repo: str):
@@ -150,5 +150,5 @@ def render():
 
     txt, b1, b2 = st.columns([6, 1.1, 1.6], vertical_alignment="center")
     txt.markdown(f'<div class="cfg-d" style="font-weight:600">As alterações se aplicam a {repo}.</div>', unsafe_allow_html=True)
-    b1.button("Cancelar", key="cfg_cancel", on_click=_cancelar, use_container_width=True)
-    b2.button("Salvar Alterações", key="cfg_save", type="primary", on_click=_salvar, use_container_width=True)
+    b1.button("Cancelar", key="cfg_cancel", on_click=_cancelar, user_container_width=True)
+    b2.button("Salvar Alterações", key="cfg_save", type="primary", on_click=_salvar, user_container_width=True)
