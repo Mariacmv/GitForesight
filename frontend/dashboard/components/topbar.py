@@ -59,12 +59,12 @@ def render_topbar(ctx):
             <div class="topbar-status">
                 <span class="topbar-dot"></span>
                 <span>Última varredura: {last_scan}</span>
-                <div class="topbar-avatar">{avatar}</div>
             </div>
+            <div class="topbar-avatar">{avatar}</div>
         </div>
     </div>
     """
-
+#
     # Remove a indentação: o Markdown trata linhas com 4+ espaços como bloco de código
     html = " ".join(line.strip() for line in html.splitlines())
 
