@@ -9,7 +9,7 @@ from paths import DATA_DIR   # precisa vir antes dos imports de backend (ajusta 
 from backend.app.analysis_state import TEXTO_PREPARANDO, Snapshot, snapshot_pronta
 from frontend.dashboard.components.analysis_panels import achados_html, progresso_html, repo_html
 from backend.services.github_token_storage import obter_token_github
-from backend.database.repositories import marcar_repositorio_analisado, salvar_repositorio_usuario
+from backend.database.repositories import marcar_repositorio_analisado, salvar_repositorio_usuario, salvar_branch_repositorio
 
 ICONE_BRANCH = (
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" '
@@ -99,7 +99,15 @@ def atualizar(phs, snap):
     ph_achados.markdown(achados_html(snap), unsafe_allow_html=True)
 
 def _iniciar(chave_branch):
-    st.session_state.branch = st.session_state[chave_branch]
+    branch = st.session_state[chave_branch]
+    st.session_state.branch = branch
+
+    user_id = st.session_state.get("user_id")
+    repo_url = st.session_state.get("repo_url")
+
+    if user_id and repo_url:
+        salvar_branch_repositorio(user_id, repo_url, branch)
+
     st.session_state.analise = "rodando"
 
 

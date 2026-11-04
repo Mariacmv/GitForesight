@@ -107,34 +107,30 @@ def botao_github():
 
 def _cadastro():
     st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
-    
     st.markdown("#### Crie sua conta no Git Foresight")
     st.caption("Comece a explorar os riscos do seu repositório.")
-    
-    st.markdown(GITHUB,unsafe_allow_html=True)
 
+    st.markdown(GITHUB, unsafe_allow_html=True)
     botao_github()
-    st.caption("Conecte seus repositórios para analisar riscos técnicos e organizacionais. O acesso depende das permissões concedidas no GitHub.")
 
     st.markdown(
         '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
         unsafe_allow_html=True,
     )
-    st.caption("Acesse relatórios e análises compartilhados com você.")
 
     with st.form("form_cadastro", border=False):
-        nome = st.text_input("Nome completo", key='cadastro_nome', placeholder="Seu nome completo")
-        email = st.text_input("E-mail profissional", key='cadastro_email', placeholder="voce@empresa.com")
-        senha = st.text_input("Senha", type="password", key='cadastro_senha', placeholder="Crie uma senha")
+        nome = st.text_input("Nome completo", key="cadastro_nome", placeholder="Seu nome completo")
+        email = st.text_input("E-mail profissional", key="cadastro_email", placeholder="voce@empresa.com")
+        senha = st.text_input("Senha", type="password", key="cadastro_senha", placeholder="Crie uma senha")
         st.caption("Prefira uma senha longa, com letras, números e símbolos.")
         confirma = st.text_input(
-            "Confirmar senha", type="password", key='cadastro_confirma_senha',
+            "Confirmar senha", type="password", key="cadastro_confirma_senha",
             placeholder="Digite a senha novamente",
         )
         enviar = st.form_submit_button(
             "Criar conta", icon=":material/arrow_forward:", type="primary"
         )
-
+            
     if enviar:
         erros = []
         if len(nome.strip()) < 3:
@@ -167,45 +163,18 @@ def _cadastro():
 
                 st.rerun()
 
-    # Colunas externas para centralizar no layout
-    col_esq, col_centro, col_dir = st.columns([1, 2, 1])
-
-    with col_centro:
-
-        # Colunas internas para texto + botão
-        col_texto, col_link = st.columns(
-            [3, 1],
-            vertical_alignment="center"
-        )
-
+    # "Já tem uma conta? Entrar" em uma linha só, centralizada
+    with st.container(key="auth_login_row"):
+        col_texto, col_link = st.columns(2, vertical_alignment="center")
         with col_texto:
-            st.markdown(
-                '<p style="margin:0; white-space:nowrap;">Já tem uma conta?</p>',
-                unsafe_allow_html=True
-            )
-
+            st.markdown("Não tem uma conta?")
         with col_link:
-            st.button(
-                "Entrar",
-                key="auth_to_login",
-                on_click=_ir_para,
-                args=("login",),
-                type="tertiary"
-            )
+            st.button("Cadastrar-se", key="auth_to_cadastro",
+                    on_click=_ir_para, args=("cadastro",), type="tertiary")
 
     st.divider()
-    
-    b64_icon = base64.b64encode(ICON_SSO.encode("utf-8")).decode("utf-8")
-    st.html(
-    f"""
-        <style>
-        :root {{
-            --sso-icon-url: url("data:image/svg+xml;base64,{b64_icon}");
-        }}
-        </style>
-        """
-    )
-    st.button("Entrar com SSO da Empresa", key="auth_sso", disabled=False)
+
+    st.button("Entrar com SSO da Empresa", key="auth_sso")
     st.caption("Seu acesso é gerenciado pela organização. Para obter uma conta, fale com o administrador.")
 
 

@@ -23,7 +23,12 @@ from views import auth
 from backend.database.connection import init_db
 from backend.services.github_callback import processar_callback
 from backend.services.github_token_storage import obter_token_github
-from backend.database.repositories import migrar_repositorios
+from backend.services.github_oauth import buscar_usuario_github
+
+from backend.database.repositories import (
+    migrar_repositorios,
+    buscar_repositorio_analisado,
+)
 
 from views.auth import direcionar_usuario
 from views.choose_repo import processar_retorno_instalacao
@@ -143,6 +148,33 @@ def main():
 
             if token:
                 st.session_state["github_user_token"] = token
+                
+                # Recupera o perfil do GitHub quando a sessão é restaurada.
+        token = st.session_state.get("github_user_token")
+
+        if token and not st.session_state.get("avatar_url"):
+            try:
+                perfil = buscar_usuario_github(token)
+                st.session_state["avatar_url"] = perfil.get("avatar_url")
+
+            except Exception as e:
+                print("DEBUG — Erro ao recuperar avatar:", e)
+
+        # Recupera o último repositório analisado.
+        if not st.session_state.get("repo_sel"):
+            repo = buscar_repositorio_analisado(user_id)
+
+            if repo:
+                st.session_state["repo_sel"] = repo["name"]
+                st.session_state["repo_url"] = repo["url"]
+
+                st.session_state["branch"] = (
+                    repo.get("selected_branch")
+                )
+
+                st.session_state["ultima_varredura"] = (
+                    repo.get("last_analysis_at")
+                )
 
         print(
             "DEBUG — Retorno pendente:",

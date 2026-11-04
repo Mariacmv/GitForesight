@@ -16,11 +16,18 @@ def get_context():
         "avatar_url": avatar_url,
     }
 
+    if isinstance(ultima_varredura, str):
+        try:
+            ultima_varredura = datetime.fromisoformat(
+                ultima_varredura
+            )
+        except ValueError:
+            pass
+
     if isinstance(ultima_varredura, datetime):
         ultima_varredura = ultima_varredura.strftime(
             "%d/%m/%Y às %H:%M"
         )
-
     return {
         "repos": [repo] if repo else [],
         "repo_ativo": repo or "Nenhum repositório",

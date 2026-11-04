@@ -108,11 +108,34 @@ def listar_repositorios_usuario(user_id):
 
 
 def migrar_repositorios():
-    """Executa uma vez por inicialização: cria a coluna que guarda quando foi a última análise."""
+    """Adiciona colunas necessárias para persistir o contexto."""
+
     with get_connection() as con:
-        colunas = [c[1] for c in con.execute("PRAGMA table_info(repositories)")]
+        colunas = [
+            c[1]
+            for c in con.execute("PRAGMA table_info(repositories)")
+        ]
+
         if "last_analysis_at" not in colunas:
-            con.execute("ALTER TABLE repositories ADD COLUMN last_analysis_at TEXT")
+            con.execute(
+                "ALTER TABLE repositories ADD COLUMN last_analysis_at TEXT"
+            )
+
+        if "selected_branch" not in colunas:
+            con.execute(
+                "ALTER TABLE repositories ADD COLUMN selected_branch TEXT"
+            )
+            
+def salvar_branch_repositorio(user_id, url, branch):
+    with get_connection() as con:
+        con.execute(
+            """
+            UPDATE repositories
+            SET selected_branch = ?
+            WHERE user_id = ? AND url = ?
+            """,
+            (branch, user_id, url),
+        )
 
 
 def marcar_repositorio_analisado(user_id, url):
@@ -132,7 +155,14 @@ def buscar_repositorio_analisado(user_id):
     with get_connection() as con:
         repo = con.execute(
             """
-            SELECT id, user_id, name, url, connected_at, last_analysis_at
+            SELECT
+                id,
+                user_id,
+                name,
+                url,
+                connected_at,
+                last_analysis_at,
+                selected_branch
             FROM repositories
             WHERE user_id = ? AND last_analysis_at IS NOT NULL
             ORDER BY last_analysis_at DESC, id DESC

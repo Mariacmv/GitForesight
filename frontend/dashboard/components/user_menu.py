@@ -59,30 +59,3 @@ def render_menu_usuario():
             help="Minha conta",
             on_click=abrir_conta
         )
-
-    # st.markdown(
-    #     """
-    #     <style>
-    #     .st-key-topbar_user {
-    #         position: fixed;
-    #         top: 7px;
-    #         right: 24px;
-    #         width: 32px;
-    #         height: 32px;
-    #         z-index: 1002;
-    #     }
-
-    #     .st-key-topbar_user button {
-    #         width: 32px;
-    #         min-width: 32px;
-    #         height: 32px;
-    #         min-height: 32px;
-    #         padding: 0;
-    #         opacity: 0;
-    #         cursor: pointer;
-    #         border-radius: 50%;
-    #     }
-    #     </style>
-    #     """,
-    #     unsafe_allow_html=True
-    # )

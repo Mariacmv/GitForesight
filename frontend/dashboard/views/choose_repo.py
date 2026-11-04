@@ -12,7 +12,7 @@ import streamlit.components.v1 as components
 from backend.app.github import fetch_repo_stats, fetch_many_stats
 from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
-from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario
+from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario, salvar_branch_repositorio
 from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao, listar_branches_instalacao
 
 ETAPAS = [
@@ -22,7 +22,7 @@ ETAPAS = [
 ]
 
 STATS_LIMIT = 30
-LISTA_ALTURA = 440 #rolagem de repositórios
+LISTA_ALTURA = 520 #rolagem de repositórios
 
 def _token():
     return st.session_state.get("github_token") or os.getenv("GITHUB_TOKEN")
@@ -346,6 +346,11 @@ def _lista(conta):
         st.session_state.repo_sel = nome
         st.session_state.repo_url = url
         st.session_state.branch = repo_selecionado["default_branch"]
+        salvar_branch_repositorio(
+            user_id=user_id,
+            url=url,
+            branch=st.session_state.branch,
+        )
         st.session_state.passo = 2
         st.session_state.analise = "pronta"
 
@@ -390,8 +395,6 @@ def processar_retorno_instalacao():
     return True
 
 def render():
-    # if restaurar_sessao():
-    #     st.rerun()
     render_auth_topbar(mostrar_usuario=True)
 
     st.markdown(
@@ -421,24 +424,25 @@ def render():
 
     passo = st.session_state.passo
 
-    _stepper(passo)
+    with st.container(key="repo_zoom"):
+        _stepper(passo)
 
-    espaco_etapa = st.empty()
+        espaco_etapa = st.empty()
 
-    with espaco_etapa.container():
+        with espaco_etapa.container():
 
-        if passo == 1:
-            st.title("Boas-vindas ao GitForesight.")
-            st.caption(
-                "Qual repositório vamos analisar primeiro? "
-                "Escolha a conta, o projeto e a branch para começar."
-            )
-            _etapa_1()
+            if passo == 1:
+                st.title("Boas-vindas ao GitForesight.")
+                st.caption(
+                    "Qual repositório vamos analisar primeiro? "
+                    "Escolha a conta, o projeto e a branch para começar."
+                )
+                _etapa_1()
 
-        elif passo == 2:
-            render_primeira_analise()
+            elif passo == 2:
+                render_primeira_analise()
 
-        elif passo == 3:
-            render_resultados()
+            elif passo == 3:
+                render_resultados()
 
     render_auth_footer()
