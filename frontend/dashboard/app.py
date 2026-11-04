@@ -1,89 +1,71 @@
-import sys, requests
+
+import sys
 from pathlib import Path
-import streamlit as st 
 
-# Caminho absoluto até GitForesight
+import streamlit as st
+
+
 ROOT_DIR = Path(__file__).resolve().parents[2]
-
-# Adiciona a raiz do projeto aos caminhos do Python
 sys.path.insert(0, str(ROOT_DIR))
 
-# set_page_config precisa ser a primeira chamada do Streamlit
+
 st.set_page_config(
     page_title="Git Foresight",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-#from backend.app.insights import knowledge_concentration
-from views import account, banner, choose_repo, auth, heatmap, overview, predictive, settings, pricing
-from views.auth import direcionar_usuario
+
+from router import navegar
+
+from views import auth
+
 from backend.database.connection import init_db
-from components.sidebar import render_sidebar
-from components.user_menu import render_menu_usuario, iniciais_do_usuario
-from components.topbar import render_topbar
-from context import get_context
-from data_loader import load_commits
-from theme import load_css
 from backend.services.github_callback import processar_callback
-from views.choose_repo import processar_retorno_instalacao
-from backend.services.github_token_storage import (
-    obter_token_github,
-)
+from backend.services.github_token_storage import obter_token_github
 from backend.database.repositories import migrar_repositorios
-from frontend.dashboard.components.heatmap_page import render_heatmap
+
+from views.auth import direcionar_usuario
+from views.choose_repo import processar_retorno_instalacao
+
+from theme import load_css
 
 
-TELAS = {
-    "Visão Geral": overview.render,
-    "Heatmap de Risco": heatmap.render,
-    "Análise Preditiva": predictive.render,
-    "Configurações": settings.render,
-    "Apresentação da Aplicação": banner.render,
-    "Conta de Usuário": account.render,
-    "Login": auth.render,
-    "Preços": pricing.render
-}
-
-if "tela_ativa" not in st.session_state:
-    st.session_state.tela_ativa = "Visão Geral"
-if "mostrar_banner" not in st.session_state:
-    st.session_state.mostrar_banner = True
-if "autenticado" not in st.session_state:
-    st.session_state.autenticado = False
-if "auth_view" not in st.session_state:
-    st.session_state.auth_view = "cadastro"
-
+# Migração das tabelas de repositórios.
 migrar_repositorios()
 
+
 def main():
+
     load_css()
     init_db()
 
-    # 1. Detecta o retorno da instalação.
+    # 1. Detecta o retorno da instalação da GitHub App.
     processar_retorno_instalacao()
 
     # 2. Processa o callback OAuth.
     callback_processado = processar_callback()
-    #print("DEBUG — Callback processado:", callback_processado)
 
     usuario_github = st.session_state.pop(
         "github_usuario_pendente",
         None
     )
-    #rint("DEBUG — Usuário recebido do callback:", bool(usuario_github))
 
     # 3. OAuth concluído: define a sessão e a página.
     if usuario_github is not None:
+
         user_id = usuario_github["id"]
 
         auth._entrar(
             user_id,
             usuario_github["name"],
             usuario_github["email"],
+            metodo_login="github",
         )
-        # print("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-        # print("DEBUG — User ID:", st.session_state.get("user_id"))
+
+        st.session_state["avatar_url"] = (
+            usuario_github.get("avatar_url")
+        )
 
         # Mantém a sessão após o retorno externo do GitHub.
         st.session_state["cookie_pendente"] = (
@@ -92,131 +74,143 @@ def main():
 
         st.session_state["pagina"] = "choose_repo"
         st.session_state["passo"] = 1
-        #print("DEBUG — Página definida:", st.session_state["pagina"])
 
-        st.session_state.pop("retorno_instalacao_pendente", None)
-        st.session_state.pop("installation_id_pendente", None)
+        st.session_state.pop(
+            "retorno_instalacao_pendente",
+            None
+        )
 
+        st.session_state.pop(
+            "installation_id_pendente",
+            None
+        )
+
+    # Interrompe se o callback foi processado,
+    # mas não entregou um usuário autenticado.
     if callback_processado and usuario_github is None:
         return
-    
-    pagina = st.session_state.get("pagina")
-    
+
+    # 4. Interpreta atalhos recebidos pela URL.
     if st.query_params.get("precos") == "1":
-        st.session_state["pagina_publica"] = "pricing"
+        st.session_state["pagina"] = "pricing"
         del st.query_params["precos"]
 
-    if st.session_state.get("pagina_publica") == "pricing":
-        pricing.render()
-        return
+    if st.query_params.get("entrar") == "1":
+        st.session_state["pagina"] = "login"
+        st.session_state["auth_view"] = "login"
+        st.session_state["mostrar_banner"] = False
 
-    # 4. Restaura a sessão local, se necessário.
+        del st.query_params["entrar"]
+
+    # 5. Restaura a sessão local, se necessário.
     if not st.session_state.get("autenticado", False):
-        #print("DEBUG — Sessão não autenticada")
+
         sessao_restaurada = auth.restaurar_sessao()
-        #print("DEBUG — Sessão restaurada:", sessao_restaurada)
+
         print(
             "DEBUG — Cookie disponível:",
             bool(st.context.cookies.get("gf_remember"))
         )
+
         print(
             "DEBUG — Retorno pendente:",
             st.session_state.get("retorno_instalacao_pendente")
         )
+
         if not sessao_restaurada:
+
             if st.session_state.get("retorno_instalacao_pendente"):
-                st.session_state["mostrar_banner"] = False
+                st.session_state["pagina"] = "login"
                 st.session_state["auth_view"] = "login"
+                st.session_state["mostrar_banner"] = False
+
+    # 6. Recupera o usuário autenticado.
+    autenticado = st.session_state.get("autenticado", False)
+    user_id = st.session_state.get("user_id")
+
+    if autenticado:
+
+        if user_id is None:
+            st.error(
+                "Não foi possível recuperar a sessão do usuário."
+            )
+            return
+
+        # Recupera o token GitHub antes da navegação.
+        if not st.session_state.get("github_user_token"):
+
+            token = obter_token_github(user_id)
+
+            if token:
+                st.session_state["github_user_token"] = token
+
+        print(
+            "DEBUG — Retorno pendente:",
+            st.session_state.get("retorno_instalacao_pendente")
+        )
+
+        print(
+            "DEBUG — Token recuperado do banco:",
+            bool(st.session_state.get("github_user_token"))
+        )
+
+        print(
+            "DEBUG — Página atual:",
+            st.session_state.get("pagina")
+        )
+
+        # 7. Resolve o retorno da instalação da GitHub App.
+        if st.session_state.get("retorno_instalacao_pendente"):
+
+            if st.session_state.get("github_user_token"):
+
+                st.session_state["pagina"] = "choose_repo"
+                st.session_state["passo"] = 1
+
+                st.session_state.pop(
+                    "retorno_instalacao_pendente",
+                    None
+                )
+
+                st.session_state.pop(
+                    "installation_id_pendente",
+                    None
+                )
+
+            else:
+                st.info(
+                    "É necessário conectar novamente sua conta GitHub "
+                    "para consultar os repositórios autorizados."
+                )
+
+                st.session_state["pagina"] = "login"
+                st.session_state["auth_view"] = "login"
+
                 auth.render()
                 return
 
-            if st.query_params.get("entrar") == "1":
-                st.session_state["mostrar_banner"] = False
-                del st.query_params["entrar"]
+        # 8. Grava o cookie pendente.
+        if "cookie_pendente" in st.session_state:
 
-            if st.session_state.get("mostrar_banner", True):
-                banner.render(None, None, publico=True)
-                return
+            token_cookie = st.session_state.pop("cookie_pendente")
+            auth.gravar_cookie(token_cookie)
 
-            auth.render()
-            return
+        # 9. Define a página inicial do usuário.
+        if "pagina" not in st.session_state:
+            direcionar_usuario(user_id)
 
-    user_id = st.session_state.get("user_id")
+    else:
 
-    if user_id is None:
-        st.error("Não foi possível recuperar a sessão do usuário.")
-        return
-
-    # 5. Recupera o token GitHub antes do roteamento.
-    if not st.session_state.get("github_user_token"):
-        token = obter_token_github(user_id)
-
-        if token:
-            st.session_state["github_user_token"] = token
-            
+        # Usuário sem sessão: página inicial pública.
+        if "pagina" not in st.session_state:
+            st.session_state["pagina"] = "banner"
     print(
-        "DEBUG — Retorno pendente:",
-        st.session_state.get("retorno_instalacao_pendente")
+        "DEBUG — Avatar URL:",
+        st.session_state.get("avatar_url")
     )
 
-    print(
-        "DEBUG — Token recuperado do banco:",
-        bool(st.session_state.get("github_user_token"))
-    )
-
-    print(
-        "DEBUG — Página atual:",
-        st.session_state.get("pagina")
-    )
-
-    # 6. Se o retorno da instalação está pendente,
-    # prioriza a tela de seleção de repositórios.
-    if st.session_state.get("retorno_instalacao_pendente"):
-        if st.session_state.get("github_user_token"):
-            st.session_state["pagina"] = "choose_repo"
-            st.session_state["passo"] = 1
-            st.session_state.pop("retorno_instalacao_pendente", None)
-            st.session_state.pop("installation_id_pendente", None)
-        else:
-            st.info(
-                "É necessário conectar novamente sua conta GitHub "
-                "para consultar os repositórios autorizados."
-            )
-            auth.render()
-            return
-
-    if "cookie_pendente" in st.session_state:
-        token_cookie = st.session_state.pop("cookie_pendente")
-        auth.gravar_cookie(token_cookie)
-
-    # 8. Define a página inicial.
-    if "pagina" not in st.session_state:
-        direcionar_usuario(user_id)
-
-    if pagina == "choose_repo":
-        st.session_state.setdefault("passo", 1)
-        choose_repo.render()
-        return
-
-    if pagina == "account":
-        account.render()
-        return
-    if pagina == "heatmap":
-        render_heatmap()
-        return
-    if st.session_state.get("pagina") == "pricing":
-        pricing.render()
-        return
-    
-    # 9. Dashboard.
-    ctx = get_context()
-    analysis, risk = load_commits()
-
-    tela = render_sidebar()
-    render_topbar(ctx)
-    render_menu_usuario(iniciais_do_usuario())
-
-    TELAS[tela](analysis, risk)
+    # 10. Centraliza a renderização das páginas.
+    navegar()
 
 
 if __name__ == "__main__":

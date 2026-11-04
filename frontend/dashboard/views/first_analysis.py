@@ -1,6 +1,7 @@
 #TELA ETAPA 2
 import os
 from html import escape
+from datetime import datetime
 
 import streamlit as st
 
@@ -129,8 +130,9 @@ def executar(info, branch, phs):
         st.session_state.analise = "pronta"
         st.rerun()
 
-    st.cache_data.clear()                       # o painel precisa ler os CSVs novos
+    st.cache_data.clear()
     st.session_state.resultado_analise = resultado
+    st.session_state.ultima_varredura = datetime.now()
     st.session_state.analise = "pronta"
     st.session_state.passo = 3
     st.rerun()

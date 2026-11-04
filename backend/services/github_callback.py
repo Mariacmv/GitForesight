@@ -116,6 +116,10 @@ def processar_callback():
         )
 
         usuario = buscar_usuario_github(token)
+        st.session_state.avatar_url = usuario.get("avatar_url")
+        st.session_state.user_name = (
+            usuario.get("name") or usuario.get("login") or "Usuário"
+        )
         st.session_state.github_user_token = token #token para consultar as instalações disponíveis
 
     except Exception as e:
@@ -141,7 +145,10 @@ def processar_callback():
         st.exception(e)
         return True
 
-    # Entrega o usuário autenticado ao app.py
+    # Preserva a foto retornada pela API do GitHub.
+    usuario_local["avatar_url"] = usuario.get("avatar_url")
+
+    # Entrega o usuário autenticado ao app.py.
     st.session_state.github_usuario_pendente = usuario_local
 
     return True

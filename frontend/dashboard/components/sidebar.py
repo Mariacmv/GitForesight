@@ -1,27 +1,30 @@
-import base64
 
+import base64
 import streamlit as st
 
 from frontend.dashboard.paths import ASSETS_DIR
 
+
 ITENS_MENU = [
-    ("Visão Geral",               ":material/grid_view:"),
-    ("Heatmap de Risco",          ":material/water_drop:"),
-    ("Análise Preditiva",         ":material/show_chart:")
+    ("Visão Geral", ":material/grid_view:", "overview"),
+    ("Heatmap de Risco", ":material/water_drop:", "heatmap"),
+    ("Análise Preditiva", ":material/show_chart:", "predictive"),
 ]
 
 
 @st.cache_data
 def _logo_base64():
-    return base64.b64encode((ASSETS_DIR / "Logo.png").read_bytes()).decode()
+    return base64.b64encode(
+        (ASSETS_DIR / "Logo.png").read_bytes()
+    ).decode()
 
 
 def render_sidebar():
 
-    def _ir_para(tela):
-        st.session_state.tela_ativa = tela
+    def _ir_para(pagina):
+        st.session_state["pagina"] = pagina
 
-    ativa = st.session_state.tela_ativa
+    ativa = st.session_state.get("pagina", "overview")
 
     with st.sidebar:
 
@@ -37,24 +40,23 @@ def render_sidebar():
             unsafe_allow_html=True
         )
 
-        for nome, icone in ITENS_MENU:
+        for nome, icone, pagina in ITENS_MENU:
             st.button(
                 nome,
                 icon=icone,
-                key=f"nav_{nome}",
-                type="primary" if ativa == nome else "secondary",
+                key=f"nav_{pagina}",
+                type="primary" if ativa == pagina else "secondary",
                 on_click=_ir_para,
-                args=(nome,)
+                args=(pagina,)
             )
 
-        # Precisa ser o ÚLTIMO elemento dentro da sidebar
         st.button(
             "Configurações",
             icon=":material/settings:",
             key="nav_config",
-            type="primary" if ativa == "Configurações" else "secondary",
+            type="primary" if ativa == "settings" else "secondary",
             on_click=_ir_para,
-            args=("Configurações",)
+            args=("settings",)
         )
 
-    return st.session_state.tela_ativa
+    return st.session_state.get("pagina", "overview")

@@ -27,20 +27,17 @@ def _ir_visao_geral():
     repo = buscar_repositorio_usuario(user_id)
 
     if not repo or repo.get("url") != info.get("url"):
-        st.error(
-            "Não foi possível recuperar o repositório analisado."
-        )
+        st.error("Não foi possível recuperar o repositório analisado.")
         return
 
     st.session_state.repositorio_conectado = repo
     st.session_state.pagina = "overview"
-    st.session_state.tela_ativa = "Visão Geral"
     st.session_state.passo = 1
     st.session_state.analise = "pronta"
 
 
 def _planos():
-    st.session_state["pagina_publica"] = "pricing"
+    st.session_state["pagina"] = "pricing"
 
 
 def _analisar_outro():

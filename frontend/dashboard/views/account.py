@@ -5,8 +5,6 @@ import streamlit as st
 from components.cards import html_inline
 from components.dados_card import render_dados_pessoais, salvar_dados_pessoais
 from components.security_card import render_seguranca
-from components.sidebar import render_sidebar
-from components.topbar import render_auth_topbar
 from components.settings_card import render_plano_card
 
 CAMPOS_DADOS = ["dados_nome", "dados_cargo", "dados_email", "dados_idioma", "dados_fuso"]
@@ -123,12 +121,9 @@ def _aviso(texto):
 # ---------- página ----------
 
 def render():
-    render_auth_topbar(mostrar_usuario=True)
-    render_sidebar()
-
     usuario = {
-        "nome": st.session_state.get("usuario") or "Usuário",
-        "email": st.session_state.get("email") or "",
+        "nome": st.session_state.get("user_name") or "Usuário",
+        "email": st.session_state.get("user_email") or "",
         "cargo": "Engenheiro de Software",       # TODO: vir do banco
         "idioma": "Português (Brasil)",          # TODO: vir do banco
         "fuso": "Brasília (UTC−03:00)",          # TODO: vir do banco

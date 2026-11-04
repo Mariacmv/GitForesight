@@ -7,11 +7,9 @@ from components.cards import (
     render_alerts_card,
 )
 from data_loader import load_commit_log, load_file_changes
-from components.topbar import render_auth_topbar
 
 
 def render(analysis, risk):
-    render_auth_topbar(mostrar_usuario=True)
     commits = load_commit_log()
     files = load_file_changes()
     

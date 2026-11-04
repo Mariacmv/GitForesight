@@ -73,6 +73,11 @@ def _ir_para(view):
 def _entrar(user_id, name, email, metodo_login=None):
     st.session_state.autenticado = True
     st.session_state.user_id = user_id
+
+    st.session_state.user_name = name
+    st.session_state.user_email = email
+
+    # Mantém compatibilidade com partes antigas do projeto.
     st.session_state.usuario = name
     st.session_state.email = email
 

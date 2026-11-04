@@ -11,11 +11,20 @@ def render_topbar(ctx):
     user_name = ctx["usuario"]["nome"]
     avatar_url = ctx["usuario"]["avatar_url"]
 
-    initials = "".join(p[0] for p in user_name.split()[:2]).upper()
+    repo = escape(str(repo))
+    branch = escape(str(branch))
+    last_scan = escape(str(last_scan))
+    user_name = escape(str(user_name))
+    avatar_url = escape(str(avatar_url)) if avatar_url else None
+
+    initials = "".join(
+        p[0] for p in user_name.split()[:2]
+    ).upper() or "U"
 
     avatar = (
         f'<img src="{avatar_url}" alt="{user_name}">'
-        if avatar_url else initials
+        if avatar_url
+        else initials
     )
 
     html = f"""
@@ -50,8 +59,8 @@ def render_topbar(ctx):
             <div class="topbar-status">
                 <span class="topbar-dot"></span>
                 <span>Última varredura: {last_scan}</span>
+                <div class="topbar-avatar">{avatar}</div>
             </div>
-            <div class="topbar-avatar">{avatar}</div>
         </div>
     </div>
     """
@@ -107,13 +116,6 @@ def render_auth_topbar(mostrar_usuario=False):
     # Remove a indentação: sem isso o Markdown mostra o HTML como código
     html = " ".join(line.strip() for line in html.splitlines())
     st.markdown(html, unsafe_allow_html=True)
-
-    if mostrar_usuario:
-        if st.button("Meu perfil", key="avatar_click"):
-            st.session_state.pagina = "account"
-            st.session_state.tela_ativa = "Conta de Usuário"
-            st.rerun()
-
 
 def render_auth_footer():
 

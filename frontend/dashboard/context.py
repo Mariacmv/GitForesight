@@ -7,24 +7,14 @@ def get_context():
     branch = st.session_state.get("branch")
     ultima_varredura = st.session_state.get("ultima_varredura")
 
-    usuario = st.session_state.get("usuario")
+    # Dados do usuário
+    nome = st.session_state.get("user_name") or "Usuário"
+    avatar_url = st.session_state.get("avatar_url")
 
-    # Garante o formato esperado pela topbar.
-    if isinstance(usuario, dict):
-        usuario = {
-            "nome": usuario.get("nome") or "Usuário",
-            "avatar_url": usuario.get("avatar_url"),
-        }
-    elif isinstance(usuario, str):
-        usuario = {
-            "nome": usuario or "Usuário",
-            "avatar_url": None,
-        }
-    else:
-        usuario = {
-            "nome": "Usuário",
-            "avatar_url": None,
-        }
+    usuario = {
+        "nome": nome,
+        "avatar_url": avatar_url,
+    }
 
     if isinstance(ultima_varredura, datetime):
         ultima_varredura = ultima_varredura.strftime(
