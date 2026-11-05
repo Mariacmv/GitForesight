@@ -19,6 +19,7 @@ st.set_page_config(
 from router import navegar
 
 from views import auth
+from paths import DATA_DIR
 
 from backend.database.connection import init_db
 from backend.services.github_callback import processar_callback
@@ -28,6 +29,7 @@ from backend.services.github_oauth import buscar_usuario_github
 from backend.database.repositories import (
     migrar_repositorios,
     buscar_repositorio_analisado,
+    buscar_ultima_analise_usuario,
 )
 
 from views.auth import direcionar_usuario
@@ -174,6 +176,32 @@ def main():
 
                 st.session_state["ultima_varredura"] = (
                     repo.get("last_analysis_at")
+                )
+
+        # Recupera a última análise salva do usuário.
+        if not st.session_state.get("analysis_id"):
+
+            analise = buscar_ultima_analise_usuario(user_id)
+
+            if analise:
+                st.session_state["analysis_id"] = analise["id"]
+
+                st.session_state["analysis_dir"] = (
+                    DATA_DIR / analise["artifact_dir"]
+                )
+
+                st.session_state["repo_sel"] = (
+                    analise["repository_name"]
+                )
+
+                st.session_state["repo_url"] = (
+                    analise["repository_url"]
+                )
+
+                st.session_state["branch"] = analise["branch"]
+
+                st.session_state["ultima_varredura"] = (
+                    analise["analyzed_at"]
                 )
 
         print(

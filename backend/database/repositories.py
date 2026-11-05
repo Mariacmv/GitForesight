@@ -180,3 +180,65 @@ def remover_repositorio_usuario(user_id, repo_id):
             "DELETE FROM repositories WHERE id = ? AND user_id = ?",
             (repo_id, user_id),
         )
+        
+def buscar_ultima_analise_usuario(user_id):
+    with get_connection() as con:
+        analise = con.execute(
+            """
+            SELECT
+                a.id,
+                a.repository_id,
+                a.branch,
+                a.analyzed_at,
+                a.commits_count,
+                a.artifact_dir,
+                r.name AS repository_name,
+                r.url AS repository_url
+            FROM analyses a
+            INNER JOIN repositories r
+                ON r.id = a.repository_id
+            WHERE r.user_id = ?
+            ORDER BY a.analyzed_at DESC, a.id DESC
+            LIMIT 1
+            """,
+            (user_id,),
+        ).fetchone()
+
+    return dict(analise) if analise else None
+
+def registrar_analise(user_id, url, branch, commits_count, artifact_dir):
+    with get_connection() as con:
+        repo = con.execute(
+            """
+            SELECT id
+            FROM repositories
+            WHERE user_id = ? AND url = ?
+            LIMIT 1
+            """,
+            (user_id, url),
+        ).fetchone()
+
+        if not repo:
+            raise ValueError(
+                "Repositório não encontrado no banco de dados."
+            )
+
+        cursor = con.execute(
+            """
+            INSERT INTO analyses (
+                repository_id,
+                branch,
+                commits_count,
+                artifact_dir
+            )
+            VALUES (?, ?, ?, ?)
+            """,
+            (
+                repo["id"],
+                branch,
+                commits_count,
+                artifact_dir,
+            ),
+        )
+
+        return cursor.lastrowid

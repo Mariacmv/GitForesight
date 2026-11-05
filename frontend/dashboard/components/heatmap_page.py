@@ -11,7 +11,11 @@ def _historico():
 
 
 def render_heatmap():
-    itens = build_heatmap(DATA_DIR)
+    analysis_dir = st.session_state.get("analysis_dir")
+
+    data_dir = analysis_dir or DATA_DIR
+
+    itens = build_heatmap(data_dir)
     itens = sorted(itens, key=lambda i: i["score"], reverse=True)
     por_path = {i["path"]: i for i in itens}
     paths = list(por_path)

@@ -9,7 +9,7 @@ from paths import DATA_DIR   # precisa vir antes dos imports de backend (ajusta 
 from backend.app.analysis_state import TEXTO_PREPARANDO, Snapshot, snapshot_pronta
 from frontend.dashboard.components.analysis_panels import achados_html, progresso_html, repo_html
 from backend.services.github_token_storage import obter_token_github
-from backend.database.repositories import marcar_repositorio_analisado, salvar_repositorio_usuario, salvar_branch_repositorio
+from backend.database.repositories import marcar_repositorio_analisado, salvar_repositorio_usuario, salvar_branch_repositorio, registrar_analise
 
 ICONE_BRANCH = (
     '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" '
@@ -127,8 +127,23 @@ def executar(info, branch, phs):
             on_update=lambda snap: atualizar(phs, snap),
         )
         if user_id:
-            salvar_repositorio_usuario(user_id, info["full_name"], info["url"])
-            marcar_repositorio_analisado(user_id, info["url"])
+            salvar_repositorio_usuario(
+                user_id, info["full_name"], info["url"]
+            )
+
+            marcar_repositorio_analisado(
+                user_id, info["url"]
+            )
+
+            analysis_id = registrar_analise(
+                user_id=user_id,
+                url=info["url"],
+                branch=branch,
+                commits_count=resultado["commits"],
+                artifact_dir=resultado["artifact_dir"],
+            )
+
+            resultado["analysis_id"] = analysis_id
     except ValueError as e:
         st.session_state.erro_analise = str(e)
         st.session_state.analise = "pronta"
@@ -140,6 +155,8 @@ def executar(info, branch, phs):
 
     st.cache_data.clear()
     st.session_state.resultado_analise = resultado
+    st.session_state.analysis_id = resultado["analysis_id"]
+    st.session_state.analysis_dir = DATA_DIR / resultado["artifact_dir"]
     st.session_state.ultima_varredura = datetime.now()
     st.session_state.analise = "pronta"
     st.session_state.passo = 3

@@ -106,7 +106,10 @@ def renderizar_pagina_privada(pagina):
         render_heatmap()
 
     else:
-        analysis, risk = load_commits()
+        analysis_dir = st.session_state.get("analysis_dir")
+
+        analysis, risk = load_commits(analysis_dir)
+
         renderizar_dashboard(pagina, analysis, risk)
 
 def renderizar_dashboard(pagina, analysis, risk):

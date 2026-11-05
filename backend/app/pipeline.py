@@ -16,6 +16,7 @@ import stat
 import tempfile
 from contextlib import contextmanager
 from pathlib import Path
+import uuid
 
 import pandas as pd
 from git import Repo
@@ -51,6 +52,28 @@ def _cleanup(path):
     except TypeError:
         shutil.rmtree(path, onerror=_force_remove)    # versões anteriores
 
+def _salvar_artifacts(data_dir, analysis_id):
+    pasta = data_dir / "analyses" / analysis_id
+    pasta.mkdir(parents=True, exist_ok=True)
+
+    arquivos = [
+        "commits.csv",
+        "file_changes.csv",
+        "analysis.csv",
+        "risk.csv",
+    ]
+
+    try:
+        for nome in arquivos:
+            origem = data_dir / nome
+            destino = pasta / nome
+            shutil.copy2(origem, destino)
+
+    except Exception:
+        shutil.rmtree(pasta, ignore_errors=True)
+        raise
+
+    return str(Path("analyses") / analysis_id)
 
 @contextmanager
 def _etapa(tracker, indice, push):
@@ -116,6 +139,17 @@ def run_pipeline(url, branch, data_dir, token=None, total_commits=0, on_update=N
         with _etapa(tracker, 5, push):                                    # hotspots
             concentracao = None if files_df.empty else knowledge_concentration(files_df)
 
-        return {"commits": len(commits), "concentracao": concentracao}
+        analysis_id = uuid.uuid4().hex
+
+        artifact_dir = _salvar_artifacts(
+            data_dir,
+            analysis_id,
+        )
+
+        return {
+            "commits": len(commits),
+            "concentracao": concentracao,
+            "artifact_dir": artifact_dir,
+        }
     finally:
         _cleanup(tmp)
