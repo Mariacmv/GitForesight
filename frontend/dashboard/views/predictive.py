@@ -222,9 +222,8 @@ def _projection_chart(projection: pd.DataFrame):
 
  
 
-def _projection_card(data) -> None:
-
-    with st.container(border=True, key="card_projection"):
+def render_projection_card(data: dict, key="card_projection") -> None:
+    with st.container(border=True, key=key):
         st.markdown(
             card_header(
                 "Projeção do Score de Risco",
@@ -358,7 +357,7 @@ def render(analysis, risk):
     col_chart, col_trends = st.columns([2.1, 1])
 
     with col_chart:
-        _projection_card(data)
+        render_projection_card(data)
 
     with col_trends:
         _trends_card(data)

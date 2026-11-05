@@ -140,42 +140,43 @@ def render():
     st.title("Minha Conta")
     st.caption("Gerencie seu perfil, seus dados pessoais e a segurança do seu acesso.")
 
-    col_esq, col_dir = st.columns([1, 2], gap="medium")
+    with st.container(key="conta_grade"):
 
-    with col_esq:
-        render_profile_card(
-            nome=usuario["nome"],
-            email=usuario["email"],
-            avatar_url=st.session_state.get("avatar_url"),
-            papel="Administrador",
-            organizacao="Empresa • Engenharia",
-            repositorio="empresa/backend",
-        )
-        render_plano_card(
-            ao_gerenciar=_aviso("Gerenciar plano: em construção")
+        with st.container(key="conta_linha1"):          # Perfil | Dados Pessoais
+            render_profile_card(
+                nome=usuario["nome"],
+                email=usuario["email"],
+                avatar_url=st.session_state.get("avatar_url"),
+                papel="Administrador",
+                organizacao="Empresa • Engenharia",
+                repositorio="empresa/backend",
+            )
+            render_dados_pessoais(
+                nome=usuario["nome"],
+                cargo=usuario["cargo"],
+                email=usuario["email"],
+                idioma=usuario["idioma"],
+                fuso=usuario["fuso"],
+            )
+
+        with st.container(key="conta_linha2"):          # Plano | Segurança
+            render_plano_card(
+                ao_gerenciar=_aviso("Gerenciar plano: em construção")
+            )
+            render_seguranca(
+                dias_desde_troca=30,
+                dois_fatores=True,
+                ao_alterar_senha=_aviso("Alterar senha: em construção"),
+                ao_gerenciar=_aviso("Duas etapas: em construção"),
+                ao_ver_codigos=_aviso("Códigos de recuperação: em construção"),
+            )
+
+        render_sessoes(                                  # largura total
+            sessoes,
+            ao_encerrar=lambda sid: st.toast(f"Encerrar sessão {sid}: em construção"),
+            ao_encerrar_outras=_aviso("Encerrar outras sessões: em construção"),
         )
 
-    with col_dir:
-        render_dados_pessoais(
-            nome=usuario["nome"],
-            cargo=usuario["cargo"],
-            email=usuario["email"],
-            idioma=usuario["idioma"],
-            fuso=usuario["fuso"],
-        )
-        render_seguranca(
-            dias_desde_troca=30,
-            dois_fatores=True,
-            ao_alterar_senha=_aviso("Alterar senha: em construção"),
-            ao_gerenciar=_aviso("Duas etapas: em construção"),
-            ao_ver_codigos=_aviso("Códigos de recuperação: em construção"),
-        )
-
-    render_sessoes(
-                sessoes,
-                ao_encerrar=lambda sid: st.toast(f"Encerrar sessão {sid}: em construção"),
-                ao_encerrar_outras=_aviso("Encerrar outras sessões: em construção"),
-    )
     with st.container(key="conta_rodape"):
         col_nota, col_cancelar, col_salvar = st.columns(
             [3, 1, 1.6],

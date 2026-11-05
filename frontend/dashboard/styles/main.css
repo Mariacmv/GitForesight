@@ -364,6 +364,11 @@ section[data-testid="stSidebar"] {
     font-family: 'Inter', sans-serif;
 }
 
+.st-key-card_projection_overview {
+    min-height: 420px;
+    box-sizing: border-box;
+}
+
 .panel-title {
     color: #F8FAFC;
     font-size: 15px;
@@ -1121,8 +1126,6 @@ div[data-testid="stFormSubmitButton"] button {
     padding: 24px;
     font-family: 'Inter', sans-serif;
     max-width: 100%;
-    width: 368px !important;
-    min-height: 310px;
 }
 
 .pc-title {
@@ -1224,10 +1227,10 @@ div[data-testid="stFormSubmitButton"] button {
     margin-bottom: 16px;
 }
 
-.st-key-pc_alterar_foto {
+/* .st-key-pc_alterar_foto {
     width: 328px;
     height: 40px;
-}
+} */
 
 /* Botão com cara de campo, largura total */
 .st-key-profile_card .stButton button {
@@ -1371,8 +1374,6 @@ div[data-testid="stFormSubmitButton"] button {
     padding: 24px;
     font-family: 'Inter', sans-serif;
     max-width: 100%;
-    width: 744px !important;
-    height: 349px;
 }
 
 /* Rótulos pequenos */
@@ -1466,7 +1467,6 @@ div[data-testid="stFormSubmitButton"] button {
     padding: 24px;
     font-family: 'Inter', sans-serif;
     width: 100% !important;
-    height: 330px !important;
 }
 
 .st-key-seguranca_card button {
@@ -1510,12 +1510,11 @@ div[data-testid="stFormSubmitButton"] button {
 .st-key-conta_cancelar,
 .st-key-conta_cancelar .stButton,
 .st-key-conta_cancelar button {
-    width: 93px !important;
+    width: 150px !important;
     min-width: 93px !important;
 }
 
 .st-key-conta_cancelar button {
-    width: 93px !important;
     height: 44px !important;
     background: transparent !important;
     border: 1px solid #334155 !important;
@@ -1536,15 +1535,13 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .st-key-conta_salvar button {
-    width: 151px !important;
+    width: 150px !important;
     height: 44px !important;
 }
 
 /* CARD DO PLANO */
 /* CONTAINER DO CARD DE PLANO */
 .st-key-plano_card {
-    width: 410px !important;
-    min-height: 250px !important;
     background: #1E293B;
     border: 1px solid #334155;
     border-radius: 12px;
@@ -1604,7 +1601,6 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .st-key-plano_gerenciar_btn button {
-    width: 265px;
     height: 40px;
     background-color: #5F5CE5 !important;
     /* Tom exato azul/violeta da imagem */
@@ -1618,6 +1614,84 @@ div[data-testid="stFormSubmitButton"] button {
 
 .st-key-plano_gerenciar_btn button:hover {
     background-color: #4F4CD1 !important;
+}
+
+/* ---------- Minha Conta: grade alinhada ---------- */
+.st-key-conta_grade {
+    gap: 16px !important;
+}
+
+/* cada linha é uma grade de 2 colunas (1/3 + 2/3), com o mesmo espaço entre elas */
+.st-key-conta_linha1,
+.st-key-conta_linha2 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: 24px;
+    align-items: stretch;
+}
+
+/* os wrappers entre a linha e o card passam a altura da linha adiante */
+:is(.st-key-conta_linha1, .st-key-conta_linha2) div:has(:is(.st-key-profile_card, .st-key-dados_card,
+        .st-key-plano_card, .st-key-seguranca_card)) {
+    height: 100%;
+}
+
+/* os cards preenchem a célula da grade: sem largura nem altura fixas */
+.st-key-profile_card,
+.st-key-dados_card,
+.st-key-plano_card,
+.st-key-seguranca_card,
+.st-key-sessions_card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.st-key-profile_card,
+.st-key-dados_card,
+.st-key-plano_card,
+.st-key-seguranca_card {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+/* botões acompanham a largura do card */
+.st-key-pc_alterar_foto,
+.st-key-pc_alterar_foto button,
+.st-key-plano_gerenciar_btn,
+.st-key-plano_gerenciar_btn button {
+    width: 100% !important;
+}
+
+.st-key-pc_alterar_foto button {
+    height: 40px;
+}
+
+/* "Alterar Foto" fica sempre colado no rodapé do card de Perfil */
+.st-key-pc_alterar_foto {
+    margin-top: auto;
+}
+
+/* Segurança: cabeçalho de altura fixa para os 3 blocos ficarem na mesma linha
+   (a badge "Ativada" deixava o do meio 2px mais alto) */
+.sec-head {
+    height: 24px;
+    align-items: center;
+}
+
+/* rodapé da página */
+.st-key-conta_rodape {
+    margin-top: 16px;
+}
+
+/* telas estreitas: uma coluna só */
+@media (max-width: 900px) {
+
+    .st-key-conta_linha1,
+    .st-key-conta_linha2 {
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+    }
 }
 
 /* Primeira análise */
@@ -3085,19 +3159,6 @@ div[data-testid="stFormSubmitButton"] button {
     padding: 0.6rem 0.9rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* CONFIGURAÇÕES */
 :root {
     --cfg-card: #141c2f;
@@ -3128,6 +3189,11 @@ div[data-testid="stFormSubmitButton"] button {
     font-size: .8rem;
     color: var(--cfg-muted);
     margin-bottom: 10px;
+}
+
+.cfg_cancel,
+.cfg_save {
+    width: 200px;
 }
 
 /* ---------- Cards ---------- */
