@@ -83,6 +83,31 @@ def init_db():
                     REFERENCES users(id)
                     ON DELETE CASCADE
             );
+            CREATE TABLE IF NOT EXISTS billing_subscriptions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+                user_id INTEGER NOT NULL UNIQUE,
+
+                stripe_customer_id TEXT UNIQUE,
+                stripe_subscription_id TEXT UNIQUE,
+
+                plan_key TEXT NOT NULL DEFAULT 'explorar',
+                price_id TEXT,
+
+                status TEXT NOT NULL DEFAULT 'inactive',
+
+                current_period_start TEXT,
+                current_period_end TEXT,
+
+                cancel_at_period_end INTEGER NOT NULL DEFAULT 0,
+
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (user_id)
+                    REFERENCES users(id)
+                    ON DELETE CASCADE
+            );
         """)
 
 if __name__ == "__main__":

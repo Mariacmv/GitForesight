@@ -2,6 +2,9 @@
 from html import escape
 from components.sidebar import _logo_base64
 import streamlit as st
+from backend.app.billing import criar_checkout_session
+import json
+import streamlit.components.v1 as components
 
 GITHUB_URL = "https://github.com/Mariacmv/GitForesight"
 README_URL = f"{GITHUB_URL}#readme"
@@ -353,23 +356,31 @@ def _escolher_repositorio():
         st.session_state["pagina"] = "choose_repo"
         st.session_state["passo"] = 1
 
-def _aviso_plano(nome: str):
-    st.toast(f"Plano {nome}: proposta conceitual, sem contratação disponível.")
 
-# def _nav():
-#     links = "".join(
-#         f'<a class="{"on" if i == len(NAV) - 1 else ""}" href="{href}">{escape(txt)}</a>'
-#         for i, (txt, href) in enumerate(NAV)
-#     )
-#     _md(f"""
-#         <div class="pr-nav">
-#             <div class="pr-brand">{IC_SHIELD}<span>Git Foresight</span></div>
-#             <div class="pr-links">
-#                 {links}
-#                 <a class="pr-readme" href="{README_URL}" target="_blank" rel="noopener">Ler o README ↗</a>
-#             </div>
-#         </div>
-#     """)
+def _aviso_plano(nome: str):
+    st.toast(f"Plano {nome}: contratação ainda não disponível.")
+
+
+def _iniciar_checkout():
+    try:
+        user_id = st.session_state.get("user_id")
+
+        if not user_id:
+            st.session_state["checkout_erro"] = (
+                "Faça login antes de contratar um plano."
+            )
+            return
+
+        url = criar_checkout_session(user_id)
+
+        st.session_state["checkout_url"] = url
+        st.session_state.pop("checkout_erro", None)
+
+    except Exception:
+        st.session_state["checkout_erro"] = (
+            "Não foi possível iniciar o pagamento. Tente novamente."
+        )
+
 def _nav(publico: bool = False):
     entrar = '<a class="gf-btn pri" href="/?entrar=1" target="_self">Entrar</a>' if publico else ""
     _md(f"""
@@ -407,7 +418,6 @@ def _hero():
         </div>
     """)
 
-
 def _card_plano(p: dict):
     with st.container(key=f"pr_plan_{p['key']}"):
         _md(f"""
@@ -419,15 +429,62 @@ def _card_plano(p: dict):
             <div class="pr-price">{escape(p['preco'])}</div>
             <div class="pr-unit">{escape(p['unidade'])}</div>
         """)
-        st.button(
-            p["botao"],
-            key=f"pr_btn_{p['key']}",
-            type="primary" if p["destaque"] else "secondary",
-            use_container_width=True,
-            on_click=_aviso_plano,
-            args=(p["nome"],),
+
+        if p["key"] == "equipe":
+            if "checkout_url" not in st.session_state:
+                try:
+                    user_id = st.session_state.get("user_id")
+
+                    if user_id:
+                        st.session_state["checkout_url"] = (
+                            criar_checkout_session(user_id)
+                        )
+                    else:
+                        st.session_state["checkout_erro"] = (
+                            "Faça login antes de contratar um plano."
+                        )
+
+                except Exception:
+                    st.session_state["checkout_erro"] = (
+                        "Não foi possível iniciar o pagamento."
+                    )
+
+            checkout_url = st.session_state.get("checkout_url")
+
+            if checkout_url:
+                st.link_button(
+                    p["botao"],
+                    checkout_url,
+                    type="primary",
+                    use_container_width=True,
+                )
+            else:
+                st.button(
+                    p["botao"],
+                    key=f"pr_btn_{p['key']}",
+                    type="primary",
+                    use_container_width=True,
+                    disabled=True,
+                )
+
+            erro = st.session_state.get("checkout_erro")
+            if erro:
+                st.error(erro)
+
+        else:
+            st.button(
+                p["botao"],
+                key=f"pr_btn_{p['key']}",
+                type="primary" if p["destaque"] else "secondary",
+                use_container_width=True,
+                on_click=_aviso_plano,
+                args=(p["nome"],),
+            )
+
+        itens = "".join(
+            f"<li>{escape(r)}</li>" for r in p["recursos"]
         )
-        itens = "".join(f"<li>{escape(r)}</li>" for r in p["recursos"])
+
         _md(f"""
             <div class="pr-feat">
                 <div class="pr-feat-sum">{escape(p['resumo'])}</div>
@@ -435,7 +492,6 @@ def _card_plano(p: dict):
                 <ul>{itens}</ul>
             </div>
         """)
-
 
 def _planos():
     _md("""

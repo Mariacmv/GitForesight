@@ -1,6 +1,7 @@
 from html import escape
 import streamlit as st
 
+
 def _svg(paths: str, size: int = 18) -> str:
     return (
         f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" '
@@ -123,10 +124,10 @@ def _card_alterar_plano():
             for ic, nome, desc, preco, un in OPCOES
         )
         _md(f"""
-            {_cabecalho_card("ALTERAR PLANO", "Escolha uma nova proposta")}
+            {_cabecalho_card("ALTERAR PLANO", "Escolha uma nova proposta",
+                             "Compare as opções disponíveis e ajuste a escolha para "
+                             "repositórios, pessoas e recursos.")}
             <div class="gp-opts">{opcoes}</div>
-            <div class="gp-desc">Compare as opções disponíveis e ajuste a escolha para
-            repositórios, pessoas e recursos.</div>
         """)
         st.button(
             "Escolher plano", key="gp_btn_escolher", type="primary",
@@ -165,7 +166,8 @@ def _card_historico():
             for d, v, s in TRANSACOES
         )
         _md(f"""
-            {_cabecalho_card("HISTÓRICO DE PAGAMENTO", "Transações recentes")}
+            {_cabecalho_card("HISTÓRICO DE PAGAMENTO", "Transações recentes",
+                             "Exemplo de registros para demonstração.")}
             <div class="gp-tx-list">{itens}</div>
         """)
         st.button(
@@ -188,23 +190,17 @@ def _card_cancelar():
             use_container_width=True, on_click=_demo, args=("Cancelar assinatura",),
         )
 
-
-# ---------------------------------------------------------------- página
-
-
 def _cabecalho():
     _md(f"""
         <div class="gp-h1">Gerenciar plano</div>
         <div class="gp-lead">Revise o plano escolhido, acompanhe pagamentos, consulte histórico
         e acesse ações administrativas em uma única área.</div>
-        <div class="gp-notice">{IC_INFO}<span>Esta interface é uma demonstração. Os dados de
-        assinatura, pagamento e histórico são apenas exemplos.</span></div>
     """)
 
 
 def _rodape():
     with st.container(key="gp_footer"):
-        nota, cancelar, salvar = st.columns([7, 0.8, 1.3], vertical_alignment="center")
+        nota, cancelar, salvar = st.columns([3, 1, 1.6], gap="small", vertical_alignment="center")
         with nota:
             _md('<div class="gp-foot-note">As alterações se aplicam apenas à sua conta.</div>')
         with cancelar:
@@ -219,23 +215,16 @@ def _rodape():
             )
 
 
-def render():
+def render_plan():
     with st.container(key="gp_page"):
         _cabecalho()
         with st.container(key="gp_grid"):
-            linha1 = st.columns(3, gap="small")
-            with linha1[0]:
+            with st.container(key="gp_row1"):      
                 _card_plano_escolhido()
-            with linha1[1]:
                 _card_alterar_plano()
-            with linha1[2]:
                 _card_cobranca()
-
-            linha2 = st.columns(3, gap="small")
-            with linha2[0]:
+            with st.container(key="gp_row2"):
                 _card_situacao()
-            with linha2[1]:
                 _card_historico()
-            with linha2[2]:
                 _card_cancelar()
         _rodape()

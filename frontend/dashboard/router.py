@@ -10,7 +10,7 @@ from views import (
     overview,
     predictive,
     settings,
-    pricing,
+    pricing,manage_plan
 )
 
 from components.sidebar import render_sidebar
@@ -23,7 +23,7 @@ from components.user_menu import (
 from context import get_context
 from data_loader import load_commits
 from frontend.dashboard.components.heatmap_page import render_heatmap
-
+from frontend.dashboard.views.manage_plan import render_plan
 
 PAGINAS_PUBLICAS = {
     "banner": banner.render,
@@ -39,6 +39,7 @@ PAGINAS_PRIVADAS = {
     "choose_repo": choose_repo.render,
     "account": account.render,
     "heatmap": render_heatmap,
+    "manage_plan":render_plan,
 }
 
 PAGINAS_DASHBOARD = {
@@ -104,6 +105,9 @@ def renderizar_pagina_privada(pagina):
 
     elif pagina == "heatmap":
         render_heatmap()
+
+    elif pagina == "manage_plan":
+        manage_plan.render_plan ()
 
     else:
         analysis_dir = st.session_state.get("analysis_dir")

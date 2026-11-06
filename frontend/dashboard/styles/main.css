@@ -3611,14 +3611,14 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .gp-h1 {
-    margin: 0 0 12px;
+    margin: 0 0 4px;
     color: var(--gp-text);
     font: 700 1.7rem/1.2 var(--gp-sans);
     letter-spacing: -.01em;
 }
 
 .gp-lead {
-    margin: 0 0 26px;
+    margin: 0 0 12px;
     color: var(--gp-body);
     font: 400 .86rem/1.5 var(--gp-sans);
 }
@@ -3627,7 +3627,7 @@ div[data-testid="stFormSubmitButton"] button {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     padding: 9px 12px;
     border: 1px solid var(--gp-border);
     border-radius: 8px;
@@ -3643,15 +3643,25 @@ div[data-testid="stFormSubmitButton"] button {
 
 /* ---------- Grade 3 x 2 ---------- */
 .st-key-gp_grid {
-    gap: 20px !important;
+    --gp-h1: 404px;
+    /* altura mínima dos cards da linha de cima */
+    --gp-h2: 328px;
+    /* altura mínima dos cards da linha de baixo */
+    gap: 16px !important;
 }
 
-.st-key-gp_grid [data-testid="stHorizontalBlock"] {
-    gap: 20px !important;
+/* cada linha é uma grade de 3 colunas iguais; a altura da linha é a do card mais alto */
+.st-key-gp_row1,
+.st-key-gp_row2 {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px !important;
+    align-items: stretch;
 }
 
-.st-key-gp_grid [data-testid="stColumn"] {
-    min-width: 0;
+/* os wrappers entre a linha e o card repassam a altura adiante */
+:is(.st-key-gp_row1, .st-key-gp_row2) div:has([class*="st-key-gp_card_"]) {
+    height: 100%;
 }
 
 /* ---------- Card base ---------- */
@@ -3659,39 +3669,32 @@ div[data-testid="stFormSubmitButton"] button {
     background: var(--gp-card);
     border: 1px solid var(--gp-border);
     border-radius: 12px;
-    padding: 16px;
+    padding: 11px;
     gap: 0 !important;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
-.st-key-gp_card_plano,
-.st-key-gp_card_alterar,
-.st-key-gp_card_cobranca {
-    height: 460px;
+.st-key-gp_row1 [class*="st-key-gp_card_"] {
+    min-height: var(--gp-h1);
 }
 
-.st-key-gp_card_situacao,
-.st-key-gp_card_historico,
-.st-key-gp_card_cancelar {
-    height: 395px;
+.st-key-gp_row2 [class*="st-key-gp_card_"] {
+    min-height: var(--gp-h2);
 }
 
 .st-key-gp_card_plano {
     background: var(--gp-card-hi);
     border: 2px solid var(--gp-accent);
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0 0 0 1px rgba(99, 102, 241, .2), 0 14px 40px rgba(99, 102, 241, .10);
-}
-
-/* o botão fica sempre colado no rodapé do card */
-[class*="st-key-gp_card_"] [class*="st-key-gp_btn_"] {
-    margin-top: auto;
 }
 
 /* ---------- Textos do card ---------- */
 .gp-tag {
     display: inline-block;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 5px;
     background: rgba(99, 102, 241, .18);
     color: var(--gp-soft);
@@ -3706,12 +3709,13 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .gp-title {
-    margin: 14px 0 8px;
+    margin: 8px 0 5px;
     color: var(--gp-text);
     font: 700 1.15rem/1.25 var(--gp-sans);
 }
 
 .gp-title.lg {
+    margin-bottom: 6px;
     font-size: 1.3rem;
 }
 
@@ -3722,32 +3726,32 @@ div[data-testid="stFormSubmitButton"] button {
 }
 
 .gp-price {
-    margin-top: 18px;
+    margin-top: 10px;
     color: var(--gp-text);
     font: 700 2rem/1.1 var(--gp-sans);
     letter-spacing: -.02em;
 }
 
 .gp-unit {
-    margin-top: 8px;
+    margin-top: 6px;
     color: var(--gp-muted);
     font: 400 .8rem var(--gp-sans);
 }
 
 .gp-sep {
     height: 1px;
-    margin: 16px 0 14px;
+    margin: 9px 0 7px;
     background: var(--gp-border);
 }
 
 .gp-lbl {
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     color: var(--gp-body);
     font: 600 .78rem var(--gp-sans);
 }
 
 .gp-lbl-mono {
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     color: var(--gp-soft);
     font: 500 .6rem var(--gp-mono);
     letter-spacing: .08em;
@@ -3763,9 +3767,14 @@ div[data-testid="stFormSubmitButton"] button {
 .gp-dots li,
 .gp-checks li {
     position: relative;
-    margin-bottom: 11px;
+    margin-bottom: 7px;
     color: var(--gp-value);
     font: 400 .82rem/1.4 var(--gp-sans);
+}
+
+.gp-dots li:last-child,
+.gp-checks li:last-child {
+    margin-bottom: 0;
 }
 
 .gp-dots li {
@@ -3785,7 +3794,6 @@ div[data-testid="stFormSubmitButton"] button {
 
 .gp-checks li {
     padding-left: 26px;
-    margin-bottom: 10px;
 }
 
 .gp-checks li svg {
@@ -3799,15 +3807,15 @@ div[data-testid="stFormSubmitButton"] button {
 .gp-opts {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin: 14px 0 16px;
+    gap: 7px;
+    margin-top: 8px;
 }
 
 .gp-opt {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid var(--gp-border);
     border-radius: 10px;
     background: #1c253b;
@@ -3818,8 +3826,8 @@ div[data-testid="stFormSubmitButton"] button {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
     border: 1px solid var(--gp-border);
     border-radius: 8px;
     background: #141c30;
@@ -3846,12 +3854,6 @@ div[data-testid="stFormSubmitButton"] button {
     font: 400 .7rem/1.3 var(--gp-sans);
 }
 
-.gp-opt-body span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .gp-opt-price {
     text-align: right;
     flex-shrink: 0;
@@ -3859,7 +3861,7 @@ div[data-testid="stFormSubmitButton"] button {
 
 /* ---------- Linhas chave / valor ---------- */
 .gp-rows {
-    margin-top: 10px;
+    margin-top: 4px;
 }
 
 .gp-row {
@@ -3867,14 +3869,10 @@ div[data-testid="stFormSubmitButton"] button {
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 12px 0;
+    padding: 6px 0;
     font-family: var(--gp-sans);
     font-size: .8rem;
     line-height: 1.3;
-}
-
-.gp-row:first-child {
-    padding-top: 6px;
 }
 
 .gp-row+.gp-row {
@@ -3898,15 +3896,15 @@ div[data-testid="stFormSubmitButton"] button {
 .gp-tx-list {
     display: flex;
     flex-direction: column;
-    gap: 13px;
-    margin: 14px 0;
+    gap: 6px;
+    margin-top: 8px;
 }
 
 .gp-tx {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 11px 12px;
+    padding: 8px 12px;
     border: 1px solid var(--gp-border);
     border-radius: 8px;
     background: #1c253b;
@@ -3943,24 +3941,29 @@ div[data-testid="stFormSubmitButton"] button {
     flex-shrink: 0;
 }
 
-/* ---------- Alerta de cancelamento ---------- */
+/* ---------- Cancelamento ---------- */
 .gp-alert {
     display: flex;
     align-items: center;
     gap: 12px;
-    height: 192px;
-    margin: 14px 0 12px;
-    padding: 0 14px;
+    margin-top: 8px;
+    padding: 9px 12px;
     border: 1px solid var(--gp-border);
     border-radius: 8px;
     background: var(--gp-field);
     color: var(--gp-value);
-    font: 400 .74rem/1.5 var(--gp-sans);
+    font: 400 .72rem/1.5 var(--gp-sans);
 }
 
 .gp-alert svg {
     color: var(--gp-danger-soft);
     flex-shrink: 0;
+}
+
+.gp-note {
+    margin-top: 8px;
+    color: var(--gp-muted);
+    font: 400 .72rem/1.5 var(--gp-sans);
 }
 
 /* ---------- Botões ---------- */
@@ -3993,6 +3996,15 @@ div[data-testid="stFormSubmitButton"] button {
     border-color: #7c7ff5;
 }
 
+/* o botão vem logo depois do conteúdo do card (não fica colado no rodapé) */
+[class*="st-key-gp_card_"] [class*="st-key-gp_btn_"] {
+    margin-top: 8px;
+}
+
+.st-key-gp_btn_pagamento {
+    margin-top: 3px !important;
+}
+
 .st-key-gp_btn_cancelar_assinatura button {
     background: var(--gp-danger) !important;
     border-color: var(--gp-danger) !important;
@@ -4006,11 +4018,21 @@ div[data-testid="stFormSubmitButton"] button {
 
 /* ---------- Rodapé da tela ---------- */
 .st-key-gp_footer {
-    margin-top: 52px;
+    margin-top: 20px;
 }
 
 .st-key-gp_footer [data-testid="stHorizontalBlock"] {
     gap: 12px !important;
+}
+
+.st-key-gp_footer [data-testid="stColumn"]:not(:first-child) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-gp_footer [data-testid="stColumn"]:first-child {
+    flex: 1 1 auto !important;
 }
 
 .gp-foot-note {
@@ -4018,10 +4040,31 @@ div[data-testid="stFormSubmitButton"] button {
     font: 600 .72rem var(--gp-sans);
 }
 
-.st-key-gp_footer button {
-    min-height: 40px;
+.st-key-gp_btn_cancelar,
+.st-key-gp_btn_cancelar button {
+    width: 93px !important;
+    min-width: 93px !important;
+}
+
+.st-key-gp_btn_salvar,
+.st-key-gp_btn_salvar button {
+    width: 151px !important;
+    min-width: 151px !important;
 }
 
 .st-key-gp_btn_cancelar button {
     background: var(--gp-bg);
+}
+
+/* telas estreitas: uma coluna só */
+@media (max-width: 1000px) {
+
+    .st-key-gp_row1,
+    .st-key-gp_row2 {
+        grid-template-columns: 1fr;
+    }
+
+    [class*="st-key-gp_card_"] {
+        min-height: 0 !important;
+    }
 }

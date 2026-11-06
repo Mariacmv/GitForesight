@@ -160,8 +160,10 @@ def render():
             )
 
         with st.container(key="conta_linha2"):          # Plano | Segurança
-            render_plano_card(
-                ao_gerenciar=_aviso("Gerenciar plano: em construção")
+            render_plano_card( #conectar billing para essa página? 
+                ao_gerenciar=lambda: st.session_state.update({
+                    "pagina": "manage_plan"
+                })
             )
             render_seguranca(
                 dias_desde_troca=30,
