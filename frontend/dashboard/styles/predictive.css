@@ -1,0 +1,416 @@
+/* Análise preditiva  */
+/* Estilos da view Análise Preditiva (predictive.py) */
+:root {
+    --gf-bg-card: #141b2d;
+    --gf-bg-inset: #0f1524;
+    --gf-bg-accent: #1d2147;
+    --gf-border: #26304a;
+    --gf-text: #f1f5f9;
+    --gf-muted: #8b97b1;
+    --gf-indigo: #6366f1;
+    --gf-indigo-soft: #a5b4fc;
+    --gf-orange: #f97316;
+    --gf-yellow: #eeff00;
+    --gf-green: #22c55e;
+    --gf-red: #ef4444;
+    --gf-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.st-key-card_reco [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_reco {
+    border-color: var(--gf-indigo);
+}
+
+/* Cabeçalho */
+.gf-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--gf-text);
+    margin: 0 !important;
+    line-height: 1;
+}
+
+.stMarkdown:has(.gf-title) p {
+    margin-bottom: 0 !important;
+}
+
+.st-key-predictive_export button {
+    min-height: 36px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.gf-subtitle {
+    color: var(--gf-muted);
+    font-size: 0.9rem;
+    margin: 0 !important;
+    margin-top: 0.2rem !important;
+}
+
+/* KPIs */
+.gf-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin: 0.75rem 0 1rem 0;
+}
+
+.gf-kpi {
+    display: flex;
+    flex-direction: column;
+    background: var(--gf-bg-card);
+    border: 1px solid var(--gf-border);
+    border-radius: 10px;
+    padding: 16px;
+    min-height: 110px;
+    box-sizing: border-box;
+}
+
+.gf-kpi-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.72rem;
+    color: var(--gf-muted);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    /* label não quebra em 2 linhas */
+}
+
+.gf-kpi-head span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* se não couber, corta com "…" */
+}
+
+.gf-badge {
+    flex-shrink: 0;
+    background: var(--gf-bg-inset);
+    color: var(--gf-muted);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.gf-badge.forecast {
+    background: var(--gf-bg-accent);
+    color: var(--gf-indigo-soft);
+}
+
+.gf-kpi-value {
+    font-family: var(--gf-mono);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.gf-kpi-foot {
+    margin-top: auto;
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+}
+
+/* Títulos de card */
+.gf-card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gf-text);
+    margin: 0;
+}
+
+.gf-card-sub {
+    color: var(--gf-muted);
+    font-size: 0.82rem;
+    margin: 0.25rem 0 0.8rem 0;
+}
+
+/* Legenda do gráfico */
+.gf-legend {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.78rem;
+    color: var(--gf-muted);
+    margin-top: 0.4rem;
+}
+
+.gf-legend i {
+    display: inline-block;
+    width: 18px;
+    border-top: 2px dashed;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.gf-legend b {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: var(--gf-bg-accent);
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Tendências */
+.gf-trend-head {
+    color: var(--gf-text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--gf-border);
+    margin-bottom: 0.8rem;
+}
+
+.gf-trend-head span {
+    color: var(--gf-orange);
+    margin-right: 6px;
+}
+
+.gf-trend-item {
+    color: var(--gf-text);
+    font-size: 0.85rem;
+    margin-bottom: 0.7rem;
+}
+
+.gf-scenario {
+    background: var(--gf-bg-inset);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-top: 0.8rem;
+}
+
+.gf-scenario strong {
+    color: var(--gf-indigo-soft);
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.gf-scenario p {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    margin: 0.3rem 0 0 0;
+}
+
+/* Fatores de risco */
+.gf-factor {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    color: var(--gf-muted);
+}
+
+.gf-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.gf-file {
+    font-family: var(--gf-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--gf-text);
+}
+
+.gf-factor-title {
+    color: var(--gf-text);
+    font-size: 0.88rem;
+    margin: 0.15rem 0;
+}
+
+.gf-factor-meta {
+    color: var(--gf-muted);
+    font-size: 0.75rem;
+}
+
+/* Recomendações */
+.gf-reco {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.gf-num {
+    background: var(--gf-bg-accent);
+    color: var(--gf-indigo-soft);
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--gf-mono);
+    font-size: 0.75rem;
+}
+
+.gf-reco-title {
+    color: var(--gf-text);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+.gf-reco-desc {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    margin-top: 0.15rem;
+}
+
+.gf-disclaimer {
+    color: var(--gf-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+/* BALÃOZINHO DE INFORMAÇÕES */
+.gf-tip {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 8px;
+    outline: none;
+}
+
+.gf-tip-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gf-yellow);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+}
+
+.gf-tip-bubble {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 12px);
+    width: 495px;
+    transform: translate(-4px, -50%);
+    background: #1c2033;
+    border: 1px solid var(--gf-border);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    color: var(--gf-text);
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: left;
+    white-space: normal;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 1000;
+}
+
+/* Setinha apontando para o ícone */
+.gf-tip-bubble::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    background: #1c2033;
+    border-left: 1px solid var(--gf-border);
+    border-bottom: 1px solid var(--gf-border);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* Variante: balão abre para a esquerda (cards na borda direita) */
+.gf-tip--left .gf-tip-bubble {
+    left: auto;
+    right: calc(100% + 12px);
+    transform: translate(4px, -50%);
+}
+
+.gf-tip--left .gf-tip-bubble::before {
+    left: auto;
+    right: -6px;
+    border: none;
+    border-top: 1px solid var(--gf-border);
+    border-right: 1px solid var(--gf-border);
+}
+
+/* Estado aberto */
+.gf-tip:hover .gf-tip-bubble,
+.gf-tip:focus .gf-tip-bubble,
+.gf-tip:focus-within .gf-tip-bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, -50%);
+}
+
+/* Linha do cabeçalho: texto à esquerda, ícone no canto direito */
+.gf-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.gf-card-head .gf-tip {
+    margin-left: 0;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Balão abrindo para baixo, alinhado à direita do ícone */
+.gf-tip--down .gf-tip-bubble {
+    top: calc(100% + 10px);
+    left: auto;
+    right: -4px;
+    transform: translateY(-4px);
+}
+
+.gf-tip--down .gf-tip-bubble::before {
+    top: -6px;
+    left: auto;
+    right: 10px;
+    border: none;
+    border-top: 1px solid var(--gf-border);
+    border-left: 1px solid var(--gf-border);
+    transform: rotate(45deg);
+}
+
+.gf-tip--down:hover .gf-tip-bubble,
+.gf-tip--down:focus .gf-tip-bubble,
+.gf-tip--down:focus-within .gf-tip-bubble {
+    transform: translateY(0);
+}
+
+/* Cards de Tendências, Fatores de Risco e Recomendações */
+.st-key-card_trends,
+.st-key-card_factors,
+.st-key-card_reco,
+.st-key-card_projection,
+.st-key-card_trends [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_factors [data-testid="stVerticalBlockBorderWrapper"],
+.st-key-card_reco [data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--gf-bg-card) !important;
+    border-radius: 10px;
+}
+
+.st-key-card_trends,
+.st-key-card_factors {
+    border: 1px solid var(--gf-border) !important;
+    padding: 0.6rem 0.9rem;
+}
+
+/* mantém o destaque índigo da Recomendações */
+.st-key-card_reco {
+    border: 1px solid var(--gf-indigo) !important;
+    padding: 0.6rem 0.9rem;
+}

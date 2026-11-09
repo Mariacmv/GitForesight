@@ -25,7 +25,7 @@ def get_context():
             pass
 
     if isinstance(ultima_varredura, datetime):
-        ultima_varredura = ultima_varredura.strftime(
+        ultima_varredura = ultima_varredura.strftime( #não está pegando o horário corretamente
             "%d/%m/%Y às %H:%M"
         )
     return {

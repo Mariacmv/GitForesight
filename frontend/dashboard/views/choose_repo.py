@@ -14,6 +14,7 @@ from components.cards import html_inline
 from components.topbar import render_auth_footer, render_auth_topbar
 from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario, salvar_branch_repositorio
 from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao, listar_branches_instalacao
+from theme import load_css
 
 ETAPAS = [
     "Escolher repositório",
@@ -21,8 +22,8 @@ ETAPAS = [
     "Explorar resultados",
 ]
 
-STATS_LIMIT = 30
-LISTA_ALTURA = 520 #rolagem de repositórios
+STATS_LIMIT = 10
+LISTA_ALTURA = 240 #rolagem de repositórios
 
 def _token():
     return st.session_state.get("github_token") or os.getenv("GITHUB_TOKEN")
@@ -115,25 +116,6 @@ def _stats(repos):
         cache.update(fetch_many_stats(faltam, _token()))
     return cache
 
-def _stepper(passo):
-    itens = ""
-    for n, nome in enumerate(ETAPAS, start=1):
-        estado = "current" if n == passo else "done" if n < passo else "todo"
-        simbolo = "✓" if estado == "done" else n
-        itens += (
-            f'<div class="step-item {estado}">'
-            f'<div class="step-circle">{simbolo}</div>'
-            f'<div class="step-text">{nome}</div>'
-            f'</div>'
-        )
-
-    st.markdown(html_inline(f"""
-        <div class="stepper-wrapper">
-            <div class="steps-container">{itens}</div>
-            <div class="step-counter">ETAPA {passo} DE {len(ETAPAS)}</div>
-        </div>
-    """), unsafe_allow_html=True)
-
 def _linha_repo(r, selecionado, stats):
     tag = "Privado" if r["private"] else "Público"
     desc = escape(r["description"] or "Sem descrição")
@@ -186,12 +168,6 @@ def _redirecionar_instalacao():
     )
 
 def _seletor_conta():
-    #st.write("DEBUG — Página:", st.session_state.get("pagina"))
-    #st.write("DEBUG — Autenticado:", st.session_state.get("autenticado"))
-    # st.write(
-    #     "DEBUG — Token GitHub disponível:",
-    #     bool(st.session_state.get("github_user_token"))
-    # )
     user_token = st.session_state.get("github_user_token")
 
     if not user_token:
@@ -220,12 +196,7 @@ def _seletor_conta():
 
     return instalacoes[indice]
 
-def _lista(conta):
-    busca = st.text_input(
-        "Buscar", key="repo_busca", label_visibility="collapsed",
-        placeholder="Buscar por nome de repositório...",
-    ).strip().lower()
-
+def _lista(conta, busca):
     repos, stats = [], {}
     if conta is None:
         pass
@@ -359,10 +330,20 @@ def _lista(conta):
 
 def _etapa_1():
     with st.container(key="repo_picker"):
-        conta = _seletor_conta()
+        col_conta, col_busca = st.columns(2, vertical_alignment="bottom")
+
+        with col_conta:
+            conta = _seletor_conta()
+
+        with col_busca:
+            busca = st.text_input(
+                "Buscar", key="repo_busca", label_visibility="collapsed",
+                placeholder="Buscar por nome de repositório...",
+            ).strip().lower()
+
         if conta is None:
             return
-        _lista(conta)
+        _lista(conta, busca)
 
 def processar_retorno_instalacao():
     installation_id = st.query_params.get("installation_id")
@@ -395,6 +376,7 @@ def processar_retorno_instalacao():
     return True
 
 def render():
+    load_css("chrome", "choose_repo")
     render_auth_topbar(mostrar_usuario=True)
 
     st.markdown(
@@ -407,8 +389,12 @@ def render():
 
         [data-testid="stMainBlockContainer"] {
             max-width: 1248px;
-            padding-top: 96px !important;
-            padding-bottom: 112px !important;
+            padding-top: 72px !important;
+            padding-bottom: 56px !important;
+        }
+        
+        [data-testid="stMainBlockContainer"] > [data-testid="stVerticalBlock"] {
+            gap: 0 !important;
         }
         </style>
         """,
@@ -425,8 +411,6 @@ def render():
     passo = st.session_state.passo
 
     with st.container(key="repo_zoom"):
-        _stepper(passo)
-
         espaco_etapa = st.empty()
 
         with espaco_etapa.container():

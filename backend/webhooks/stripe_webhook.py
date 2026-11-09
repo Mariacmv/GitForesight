@@ -131,6 +131,7 @@ async def receber_evento_stripe(request: Request):
                 customer_id = dados.get("customer")
 
                 if subscription_id and customer_id:
+                    stripe.api_key = st.secrets["STRIPE_SECRET_KEY"]
                     subscription = stripe.Subscription.retrieve(
                         subscription_id
                     )

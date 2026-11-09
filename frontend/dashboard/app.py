@@ -41,8 +41,7 @@ migrar_repositorios()
 
 
 def main():
-
-    load_css()
+    load_css("base")
     init_db()
 
     # 1. Detecta o retorno da instalação da GitHub App.

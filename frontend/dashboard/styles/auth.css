@@ -1,0 +1,508 @@
+/* =====================================================================
+   AUTH.CSS - versão redesenhada (tamanhos fluidos, sem scroll)
+   Os tamanhos acompanham a altura da janela via clamp(min, vh, max).
+   ===================================================================== */
+
+:root {
+    --auth-zoom: 1;
+
+    --ctl-h: clamp(40px, 6.2vh, 54px);
+    /* altura de inputs e botões */
+    --fs: clamp(14px, 2vh, 17px);
+    /* texto base */
+    --fs-label: clamp(13px, 1.75vh, 15px);
+    /* rótulos */
+    --fs-small: clamp(11.5px, 1.5vh, 13px);
+    /* legendas */
+    --fs-title: clamp(22px, 3.6vh, 32px);
+    /* título do card */
+    --gap: clamp(10px, 1.7vh, 16px);
+    /* espaço entre blocos */
+    --lbl-h: calc(var(--fs-label) * 1.4);
+    /* altura do rótulo */
+    --card-pad: clamp(16px, 2.6vh, 28px);
+}
+
+/* =====================================================================
+   PÁGINA: trava na altura da janela (sem scroll) e centraliza o card
+   ===================================================================== */
+html,
+body,
+[data-testid="stApp"],
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"] {
+    height: 100dvh !important;
+    overflow: hidden !important;
+}
+
+html body [data-testid="stAppViewContainer"] [data-testid="stMainBlockContainer"] {
+    box-sizing: border-box;
+    max-width: none !important;
+    height: 100dvh !important;
+    padding: var(--topbar-h) 24px var(--footer-h) !important;
+    display: flex !important;
+    flex-direction: column;
+}
+
+html body [data-testid="stMainBlockContainer"]>[data-testid="stVerticalBlock"] {
+    flex: 1 1 auto;
+    justify-content: center;
+    gap: 0 !important;
+}
+
+/* =====================================================================
+   CARD
+   ===================================================================== */
+.st-key-auth_card {
+    zoom: var(--auth-zoom, 1);
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: calc(1200px / var(--auth-zoom, 1)) !important;
+    /* era 1040 */
+    margin: 0 auto !important;
+    padding: var(--card-pad) !important;
+    background: #1c2539;
+    border: 1px solid #334155 !important;
+    border-radius: 16px !important;
+}
+
+/* telas simples (recuperar / redefinir senha) */
+.st-key-auth_card:not(:has(.auth-hero)) {
+    max-width: calc(520px / var(--auth-zoom, 1)) !important;
+    padding: 32px !important;
+}
+
+/* ---------- Imagem | formulário ---------- */
+.st-key-auth_card [data-testid="stHorizontalBlock"]:has(.auth-hero) {
+    gap: calc(var(--card-pad) + 4px) !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+}
+
+.st-key-auth_card [data-testid="stHorizontalBlock"]:has(.auth-hero)>[data-testid="stColumn"]:nth-child(1),
+.st-key-auth_card [data-testid="stHorizontalBlock"]:has(.auth-hero)>[data-testid="column"]:nth-child(1) {
+    flex: 440 1 0 !important;
+    /* imagem um pouco mais estreita */
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-auth_card [data-testid="stHorizontalBlock"]:has(.auth-hero)>[data-testid="stColumn"]:nth-child(2),
+.st-key-auth_card [data-testid="stHorizontalBlock"]:has(.auth-hero)>[data-testid="column"]:nth-child(2) {
+    flex: 620 1 0 !important;
+    /* formulário com mais espaço */
+    width: auto !important;
+    min-width: 0 !important;
+    justify-content: center;
+}
+
+.st-key-auth_card [data-testid="stColumn"]:has(.auth-hero),
+.st-key-auth_card [data-testid="column"]:has(.auth-hero) {
+    background-color: #0B1220;
+    background-image: var(--auth-hero);
+    /* a imagem injetada por _hero() */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    min-height: 50px;
+    overflow: hidden;
+}
+
+.auth-hero {
+    min-height: 1px;
+}
+
+@media (max-width: 900px) {
+
+    .st-key-auth_card [data-testid="stColumn"]:has(.auth-hero),
+    .st-key-auth_card [data-testid="column"]:has(.auth-hero) {
+        display: none !important;
+    }
+
+    .st-key-auth_card {
+        max-width: calc(520px / var(--auth-zoom, 1)) !important;
+    }
+}
+
+/* =====================================================================
+   ESPAÇAMENTO
+   ===================================================================== */
+.st-key-auth_card [data-testid="stVerticalBlock"] {
+    gap: var(--gap) !important;
+}
+
+.st-key-auth_card [data-testid="stForm"] {
+    position: relative;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+/* linhas de 2 campos / 2 botões */
+.st-key-auth_card [data-testid="stForm"] [data-testid="stHorizontalBlock"],
+.st-key-auth_alt [data-testid="stHorizontalBlock"] {
+    gap: var(--gap) !important;
+}
+
+.st-key-auth_card [data-testid="stForm"] [data-testid="stHorizontalBlock"]>[data-testid="stColumn"],
+.st-key-auth_card [data-testid="stForm"] [data-testid="stHorizontalBlock"]>[data-testid="column"],
+.st-key-auth_alt [data-testid="stHorizontalBlock"]>[data-testid="stColumn"],
+.st-key-auth_alt [data-testid="stHorizontalBlock"]>[data-testid="column"] {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-auth_card h2,
+.st-key-auth_card h4 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.st-key-auth_card hr {
+    margin: 0 !important;
+    border-color: #334155 !important;
+}
+
+.st-key-auth_card [data-testid="stCaptionContainer"] {
+    margin: 0 !important;
+    line-height: 1.4;
+}
+
+.st-key-auth_card [data-testid="stCaptionContainer"],
+.st-key-auth_card [data-testid="stCaptionContainer"] p {
+    font-size: var(--fs-small) !important;
+    font-weight: 400 !important;
+    color: #94A3B8 !important;
+}
+
+/* ---------- Rótulos ---------- */
+.st-key-auth_card [data-testid="stTextInput"] {
+    gap: 0 !important;
+}
+
+.st-key-auth_card [data-testid="stWidgetLabel"] {
+    height: var(--lbl-h) !important;
+    min-height: var(--lbl-h) !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0 !important;
+}
+
+.st-key-auth_card [data-testid="stWidgetLabel"] p {
+    font-size: var(--fs-label) !important;
+    font-weight: 600 !important;
+    line-height: var(--lbl-h) !important;
+    color: #94A3B8 !important;
+}
+
+/* ---------- Inputs ---------- */
+.st-key-auth_card [data-baseweb="input"] {
+    min-height: var(--ctl-h);
+    background: #0F172A !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+}
+
+.st-key-auth_card [data-baseweb="base-input"] {
+    align-items: center;
+    background: transparent !important;
+}
+
+.st-key-auth_card input {
+    font-size: var(--fs) !important;
+}
+
+.st-key-auth_card [data-baseweb="base-input"]::before {
+    content: "";
+    flex: 0 0 20px;
+    height: 20px;
+    margin-left: 14px;
+    background-color: #94A3B8;
+    -webkit-mask: var(--ico) no-repeat center / contain;
+    mask: var(--ico) no-repeat center / contain;
+}
+
+.st-key-login_email,
+.st-key-cadastro_email {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-10 7L2 7'/%3E%3C/svg%3E");
+}
+
+.st-key-login_senha,
+.st-key-cadastro_senha,
+.st-key-cadastro_confirma_senha {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E");
+}
+
+.st-key-cadastro_nome {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1'/%3E%3C/svg%3E");
+}
+
+/* ---------- Checkbox ---------- */
+.st-key-auth_card [data-testid="stCheckbox"] label p {
+    font-size: var(--fs-label) !important;
+    font-weight: 600 !important;
+    color: #94A3B8 !important;
+}
+
+/* cancela a margem negativa que o Streamlit põe nos blocos de markdown */
+.st-key-auth_card [data-testid="stElementContainer"]:has(> [data-testid="stMarkdown"]),
+.st-key-auth_card [data-testid="stMarkdown"],
+.st-key-auth_card [data-testid="stMarkdownContainer"],
+.st-key-auth_card [data-testid="stMarkdownContainer"] p {
+    margin-bottom: 0 !important;
+}
+
+/* =====================================================================
+   CABEÇALHO
+   ===================================================================== */
+.auth-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+}
+
+.auth-card-icon {
+    width: calc(var(--fs-title) * 1.6);
+    height: calc(var(--fs-title) * 1.6);
+    flex: 0 0 calc(var(--fs-title) * 1.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 10px;
+    color: #818CF8;
+    margin: 0 !important;
+}
+
+.auth-card-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.auth-head h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-title) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    color: #F8FAFC;
+}
+
+.auth-sub {
+    margin: 8px 0 0 0 !important;
+    /* respiro entre título e subtítulo */
+    color: #94A3B8;
+    font-size: var(--fs);
+    line-height: 1.3;
+}
+
+/* =====================================================================
+   BOTÕES
+   ===================================================================== */
+.auth-github a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    height: var(--ctl-h) !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    text-decoration: none !important;
+    text-align: center;
+    color: #FFFFFF !important;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.auth-github a::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='16' viewBox='110 12 15 16' fill='none'%3E%3Cpath d='M116 26.6672V24.0003C115.953 23.587 115.986 23.1669 116.1 22.7669C116.213 22.3669 116.406 21.9935 116.666 21.6668C114.666 21.6668 112.666 20.3334 112.666 17.9999C112.612 17.1683 112.848 16.3437 113.333 15.6663C113.133 14.8996 113.133 14.0996 113.333 13.3328C113.333 13.3328 114 13.3328 115.333 14.3329C117.093 13.9995 118.907 13.9995 120.667 14.3329C122 13.3328 122.667 13.3328 122.667 13.3328C122.854 14.0996 122.854 14.8996 122.667 15.6663C123.154 16.3464 123.387 17.1665 123.334 17.9999C123.334 20.3334 121.333 21.6668 119.333 21.6668C119.853 22.327 120.093 23.1651 120 24.0003V26.6672M116 24.0003C112.993 25.3338 112.666 22.6669 111.333 22.6669' stroke='white' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.auth-github a:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/* Divisor */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    color: #94A3B8;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-small);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #334155;
+}
+
+/* Botão principal */
+.st-key-auth_card [data-testid="stFormSubmitButton"],
+.st-key-auth_card [data-testid="stFormSubmitButton"] button {
+    width: 100% !important;
+}
+
+.st-key-auth_card button[kind="primary"],
+.st-key-auth_card button[kind="primaryFormSubmit"],
+.st-key-auth_card button[data-testid="stBaseButton-primaryFormSubmit"] {
+    min-height: var(--ctl-h);
+    background: #6366F1 !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    color: #FFFFFF !important;
+}
+
+.st-key-auth_card button[kind="primary"]:hover,
+.st-key-auth_card button[data-testid="stBaseButton-primaryFormSubmit"]:hover {
+    background: #5558E6 !important;
+}
+
+.st-key-auth_card button p {
+    font-size: var(--fs) !important;
+    font-weight: 600 !important;
+}
+
+/* SSO */
+.st-key-auth_sso,
+.st-key-auth_sso [data-testid="stButton"],
+.st-key-auth_sso button {
+    width: 100% !important;
+}
+
+.st-key-auth_sso button {
+    height: var(--ctl-h) !important;
+    min-height: var(--ctl-h) !important;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    color: #F8FAFC !important;
+}
+
+.st-key-auth_sso button p {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.st-key-auth_sso button p::before {
+    content: "";
+    display: inline-block !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 10px !important;
+    vertical-align: middle;
+    background: var(--sso-icon-url) no-repeat center / contain !important;
+}
+
+.st-key-auth_sso button:hover:not(:disabled) {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/* "Já tem uma conta? Entrar" / "Não tem uma conta? Cadastrar-se" */
+.st-key-auth_login_row [data-testid="stHorizontalBlock"] {
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.st-key-auth_login_row [data-testid="stColumn"],
+.st-key-auth_login_row [data-testid="column"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-auth_login_row p {
+    margin: 0 !important;
+    color: #94A3B8;
+    font-size: var(--fs-label);
+    line-height: 1.4 !important;
+}
+
+.st-key-auth_login_row button {
+    padding: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.st-key-auth_login_row button p {
+    color: #A5B4FC !important;
+    font-size: var(--fs-label) !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+}
+
+.st-key-auth_login_row button:hover p {
+    color: #C7D2FE !important;
+}
+
+/* "Esqueceu a senha?" na linha do rótulo "Senha":
+   topo = rótulo do e-mail + 6px + input + gap (tudo em variáveis, então escala junto) */
+.st-key-auth_card .st-key-form_forgot {
+    position: absolute !important;
+    top: var(--forgot-top, calc(var(--lbl-h) + 6px + var(--ctl-h) + var(--gap)));
+    /* o script ajusta */
+    right: 0;
+    width: auto !important;
+    z-index: 3;
+}
+
+.st-key-auth_card .st-key-form_forgot [data-testid="stFormSubmitButton"] {
+    width: auto !important;
+}
+
+.st-key-auth_card .st-key-form_forgot button {
+    width: auto !important;
+    height: var(--lbl-h) !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.st-key-auth_card .st-key-form_forgot button p {
+    font-size: var(--fs-label) !important;
+    font-weight: 700 !important;
+    line-height: var(--lbl-h) !important;
+    color: #A5B4FC !important;
+}
+
+.st-key-auth_card .st-key-form_forgot button:hover p {
+    color: #C7D2FE !important;
+}
+
+/* "Conexão segura" (agora dentro do card) */
+.auth-secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    color: #94A3B8;
+    font-family: 'Inter', sans-serif;
+    font-size: var(--fs-small);
+}

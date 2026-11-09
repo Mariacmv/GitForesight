@@ -118,16 +118,12 @@ def render_auth_topbar(mostrar_usuario=False):
     st.markdown(html, unsafe_allow_html=True)
 
 def render_auth_footer():
-
-    html = """
-    <div class="auth-footer">
-        <span>© 2026 Git Foresight</span>
-        <span class="auth-footer-links">
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Termos de Uso</a>
-        </span>
-    </div>
-    """
-
-    html = " ".join(line.strip() for line in html.splitlines())
-    st.markdown(html, unsafe_allow_html=True)
+    st.markdown(
+        '<div class="auth-footer">'
+        '<span>© 2026 Git Foresight</span>'
+        '<div class="auth-footer-links">'
+        '<a href="#">Política de Privacidade</a>'
+        '<a href="#">Termos de Uso</a>'
+        '</div></div>',
+        unsafe_allow_html=True,
+    )

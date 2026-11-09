@@ -1,0 +1,576 @@
+/* TELA DE PERFIL */
+/* O card */
+.st-key-profile_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+}
+
+.pc-title {
+    color: #F8FAFC;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Foto e nome lado a lado */
+.pc-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.pc-avatar {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5F5CE5, #8B5CF6);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.pc-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pc-name {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pc-email {
+    color: #94A3B8;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+/* Badges */
+.pc-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.pc-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.pc-badge-primary {
+    background: rgba(99, 102, 241, 0.15);
+    color: #818CF8;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.pc-badge-success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22C55E;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+/* Divisória e informações */
+.pc-divider {
+    border-top: 1px solid #334155;
+    margin: 16px 0;
+}
+
+.pc-label {
+    color: #94A3B8;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.pc-value {
+    color: #E2E8F0;
+    font-size: 13px;
+    margin: 6px 0;
+}
+
+.pc-mono {
+    color: #CBD5E1;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* .st-key-pc_alterar_foto {
+    width: 328px;
+    height: 40px;
+} */
+
+/* Botão com cara de campo, largura total */
+.st-key-profile_card .stButton button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #F8FAFC;
+}
+
+.st-key-profile_card .stButton button:hover {
+    background: #243247;
+    border-color: #475569;
+}
+
+/* SESSÕES PÁGINA CONTA*/
+/* O card */
+.st-key-sessions_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    width: 100% !important;
+    min-height: 240px !important;
+}
+
+.sess-title {
+    color: #F8FAFC;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sess-sub {
+    color: #94A3B8;
+    font-size: 13px;
+    margin: 4px 0 16px;
+}
+
+/* Linha do dispositivo */
+.sess-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F8FAFC;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sess-name svg {
+    color: #94A3B8;
+    flex-shrink: 0;
+}
+
+.sess-meta {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.sess-badge {
+    width: fit-content;
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22C55E;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.sess-divider {
+    border-top: 1px solid #334155;
+    margin: 14px 0;
+}
+
+.sess-foot {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+/* "Encerrar" com cara de link, à direita */
+[class*="st-key-sess_link_"] {
+    display: flex;
+    justify-content: flex-end;
+}
+
+[class*="st-key-sess_link_"] button {
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[class*="st-key-sess_link_"] button p {
+    color: #A5B4FC !important;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+[class*="st-key-sess_link_"] button:hover p {
+    color: #C7D2FE !important;
+}
+
+/* "Encerrar Outras Sessões": largura total, com borda */
+.st-key-sess_all,
+.st-key-sess_all button {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.st-key-sess_all button {
+    min-height: 40px !important;
+    height: 40px !important;
+
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-sess_all button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+.st-key-sess_all button:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/*  DADOS PESSOAIS*/
+.st-key-dados_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    max-width: 100%;
+}
+
+/* Rótulos pequenos */
+.st-key-dados_card [data-testid="stWidgetLabel"] p {
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Campos escuros */
+.st-key-dados_card [data-baseweb="input"],
+.st-key-dados_card [data-baseweb="select"]>div {
+    background: #0B1220;
+    border: 1px solid #334155;
+    border-radius: 8px;
+}
+
+.st-key-dados_card input {
+    color: #F8FAFC;
+    font-size: 13px;
+}
+
+/* Ícone de envelope dentro do campo de e-mail */
+.st-key-dados_email input {
+    padding-left: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-10 6L2 7'/%3E%3C/svg%3E") no-repeat 12px center;
+}
+
+.st-key-dados_card button[kind^="primary"] {
+    height: 44px;
+}
+
+/* Cards security - conta */
+/* Segurança */
+.sec-icon {
+    margin-top: 12px;
+    line-height: 0;
+}
+
+.sec-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0 8px;
+}
+
+.sec-title {
+    color: #F8FAFC;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sec-desc {
+    color: #94A3B8;
+    font-size: 12px;
+    line-height: 1.5;
+    min-height: 40px;
+    margin-bottom: 12px;
+}
+
+.sec-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #22C55E;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.sec-badge-off {
+    background: rgba(148, 163, 184, 0.15);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #94A3B8;
+}
+
+.sec-divider {
+    border-top: 1px solid #334155;
+    margin: 16px 0 12px;
+}
+
+.sec-foot {
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.st-key-seguranca_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px;
+    font-family: 'Inter', sans-serif;
+    width: 100% !important;
+}
+
+.st-key-seguranca_card button {
+    width: 100% !important;
+    height: 40px;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-seguranca_card button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+.st-key-seguranca_card button:hover {
+    background: #243247 !important;
+    border-color: #475569 !important;
+}
+
+/* Rodapé da página */
+.conta-note {
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.st-key-conta_rodape [data-testid="stColumn"]:not(:first-child),
+.st-key-conta_rodape [data-testid="column"]:not(:first-child) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+.st-key-conta_rodape [data-testid="stColumn"]:first-child,
+.st-key-conta_rodape [data-testid="column"]:first-child {
+    flex: 1 1 auto !important;
+}
+
+/* Cancelar: 93px */
+.st-key-conta_cancelar,
+.st-key-conta_cancelar .stButton,
+.st-key-conta_cancelar button {
+    width: 150px !important;
+    min-width: 93px !important;
+}
+
+.st-key-conta_cancelar button {
+    height: 44px !important;
+    background: transparent !important;
+    border: 1px solid #334155 !important;
+    border-radius: 8px !important;
+}
+
+.st-key-conta_cancelar button p {
+    color: #F8FAFC !important;
+    font-weight: 600;
+}
+
+/* Salvar: 151px */
+.st-key-conta_salvar,
+.st-key-conta_salvar .stButton,
+.st-key-conta_salvar button {
+    width: 151px !important;
+    min-width: 151px !important;
+}
+
+.st-key-conta_salvar button {
+    width: 150px !important;
+    height: 44px !important;
+}
+
+/* CARD DO PLANO */
+/* CONTAINER DO CARD DE PLANO */
+.st-key-plano_card {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 24px !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* TEXTOS E ESTRUTURA VERTICAL */
+.plano-container-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.plano-titulo-principal {
+    color: #F8FAFC;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.plano-descricao-topo {
+    color: #94A3B8;
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.plano-secao-atual {
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.plano-label-atual {
+    color: #94A3B8;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.plano-texto-comercial {
+    color: #F8FAFC;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.plano-rodape-nota {
+    color: #64748B;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 16px;
+}
+
+/* ESTILIZAÇÃO DO BOTÃO "GERENCIAR PLANO" */
+.st-key-plano_gerenciar_btn {
+    margin: 0 !important;
+    margin-bottom: -10px !important;
+}
+
+.st-key-plano_gerenciar_btn button {
+    height: 40px;
+    background-color: #5F5CE5 !important;
+    /* Tom exato azul/violeta da imagem */
+    border: none !important;
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease;
+}
+
+.st-key-plano_gerenciar_btn button:hover {
+    background-color: #4F4CD1 !important;
+}
+
+/* ---------- Minha Conta: grade alinhada ---------- */
+.st-key-conta_grade {
+    gap: 16px !important;
+}
+
+/* cada linha é uma grade de 2 colunas (1/3 + 2/3), com o mesmo espaço entre elas */
+.st-key-conta_linha1,
+.st-key-conta_linha2 {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: 24px;
+    align-items: stretch;
+}
+
+/* os wrappers entre a linha e o card passam a altura da linha adiante */
+:is(.st-key-conta_linha1, .st-key-conta_linha2) div:has(:is(.st-key-profile_card, .st-key-dados_card,
+        .st-key-plano_card, .st-key-seguranca_card)) {
+    height: 100%;
+}
+
+/* os cards preenchem a célula da grade: sem largura nem altura fixas */
+.st-key-profile_card,
+.st-key-dados_card,
+.st-key-plano_card,
+.st-key-seguranca_card,
+.st-key-sessions_card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.st-key-profile_card,
+.st-key-dados_card,
+.st-key-plano_card,
+.st-key-seguranca_card {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+/* botões acompanham a largura do card */
+.st-key-pc_alterar_foto,
+.st-key-pc_alterar_foto button,
+.st-key-plano_gerenciar_btn,
+.st-key-plano_gerenciar_btn button {
+    width: 100% !important;
+}
+
+.st-key-pc_alterar_foto button {
+    height: 40px;
+}
+
+/* "Alterar Foto" fica sempre colado no rodapé do card de Perfil */
+.st-key-pc_alterar_foto {
+    margin-top: auto;
+}
+
+/* Segurança: cabeçalho de altura fixa para os 3 blocos ficarem na mesma linha
+   (a badge "Ativada" deixava o do meio 2px mais alto) */
+.sec-head {
+    height: 24px;
+    align-items: center;
+}
+
+/* rodapé da página */
+.st-key-conta_rodape {
+    margin-top: 16px;
+}
+
+/* telas estreitas: uma coluna só */
+@media (max-width: 900px) {
+
+    .st-key-conta_linha1,
+    .st-key-conta_linha2 {
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+    }
+}

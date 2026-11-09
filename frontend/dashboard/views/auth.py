@@ -9,11 +9,95 @@ from backend.app.auth import (
 from backend.database.repositories import buscar_repositorio_usuario, buscar_repositorio_analisado
 import streamlit.components.v1 as components
 from backend.services.github_callback import iniciar_oauth
+from pathlib import Path
+from theme import load_css
 
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+HERO_PATH = Path("C:/Users/maria/OneDrive/Área de Trabalho/GitForesight/frontend/assets/auth_hero.jpg")
 
 def _label(texto):
     st.markdown(f'<div class="auth-label">{texto}</div>', unsafe_allow_html=True)
+
+_HERO_CACHE = {}
+
+def _hero_b64():
+    if "b64" not in _HERO_CACHE:                      # só guarda se achou o arquivo
+        base = Path(__file__).resolve().parent
+        for p in (base / "assets" / "auth_hero.jpg",
+                  base.parent / "assets" / "auth_hero.jpg",
+                  Path(HERO_PATH)):
+            if p.exists():
+                _HERO_CACHE["b64"] = base64.b64encode(p.read_bytes()).decode()
+                break
+    return _HERO_CACHE.get("b64", "")
+
+
+def _hero():
+    b64 = _hero_b64()
+    if b64:
+        st.html("<style>:root{--auth-hero:url('data:image/jpeg;base64,"
+                f"{b64}');}}</style>")
+    else:
+        st.caption("⚠️ assets/auth_hero.jpg não encontrado")
+    st.html('<div class="auth-hero" style="min-height:1px"></div>')
+
+def _auto_fit():
+    components.html(
+        """
+        <script>
+        const P = window.parent, D = P.document;
+
+        function fit() {
+            const card = D.querySelector('.st-key-auth_card');
+            if (!card) return;
+            const root = D.documentElement;
+            root.style.setProperty('--auth-zoom', '1');          // mede no tamanho real
+
+            // alinha "Esqueceu a senha?" com o rótulo "Senha"
+            const lbl = D.querySelector('.st-key-login_senha [data-testid="stWidgetLabel"]');
+            const forgot = D.querySelector('.st-key-form_forgot');
+            const form = D.querySelector('.st-key-auth_card [data-testid="stForm"]');
+            if (lbl && forgot && form) {
+                const l = lbl.getBoundingClientRect();
+                const f = form.getBoundingClientRect();
+                const fh = forgot.getBoundingClientRect().height;
+                root.style.setProperty('--forgot-top',
+                    (l.top - f.top + (l.height - fh) / 2).toFixed(1) + 'px');
+            }
+
+            const h = card.getBoundingClientRect().height;
+            const top = D.querySelector('.auth-topbar');
+            const foot = D.querySelector('.auth-footer');
+            const avail = P.innerHeight
+                - (top ? top.offsetHeight : 56)
+                - (foot ? foot.offsetHeight : 48) - 24;
+            const z = Math.max(0.6, Math.min(1, avail / h));
+            root.style.setProperty('--auth-zoom', z.toFixed(3));
+        }
+
+        if (P.__gfFit) P.removeEventListener('resize', P.__gfFit);
+        P.__gfFit = fit;
+        P.addEventListener('resize', fit);
+        fit();
+        [60, 250, 700].forEach(t => setTimeout(fit, t));
+        </script>
+        """,
+        height=0,
+    )
+    
+def _header(icone, titulo, subtitulo):
+    st.markdown(
+        f'<div class="auth-head">{icone}<h2>{titulo}</h2></div>'
+        f'<p class="auth-sub">{subtitulo}</p>',
+        unsafe_allow_html=True,
+    )
+
+def _secure():
+    st.markdown(
+        f'<div class="auth-secure">{ICON_SHIELD}'
+        '<span>Conexão segura • Autenticação em duas etapas disponível</span></div>',
+        unsafe_allow_html=True,
+    )
 
 ICON_SSO = (
     '<svg width="14" height="12" viewBox="0 0 14 12" fill="none" '
@@ -43,27 +127,33 @@ ICON_REG_LOGIN = (
     '</div>'
 )
 
-GITHUB = (
-    '<style>'
-        'div[data-testid="stElementContainer"] button[id="auth_github"] {'
-            'border: 1px solid var(--st-border-color, #d3d3d3) !important;'
-            'border-radius: 0.5rem !important;'
-            
-            'font-family: var(--st-font) !important;'
-            'color: var(--st-text-color, #31333F) !important;'
-            'background-color: var(--st-background-color, #FFFFFF) !important;'
+def _alternativas():
+    """GitHub e SSO lado a lado (economiza altura e deixa tudo maior)."""
+    b64_icon = base64.b64encode(ICON_SSO.encode("utf-8")).decode("utf-8")
+    st.html(f'<style>:root {{ --sso-icon-url: url("data:image/svg+xml;base64,{b64_icon}"); }}</style>')
 
-            'padding: 10px 16px !important;'
-            'font-weight: 500 !important;'
+    with st.container(key="auth_alt"):
+        c1, c2 = st.columns(2, gap="small")
+        with c1:
+            botao_github()
+        with c2:
+            st.button("Entrar com SSO da Empresa", key="auth_sso", use_container_width=True)
 
-            'width: 100% !important;'
-            'height: auto !important;'
+    st.caption("SSO: acesso gerenciado pela organização. "
+               "Para obter uma conta, fale com o administrador.")
+    
+ICON_LOCK = (
+    '<div class="auth-card-icon">'
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818CF8" '
+    'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+    '<rect x="4" y="11" width="16" height="10" rx="2"/>'
+    '<path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>'
+)
 
-            'opacity: 1 !important;'
-            'cursor: not-allowed !important;}'
-        'div[data-testid="stElementContainer"] button[id="auth_github"]:disabled {'
-            'background-color: var(--st-secondary-background-color, #f0f2f6) !important;}'
-    '</style>'
+ICON_SHIELD = (
+    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22C55E" '
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+    '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>'
 )
 
 def _ir_para(view):
@@ -106,31 +196,27 @@ def botao_github():
     )
 
 def _cadastro():
-    st.markdown(ICON_REG_LOGIN, unsafe_allow_html=True)
-    st.markdown("#### Crie sua conta no Git Foresight")
-    st.caption("Comece a explorar os riscos do seu repositório.")
-
-    st.markdown(GITHUB, unsafe_allow_html=True)
-    botao_github()
-
-    st.markdown(
-        '<div class="auth-divider"><span>ou cadastre-se com e-mail</span></div>',
-        unsafe_allow_html=True,
-    )
+    _header(ICON_REG_LOGIN, "Crie sua conta no Git Foresight",
+            "Comece a explorar os riscos do seu repositório.")
 
     with st.form("form_cadastro", border=False):
-        nome = st.text_input("Nome completo", key="cadastro_nome", placeholder="Seu nome completo")
-        email = st.text_input("E-mail profissional", key="cadastro_email", placeholder="voce@empresa.com")
-        senha = st.text_input("Senha", type="password", key="cadastro_senha", placeholder="Crie uma senha")
-        st.caption("Prefira uma senha longa, com letras, números e símbolos.")
-        confirma = st.text_input(
-            "Confirmar senha", type="password", key="cadastro_confirma_senha",
-            placeholder="Digite a senha novamente",
-        )
-        enviar = st.form_submit_button(
-            "Criar conta", icon=":material/arrow_forward:", type="primary"
-        )
-            
+        c1, c2 = st.columns(2, gap="small")
+        nome = c1.text_input("Nome completo", key="cadastro_nome",
+                             placeholder="Seu nome completo")
+        email = c2.text_input("E-mail profissional", key="cadastro_email",
+                              placeholder="voce@empresa.com")
+
+        c3, c4 = st.columns(2, gap="small")
+        senha = c3.text_input("Senha", type="password", key="cadastro_senha",
+                              placeholder="Crie uma senha")
+        
+        confirma = c4.text_input("Confirmar senha", type="password",
+                                 key="cadastro_confirma_senha",
+                                 placeholder="Digite a senha novamente")
+
+        enviar = st.form_submit_button("Criar conta",
+                                       icon=":material/arrow_forward:", type="primary")
+
     if enviar:
         erros = []
         if len(nome.strip()) < 3:
@@ -147,152 +233,73 @@ def _cadastro():
                 st.error(erro)
         else:
             try:
-                user_id = create_user(
-                    nome.strip(),
-                    email.strip(),
-                    senha
-                )
-
+                user_id = create_user(nome.strip(), email.strip(), senha)
             except ValueError as erro:
                 st.error(str(erro))
-
             else:
                 _entrar(user_id, nome.strip(), email.strip())
-
                 direcionar_usuario(user_id)
-
                 st.rerun()
 
-    # "Já tem uma conta? Entrar" em uma linha só, centralizada
+    st.markdown('<div class="auth-divider"><span>ou continue com</span></div>',
+                unsafe_allow_html=True)
+    _alternativas()
+
+    with st.container(key="auth_login_row"):
+        col_texto, col_link = st.columns(2, vertical_alignment="center")
+        with col_texto:
+            st.markdown("Já tem uma conta?")
+        with col_link:
+            st.button("Entrar", key="auth_to_login",
+                      on_click=_ir_para, args=("login",), type="tertiary")
+    _secure()
+
+
+def _login():
+    _header(ICON_REG_LOGIN, "Entre no Git Foresight",
+            "Acesse o console de risco da sua equipe.")
+
+    with st.form("form_login", border=False):
+        email = st.text_input("E-mail profissional", key="login_email",
+                              placeholder="voce@empresa.com")
+        senha = st.text_input("Senha", type="password", key="login_senha",
+                              placeholder="Digite sua senha")
+        lembrar = st.checkbox("Manter conectado neste dispositivo", key="login_lembrar")
+        # "Entrar" precisa vir ANTES no código: é ele que responde ao Enter
+        enviar = st.form_submit_button("Entrar", type="primary",
+                                       icon=":material/arrow_forward:",
+                                       use_container_width=True)
+        # posicionado por CSS na linha do rótulo "Senha"
+        esqueceu = st.form_submit_button("Esqueceu a senha?", key="form_forgot",
+                                         type="tertiary")
+
+    if esqueceu:
+        st.session_state.auth_view = "recuperar"
+        st.rerun()
+
+    if enviar:
+        user = verify_user(email.strip(), senha)
+        if user is None:
+            st.error("E-mail ou senha incorretos.")
+        else:
+            if lembrar:
+                st.session_state.cookie_pendente = issue_remember_token(user["id"])
+            _entrar(user["id"], user["name"], user["email"])
+            direcionar_usuario(user["id"])   # já faz o st.rerun()
+
+    st.markdown('<div class="auth-divider"><span>ou continue com</span></div>',
+                unsafe_allow_html=True)
+    _alternativas()
+
     with st.container(key="auth_login_row"):
         col_texto, col_link = st.columns(2, vertical_alignment="center")
         with col_texto:
             st.markdown("Não tem uma conta?")
         with col_link:
             st.button("Cadastrar-se", key="auth_to_cadastro",
-                    on_click=_ir_para, args=("cadastro",), type="tertiary")
+                      on_click=_ir_para, args=("cadastro",), type="tertiary")
 
-    st.divider()
-
-    st.button("Entrar com SSO da Empresa", key="auth_sso")
-    st.caption("Seu acesso é gerenciado pela organização. Para obter uma conta, fale com o administrador.")
-
-
-def _login():
-    st.markdown("## Entre no Git Foresight")
-    st.caption("Acesse o console de risco da sua equipe.")
-
-    st.markdown(GITHUB,unsafe_allow_html=True)
-
-    # Login com GitHub
-    botao_github()
-
-    st.markdown(
-        '<div class="auth-divider"><span>ou entre com e-mail</span></div>',
-        unsafe_allow_html=True,
-    )
-
-    # Formulário de login
-    with st.form("form_login", border=False):
-        email = st.text_input(
-            "E-mail profissional",
-            key="login_email",
-            placeholder="voce@empresa.com"
-        )
-
-        senha = st.text_input(
-            "Senha",
-            type="password",
-            key="login_senha",
-            placeholder="Digite sua senha"
-        )
-
-        lembrar = st.checkbox(
-            "Manter conectado neste dispositivo",
-            key="login_lembrar"
-        )
-
-        enviar = st.form_submit_button(
-            "Entrar",
-            type="primary",
-            icon=":material/arrow_forward:",
-            use_container_width=True
-        )
-
-    # Processamento do login
-    if enviar:
-        user = verify_user(email.strip(), senha)
-
-        if user is None:
-            st.error("E-mail ou senha incorretos.")
-
-        else:
-            if lembrar:
-                st.session_state.cookie_pendente = issue_remember_token(
-                    user["id"]
-                )
-
-            _entrar(
-                user["id"],
-                user["name"],
-                user["email"]
-            )
-
-            direcionar_usuario(user["id"])
-
-            st.rerun()
-
-    # Link para cadastro
-    col_esq, col_centro, col_dir = st.columns([1, 4, 1])
-
-    with col_centro:
-
-        col_texto, col_link = st.columns(
-            [3, 2],
-            vertical_alignment="center"
-        )
-
-        with col_texto:
-            st.markdown(
-                '<p style="margin:0; white-space:nowrap;">Não tem uma conta?</p>',
-                unsafe_allow_html=True
-            )
-
-        with col_link:
-            with st.container(key="ajuste_cadastro"):
-                st.button(
-                    "Cadastrar-se",
-                    key="auth_to_cadastro",
-                    on_click=_ir_para,
-                    args=("cadastro",),
-                    type="tertiary"
-                )
-
-    st.divider()
-
-    # SSO empresarial
-    b64_icon = base64.b64encode(
-        ICON_SSO.encode("utf-8")
-    ).decode("utf-8")
-
-    st.html(
-        f"""
-        <style>
-        :root {{
-            --sso-icon-url: url("data:image/svg+xml;base64,{b64_icon}");
-        }}
-        </style>
-        """
-    )
-
-    st.button("Entrar com SSO da Empresa", key="auth_sso", disabled=False)
-
-    st.caption(
-        "Seu acesso é gerenciado pela organização. "
-        "Para obter uma conta, fale com o administrador."
-    )
-    
-    #colocar o conexão segura
+    _secure()
     
 def _recuperar():
     st.markdown("## Recuperar senha")
@@ -349,22 +356,30 @@ def restaurar_sessao():
     return False
 
 def direcionar_usuario(user_id):
+
+    # Se existe um fluxo de seleção em andamento, preserva-o.
+    if st.session_state.get("pagina") == "choose_repo":
+        return
+
     analisado = buscar_repositorio_analisado(user_id)
 
     if analisado:
         st.session_state.pagina = "overview"
         st.session_state.repositorio_conectado = analisado
+
     else:
-        # Pode ter repositórios conectados, mas nenhuma análise concluída ainda
         conectado = buscar_repositorio_usuario(user_id)
+
         st.session_state.pagina = "choose_repo"
         st.session_state.repositorio_conectado = conectado
+
         if conectado:
-            st.session_state.repo_sel = conectado["name"]    # já vem selecionado na lista
+            st.session_state.repo_sel = conectado["name"]
 
     st.rerun()
 
 def render():
+    load_css("chrome", "auth")
     if restaurar_sessao():
         st.rerun()
     render_auth_topbar()
@@ -372,25 +387,31 @@ def render():
     st.markdown(
         """
         <style>
-        /* Tela sem sidebar nem barra padrão do Streamlit */
         [data-testid="stSidebar"],
         [data-testid="stSidebarCollapsedControl"],
         [data-testid="stToolbar"],
         [data-testid="stDecoration"] { display: none !important; }
-
-        /* Abre espaço para a barra (80px) e o rodapé (80px) */
-        [data-testid="stMainBlockContainer"] {
-            padding-top: 112px !important;
-            padding-bottom: 112px !important;
-        }
         </style>
         """,
         unsafe_allow_html=True,
     )
 
+    view = st.session_state.auth_view
+    telas = {"cadastro": _cadastro, "login": _login,
+             "recuperar": _recuperar, "redefinir": _redefinir}
+
     with st.container(key="auth_card"):
-        view = st.session_state.auth_view
-        {"cadastro": _cadastro, "login": _login,
-        "recuperar": _recuperar, "redefinir": _redefinir}[view]()
+        if view in ("login", "cadastro"):
+            col_img, col_form = st.columns([456, 512], gap="small")
+            with col_img:
+                _hero()
+            with col_form:
+                telas[view]()
+        else:
+            telas[view]()
+
+    # if view == "login":
+    #     _secure()   # a função do "Conexão segura" da resposta anterior
 
     render_auth_footer()
+    _auto_fit()

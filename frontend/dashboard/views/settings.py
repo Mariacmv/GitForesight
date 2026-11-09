@@ -1,5 +1,6 @@
 """Tela de Configurações do Git Foresight."""
 import streamlit as st
+from theme import load_css
 
 # Valores iniciais. Troque por leitura do seu banco/config do usuário.
 DEFAULTS = {
@@ -126,6 +127,7 @@ def _card_notificacoes(email: str, canal: str):
 
 def render(analysis=None, risk=None):
     # A sidebar e a topbar já são desenhadas pelo main() do app.py.
+    load_css("base", "predictive", "settings")
     _iniciar_estado()
 
     # TODO: ligar estes valores ao contexto / usuário reais

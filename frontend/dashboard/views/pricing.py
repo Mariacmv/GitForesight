@@ -5,6 +5,7 @@ import streamlit as st
 from backend.app.billing import criar_checkout_session
 import json
 import streamlit.components.v1 as components
+from theme import load_css
 
 GITHUB_URL = "https://github.com/Mariacmv/GitForesight"
 README_URL = f"{GITHUB_URL}#readme"
@@ -371,16 +372,20 @@ def _iniciar_checkout():
             )
             return
 
+        st.session_state.pop("checkout_url", None)
+
         url = criar_checkout_session(user_id)
 
         st.session_state["checkout_url"] = url
         st.session_state.pop("checkout_erro", None)
 
-    except Exception:
+    except Exception as e:
+        print("Erro ao iniciar Checkout:", repr(e))
+
         st.session_state["checkout_erro"] = (
             "Não foi possível iniciar o pagamento. Tente novamente."
         )
-
+        
 def _nav(publico: bool = False):
     entrar = '<a class="gf-btn pri" href="/?entrar=1" target="_self">Entrar</a>' if publico else ""
     _md(f"""
@@ -431,55 +436,70 @@ def _card_plano(p: dict):
         """)
 
         if p["key"] == "equipe":
-            if "checkout_url" not in st.session_state:
-                try:
-                    user_id = st.session_state.get("user_id")
 
-                    if user_id:
-                        st.session_state["checkout_url"] = (
-                            criar_checkout_session(user_id)
-                        )
-                    else:
-                        st.session_state["checkout_erro"] = (
-                            "Faça login antes de contratar um plano."
-                        )
+            pagamento = st.query_params.get("pagamento")
 
-                except Exception:
-                    st.session_state["checkout_erro"] = (
-                        "Não foi possível iniciar o pagamento."
-                    )
+            if pagamento in ("sucesso", "cancelado"):
+                st.session_state.pop("checkout_url", None)
 
             checkout_url = st.session_state.get("checkout_url")
 
-            if checkout_url:
-                st.link_button(
-                    p["botao"],
-                    checkout_url,
-                    type="primary",
-                    use_container_width=True,
-                )
+            if not checkout_url:
+                try:
+                    user_id = st.session_state.get("user_id")
+
+                    if not user_id:
+                        raise ValueError("Usuário não autenticado.")
+
+                    checkout_url = criar_checkout_session(user_id)
+
+                    st.session_state["checkout_url"] = checkout_url
+                    st.session_state.pop("checkout_erro", None)
+
+                except Exception as e:
+                    print("[PRICING] Erro ao criar Checkout:", repr(e))
+                    st.session_state["checkout_erro"] = (
+                        "Não foi possível iniciar o pagamento."
+                    )
+                    checkout_url = None
+
+                if checkout_url:
+                    st.markdown(
+                        f"""
+                        <a href="{escape(checkout_url)}"
+                        target="_self"
+                        style="
+                            display: block;
+                            width: 100%;
+                            padding: 0.65rem;
+                            text-align: center;
+                            background-color: #5F5CE5;
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            box-sizing: border-box;
+                        ">
+                            {escape(p["botao"])}
+                        </a>
+                        """,
+                        unsafe_allow_html=True,
+                    )
+
+                erro = st.session_state.get("checkout_erro")
+
+                if erro:
+                    st.error(erro)
+
             else:
                 st.button(
                     p["botao"],
                     key=f"pr_btn_{p['key']}",
-                    type="primary",
+                    type="primary" if p["destaque"] else "secondary",
                     use_container_width=True,
-                    disabled=True,
+                    on_click=_aviso_plano,
+                    args=(p["nome"],),
                 )
-
-            erro = st.session_state.get("checkout_erro")
-            if erro:
-                st.error(erro)
-
-        else:
-            st.button(
-                p["botao"],
-                key=f"pr_btn_{p['key']}",
-                type="primary" if p["destaque"] else "secondary",
-                use_container_width=True,
-                on_click=_aviso_plano,
-                args=(p["nome"],),
-            )
 
         itens = "".join(
             f"<li>{escape(r)}</li>" for r in p["recursos"]
@@ -615,6 +635,7 @@ def _voltar():
     st.session_state["pagina"] = st.session_state.pop("pagina_anterior", None) or "choose_repo"
 
 def render():
+    load_css("pricing")
     st.markdown(CSS, unsafe_allow_html=True)
     _nav()
     _hero()

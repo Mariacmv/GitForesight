@@ -11,9 +11,31 @@ def obter_ou_criar_customer_stripe(user_id):
     # Verifica se o usuário já possui um Customer.
     assinatura = buscar_assinatura_usuario(user_id)
 
+    print("[BILLING] Arquivo carregado:", __file__)
+    print("[BILLING] User ID:", user_id)
+    print("[BILLING] Assinatura no SQLite:", assinatura)
+    
     if assinatura and assinatura.get("stripe_customer_id"):
-        return assinatura["stripe_customer_id"]
+        customer_id = assinatura["stripe_customer_id"]
 
+        print("[BILLING] Customer encontrado:", customer_id)
+
+        try:
+            customer = stripe.Customer.retrieve(customer_id)
+            print("[BILLING] Customer recuperado:", customer.id)
+            print("[BILLING] Customer excluído:", getattr(customer, "deleted", False))
+
+            if not getattr(customer, "deleted", False):
+                return customer.id
+
+        except stripe.InvalidRequestError as erro:
+            print("[BILLING] Erro ao recuperar Customer:", erro)
+            print("[BILLING] Código do erro:", erro.code)
+
+            if erro.code != "resource_missing":
+                raise
+
+        print("[BILLING] Será criado um novo Customer.")
     # Recupera os dados do usuário no banco local.
     with get_connection() as con:
         usuario = con.execute(
@@ -46,7 +68,7 @@ def obter_ou_criar_customer_stripe(user_id):
 
     # Persiste o identificador retornado.
     salvar_customer_stripe(user_id, customer.id)
-
+    print("DEBUG: Customer encontrado no SQLite:", customer.id)
     return customer.id
 
 def criar_checkout_session(user_id):
@@ -58,6 +80,10 @@ def criar_checkout_session(user_id):
 
     # Recupera ou cria o Customer.
     customer_id = obter_ou_criar_customer_stripe(user_id)
+
+    print("[BILLING] Checkout iniciado")
+    print("[BILLING] User ID:", user_id)
+    print("[BILLING] Customer enviado:", customer_id)
 
     # URL base da aplicação.
     base_url = st.secrets.get(

@@ -54,93 +54,104 @@ def _is_sensitive(file_path):
     )
 
 
+
 def collect_commits(repository_path, on_progress=None):
     repository = Repo(repository_path)
-    total = int(repository.git.rev_list("--count", "HEAD"))
 
-    commits = []
-    file_changes = []
+    try:
+        total = int(repository.git.rev_list("--count", "HEAD"))
 
-    for indice, commit in enumerate(repository.iter_commits(), start=1): #confere cada commit realizado
-        files_changed = []
-        security_files_changed = 0
+        commits = []
+        file_changes = []
 
-        insertions = 0
-        deletions = 0
+        for indice, commit in enumerate(repository.iter_commits(), start=1):
+            files_changed = []
+            security_files_changed = 0
 
-        if commit.parents: #compara o commit atual com o commit pai
-            parent = commit.parents[0]
-            diff = parent.diff(commit, create_patch=True)
+            insertions = 0
+            deletions = 0
 
-            for item in diff:
-                file_path = item.b_path or item.a_path
+            if commit.parents:
+                parent = commit.parents[0]
+                diff = parent.diff(commit, create_patch=True)
 
-                if not file_path:
-                    continue
-                # MUDEI AQUI
-                change_type = (
-                    "A" if item.new_file else #added
-                    "D" if item.deleted_file else #deleted
-                    "R" if item.renamed_file else #renamed
-                    "M" #modified
-                )
-                old_path = item.rename_from if item.renamed_file else ""
-                # ATÉ AQUI
+                for item in diff:
+                    file_path = item.b_path or item.a_path
 
-                files_changed.append(file_path) #pega os arquivos identificados que sofreram alterações
+                    if not file_path:
+                        continue
 
-                is_sensitive = _is_sensitive(file_path) #verifica se são sensíveis
-                if is_sensitive:
-                    security_files_changed += 1
+                    change_type = (
+                        "A" if item.new_file else
+                        "D" if item.deleted_file else
+                        "R" if item.renamed_file else
+                        "M"
+                    )
 
-                file_ins = 0
-                file_del = 0
+                    old_path = item.rename_from if item.renamed_file else ""
 
-                try:
-                    patch = item.diff.decode("utf-8", errors="ignore")
+                    files_changed.append(file_path)
 
-                    for line in patch.splitlines():
-                        if line.startswith("+") and not line.startswith("+++"):
-                            file_ins += 1
-                        elif line.startswith("-") and not line.startswith("---"):
-                            file_del += 1
+                    is_sensitive = _is_sensitive(file_path)
 
-                except Exception:
-                    pass
+                    if is_sensitive:
+                        security_files_changed += 1
 
-                insertions += file_ins
-                deletions += file_del
+                    file_ins = 0
+                    file_del = 0
 
-                file_changes.append({
-                    "hash": commit.hexsha,
-                    "author": commit.author.name,
-                    "date": commit.committed_datetime,
-                    "path": file_path,
-                    "module": Path(file_path).parts[0] if len(Path(file_path).parts) > 1 else "(raiz)",
-                    "change_type": change_type, # mudei aqui
-                    "old_path": old_path, # mudei aqui
-                    "insertions": file_ins,
-                    "deletions": file_del,
-                    "changes": file_ins + file_del,
-                    "is_security": is_sensitive,
-                    "email": commit.author.email,
-                })
+                    try:
+                        patch = item.diff.decode("utf-8", errors="ignore")
 
-        commits.append({
-            "hash": commit.hexsha,
-            "author": commit.author.name,
-            "date": commit.committed_datetime,
-            "message": commit.message.strip(),
-            "files_changed": files_changed,
-            "files_count": len(files_changed),
-            "security_files_changed": security_files_changed,
-            "insertions": insertions,
-            "deletions": deletions,
-            "changes": insertions + deletions,
-            "email": commit.author.email,
-        })
-        
-        if on_progress and (indice % 20 == 0 or indice == total):
-            on_progress(indice, total)
+                        for line in patch.splitlines():
+                            if line.startswith("+") and not line.startswith("+++"):
+                                file_ins += 1
+                            elif line.startswith("-") and not line.startswith("---"):
+                                file_del += 1
 
-    return commits, file_changes
+                    except Exception:
+                        pass
+
+                    insertions += file_ins
+                    deletions += file_del
+
+                    file_changes.append({
+                        "hash": commit.hexsha,
+                        "author": commit.author.name,
+                        "date": commit.committed_datetime,
+                        "path": file_path,
+                        "module": (
+                            Path(file_path).parts[0]
+                            if len(Path(file_path).parts) > 1
+                            else "(raiz)"
+                        ),
+                        "change_type": change_type,
+                        "old_path": old_path,
+                        "insertions": file_ins,
+                        "deletions": file_del,
+                        "changes": file_ins + file_del,
+                        "is_security": is_sensitive,
+                        "email": commit.author.email,
+                    })
+
+            commits.append({
+                "hash": commit.hexsha,
+                "author": commit.author.name,
+                "date": commit.committed_datetime,
+                "message": commit.message.strip(),
+                "files_changed": files_changed,
+                "files_count": len(files_changed),
+                "security_files_changed": security_files_changed,
+                "insertions": insertions,
+                "deletions": deletions,
+                "changes": insertions + deletions,
+                "email": commit.author.email,
+            })
+
+            if on_progress and (indice % 20 == 0 or indice == total):
+                on_progress(indice, total)
+
+        return commits, file_changes
+
+    finally:
+        repository.close()

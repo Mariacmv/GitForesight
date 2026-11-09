@@ -2,7 +2,7 @@
 import os
 from html import escape
 from datetime import datetime
-
+from theme import load_css
 import streamlit as st
 
 from paths import DATA_DIR   # precisa vir antes dos imports de backend (ajusta o sys.path)
@@ -164,6 +164,7 @@ def executar(info, branch, phs):
 
 
 def render_primeira_analise():
+    load_css("first_analysis")
     #st.caption("DEBUG — Renderizando etapa 2")
     info = st.session_state.repo_info
     rodando = st.session_state.get("analise") == "rodando"

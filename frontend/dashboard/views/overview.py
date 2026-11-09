@@ -8,9 +8,10 @@ from components.cards import (
 from data_loader import load_commit_log, load_file_changes
 from backend.app.predictive import build_predictive
 from frontend.dashboard.views.predictive import render_projection_card
-
+from theme import load_css
 
 def render(analysis, risk):
+    load_css("base", "predictive", "overview")
     commits = load_commit_log()
     files = load_file_changes()
 

@@ -104,7 +104,7 @@ def renderizar_pagina_privada(pagina):
         account.render()
 
     elif pagina == "heatmap":
-        render_heatmap()
+        heatmap.render()
 
     elif pagina == "manage_plan":
         manage_plan.render_plan ()

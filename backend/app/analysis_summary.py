@@ -19,8 +19,13 @@ def nivel_risco(score):
 
 
 def _ler(caminho):
-    return pd.read_csv(caminho) if caminho.exists() else None
+    if not caminho.exists():
+        return None
 
+    try:
+        return pd.read_csv(caminho)
+    except pd.errors.EmptyDataError:
+        return None
 
 def build_summary(data_dir):
     data_dir = Path(data_dir)

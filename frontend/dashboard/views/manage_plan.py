@@ -1,6 +1,6 @@
 from html import escape
 import streamlit as st
-
+from theme import load_css
 
 def _svg(paths: str, size: int = 18) -> str:
     return (
@@ -216,6 +216,7 @@ def _rodape():
 
 
 def render_plan():
+    load_css("base", "predictive", "manage_plan")
     with st.container(key="gp_page"):
         _cabecalho()
         with st.container(key="gp_grid"):

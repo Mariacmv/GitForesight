@@ -101,10 +101,15 @@ def run_pipeline(url, branch, data_dir, token=None, total_commits=0, on_update=N
     risk_csv = str(data_dir / "risk.csv")
 
     tmp = Path(tempfile.mkdtemp(prefix="gitforesight_"))
+    repo = None
     try:
         with _etapa(tracker, 0, push):                                    # clonar
             try:
-                Repo.clone_from(_auth_url(url, token), str(tmp / "repo"), branch=branch) #recebe a branch
+                repo = Repo.clone_from(
+                    _auth_url(url, token),
+                    str(tmp / "repo"),
+                    branch=branch
+                )
             except GitCommandError:
                 # Não repassa a mensagem original: ela pode conter o token na URL
                 raise ValueError(
@@ -152,4 +157,8 @@ def run_pipeline(url, branch, data_dir, token=None, total_commits=0, on_update=N
             "artifact_dir": artifact_dir,
         }
     finally:
-        _cleanup(tmp)
+        try:
+            if repo is not None:
+                repo.close()
+        finally:
+            _cleanup(tmp)

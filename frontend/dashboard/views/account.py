@@ -1,6 +1,7 @@
 from html import escape
 
 import streamlit as st
+from theme import load_css
 
 from components.cards import html_inline
 from components.dados_card import render_dados_pessoais, salvar_dados_pessoais
@@ -121,6 +122,7 @@ def _aviso(texto):
 # ---------- página ----------
 
 def render():
+    load_css("account")
     usuario = {
         "nome": st.session_state.get("user_name") or "Usuário",
         "email": st.session_state.get("user_email") or "",

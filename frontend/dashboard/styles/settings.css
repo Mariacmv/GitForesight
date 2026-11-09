@@ -1,0 +1,318 @@
+/* CONFIGURAÇÕES */
+:root {
+    --cfg-card: #141c2f;
+    --cfg-field: #0d1424;
+    --cfg-border: #252f47;
+    --cfg-text: #e8ecf4;
+    --cfg-muted: #8a94a8;
+    --cfg-accent: #6366f1;
+    --cfg-green: #22c55e;
+}
+
+/* ---------- Títulos ---------- */
+.cfg-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--cfg-text);
+}
+
+.cfg-h {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--cfg-text);
+    margin-bottom: 2px;
+}
+
+.cfg-sub {
+    font-size: .8rem;
+    color: var(--cfg-muted);
+    margin-bottom: 10px;
+}
+
+.cfg_cancel,
+.cfg_save {
+    width: 200px;
+}
+
+/* ---------- Cards ---------- */
+[class*="st-key-cfg_card_"] {
+    background: var(--cfg-card);
+    border: 1px solid var(--cfg-border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem 1rem;
+    gap: .55rem;
+}
+
+/* Cards da mesma linha com a mesma altura */
+[data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
+    align-items: stretch;
+}
+
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]),
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"],
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"]>*:has([class*="st-key-cfg_card_"]) {
+    height: 100%;
+}
+
+/* ---------- Textos de linha ---------- */
+.cfg-t {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--cfg-text);
+    line-height: 1.3;
+}
+
+.cfg-d {
+    font-size: .75rem;
+    color: var(--cfg-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+}
+
+/* ---------- Repositório ---------- */
+.cfg-repo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 0 6px;
+}
+
+.cfg-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--cfg-text);
+}
+
+/* ---------- Badges ---------- */
+.cfg-badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: .68rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+    color: #cbd5e1;
+}
+
+.cfg-badge.ok {
+    background: rgba(34, 197, 94, .12);
+    border-color: rgba(34, 197, 94, .30);
+    color: var(--cfg-green);
+}
+
+/* ---------- Integrações ---------- */
+.cfg-int {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.cfg-ico {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--cfg-text);
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+}
+
+.cfg-note {
+    margin-top: 6px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: var(--cfg-field);
+    border: 1px solid var(--cfg-border);
+    font-size: .75rem;
+    color: var(--cfg-muted);
+    line-height: 1.5;
+}
+
+.cfg-note a {
+    color: #818cf8;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cfg-note a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Divisórias ---------- */
+.cfg-hr {
+    height: 1px;
+    background: var(--cfg-border);
+    margin: 2px 0;
+}
+
+.cfg-mail {
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--cfg-border);
+    font-size: .75rem;
+    color: var(--cfg-muted);
+}
+
+/* ---------- Labels dos campos ---------- */
+[class*="st-key-cfg_card_"] [data-testid="stWidgetLabel"] p {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--cfg-text);
+}
+
+/* ---------- Selectbox e text input ---------- */
+[class*="st-key-cfg_card_"] [data-baseweb="select"]>div,
+[class*="st-key-cfg_card_"] [data-baseweb="input"],
+[class*="st-key-cfg_card_"] [data-baseweb="input"]>div {
+    background: var(--cfg-field);
+    border-color: var(--cfg-border);
+    border-radius: 8px;
+}
+
+/* [class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
+    min-height: 42px;
+} */
+
+[class*="st-key-cfg_card_"] input {
+    font-size: .85rem;
+    color: var(--cfg-text);
+}
+
+/* ---------- Botões ---------- */
+[class*="st-key-cfg_"] button,
+.stButton button {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .85rem;
+    /*min-height: 40px;*/
+}
+
+.stButton button[kind="secondary"] {
+    background: var(--cfg-card);
+    border: 1px solid var(--cfg-border);
+    color: var(--cfg-text);
+}
+
+.stButton button[kind="secondary"]:hover {
+    border-color: var(--cfg-accent);
+    color: #fff;
+}
+
+.stButton button[kind="primary"] {
+    background: var(--cfg-accent);
+    border: none;
+    color: #fff;
+}
+
+.stButton button[kind="primary"]:hover {
+    background: #7c7ff5;
+}
+
+/* ---------- Espaçamento ---------- */
+[class*="st-key-cfg_card_"] [data-testid="stHorizontalBlock"] {
+    gap: .75rem;
+}
+
+:root {
+    --cfg-pad-y: 1.6rem;
+    --cfg-pad-x: 1.7rem;
+    --cfg-gap: .95rem;
+}
+
+[class*="st-key-cfg_card_"] {
+    padding: var(--cfg-pad-y) var(--cfg-pad-x);
+    gap: var(--cfg-gap);
+    border-radius: 14px;
+}
+
+/* Altura mínima por linha de cards */
+/* .st-key-cfg_card_repo,
+.st-key-cfg_card_integ {
+    min-height: 400px;
+} */
+
+/* .st-key-cfg_card_scan,
+.st-key-cfg_card_notif {
+    min-height: 380px;
+} */
+
+/* Mais espaço entre as duas linhas de cards */
+[data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
+    margin-bottom: 1rem;
+    gap: 1.5rem;
+}
+
+/* Textos um pouco maiores */
+.cfg-h {
+    font-size: 1.1rem;
+}
+
+.cfg-sub {
+    font-size: .88rem;
+    margin-bottom: 14px;
+}
+
+.cfg-t {
+    font-size: .95rem;
+}
+
+.cfg-d {
+    font-size: .82rem;
+}
+
+.cfg-mono {
+    font-size: .95rem;
+}
+
+.cfg-badge {
+    font-size: .74rem;
+    padding: 4px 11px;
+}
+
+.cfg-ico {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+}
+
+.cfg-int {
+    padding: 8px 0;
+}
+
+.cfg-note {
+    padding: 14px 16px;
+    font-size: .82rem;
+}
+
+.cfg-mail {
+    font-size: .82rem;
+    padding-top: 14px;
+}
+
+/* Campos e botões mais altos */
+[class*="st-key-cfg_card_"] [data-baseweb="select"]>div {
+    min-height: 46px;
+}
+
+[class*="st-key-cfg_card_"] [data-testid="stWidgetLabel"] p {
+    font-size: .8rem;
+}
+
+[class*="st-key-cfg_card_"] input {
+    font-size: .92rem;
+}
+
+.stButton button {
+    min-height: 44px;
+    font-size: .9rem;
+}

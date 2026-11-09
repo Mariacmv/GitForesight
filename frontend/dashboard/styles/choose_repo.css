@@ -1,0 +1,179 @@
+/* ----- Título e legenda (somente nesta tela) ----- */
+.st-key-repo_zoom h1 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    font-size: 28px !important;
+    /*padding: 0 0 4px !important;*/
+    line-height: 1.2 !important;
+}
+
+.st-key-repo_zoom [data-testid="stCaptionContainer"] {
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+/* ----- Card principal ----- */
+.st-key-repo_picker {
+    background: #1E293B;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.st-key-repo_picker [data-testid="stVerticalBlock"] {
+    gap: 0.4rem;
+}
+
+/* Campos mais baixos */
+.st-key-repo_picker [data-baseweb="select"]>div,
+.st-key-repo_picker [data-baseweb="input"] {
+    min-height: 38px;
+}
+
+.st-key-repo_picker input,
+.st-key-repo_picker label p {
+    font-size: 13px;
+}
+
+.st-key-repo_picker button[kind^="primary"] {
+    width: auto !important;
+    height: 20px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+/* ----- Cabeçalho e rodapé da lista ----- */
+.repo-list-head {
+    display: flex;
+    justify-content: space-between;
+    color: #94A3B8;
+    font-size: 12px;
+}
+
+.repo-list-foot {
+    color: #94A3B8;
+    font-size: 12px;
+    text-align: right;
+    margin: 0;
+}
+
+/* ----- Rolagem da lista ----- */
+.st-key-repo_list ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.st-key-repo_list ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+/* Lista: sem espaço entre as linhas */
+.st-key-repo_list [data-testid="stVerticalBlock"] {
+    gap: 0 !important;
+}
+
+/* ----- Linhas da lista ----- */
+.repo-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-bottom-color: #334155;
+    border-radius: 8px;
+}
+
+.repo-row.selected {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: #6366F1;
+}
+
+.repo-radio {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    border: 2px solid #64748B;
+    border-radius: 50%;
+}
+
+.repo-row.selected .repo-radio {
+    border-color: #6366F1;
+    background: radial-gradient(circle, #6366F1 40%, transparent 45%);
+}
+
+.repo-row-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.repo-row-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.repo-row-name {
+    color: #F8FAFC;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.repo-tag {
+    padding: 1px 6px;
+    border: 1px solid #334155;
+    border-radius: 4px;
+    background: #0B1220;
+    color: #94A3B8;
+    font-size: 9px;
+}
+
+.repo-row-desc {
+    color: #E2E8F0;
+    font-size: 12px;
+    margin: 4px 0;
+}
+
+.repo-row-meta {
+    display: flex;
+    gap: 12px;
+    color: #94A3B8;
+    font-size: 10px;
+}
+
+.lang-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #818CF8;
+}
+
+.repo-check {
+    color: #818CF8;
+    font-size: 14px;
+}
+
+/* Botão invisível cobrindo a linha inteira (clique = selecionar) */
+[class*="st-key-repo_row_"] {
+    position: relative;
+}
+
+[class*="st-key-repo_row_"] [data-testid="stElementContainer"]:has(.stButton) {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
+
+[class*="st-key-repo_row_"] .stButton,
+[class*="st-key-repo_row_"] .stButton button {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+[class*="st-key-repo_row_"] .stButton button {
+    opacity: 0;
+    cursor: pointer;
+}

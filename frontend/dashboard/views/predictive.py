@@ -343,7 +343,7 @@ def _recommendations_card(data) -> None:
 
 # Entrada da view
 def render(analysis, risk):
-    load_css()
+    load_css("predictive")
     data = build_predictive(analysis, risk)
 
     _header()

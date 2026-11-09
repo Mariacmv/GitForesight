@@ -1,5 +1,5 @@
 from html import escape
-
+from theme import load_css
 import streamlit as st
 
 from paths import DATA_DIR   # precisa vir antes dos imports de backend (ajusta o sys.path)
@@ -46,6 +46,7 @@ def _analisar_outro():
 
 
 def render_resultados():
+    load_css("chrome", "first_analysis", "results_preview")
     info = st.session_state.repo_info
     branch = st.session_state.get("branch") or info["default_branch"]
     resumo = build_summary(DATA_DIR)
@@ -81,8 +82,8 @@ def render_resultados():
 
             st.button("Conhecer planos e preços", key="res_planos", type="primary",
                       icon=":material/arrow_forward:", icon_position="right",
-                      on_click=_planos)
-            st.button("Ir para visão geral", key="res_visao", on_click=_ir_visao_geral)
+                      on_click=_planos, width="stretch")
+            st.button("Ir para visão geral", key="res_visao", on_click=_ir_visao_geral, width="stretch")
 
             st.markdown(
                 f'<div class="side-foot">{escape(info["full_name"])} · {escape(branch)}</div>',
