@@ -9,3 +9,4 @@ gitforesight.db
 *.db-shm
 secrets.toml
 *.pem
+data/analyses/

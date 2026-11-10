@@ -271,11 +271,12 @@ def _lista(conta, busca):
 
                 url = f"https://github.com/{nome}"
 
-                salvar_repositorio_usuario(
+                repo_salvo = salvar_repositorio_usuario(
                     user_id=user_id,
                     nome=nome,
                     url=url,
                 )
+                st.session_state.repo_id = repo_salvo["id"]
 
         except ValueError as e:
             st.error(str(e))

@@ -45,14 +45,31 @@
 }
 
 /* Cards da mesma linha com a mesma altura */
+/* Linha de cards: colunas esticam até a altura do maior */
 [data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
-    align-items: stretch;
+    align-items: stretch !important;
 }
 
-[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]),
-[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"],
-[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"]>*:has([class*="st-key-cfg_card_"]) {
-    height: 100%;
+/* Cadeia coluna -> bloco da coluna -> wrapper -> card: todos com 100% */
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]) {
+    display: flex;
+    flex-direction: column;
+}
+
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"])>[data-testid="stVerticalBlock"] {
+    flex: 1;
+    height: 100% !important;
+}
+
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]) [data-testid="stLayoutWrapper"]:has(> [class*="st-key-cfg_card_"]),
+[data-testid="stColumn"]:has([class*="st-key-cfg_card_"]) [data-testid="stElementContainer"]:has(> [class*="st-key-cfg_card_"]) {
+    height: 100% !important;
+}
+
+/* O card em si (era o que faltava) */
+[class*="st-key-cfg_card_"] {
+    height: 100% !important;
+    box-sizing: border-box;
 }
 
 /* ---------- Textos de linha ---------- */
@@ -235,16 +252,14 @@
     border-radius: 14px;
 }
 
-/* Altura mínima por linha de cards */
-/* .st-key-cfg_card_repo,
-.st-key-cfg_card_integ {
-    min-height: 400px;
-} */
+.st-key-cfg_card_notif .cfg-mail {
+    margin-top: auto;
+}
 
-/* .st-key-cfg_card_scan,
 .st-key-cfg_card_notif {
-    min-height: 380px;
-} */
+    display: flex;
+    flex-direction: column;
+}
 
 /* Mais espaço entre as duas linhas de cards */
 [data-testid="stHorizontalBlock"]:has([class*="st-key-cfg_card_"]) {
@@ -315,4 +330,54 @@
 .stButton button {
     min-height: 44px;
     font-size: .9rem;
+}
+
+/* Wrappers do botão ocupam toda a coluna */
+[class*="st-key-cfg_btn_"],
+.st-key-cfg_cancel,
+.st-key-cfg_save,
+.st-key-cfg_sync {
+    width: 100% !important;
+}
+
+[class*="st-key-cfg_btn_"] .stButton,
+.st-key-cfg_cancel .stButton,
+.st-key-cfg_save .stButton,
+.st-key-cfg_sync .stButton {
+    width: 100% !important;
+}
+
+[class*="st-key-cfg_btn_"] button,
+.st-key-cfg_cancel button,
+.st-key-cfg_save button,
+.st-key-cfg_sync button {
+    width: 100% !important;
+    white-space: nowrap;
+}
+
+[class*="st-key-cfg_card_"] [data-testid="stHorizontalBlock"]:has([data-testid="stToggle"]) {
+    margin-bottom: .5rem;
+    gap: .75rem;
+}
+
+[class*="st-key-cfg_card_"] [data-testid="stHorizontalBlock"]:has([data-testid="stToggle"]) .cfg-d {
+    margin-bottom: 0;
+}
+
+.st-key-cfg_card_repo,
+.st-key-cfg_card_integ {
+    min-height: 420px;
+}
+
+.st-key-cfg_card_scan,
+.st-key-cfg_card_notif {
+    min-height: 400px;
+}
+
+/* ---------- Cards em desenvolvimento ---------- */
+.st-key-cfg_card_integ,
+.st-key-cfg_card_scan,
+.st-key-cfg_card_notif {
+    opacity: 0.45;
+    filter: grayscale(35%);
 }

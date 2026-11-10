@@ -44,6 +44,31 @@ def init_db():
                 UNIQUE(user_id, url)
             );
             
+            CREATE TABLE IF NOT EXISTS repository_settings (
+                repository_id INTEGER PRIMARY KEY,
+
+                ignored_directories TEXT NOT NULL DEFAULT
+                    'node_modules/, .venv/, dist/',
+
+                analyze_on_commit INTEGER NOT NULL DEFAULT 1,
+                scan_frequency TEXT NOT NULL DEFAULT 'Diariamente',
+                scan_time TEXT NOT NULL DEFAULT '02:00',
+
+                scan_dependencies INTEGER NOT NULL DEFAULT 1,
+                update_ai_projections INTEGER NOT NULL DEFAULT 1,
+
+                notify_critical INTEGER NOT NULL DEFAULT 1,
+                notify_score_increase INTEGER NOT NULL DEFAULT 1,
+                notify_weekly_summary INTEGER NOT NULL DEFAULT 1,
+                notify_no_alerts INTEGER NOT NULL DEFAULT 0,
+
+                updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (repository_id)
+                    REFERENCES repositories(id)
+                    ON DELETE CASCADE
+            );
+            
             CREATE TABLE IF NOT EXISTS github_accounts (
                 github_id INTEGER PRIMARY KEY,
                 user_id INTEGER NOT NULL UNIQUE,
@@ -109,6 +134,20 @@ def init_db():
                     ON DELETE CASCADE
             );
         """)
+        colunas = {
+            row["name"]
+            for row in con.execute("PRAGMA table_info(repositories)")
+        }
+
+        if "selected_branch" not in colunas:
+            con.execute(
+                "ALTER TABLE repositories ADD COLUMN selected_branch TEXT"
+            )
+
+        if "last_analysis_at" not in colunas:
+            con.execute(
+                "ALTER TABLE repositories ADD COLUMN last_analysis_at TEXT"
+            )
 
 if __name__ == "__main__":
     print("Criando o banco de dados e as tabelas...")

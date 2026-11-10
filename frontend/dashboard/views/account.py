@@ -7,6 +7,7 @@ from components.cards import html_inline
 from components.dados_card import render_dados_pessoais, salvar_dados_pessoais
 from components.security_card import render_seguranca
 from components.settings_card import render_plano_card
+from backend.database.repositories import listar_repositorios_usuario, buscar_conexao_github
 
 CAMPOS_DADOS = ["dados_nome", "dados_cargo", "dados_email", "dados_idioma", "dados_fuso"]
 
@@ -23,7 +24,7 @@ ICONE_LAPTOP = (
     '<path d="M2 20h20"/></svg>'
 )
 
-def render_profile_card(nome, email, avatar_url, papel, organizacao, repositorio):
+def render_profile_card(nome, email, avatar_url, github_login, total_repositorios):
     iniciais = "".join(p[0] for p in nome.split()[:2]).upper() or "U"
 
     foto = (
@@ -44,18 +45,20 @@ def render_profile_card(nome, email, avatar_url, papel, organizacao, repositorio
             </div>
 
             <div class="pc-badges">
-                <span class="pc-badge pc-badge-primary">{escape(papel)}</span>
-                <span class="pc-badge pc-badge-success">E-mail verificado</span>
+                <span class="pc-badge pc-badge-primary">GitHub</span>
+                <span class="pc-badge pc-badge-success">Conta vinculada</span>
             </div>
 
             <div class="pc-divider"></div>
 
-            <div class="pc-label">ORGANIZAÇÃO</div>
-            <div class="pc-value">{escape(organizacao)}</div>
-            <div class="pc-mono">{escape(repositorio)}</div>
+            <div class="pc-label">CONTA VINCULADA</div>
+            <div class="pc-value">GitHub · @{escape(github_login)}</div>
+
+            <div class="pc-label">REPOSITÓRIOS CONECTADOS</div>
+            <div class="pc-value">{total_repositorios}</div>
         """), unsafe_allow_html=True)
 
-        st.button("Alterar Foto", key="pc_alterar_foto", icon=":material/photo_camera:")
+        st.button("Alterar Foto", key="pc_alterar_foto", icon=":material/photo_camera:", disabled=True)
 
 
 def render_sessoes(sessoes, ao_encerrar, ao_encerrar_outras):
@@ -126,10 +129,15 @@ def render():
     usuario = {
         "nome": st.session_state.get("user_name") or "Usuário",
         "email": st.session_state.get("user_email") or "",
-        "cargo": "Engenheiro de Software",       # TODO: vir do banco
-        "idioma": "Português (Brasil)",          # TODO: vir do banco
-        "fuso": "Brasília (UTC−03:00)",          # TODO: vir do banco
     }
+    user_id = st.session_state.get("user_id")
+    repositorios = listar_repositorios_usuario(user_id) if user_id else []
+    conexao_github = buscar_conexao_github(user_id) if user_id else None
+    github_login = (
+        conexao_github["github_login"]
+        if conexao_github
+        else "Não vinculado"
+    )
 
     sessoes = [   # TODO: vir do banco
         {"id": 1, "dispositivo": "Chrome • macOS", "tipo": "desktop", "atual": True,
@@ -149,16 +157,15 @@ def render():
                 nome=usuario["nome"],
                 email=usuario["email"],
                 avatar_url=st.session_state.get("avatar_url"),
-                papel="Administrador",
-                organizacao="Empresa • Engenharia",
-                repositorio="empresa/backend",
+                github_login=github_login,
+                total_repositorios=len(repositorios),
             )
             render_dados_pessoais(
                 nome=usuario["nome"],
-                cargo=usuario["cargo"],
                 email=usuario["email"],
-                idioma=usuario["idioma"],
-                fuso=usuario["fuso"],
+                cargo=None,
+                idioma=None,
+                fuso=None
             )
 
         with st.container(key="conta_linha2"):          # Plano | Segurança

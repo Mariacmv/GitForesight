@@ -131,6 +131,8 @@ def executar(info, branch, phs):
                 user_id, info["full_name"], info["url"]
             )
 
+            #st.session_state.repo_id = repo_salvo["id"]
+
             marcar_repositorio_analisado(
                 user_id, info["url"]
             )
