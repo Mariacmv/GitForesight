@@ -1,6 +1,6 @@
 import pandas as pd
 from backend.app.risk import score_risk
-
+from backend.app.permissions import has_permission
 
 def calculate_scenario_score(
     total_changes,
@@ -120,9 +120,6 @@ def simulate_projection(history, horizon_commits=50, step=10):
 
     return pd.DataFrame(points)
 
-
-
-
 def build_predictive(analysis, risk):
     required = {
         "week",
@@ -236,7 +233,6 @@ def build_predictive(analysis, risk):
         "projection": projection,
         "trends": trends,
         "factors": factors,
-        "recommendations": [],
         "recommendations": [],
         "methodology": {
             "horizon_commits": 50,

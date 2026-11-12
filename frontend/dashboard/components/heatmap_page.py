@@ -5,6 +5,7 @@ import textwrap
 from backend.app.heatmap_data import build_heatmap
 from components.heatmap_panels import cabecalho_detalhes_html, detalhes_html, heatmap_html
 from frontend.dashboard.views.predictive import card_header
+from backend.app.permissions import get_feature_access
 
 def _historico():
     st.toast("O histórico completo ainda está em construção.")
@@ -12,11 +13,31 @@ def _historico():
 
 def render_heatmap():
     analysis_dir = st.session_state.get("analysis_dir")
+    user_id = st.session_state.get("user_id")
+
+    if not user_id:
+        st.error("Sessão inválida. Entre novamente.")
+        return
+
+    acesso_heatmap = get_feature_access(user_id, "heatmap")
+
+    if not acesso_heatmap:
+        st.warning(
+            "O Heatmap de Risco não está disponível no seu plano."
+        )
+        return
 
     data_dir = analysis_dir or DATA_DIR
 
     itens = build_heatmap(data_dir)
     itens = sorted(itens, key=lambda i: i["score"], reverse=True)
+
+    if acesso_heatmap == "limited":
+        itens = itens[:3]
+        st.caption(
+            "Plano Explorar: visualização limitada aos três "
+            "arquivos de maior score de risco."
+        )
     por_path = {i["path"]: i for i in itens}
     paths = list(por_path)
 

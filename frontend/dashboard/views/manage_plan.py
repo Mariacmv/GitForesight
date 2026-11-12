@@ -69,6 +69,8 @@ TRANSACOES = [
 
 # ---------------------------------------------------------------- helpers
 
+def _ir_para_planos():
+    st.session_state["pagina"] = "pricing"
 
 def _md(html: str):
     """Remove indentação e linhas vazias (o markdown trataria como bloco de código)."""
@@ -130,10 +132,12 @@ def _card_alterar_plano():
             <div class="gp-opts">{opcoes}</div>
         """)
         st.button(
-            "Escolher plano", key="gp_btn_escolher", type="primary",
-            use_container_width=True, on_click=_demo, args=("Escolher plano",),
+            "Escolher plano",
+            key="gp_btn_escolher",
+            type="primary",
+            use_container_width=True,
+            on_click=_ir_para_planos,
         )
-
 
 def _card_cobranca():
     with st.container(key="gp_card_cobranca"):

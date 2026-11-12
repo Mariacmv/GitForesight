@@ -1,4 +1,3 @@
-
 import sys
 from pathlib import Path
 
@@ -39,6 +38,13 @@ from theme import load_css
 # Migração das tabelas de repositórios.
 migrar_repositorios()
 
+def iniciar_nova_analise():
+    st.session_state["pagina"] = "choose_repo"
+    st.session_state["passo"] = 1
+
+    st.session_state.pop("repo_sel", None)
+    st.session_state.pop("repo_url", None)
+    st.session_state.pop("branch", None)
 
 def main():
     load_css("base")
@@ -176,7 +182,7 @@ def main():
                 )
 
         # Recupera a última análise salva do usuário.
-        if not st.session_state.get("analysis_id"):
+        if not st.session_state.get("analysis_id") and not st.session_state.get("nova_analise_em_andamento"):
 
             analise = buscar_ultima_analise_usuario(user_id)
 

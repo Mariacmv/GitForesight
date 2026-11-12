@@ -15,6 +15,7 @@ from components.topbar import render_auth_footer, render_auth_topbar
 from backend.database.repositories import salvar_instalacoes_github, salvar_repositorio_usuario, salvar_branch_repositorio
 from backend.services.github_installation import listar_instalacoes_usuario, listar_repositorios_instalacao, listar_branches_instalacao
 from theme import load_css
+from backend.app.permissions import can_add_repository
 
 ETAPAS = [
     "Escolher repositório",
@@ -263,6 +264,13 @@ def _lista(conta, busca):
 
         if not user_id:
             st.error("Sua sessão expirou. Entre novamente.")
+            return
+
+        if not can_add_repository(user_id):
+            st.warning(
+                "Seu plano atual atingiu o limite de repositórios. "
+                "Faça upgrade para adicionar outro projeto."
+            )
             return
 
         try:

@@ -436,9 +436,7 @@ def _card_plano(p: dict):
         """)
 
         if p["key"] == "equipe":
-
             pagamento = st.query_params.get("pagamento")
-
             if pagamento in ("sucesso", "cancelado"):
                 st.session_state.pop("checkout_url", None)
 
@@ -447,59 +445,50 @@ def _card_plano(p: dict):
             if not checkout_url:
                 try:
                     user_id = st.session_state.get("user_id")
-
                     if not user_id:
                         raise ValueError("Usuário não autenticado.")
 
                     checkout_url = criar_checkout_session(user_id)
-
                     st.session_state["checkout_url"] = checkout_url
                     st.session_state.pop("checkout_erro", None)
-
                 except Exception as e:
                     print("[PRICING] Erro ao criar Checkout:", repr(e))
-                    st.session_state["checkout_erro"] = (
-                        "Não foi possível iniciar o pagamento."
-                    )
+                    st.session_state["checkout_erro"] = "Não foi possível iniciar o pagamento."
                     checkout_url = None
 
-                if checkout_url:
-                    st.markdown(
-                        f"""
-                        <a href="{escape(checkout_url)}"
-                        target="_self"
-                        style="
-                            display: block;
-                            width: 100%;
-                            padding: 0.65rem;
-                            text-align: center;
-                            background-color: #5F5CE5;
-                            color: white;
-                            text-decoration: none;
-                            border-radius: 8px;
-                            font-weight: 600;
-                            box-sizing: border-box;
-                        ">
-                            {escape(p["botao"])}
-                        </a>
-                        """,
-                        unsafe_allow_html=True,
-                    )
-
-                erro = st.session_state.get("checkout_erro")
-
-                if erro:
-                    st.error(erro)
-
+            if checkout_url:
+                st.markdown(
+                    f"""
+                    <a class="pr-checkout-btn" href="{escape(checkout_url)}" target="_self">
+                        {escape(p["botao"])}
+                    </a>
+                    """,
+                    unsafe_allow_html=True,
+                )
             else:
+                # sem checkout disponível: mantém o botão visível (como na imagem)
                 st.button(
                     p["botao"],
                     key=f"pr_btn_{p['key']}",
-                    type="primary" if p["destaque"] else "secondary",
+                    type="primary",
                     use_container_width=True,
                     on_click=_aviso_plano,
                     args=(p["nome"],),
                 )
+                erro = st.session_state.get("checkout_erro")
+                if erro:
+                    st.error(erro)
+
+        else:
+            # Explorar e Organização: botão secundário, sempre visível
+            st.button(
+                p["botao"],
+                key=f"pr_btn_{p['key']}",
+                type="secondary",
+                use_container_width=True,
+                on_click=_aviso_plano,
+                args=(p["nome"],),
+            )
 
         itens = "".join(
             f"<li>{escape(r)}</li>" for r in p["recursos"]
@@ -599,15 +588,15 @@ def _cta():
                 a ideia no README. Nenhuma contratação é realizada aqui.</div>
             """)
         with acoes:
-            st.button(
-                "Escolher repositório",
-                key="pr_cta_repo",
-                type="primary",
-                icon=":material/arrow_forward:",
-                icon_position="right",
-                use_container_width=True,
-                on_click=_escolher_repositorio,
-            )
+            # st.button(
+            #     "Escolher repositório",
+            #     key="pr_cta_repo",
+            #     type="primary",
+            #     icon=":material/arrow_forward:",
+            #     icon_position="right",
+            #     use_container_width=True,
+            #     on_click=_escolher_repositorio,
+            # )
             st.link_button(
                 "Conhecer o projeto no GitHub",
                 GITHUB_URL,

@@ -183,18 +183,23 @@ def _conectar_webhook():
 def _cabecalho(titulo: str, sub: str):
     _md(f'<div class="cfg-h">{titulo}</div><div class="cfg-sub">{sub}</div>')
 
-
 def _toggle(titulo: str, desc: str, key: str, disabled=False):
     esq, dir_ = st.columns([4, 1.6], vertical_alignment="center")
-    esq.markdown(_h(f'<div class="cfg-t">{titulo}</div><div class="cfg-d">{desc}</div>'), unsafe_allow_html=True)
-    dir_.toggle(titulo, key=key, label_visibility="collapsed")
 
-    st.toggle(
-        titulo,
-        key=key,
-        disabled=disabled
+    esq.markdown(
+        _h(
+            f'<div class="cfg-t">{titulo}</div>'
+            f'<div class="cfg-d">{desc}</div>'
+        ),
+        unsafe_allow_html=True
     )
 
+    dir_.toggle(
+        titulo,
+        key=f"toggle_{key}",
+        label_visibility="collapsed",
+        disabled=disabled
+    )
 
 def _integracao(icone: str, nome: str, desc: str, conectado: bool, acao=None):
     esq, dir_ = st.columns([5, 1.6], vertical_alignment="center")
@@ -296,7 +301,7 @@ def _card_varredura():
 
 def _card_notificacoes(email: str, canal: str):
     with st.container(key="cfg_card_notif"):
-        _cabecalho("Notificações", "Escolha quais eventos devem gerar um alerta.", disabled=True)
+        _cabecalho("Notificações", "Escolha quais eventos devem gerar um alerta.")
         _toggle("Vulnerabilidades críticas e altas", "Avisar imediatamente por e-mail e Slack.", "cfg_n_criticas", disabled=True)
         _toggle("Aumento no score de risco", "Avisar quando o score subir 5 pontos ou mais.", "cfg_n_score", disabled=True)
         _toggle("Resumo semanal", "Receber tendências e recomendações por e-mail.", "cfg_n_resumo", disabled=True)

@@ -1,9 +1,0 @@
-hash,author,date,path,module,change_type,old_path,insertions,deletions,changes,is_security,email
-5f55de02a10748247f7511dafaaf18a37d332ff5,mikesiko,2022-03-11 11:02:06-05:00,PracticalMalwareAnalysis-Labs-Windows7.7z,(raiz),A,,0,0,0,False,msikorski@gmail.com
-5f55de02a10748247f7511dafaaf18a37d332ff5,mikesiko,2022-03-11 11:02:06-05:00,README.md,(raiz),M,,1,1,2,False,msikorski@gmail.com
-3d66e8a2edf1885ee630c51b54179b8c81a372aa,Paul Tarter,2022-02-23 11:29:57-07:00,PracticalMalwareAnalysis-Labs-Windows7.7z,(raiz),A,,0,0,0,False,paul.tarter@FireEye.com
-3d66e8a2edf1885ee630c51b54179b8c81a372aa,Paul Tarter,2022-02-23 11:29:57-07:00,README.md,(raiz),M,,1,1,2,False,paul.tarter@FireEye.com
-11f8d657862c63146eca0258d6613469c280f203,mikesiko,2017-04-26 15:02:16-04:00,README.md,(raiz),M,,7,1,8,False,msikorski@gmail.com
-bcc02c84123aa83cd0e51b99da219c3087e35b14,mikesiko,2017-04-26 14:51:53-04:00,README.md,(raiz),M,,4,0,4,False,msikorski@gmail.com
-dc2e47a8d034ba0e6a67739e1f8eb9afeaa593e3,mikesiko,2017-04-26 14:50:01-04:00,PracticalMalwareAnalysis-Labs.7z,(raiz),A,,0,0,0,False,msikorski@gmail.com
-dc2e47a8d034ba0e6a67739e1f8eb9afeaa593e3,mikesiko,2017-04-26 14:50:01-04:00,PracticalMalwareAnalysis-Labs.exe,(raiz),A,,0,0,0,False,msikorski@gmail.com

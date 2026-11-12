@@ -1,98 +1,41 @@
 hash,author,email,date,message,files_count,security_files_changed,insertions,deletions,changes
-322c29f23dfef863f1a27c47991ab582a6101e45,Mariacmv,mariaclaragmviana@gmail.com,2025-08-11 16:11:22-03:00,Começando o módulo 2,10,0,298,0,298
-d5e54353dbc0d0c6da2cd8ba81507c535135eb91,Mariacmv,mariaclaragmviana@gmail.com,2025-08-06 15:29:17-03:00,Preparando o ambiente,32,0,1093,0,1093
-d77c887f1acc5b1d957b66aa83d2033160afb383,Mariacmv,mariaclaragmviana@gmail.com,2025-08-05 14:51:11-03:00,Resolvendo o desafio do banco,2,0,115,0,115
-06e044507c1205ab25ce2e3032954a46c9f07690,Mariacmv,mariaclaragmviana@gmail.com,2025-08-04 09:38:17-03:00,Resolvendo conflitos,10,0,328,81,409
-28e874cbc4f8f753e6f2fc9316b9ccb494f80e5d,Mariacmv,mariaclaragmviana@gmail.com,2025-08-04 09:32:32-03:00,Terminando o curso de chatbot,3,0,128,1,129
-b0d3445bbd0bdb50cc681d85a5815933dc3fc03e,Mariacmv,mariaclaragmviana@gmail.com,2025-08-01 09:49:18-03:00,Adicionando anexo de imagens,4,0,110,2,112
-56afd415803856005d6ee24278f2c19bcb6b90dc,Mariacmv,mariaclaragmviana@gmail.com,2025-07-31 10:13:12-03:00,Terminando os desafios,4,0,83,0,83
-84307255e7d4952e7319ba16468b28182e753c6d,Mariacmv,mariaclaragmviana@gmail.com,2025-07-31 09:18:49-03:00,Refatorando o código,3,0,256,74,330
-90d3bc1cb1f6fc98fe56b00bd8dbc83975af31cb,Mariacmv,mariaclaragmviana@gmail.com,2025-07-28 22:08:01-03:00,Configurando rotas,461,0,44293,0,44293
-79035a9b4b4a16ddb3b6acdfc501e1e061ce5072,Maria Clara,mariaclaragmviana@gmail.com,2025-07-28 10:58:59-03:00,Desafios,5,0,87,1,88
-cb6154ae227284a834126c7b7d5357bc3ff0a552,Maria Clara,mariaclaragmviana@gmail.com,2025-07-28 09:38:24-03:00,Construindo chatbots,10,0,291,103,394
-f9199b95533cfa73c2e4345960cb0a8bfec18eb7,Maria Clara,mariaclaragmviana@gmail.com,2025-07-28 07:43:43-03:00,Fazendo commit,15,0,262,2,264
-0d304e314c10ff42dd00f24d782fa963aa18f410,Maria Clara,mariaclaragmviana@gmail.com,2025-07-25 11:00:20-03:00,Terminando o módulo 3,4,0,78,0,78
-ef38d0e2a9e798e5f722282a9265cf2a65a637d4,Maria Clara,mariaclaragmviana@gmail.com,2025-07-25 09:10:10-03:00,Finalizando e criando um chatbot,727,4,469881,0,469881
-f6831b1e74ea15f4f387f8c6feb73f26124ae439,Mariacmv,mariaclaragmviana@gmail.com,2025-07-24 22:25:59-03:00,Resolvendo exercícios de IA e aprendendo sobre HTTP,5,0,144,0,144
-6958d2b2cb944786f00024cd79f4e0d3f2ec6fc7,Maria Clara,mariaclaragmviana@gmail.com,2025-07-24 10:53:44-03:00,Aprendendo a converter valores em java,7,0,81,0,81
-a3402c55105b39c443f8092684e6dce4eeccced1,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-24 09:17:57-03:00,Entendendo a construção de prompt engineering e prompt template,6,0,418,0,418
-130914627958272a2e83f6a32b2840ca2384c6ee,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-23 11:18:33-03:00,Revisitando variáveis e seus tipos,5,0,55,0,55
-8af34201578b4b02bf1ea08edc7aa9df6a0b7546,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-23 09:42:58-03:00,Começando com a IA,2,0,25,0,25
-10aedefd22467bfba1983bdb843eb8c1327c23bf,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-22 10:30:32-03:00,Terminando os fundamentos,8,0,201,0,201
-a3a83ce6ff5b889a4e68b4ca9350ff5de82811fa,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-21 10:18:44-03:00,Treinando sincroncidade,9,0,229,0,229
-5c46f8b18611f27786fb50dd004f6955e7ee37b9,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-21 09:14:37-03:00,Vendo mais alguns modelos de treinamento,6,0,199,0,199
-11674b6773f8950562ef5838b54cd897a05f380b,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-18 10:42:25-03:00,Criando pequenas redes e lógicas,3,0,126,0,126
-20c7ef06bae3476bcab87ec91bbbc40ef463f108,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-16 10:07:59-03:00,Terminando a prática e começando API,2,0,19,0,19
-4cb547f795fc5eb3cd7a67f06164b668a301d0db,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-07-15 10:24:23-03:00,Funções,8,0,118,0,118
-010cb1b30c9025f79350b8c9f87e6530a4920a63,Mariacmv,mariaclaragmviana@gmail.com,2025-07-14 16:07:13-03:00,Terminando conjuntos,19,0,190,11,201
-411051bcd79fda35ea98ed9613cbd8ce8fcc81e0,Mariacmv,mariaclaragmviana@gmail.com,2025-07-13 12:22:53-03:00,Terminando alguns exercícios,10,0,86,0,86
-5efbd4f5ca9c441604382921abb0bc7611345181,Mariacmv,mariaclaragmviana@gmail.com,2025-07-13 11:40:43-03:00,Mais exercícios,5,0,27,0,27
-056ceead406bd09c9a5e913f1ca6e3f02bb5ad4c,Mariacmv,mariaclaragmviana@gmail.com,2025-07-09 21:56:22-03:00,Resolvendo exercícios,4,0,35,0,35
-1c813d1bf6907cc7639e013e629c1db5fb7217e9,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-07-09 10:04:33-03:00,Create README.md,1,0,1,0,1
-3c15d7e90da1d9740b797129334b04a8c55b7c40,Mariacmv,mariaclaragmviana@gmail.com,2025-07-06 21:44:28-03:00,Aprendendo sobre scripts no cmd,10,0,24,0,24
-78d74176430d1205fa61ff967ad9728f55e5dcf9,Mariacmv,mariaclaragmviana@gmail.com,2025-07-06 16:56:48-03:00,Ajustando o repositório',3,0,3,0,3
-f83d8cb03d2b30564c6ce2b8523f70223d4ae436,Mariacmv,mariaclaragmviana@gmail.com,2025-06-28 17:00:47-03:00,Finalizando docker,1,0,0,1,1
-73ac7ef54983c7ddcbdc8ceb2fb6d81032c76728,Mariacmv,mariaclaragmviana@gmail.com,2025-06-26 22:49:12-03:00,Terminando shell script - revisar!,1,0,47,0,47
-16946b8f79dfef7397ab9479e98b150ddc3365d5,Mariacmv,mariaclaragmviana@gmail.com,2025-06-26 13:18:28-03:00,Terminando containeirização,114,1,2467,0,2467
-0a628d708c10cd6a7ea30a6516b9de34dc49419c,Mariacmv,mariaclaragmviana@gmail.com,2025-06-10 23:52:52-03:00,Merge branch 'main' of https://github.com/Mariacmv/Alura,5,0,81,0,81
-264d46901a912ef16d9065d2bf3f47198a83bd47,Mariacmv,mariaclaragmviana@gmail.com,2025-06-10 23:45:38-03:00,Automatizando o script,30,0,51,310,361
-76a97774a1c38d8bb6867e9aaa1d9e9fe3dc2c83,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-06-10 15:20:08-03:00,Resolvendo exercícios de conjuntos e dicionários,5,0,81,0,81
-cbe6bfa2348c1b3a6985e0320317bd3edf3681ba,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-06-10 10:22:27-03:00,Delete Linux/mariaclara/teste directory,1,0,0,1,1
-c6bfb376a1395106a1491a0527ca87159ebc4c22,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 22:35:09-03:00,Recriando a pasta myapp,6,0,119,0,119
-06f5da53e0b9b84da5152e2f85286cdea72565f6,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 22:30:13-03:00,Removendo arquivos não interessantes,12,0,0,1895,1895
-8169446931220a3b337a654b0f6d0ae91d3a5978,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-06-09 22:24:06-03:00,Update .gitignore,1,0,12,0,12
-da6d53e3f99d4ef2b0ebad8868a44adf6374d4a9,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-06-09 22:22:26-03:00,"Create .gitignore
+96708877ab82877e5337af7d0efe58549b2460ae,lucianaliebl,142036250+lucianaliebl@users.noreply.github.com,2025-06-22 20:15:15-03:00,Update README.md,1,0,9,5,14
+fb40297baa45472ad7725dc36a908f6b50075aeb,Luciana Liebl,lucianaliebl@gmail.com,2025-06-21 13:06:34-03:00,organizaçao do projeto para atentender o padrao MVT,18,1,118,299,417
+ff9ae4b17336fa614c9843db5b4af44a6a84ccff,Luciana Liebl,lucianaliebl@gmail.com,2025-06-18 11:27:46-03:00,deletei o arquivo teste que n estava sendo usado,1,0,0,3,3
+74ae0cb3bbe78a63ecbd4a4705ed0fe7dee2b217,Luciana Liebl,lucianaliebl@gmail.com,2025-06-18 11:05:25-03:00,arrumei a imagem da tela inicial que estava atrapalhando,1,0,0,2,2
+dd3383f83faabab947deec10ab6fe3ba1ac6d90a,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-18 10:55:29-03:00,organizando os arquivos para a arquitetura MVC.,2,1,1,81,82
+d13153745f125d025fa42aa093a975d192b6e0ce,lucianaliebl,142036250+lucianaliebl@users.noreply.github.com,2025-06-17 23:39:52-03:00,Update README.md com instrucoes de como rodar o projeto localmente,1,0,41,1,42
+3a86d94c63e9004b17fb100f3bbba0dfdc33e80b,Luciana Liebl,lucianaliebl@gmail.com,2025-06-17 23:33:04-03:00,adicionei a frase no começo do jogo para a pessoa saber que terá 3 vidas a cada partida,2,0,54,45,99
+bdc4276830a91238276b5c3923eb99b5fbe1cd09,Luciana Liebl,lucianaliebl@gmail.com,2025-06-17 22:29:03-03:00,arrumei as perguntas do banco de dados que n estavam aparecendo na tela do jogo,7,0,190,180,370
+1e3359f777541d6e7fa23c68ed0bc3d7f3149cb2,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-12 14:37:04-03:00,Update README.md,1,0,8,5,13
+84186b4e496d32f8e53dc3da6614cfb01b41b71d,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-12 14:35:10-03:00,Update README.md,1,0,1,1,2
+2a3133ef770bdd72afa6d5d61eaa732214bd3f75,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 11:36:41-03:00,Corrigindo o contador de vidas,1,0,6,9,15
+0f7471891d88c6bb885c84bd34dca48fa3b01e46,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 10:19:00-03:00,Adicionando as imagens na tela.,11,1,103,6,109
+789edf8355fec759dc5f3a614bd5d6d17ad08dc0,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 09:38:52-03:00,Mais alterações no layout.,10,0,864,424,1288
+09675835ac40b90e552c83156cd6b55c2a849aa0,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-12 08:17:58-03:00,Tirando o scrooll da tela.,7,0,729,246,975
+eef7a6a8c5e21b86ee3d505f4b8c9410ec51796b,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 19:00:04-03:00,Mais uma alteração na fonte - adicionando uma borda.,7,0,13,14,27
+887419eb28fff103caf3dd0fe85ce3a3a649365e,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 18:48:15-03:00,ajuste de fonte e padding,7,0,47,60,107
+76aa6776887b755fedc098deb14818a5cbdb645c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 17:22:29-03:00,Adicionando o emblema ao projeto.,3,1,27,3,30
+a1cf467bb25795c42d3d45a0f9451d10659847de,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 14:35:23-03:00,Adicionando e corrigindo a tela de feedback de resposta correta.,4,0,342,6,348
+6bb85e19048735f3ad5c153be0ececbd9dbace61,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:36:38-03:00,Sombra dos modais,5,0,10,0,10
+8c0cb41ee6fe599af31d3a6bcb8b7928f53f3c1f,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:25:20-03:00,ajustes de sombra,5,0,241,35,276
+7cc1fc8f6ecb0a74cdaf1dd5e319498754b65f9c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:15:04-03:00,Ajuste de modais,2,0,110,15,125
+2895a76d50eec333fad363fdd469a2fe35e3e686,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 13:10:16-03:00,modais de feedback,7,0,85,141,226
+c9cc2697233ede156d6678c670ac619a25d04a53,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 12:42:17-03:00,Vidas funcionando,2,0,46,0,46
+605e6260357e047c7987eebb2acdbc80d0dc1004,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 12:36:46-03:00,Jogo funcionando,13,0,239,92,331
+fd209b3be7454f0a0cdbd0746dcfc728f503d3fc,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 08:22:48-03:00,Adicionando mais perguntas e corrigindo os feedbacks (Garantindo que a mesma pergunta não se repita ao ongo do tabuleiro).,4,0,138,6,144
+6e2f17a37bfbb083142290503be21c62710844e5,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-11 08:07:41-03:00,Subindo a correção das respostas das perguntas + Começando a tentar deixar as casas em evidência.,4,0,103,48,151
+ad2eb0a61efc1c3de8accf2d4695860f201f6f94,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:24:46-03:00,Removendo arquivos que devem ser ignorados pelo Git,7,0,0,98,98
+f754dfd44577ccc216f776216607d9445b890ba1,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:22:26-03:00,Ajuste gitignore,1,0,1,0,1
+f41e7b13988d35f6c1f40e740b0090af2e91dea2,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:21:35-03:00,gitignore,2,0,169,0,169
+e425ed83592123dfd1382d7005247508c454d684,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:18:29-03:00,Merge branch 'main' of https://github.com/Larissa-Kailane/Projeto-CashClash,1,0,59,2,61
+26275efcc8a86fcf27b189b62379a2e3932bd9e7,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-10 15:13:16-03:00,Subindo teste das alternativas para as perguntas e atualizações de arquivos (Muita coisa foi adicionada e mudada).,33,1,868,64,932
+12918defbb740c796d1af8d46f48363b82cb305d,Rafaela Prates,142021465+RafaPrattes@users.noreply.github.com,2025-06-09 16:39:47-03:00,"Update README.md
 
-Criando o gitignore",1,0,4,0,4
-88023e7de0f43d3e6ef9763d0fdcab9336f752de,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 22:20:07-03:00,Removendo arquivos de configuração pessoal do Git,2,0,0,43,43
-ccd20c3864ecdea45bae58d8f67ce90110c017d1,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 22:17:38-03:00,Foi??,36,0,0,0,0
-dec1b4cb63765ca8cf25bc22d3d92fbca3a32c64,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 22:05:22-03:00,Movendo a pasta myapp para Linux,14,0,0,0,0
-ac660f5ee8f0ef2795443d1a7291f1aba1b5236f,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 21:47:50-03:00,"Merge branch 'main' of https://github.com/Mariacmv/Alura
-Merge porque me perdi com o caminho dos scripts e ajustei localmente mas esqueci de mandar para o git",44,1,327,7,334
-353dc858cb4e3eaf487a2509c522ced369bfaa5e,Mariacmv,mariaclaragmviana@gmail.com,2025-06-09 21:41:41-03:00,Adições ao script,8,0,499,230,729
-9488b235a0709d001381aad6cf472b68a0ab0c64,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-06-05 10:41:56-03:00,Resolvendo exercícios de listas e tuplas - terminar,9,0,73,0,73
-474cea4e001237808c0ffca32a331a049c5158da,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-06-05 09:00:12-03:00,Terminando exercícios strings,8,0,59,0,59
-de593d63a919da1d8a7e92f0f7d1e6eb91c85696,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-06-04 09:09:00-03:00,Finalizando laços de repetição,20,0,161,0,161
-5deae41429b98e0c2b541b38d9cf9ddcc4abd8de,Maria Clara Guerreira Moita Viana,maria.viana@telebras.com.br,2025-06-03 13:43:23-03:00,Finalizando a formação django,7,1,34,7,41
-908f4bdd81288409752301e01ee80acecfab1b4c,Mariacmv,mariaclaragmviana@gmail.com,2025-05-31 22:45:23-03:00,Adicionando apenas as pastas que desejo,2,0,4,0,4
-ccef0092cc5a3b93100dbf8400bc72739e69ecb6,Mariacmv,mariaclaragmviana@gmail.com,2025-05-31 22:23:17-03:00,Adicionando arquivos dos cursos linux alura,43,0,2158,0,2158
-2fa1053b0cf294def9e7a7c594afc4e43cedb872,Mariacmv,mariaclaragmviana@gmail.com,2025-05-29 11:14:26-03:00,"Primeiro módulo, último curso",1,0,29,0,29
-2e6112f3caa75119293019b9cde7884a6f9a0e36,Maria Clara Guerreira Moita Viana,maria.viana@sede.telebras,2025-05-28 15:26:57-03:00,Reafirmando conhecimentos,47,0,1468,1,1469
-636553242be05ac55aa63ac8f1c17595bff50b5a,Mariacmv,mariaclaragmviana@gmail.com,2025-05-26 14:23:05-03:00,Adicionando a funcionalidade de filtro,4,0,12,66,78
-fb3b77ac3ef21ea64dd52c2a1e9f6c09db3a3752,Mariacmv,mariaclaragmviana@gmail.com,2025-05-26 13:55:31-03:00,Inserindo as funcionalidades CRUD,8,0,135,12,147
-8c0b984551ae2f946e1bbb7a6d0a2987b8832831,Mariacmv,mariaclaragmviana@gmail.com,2025-05-22 12:36:58-03:00,Inserindo funcionalidade de o usuário adicionar arquivos,8,1,20,7,27
-81b57cd8d4867cdf912d8900629bb0146f391cb7,Mariacmv,mariaclaragmviana@gmail.com,2025-05-19 15:17:48-03:00,Fazendo modificações e ajustando diretórios,38,1,185,148,333
-d41259f44b0086be8c07209818879b057270c546,Mariacmv,mariaclaragmviana@gmail.com,2025-05-15 11:19:05-03:00,Terminando o curso de OAuth,24,1,606,0,606
-3c141ff15bc7211a4d444bc8693617c4b1ba5274,Mariacmv,mariaclaragmviana@gmail.com,2025-05-14 11:08:50-03:00,Renomeando pastas,1982,32,0,5728,5728
-6a9871b9c69fd5d9e397b961a1437981d96490ea,Mariacmv,mariaclaragmviana@gmail.com,2025-05-14 11:01:19-03:00,Corrigindo as pastas Merge branch 'main' of https://github.com/Mariacmv/Alura,1,0,0,1,1
-0b5a6bd125cfc8739e21b46bc9e07f27df6f7d06,Mariacmv,mariaclaragmviana@gmail.com,2025-05-14 10:59:14-03:00,Adiciona projeto Django com estrutura inicial e exercícios da Alura,250,2,5728,0,5728
-fae97114f5072b44975690538f2325e79559fbe3,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:52:43-03:00,Rename Python/__pycache__/exercícios_aula9.cpython-313.pyc to Desktop/python-so/__pycache__/exercícios_aula9.cpython-313.pyc,1,0,0,0,0
-8764886a0f70239e112cba27ce4df9c465370d3d,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:52:05-03:00,Rename Python/__pycache__/exercicios_aula9.cpython-313.pyc to Desktop/python-so/__pycache__/exercicios_aula9.cpython-313.pyc,1,0,0,0,0
-ca3354b925b579d172418e83d356efed55f6b564,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:50:59-03:00,Rename Python/oo-sabor-express/app.py to Desktop/python-so/oo-sabor-express/app.py,1,0,0,0,0
-6441f6dfec3fdaa7937b39efaa07ce0edd0de221,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:45:03-03:00,Rename Desktop/python-so/__pycache__/exercícios_aula9.cpython-313.pyc to Python/__pycache__/exercícios_aula9.cpython-313.pyc,1,0,0,0,0
-1d68e91e18799b683faaf86fe945aa1b5381e4ae,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:44:30-03:00,Rename Desktop/python-so/__pycache__/exercicios_aula9.cpython-313.pyc to Python/__pycache__/exercicios_aula9.cpython-313.pyc,1,0,0,0,0
-580d4b6eaefb602e972544706d72d185c901a618,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:43:23-03:00,Rename Desktop/python-so/oo-sabor-express/app.py to Python/oo-sabor-express/app.py,1,0,0,0,0
-bc781d6a517fa38ad6d89149d618c1928acbd80c,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:42:16-03:00,Delete Python directory,1,0,0,1,1
-8f501a643d9d4ab0873f98ca7077db6303d128d1,Mariacmv,mariaclaragmviana@gmail.com,2025-05-14 09:41:38-03:00,Adicionando arquivos na pasta python,1732,30,321352,0,321352
-5f740a27c5bb4bee546ee41c9351263fa0dd9d9c,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:20:36-03:00,Rename arquivo to arquivo,1,0,0,0,0
-2cb75bb2a8a60896bd07ca617fdacf181f35d6b5,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 09:17:17-03:00,Create arquivo,1,0,1,0,1
-abc676fac7d1bea2e604f47a90df2a6678906e5c,Mariacmv,mariaclaragmviana@gmail.com,2025-05-14 08:18:13-03:00,Adicionando arquivos na pasta Django,94,1,1709,1,1710
-128920fb8ebb020c3d3c350857eff719db9ce546,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:10:01-03:00,Create gfd,1,0,1,0,1
-84065fe74de49c28eb59d3e4e593bbe28bcddb9e,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:05:44-03:00,Create desafio4.js,1,0,26,0,26
-022d9defba534c76835ab365f1acb830675742e6,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:05:17-03:00,Create desafio3.js,1,0,53,0,53
-c0696f0d6e268addb91b64c5c69dfedbc120ee0b,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:04:38-03:00,Delete JavaScript/desafio2/img/dsa,1,0,0,1,1
-59931ab38c871714ffb963f98139561189f02ea6,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:04:21-03:00,arquivos,4,0,0,0,0
-c0b5f2b2fa3f9969e3dca9da0ac4c9045d6084cc,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:04:04-03:00,Delete JavaScript/desafio2/ndsa,1,0,0,1,1
-7c1ffb1e0fd6a83b5dde920b92caef62e0aa6749,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:03:54-03:00,Create dsa,1,0,1,0,1
-33aa5af9b82f11d5c7d6c4fcd64507066d0d594c,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:03:42-03:00,arquivos,3,0,206,0,206
-17fe77f5ad3ebd5f0e88077acb2e75309dbe5679,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:03:31-03:00,Create ndsa,1,0,1,0,1
-4c4d1f733c3d4bf0ea3d63c282a1adcbbbb3d242,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:03:09-03:00,Delete JavaScript/desafio1/img/arquivos,1,0,0,1,1
-550e20062fdceb32f6e047d1b86db639b40e65a4,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:02:55-03:00,arquivos,4,0,0,0,0
-613f98f6259f1ae9e4842330853052206426a7ef,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:02:41-03:00,Create arquivos,1,0,1,0,1
-1a04f3a22e8d1a7c2f47712b591bb0aa603db38b,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:02:18-03:00,Add files via upload,2,0,163,0,163
-a992911b908b4fce3e2de05d0ae8fb5092b3d69e,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:02:07-03:00,Create desafio1.js,1,0,40,0,40
-92cd11ffe6ae13ce2fff5210e00973d6c7b39831,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:01:29-03:00,outros arquivos,9,0,80,0,80
-a019dd19302dc816d3af636438d7a5fbed2d036a,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:01:04-03:00,Create oi,1,0,1,0,1
-380de8a2b6db37d0f4e596d70a378ded595bc751,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:00:36-03:00,arquivos,6,0,440,0,440
-c97bc070f8747de6fae05711c21df83ba9855e37,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 08:00:16-03:00,Create para ler,1,0,1,0,1
-0357dbd265d3a8c2a98a9f860d968c7bd9bfd7e9,Maria Clara,135616880+Mariacmv@users.noreply.github.com,2025-05-14 07:59:18-03:00,Initial commit,0,0,0,0,0
+docs(readme): atualizar seção da equipe e arquitetura",1,0,59,2,61
+d72dadf8b9b3dff3c2bbc30bba41c31167d8107c,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:55:33-03:00,Subindo outras telas (falta adicionar perguntas/testando a navegação),2,0,3,3,6
+f99e5ac40e577c111fb502c81e0eb25864ad6d2e,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:30:25-03:00,Corrigindo os tabuleiros nas telas.,2,0,26,15,41
+7a01122c1484c17df46cd6c50a2db53ef751acee,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 12:08:01-03:00,"Subindo as tentativas de outras telas, para começar a fazer os ajustes.",7,0,331,0,331
+cfe7e1a9fc60dcde0bb3783190fd8c3a73bdfe84,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 11:44:16-03:00,Subindo a versão corrigida e centralizada da tela inicial.,1,0,41,14,55
+4192fe5c7c9f00c0823bce4ec1fae31e806c7855,Larissa-Kailane,larissakailanelv@gmail.com,2025-06-09 09:30:31-03:00,Subindo a primeira versão da tela de início.,2,0,108,0,108
+2fded37f6e7565ba6bf0dbf41063b5a6b49a66e8,Larissa Kailane,143636716+Larissa-Kailane@users.noreply.github.com,2025-06-09 09:09:55-03:00,Initial commit,0,0,0,0,0

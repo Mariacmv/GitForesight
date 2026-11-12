@@ -102,3 +102,23 @@
         display: none;
     }
 }
+
+.pr-checkout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background: var(--pr-accent);
+    border: 1px solid var(--pr-accent);
+    color: #fff !important;
+    font: 600 .85rem var(--pr-sans);
+    text-decoration: none !important;
+}
+
+.pr-checkout-btn:hover {
+    background: #7c7ff5;
+    border-color: #7c7ff5;
+}

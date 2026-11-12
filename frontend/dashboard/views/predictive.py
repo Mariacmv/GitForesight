@@ -5,6 +5,10 @@ from theme import load_css
 from components.info_tip import info_tip
 from backend.app.predictive import build_predictive
 from paths import DATA_DIR
+import re
+from backend.app.heatmap_data import build_heatmap
+from backend.app.pdf_report import gerar_relatorio_pdf
+from backend.app.permissions import has_permission
 
 # Paleta
 BG_CARD = "#141b2d"
@@ -26,10 +30,11 @@ def card_header(title: str, subtitle: str = "", tip: str | None = None) -> str:
         f"{tip_html}"
         f"</div>"
     )
- 
- 
-def _header() -> None:
+
+
+def _header(pdf_bytes=None, file_name="relatorio_gitforesight.pdf") -> None:
     left, right = st.columns([5, 1.3], vertical_alignment="center")
+
     with left:
         st.markdown(
             '<p class="gf-title">Análise Preditiva</p>'
@@ -37,16 +42,20 @@ def _header() -> None:
             "antes dos próximos commits.</p>",
             unsafe_allow_html=True,
         )
+
     with right:
-        st.button(
-            "Exportar Análise",
-            icon=":material/download:",
-            use_container_width=True,
-            key="predictive_export",
-        )
- 
- 
-def _kpis(data) -> None:
+        if pdf_bytes is not None:
+            st.download_button(
+                "Exportar Análise",
+                data=pdf_bytes,
+                file_name=file_name,
+                mime="application/pdf",
+                icon=":material/download:",
+                use_container_width=True,
+                key="predictive_export",
+            )
+
+def _kpis(data, full_access=True) -> None:
     current = data["current"]
     projection = data["projection"]
 
@@ -91,11 +100,15 @@ def _kpis(data) -> None:
             "badge": "Simulação",
             "value": (
                 f'{last_projection["com_acoes"]:.2f}/100'
-                if last_projection is not None
-                else "—"
+                if last_projection is not None and full_access
+                else "Plano Equipe"
             ),
             "color": GREEN,
-            "foot": "Redução hipotética de 20% nos indicadores",
+            "foot": (
+                "Redução hipotética de 20% nos indicadores"
+                if full_access
+                else "Disponível nos planos pagos"
+            ),
             "forecast": True,
         },
         {
@@ -109,7 +122,8 @@ def _kpis(data) -> None:
     ]
 
     cards_html = "".join(
-        f'<div class="gf-kpi">'
+        f'<div class="gf-kpi{" premium-locked" if kpi["forecast"] and not full_access else ""}">'
+        f'<div class="gf-kpi-content">'
         f'<div class="gf-kpi-head">'
         f'<span>{kpi["label"].upper()}</span>'
         f'<span class="{"gf-badge forecast" if kpi["forecast"] else "gf-badge"}">'
@@ -118,6 +132,7 @@ def _kpis(data) -> None:
         f'<div class="gf-kpi-value" style="color:{kpi["color"]}">{kpi["value"]}</div>'
         f'<div class="gf-kpi-foot">{kpi["foot"]}</div>'
         f'</div>'
+        f'</div>'
         for kpi in kpis
     )
 
@@ -125,10 +140,8 @@ def _kpis(data) -> None:
         f'<div class="gf-kpi-grid">{cards_html}</div>',
         unsafe_allow_html=True,
     )
-    
 
-def _projection_chart(projection: pd.DataFrame):
-
+def _projection_chart(projection: pd.DataFrame, include_simulation=True):
     x = alt.X(
         "commits:Q",
         title=None,
@@ -213,14 +226,47 @@ def _projection_chart(projection: pd.DataFrame):
         )
     )
 
+    labels_continuity = (
+        alt.Chart(last)
+        .mark_text(
+            dy=-12,
+            fontWeight="bold",
+            fontSize=11,
+            color=INDIGO_SOFT,
+        )
+        .encode(
+            x=x,
+            y="continuidade:Q",
+            text=alt.Text("continuidade:Q", format=".2f"),
+        )
+    )
+
+    chart = band + continuity + labels_continuity
+
+    if include_simulation:
+        labels_actions = (
+            alt.Chart(last)
+            .mark_text(
+                dy=14,
+                fontWeight="bold",
+                fontSize=11,
+                color=GREEN,
+            )
+            .encode(
+                x=x,
+                y="com_acoes:Q",
+                text=alt.Text("com_acoes:Q", format=".2f"),
+            )
+        )
+
+        chart = chart + with_actions + labels_actions
+
     return (
-        (band + continuity + with_actions + labels)
+        chart
         .properties(height=240)
         .configure(background="rgba(0,0,0,0)")
         .configure_view(stroke=None)
     )
-
- 
 
 def render_projection_card(data: dict, key="card_projection") -> None:
     with st.container(border=True, key=key):
@@ -240,7 +286,13 @@ def render_projection_card(data: dict, key="card_projection") -> None:
             return
 
         st.altair_chart(
-            _projection_chart(projection),
+            _projection_chart(
+                projection,
+                include_simulation=has_permission(
+                    st.session_state.get("user_id"),
+                    "simulations",
+                ),
+            ),
             use_container_width=True,
             theme=None,
         )
@@ -344,20 +396,87 @@ def _recommendations_card(data) -> None:
 # Entrada da view
 def render(analysis, risk):
     load_css("predictive")
+    print("USER ID:", st.session_state.get("user_id"))
+    user_id = st.session_state.get("user_id")
+
+    if not user_id:
+        st.error("Sessão inválida. Entre novamente.")
+        return
+
+    # Verifica as permissões da conta.
+    pode_simular = has_permission(user_id, "simulations")
+    pode_exportar = has_permission(user_id, "pdf_export")
+
     data = build_predictive(analysis, risk)
 
-    _header()
-
     if data["status"] != "ok":
+        _header()
         st.warning(data["message"])
         return
 
-    _kpis(data)
+    analysis_dir = st.session_state.get("analysis_dir") or DATA_DIR
+
+    repo_info = st.session_state.get("repo_info") or {}
+    repo_sel = st.session_state.get("repo_sel")
+
+    repo_name = None
+
+    if isinstance(repo_info, dict):
+        repo_name = repo_info.get("full_name") or repo_info.get("name")
+
+    if not repo_name:
+        if isinstance(repo_sel, dict):
+            repo_name = repo_sel.get("full_name") or repo_sel.get("name")
+        else:
+            repo_name = repo_sel
+
+    repo_name = repo_name or "Repositorio"
+    branch = st.session_state.get("branch") or "Não informada"
+    analysis_date = st.session_state.get("ultima_varredura")
+
+    pdf_bytes = None
+
+    if pode_exportar:
+        heatmap_items = build_heatmap(analysis_dir)
+
+        pdf_bytes = gerar_relatorio_pdf(
+            predictive_data=data,
+            heatmap_items=heatmap_items,
+            repo_name=repo_name,
+            branch=branch,
+            analysis_date=analysis_date,
+        )
+
+    nome_arquivo = re.sub(
+        r"[^a-zA-Z0-9_-]",
+        "_",
+        str(repo_name).replace("/", "_"),
+    )
+
+    _header(
+        pdf_bytes=pdf_bytes,
+        file_name=f"gitforesight_{nome_arquivo}.pdf",
+    )
+
+    _kpis(data, full_access=pode_simular)
 
     col_chart, col_trends = st.columns([2.1, 1])
 
     with col_chart:
-        render_projection_card(data)
+        if pode_simular:
+            render_projection_card(data)
+        else:
+            with st.container(key="premium_projection"):
+                render_projection_card(data)
+
+            st.markdown(
+                """
+                <div class="premium-projection-overlay">
+                    <span>Disponível no plano Equipe ou superior</span>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
     with col_trends:
         _trends_card(data)
@@ -369,4 +488,3 @@ def render(analysis, risk):
 
     with col_reco:
         _recommendations_card(data)
- 

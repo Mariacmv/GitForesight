@@ -33,7 +33,7 @@
 }
 
 .gp-lead {
-    margin: 0 0 12px;
+    margin: 12px 0 12px;
     color: var(--gp-body);
     font: 400 .86rem/1.5 var(--gp-sans);
 }
@@ -58,9 +58,9 @@
 
 /* ---------- Grade 3 x 2 ---------- */
 .st-key-gp_grid {
-    --gp-h1: 404px;
+    --gp-h1: 440px;
     /* altura mínima dos cards da linha de cima */
-    --gp-h2: 328px;
+    --gp-h2: 340px;
     /* altura mínima dos cards da linha de baixo */
     gap: 16px !important;
 }
@@ -81,29 +81,34 @@
 
 /* ---------- Card base ---------- */
 [class*="st-key-gp_card_"] {
+    display: flex !important;
+    flex-direction: column;
     background: var(--gp-card);
     border: 1px solid var(--gp-border);
     border-radius: 12px;
-    padding: 11px;
+    padding: 14px;
     gap: 0 !important;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    overflow: visible;
 }
 
-.st-key-gp_row1 [class*="st-key-gp_card_"] {
-    min-height: var(--gp-h1);
+/* o bloco de markdown cresce e empurra o botão para o fim */
+[class*="st-key-gp_card_"]>div[data-testid="stElementContainer"]:has(.gp-tag) {
+    flex: 1 1 auto;
 }
 
-.st-key-gp_row2 [class*="st-key-gp_card_"] {
-    min-height: var(--gp-h2);
+/* botão sempre no final do card, sem sobrepor */
+[class*="st-key-gp_card_"] [class*="st-key-gp_btn_"] {
+    flex: 0 0 auto;
+    margin-top: 14px !important;
+    position: static !important;
 }
 
-.st-key-gp_card_plano {
-    background: var(--gp-card-hi);
-    border: 2px solid var(--gp-accent);
-    padding: 10px;
-    box-shadow: 0 0 0 1px rgba(99, 102, 241, .2), 0 14px 40px rgba(99, 102, 241, .10);
+/* remove o ajuste que colava o botão */
+.st-key-gp_btn_pagamento {
+    margin-top: 14px !important;
 }
 
 /* ---------- Textos do card ---------- */
@@ -295,9 +300,8 @@
 }
 
 .gp-row span {
-    max-width: 100px;
-    color: var(--gp-body);
-    font-weight: 600;
+    max-width: none;
+    white-space: nowrap;
 }
 
 .gp-row b {

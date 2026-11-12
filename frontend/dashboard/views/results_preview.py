@@ -83,7 +83,7 @@ def render_resultados():
             st.button("Conhecer planos e preços", key="res_planos", type="primary",
                       icon=":material/arrow_forward:", icon_position="right",
                       on_click=_planos, width="stretch")
-            st.button("Ir para visão geral", key="res_visao", on_click=_ir_visao_geral, width="stretch")
+            #st.button("Ir para visão geral", key="res_visao", on_click=_ir_visao_geral, width="stretch")
 
             st.markdown(
                 f'<div class="side-foot">{escape(info["full_name"])} · {escape(branch)}</div>',
